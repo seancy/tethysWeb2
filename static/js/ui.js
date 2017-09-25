@@ -1,34 +1,25 @@
-// 公告轮播
+// 页面选单项目轮播 (需载入slick.min.js)
 $(function(){
-
-    if($('.notice_box li').length > 1){
-        function run() {
-            $('.notice_box ul').animate({top:-40},500,function(){
-                $(this).css({top:0}).children('li').eq(0).remove().appendTo('.notice_box ul');
-            })
-        }
-
-        var TT = setInterval(run,3000)
-
-        $(".notice_box").on('mouseenter',function(e){
-            clearInterval(TT);
-            $(this).removeClass('hidden');
-        }).on('mouseleave',function(e){
-            var position = Math.round($(this).scrollTop() / 40);
-            $(this).scrollTop(0).addClass('hidden');
-            $('.notice_box ul').children('li').slice( 0, position ).appendTo('.notice_box ul');
-            TT = setInterval(run,3000);
-        })
-
-        $('.notice_box').scrollTop(0).addClass('hidden');
-    }
-
+    $('.pagemenu_slider').slick({
+        arrows: true,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        infinite: false,
+    });
 })
-
-// 刷新icon旋转
+// 页面选单选中效果
 $(function(){
-    $('.icon_refresh').on('click',function(){
-        console.log('click');
+    $('.item_pagemenu a').on('click',function(){
+        var page = $(this).data('list');
+
+        $(this).parent().siblings().find('a').removeClass('active');
         $(this).addClass('active');
+
+        $('#'+page).show().siblings('ul').hide();
+
     })
 })
+
+
+
+

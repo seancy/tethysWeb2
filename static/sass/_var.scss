@@ -1,4 +1,5 @@
 $fontSize_xxl: 21px;
+$fontSize_xl: 18px;
 $fontSize_l: 16px;
 $fontSize_m: 15px;
 $fontSize: 14px;
@@ -6,6 +7,8 @@ $fontSize_s: 13px;
 $fontSize_xs: 12px;
 
 $bgColor: #10061f;
+$bgBlack: #1b1b1b;
+$bgDeepGray: #3a3939;
 $colorGold: #e4ad6c;
 $colorGold2: #ba803e;
 $colorMenuSecondry: #565663;
@@ -16,25 +19,45 @@ $fontColor: #e2e2e2;
 $fontColor_yellow: #fbf2e0;
 $fontColor_gray: #c1c1c1;
 $fontColor_purple: #796679;
+$fontColor_gold: #fd950a;
 
 $linePurple: #443063;
 
-@mixin gdGold($gdFrom1:#9e7b3f, $gdTo1:#734f28){
-    background: $gdFrom1;
-    background: -moz-linear-gradient(top, $gdFrom1 0%, $gdTo1 100%);
-    background: -webkit-linear-gradient(top, $gdFrom1 0%, $gdTo1 100%);
-    background: linear-gradient(to bottom, $gdFrom1 0%, $gdTo1 100%);
+$gdGoldFrom:#9e7b3f;
+$gdGoldTo:#734f28;
+$gdOrangeFrom:#fe9500;
+$gdOrangeTo:#a74300;
+$gdGoldFrom2:#928872;
+$gdGoldTo2:#474340;
+$gdGoldFrom3:#a4884d;
+$gdGoldTo3:#654934;
+
+@mixin gdGold(){
+    background: $gdGoldFrom;
+    background: -moz-linear-gradient(top, $gdGoldFrom 0%, $gdGoldTo 100%);
+    background: -webkit-linear-gradient(top, $gdGoldFrom 0%, $gdGoldTo 100%);
+    background: linear-gradient(to bottom, $gdGoldFrom 0%, $gdGoldTo 100%);
 }
-@mixin gdOrange($gdFrom1:#9e7b3f, $gdTo1:#734f28){
-    background: $gdFrom1;
-    background: -moz-linear-gradient(top, $gdFrom1 0%, $gdTo1 100%);
-    background: -webkit-linear-gradient(top, $gdFrom1 0%, $gdTo1 100%);
-    background: linear-gradient(to bottom, $gdFrom1 0%, $gdTo1 100%);
+@mixin gdOrange(){
+    background: $gdOrangeFrom;
+    background: -moz-linear-gradient(top, $gdOrangeFrom 0%, $gdOrangeTo 100%);
+    background: -webkit-linear-gradient(top, $gdOrangeFrom 0%, $gdOrangeTo 100%);
+    background: linear-gradient(to bottom, $gdOrangeFrom 0%, $gdOrangeTo 100%);
+}
+@mixin gdGold2(){
+    background: $gdGoldFrom2;
+    background: -moz-linear-gradient(top, $gdGoldFrom2 0%, $gdGoldTo2 100%);
+    background: -webkit-linear-gradient(top, $gdGoldFrom2 0%, $gdGoldTo2 100%);
+    background: linear-gradient(to bottom, $gdGoldFrom2 0%, $gdGoldTo2 100%);
+}
+@mixin gdGold3(){
+    background: $gdGoldFrom3;
+    background: -moz-linear-gradient(top, $gdGoldFrom3 0%, $gdGoldTo3 100%);
+    background: -webkit-linear-gradient(top, $gdGoldFrom 0%, $gdGoldTo3 100%);
+    background: linear-gradient(to bottom, $gdGoldFrom 0%, $gdGoldTo3 100%);
 }
 @mixin transition($style: all, $duration: 300ms){
     -webkit-transition: $style $duration ease-in;
-    -moz-transition: $style $duration ease-in;
     -ms-transition: $style $duration ease-in;
-    -o-transition: $style $duration ease-in;
     transition: $style $duration ease-in;
 }

@@ -23,7 +23,6 @@ h1,h2,h3,h4,h5,h6{
 img{
     vertical-align: middle;
     border: 0px;
-    line-height: 36px;
 }
 a{
     text-decoration: none;
@@ -38,6 +37,10 @@ a:focus{
     outline: 0px;
     border: 0px;
 }
+button{
+    border:none;
+    outline: none;
+}
 p{
     margin:0px;
 }
@@ -48,13 +51,27 @@ input{
 
 /* common */
 .contain_width{
-    max-width: 850px;
+    max-width: 1000px;
     margin: 0px auto;
+    &:after{
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+@media only screen and (max-width:1279px){
+    .contain_width{
+        width: 864px;
+    }
 }
 
-/* form */
+/* ---------------------------------------------------
+// form
+--------------------------------------------------- */
 
-/* icon */
+/* ---------------------------------------------------
+// icon
+--------------------------------------------------- */
 .icon_sprite {
     background: url(img/icon_sprite.png) no-repeat;
     background-size: 256px 256px;
@@ -83,7 +100,9 @@ input{
     }
 }
 
-/* #header */
+/* ---------------------------------------------------
+// header
+--------------------------------------------------- */
 #header{
     position: fixed;
     top: 0px;
@@ -144,12 +163,14 @@ input{
             margin-right: 20px;
         }
         .info{
-            margin-right: 10px;
+            margin-right: 0px;
             color: $fontColor_yellow;
             span{
                 padding: 0px 10px;
                 border-right: 1px solid $linePurple;
-                &:last-child{ border-right: none;}
+                &:last-child{ 
+                    border-right: none;
+                }
             }
         }
     }
@@ -164,6 +185,7 @@ input{
     position: relative;
     height: 74px;
     border-bottom: 1px solid #24182f;
+    padding: 0px 20px 0px 10px;
     .logo{
         float: left;
         width: 300px;
@@ -179,16 +201,17 @@ input{
         width: calc( 100% - 300px);
         .mainmenu{
             text-align: right;
-            margin: 0px 20px 0px 50px;
-            & > li{
+            margin: 0px 0px 0px 50px;
+            > li{
                 float: left;
                 width: 14.2587%;
                 text-align: center;
-                & > a {
+                > a {
                     display: block;
                     color: #fff;
                     height: 74px;
                     padding-top: 17px;
+                    position: relative;
                     h2{
                         font-size: $fontSize_l;
                         text-shadow: 0px 0px 2px rgba(0,0,0,0.7);
@@ -198,23 +221,64 @@ input{
                         font-size: $fontSize_xs;
                     }
                 }
-                &:hover{
-                    & > a{
-                        @include gdGold($gdFrom1:#b39a5a, $gdTo1:#654934);
+                &:hover, &.active{
+                    > a{
+                        background: url(img/bg_mainmenu_hover.jpg) no-repeat;
+                        background-size: 100% 100%;
+                        border: 1px solid rgba(#2d1405,0.8);
+                        &:before, &:after{
+                            content: '';
+                            background: url(img/bg_login_btn.png) no-repeat 0px -88px;
+                            background-size: 183px 106px;
+                            position: absolute;
+                            width: 14px;
+                            height: 18px;
+                        }
+                        &:before{
+                            left: -2px;
+                            top: -6px;
+                        }
+                        &:after{
+                            right: -4px;
+                            bottom: -4px;
+                        }
                         small{
                             color: #432e18;
                         }
+                        h2:after{
+                            content: '';
+                            position: absolute;
+                            top: 3px;
+                            left: 3px;
+                            right: 3px;
+                            bottom: 3px;
+                            border: 1px solid rgba(#2d1405, 0.3);
+                        }
                     }
+                }
+                &:hover{
                     .submenu{
                         // display: block;
-                        height: 140px;
+                        height: 100px;
                         @include transition($style: height, $duration: 200ms);
                     }
                 }
-                &:nth-child(2) .submenu li:first-child{ margin-left: 14.2587%;}
-                &:nth-child(3) .submenu li:first-child{ margin-left: 28.5174%;}
-                &:nth-child(4) .submenu li:first-child{ margin-left: 42.7761%;}
-                &:nth-child(5) .submenu li:first-child{ margin-left: 57.0348%;}
+                // &:nth-child(2) .submenu li:first-child{ margin-left: 14.2587%;}
+                // &:nth-child(3) .submenu li:first-child{ margin-left: 28.5174%;}
+                // &:nth-child(4) .submenu li:first-child{ margin-left: 42.7761%;}
+                // &:nth-child(5) .submenu li:first-child{ margin-left: 57.0348%;}
+                &.hot:after{
+                    content: '';
+                    display: block;
+                    margin-top: -78px;
+                    margin-right: -4px;
+                    float: right;
+                    position: relative;
+                    z-index: 1;
+                    width: 58px;
+                    height: 53px;
+                    background: url(img/menu_hot.png) no-repeat;
+                }
             }
             .submenu{
                 // display: none;
@@ -226,32 +290,34 @@ input{
                 top: 74px;
                 z-index: 10;
                 width: 100%;
+                padding-left: calc(350px + 2.5% );
                 background-color: rgba(0,0,0,0.9);
-                padding-left: 350px;
-                text-align: left;
+                // padding-left: 350px;
+                text-align: center;
                 li {
-                    float: left;
+                    // float: left;
+                    display: inline-block;
                     text-align: center;
-                    width: 14.2587%;
-                    margin: 10px 0px;
+                    min-width: 50px;
+                    margin: 10px 10px;
                 }
                 a {
                     .img{
                         position: relative;
-                        width: 90px;
-                        height: 90px;
+                        width: 50px;
+                        height: 50px;
                         margin: 0px auto 5px;
                         span{
                             display: block;
                             position: absolute;
-                            width: 90px;
-                            height: 90px;
-                            background-size: 90px auto;
+                            width: 50px;
+                            height: 50px;
+                            background-size: 50px auto;
                             background-position: 0px 0px;
                             opacity: 1;
                             @include transition ($style: opacity, $duration: 100ms);
                             &:last-child{
-                                background-position-y: -90px;
+                                background-position-y: -50px;
                                 opacity: 0;
                             }
                         }
@@ -290,7 +356,7 @@ input{
     text-align: right;
     padding-top: 3px;
     padding-right: calc(2.6% + 20px);
-    & > span{
+    > span{
         margin-right: 8px;
         font-size: $fontSize_xs;
         vertical-align: middle;
@@ -323,7 +389,7 @@ input{
                 @include gdGold;
             }
             &.btn_reg{
-                @include gdOrange($gdFrom1:#fe9500, $gdTo1:#a74300);
+                @include gdOrange;
             }
             &:hover{
                 color: #fff;
@@ -331,7 +397,7 @@ input{
         }
     }
     &.login{
-        & > span{
+        > span{
             position: relative;
             padding-right: 10px;
             &:after{
@@ -372,9 +438,14 @@ input{
     }
 }
 
-/* #main */
+/* ---------------------------------------------------
+// main
+--------------------------------------------------- */
 #main{
     padding-top: 111px;
+}
+.mainbox{
+    position: relative;
 }
 .mainad{
     // position: relative;
@@ -382,277 +453,27 @@ input{
         width: 1280px;
         height: 410px;
         margin: 0px auto;
+        text-align: center;
         // position: relative;
-        li{
-            // position: absolute;
-            // left: 0px;
-            // top: 0px;
-            // z-index: 9;
-            a{
-                display: inline-block;
-            }
-            img{
-                width: 100%;
-            }
-        }
-    }
-    .ad_dot{
-        position: absolute;
-        bottom: 50px;
-        z-index: 10;
-        text-align: center;
-        width: 100%;
-        span{
+        // position: absolute;
+        // left: 0px;
+        // top: 0px;
+        // z-index: 9;
+        a{
             display: inline-block;
-            width: 10px;
-            height: 10px;
-            margin: 0px 3px;
-            border-radius: 5px;
-            background-color: #393645;
-            cursor: pointer;
-            &.active{
-                background-color: #be8949;
-            }
         }
-    }
-}
-.notice{
-    height: 40px;
-    margin-top: -40px;
-    position: relative;
-    z-index: 10;
-    background-color: rgba(0,0,0,0.7);
-    .notice_box{
-        width: 1280px;
-        margin:0px auto;
-        padding: 0px 30px;
-        height: 40px;
-        overflow: hidden;
-        span{
-            color: $colorGold2;
-            line-height: 40px;
-        }
-        ul{
-            position: relative;
-            vertical-align: top;
-            display: inline-block;
-            color: $fontColor_yellow;
-            li{
-                line-height: 40px;
-            }
-        }
-    }
-}
-.index_block {
-    padding: 25px 0px;
-    .title{
-        text-align: center;
-        margin-bottom: 20px;
         img{
-            width: 240px;
+            height: 410px;
         }
     }
-}
-.index_live{
-    background: url(img/bg_live.jpg) no-repeat;
-    background-size: 100% 100%;
-    .live_slider{
-        position: relative;
-        .item_slider{
-            text-align: center;
-            a{
-                display: inline-block;
-                width: 100%;
-                &:hover{
-                    .img{
-                        background-color: #1c1f26;
-                        border: 3px solid #f4f4e0;
-                        box-shadow: 0px 0px 15px 3px rgba(#edc026, 0.18);
-                        @include transition($style: border-color, $duration: 300ms);
-                    }
-                    img{
-                        margin-top: -47px;
-                        margin-left: -32px;
-                    }
-                    p{
-                        color: #f4f4e0;
-                        @include transition($style: color, $duration: 300ms);
-                    }
-                }
-            }
-            .img{
-                margin: 50px auto 10px;
-                border: 2px solid rgba(255,255,255,0.25);
-                width: 220px;
-                height: 220px;
-                border-radius: 50%;
-                img{
-                    margin-top: -46px;
-                    margin-left: -31px;
-                }
-            }
-            h3 {
-                font-size: $fontSize_xxl;
-                color: $colorGold;
-            }
-            p{
-                color: $colorSecondry;
-                font-size: $fontSize_xs;
-            }
-            // &>div{
-            //     display: inline-block;
-            //     text-align: center;
-            //     width: 33.3333%;
-            // }
-        }
-        .slick-arrow{
-            position: absolute;
-            top: 50%;
-            background: url(img/slider_arrow.png) no-repeat;
-            background-size: 60px 80px;
-            width: 30px;
-            height: 40px;
-            margin-top: -15px;
-            cursor: pointer;
-                background-position-y: -40px;
-            &.slider_prev{
-                left: -20px;
-                background-position-x: 0px;
-            }
-            &.slick-next{
-                right: -20px;
-                background-position-x: -30px;
-            }
-            &:before{
-                display: none;
-            }
-            &:hover{
-                background-position-y: 0px;
-            }
-            &.slick-disabled{
-                opacity: 0.2;
-                cursor: default;
-                &:hover{
-                    background-position-y: -40px;
-                }
-            }
-        }
-    }
-    .index_live_bottom{
-        background: url(img/live_bottom_bg.png);
-        background-size: 850px 80px;
-        height: 80px;
-        padding-left: 8px;
-        padding-top: 23px;
-        margin-top: 20px;
-        position: relative;
-        span{
-            display: inline-block;
-            margin-left: 80px;
-            color: $colorGold;
-        }
-        &:after{
-            content: '';
-            display: block;
-            position: absolute;
-            top: -26px;
-            right: 0px;
-            width: 60px;
-            height: 60px;
-            background: url(img/light.png) no-repeat;
-            background-size: 60px 60px;
-        }
-    }
-}
-.index_casino{
-    background: url(img/bg_casino.jpg) no-repeat;
-    background-size: 100% auto;
-    @media only screen and (max-width:1280px){
-        background-size: auto 100%;
-    }
-    .casino{
-        background: url(img/pic_live.png) no-repeat;
-        background-size: 834px 420px;
-        width: 834px;
-        height: 420px;
-        margin: -94px auto 10px;
-        li{
-            width: 278px;
-            height: 158px;
-            float: left;
-            margin-top: 262px;
-            padding: 15px 25px;
-            background-color: #151d2e;
-            font-size: $fontSize_s;
-            line-height: 20px;
-            position: relative;
-            &:after{
-                content: '';
-                display: block;
-                position: absolute;
-                top: -15px;
-                left: 50%;
-                margin-left: -15px;
-                width:0px;
-                height: 0px;
-                border-style: solid;
-                border-width: 0px 15px 15px 15px;
-                border-color: transparent transparent #151d2e transparent; 
-            }
-            &:nth-child(even){
-                margin-top: 104px;
-                background-color: #150e21;
-                &:after{
-                    top: auto;
-                    bottom: -15px;
-                    border-width: 15px 15px 0px 15px;
-                    border-color: #150e21 transparent transparent transparent; 
-                }
-            }
-            p{
-                color: $fontColor_gray;
-                &.casino_logo{
-                    margin-bottom: 15px;
-                    text-align: center;
-                    img{
-                        max-width: 100%;
-                        max-height: 50px;
-                    }
-                }
-            }
-        }
-    }
-}
-.index_lottery{
-    background-color: #0d0d15;
-    .lottery{
-        li{
-            float: left;
-            padding: 10px;
-            width: 50%;
-            text-align: center;
-            color: $fontColor_gray;
-            img{
-                width: 100%;
-            }
-            h3{
-                font-size: $fontSize_l;
-                margin-top: 20px;
-            }
-            p{
-                font-size: $fontSize_s;
-                margin: 10px 0px;
-            }
-        }
-    }
-    &:after{
-        content: '';
-        display: table;
-        clear: both;
+    .slick-dots{
+        bottom: 50px;
     }
 }
 
-/* #footer */
+/* ---------------------------------------------------
+// footer
+--------------------------------------------------- */
 #footer{
     background-color: #151d2e;
 }
@@ -681,7 +502,10 @@ input{
                 height: 45px;
                 background-image: url(img/footer_links.png);
                 background-size: 500px auto;
-                margin: 5px 14px 5px 0px;
+                margin: 5px 30px 5px 0px;
+                @media only screen and (max-width:1279px){
+                    margin: 5px 14px 5px 0px;
+                }
                 &:last-child{ 
                     margin-right: 0px;
                 }
@@ -705,7 +529,12 @@ input{
                 &.link-hand{ width: 35px; background-position-y: -800px; }
             }
         }
-        &.pay a{ margin-right: 23px;}
+        &.pay a{ 
+            margin-right: 43px;
+            @media only screen and (max-width:1279px){
+                margin-right: 23px;
+            }
+        }
         &.responsibility a{ margin-right: 18px;}
     }
 }
@@ -742,7 +571,7 @@ input{
         position: absolute;
         bottom: 0px;
         width: 100px;
-        height: 20px;
+        height: 24px;
         cursor: pointer;
         width: 100%;
     }
@@ -752,6 +581,108 @@ input{
     }
 }
 
+/* ---------------------------------------------------
+// pager
+--------------------------------------------------- */
+.pager{
+    text-align: center;
+    margin: 20px 0px 30px;
+    a{
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        border-radius: 25px;
+        line-height: 25px;
+        font-size: $fontSize_m;
+        margin: 0px 3px;
+        overflow: hidden;
+        color: #fff;
+        .icon{
+            display: inline-block;
+            background: url(img/icon_pager.png) no-repeat;
+            background-size: 50px auto;
+            width: 25px;
+            height: 25px;
+        }
+        &:hover{
+            background-color: $fontColor_gold;
+            .icon{
+                background-position-y: -25px;
+            }
+        }
+        &.active{
+            color: $fontColor_gold;
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
+    .prev{
+        background-color: #4c483f;
+        .icon{
+            background-position-x: 0px;
+        }
+    }
+    .next{
+        background-color: #4c483f;
+        .icon{
+            background-position-x: -25px;
+        }
+    }
+}
+
+
+/* ---------------------------------------------------
+// animate
+--------------------------------------------------- */
+@keyframes borderGold{
+    from{background-position:100%}
+    to{background-position:0%}
+}
+@keyframes menuRotate{
+    from{transform: rotate(0deg)}
+    to{transform: rotate(360deg)}
+}
+
+
+/* ---------------------------------------------------
+// plugins
+--------------------------------------------------- */
 /* plugins */
 @import '../vendor/slick/slick';
 @import '../vendor/slick/slick-theme';
+
+/* plugins corver */
+#main{
+    .slick-arrow{
+        position: absolute;
+        top: 50%;
+        background-image: url(img/slider_arrow.png);
+        background-size: 60px 80px;
+        width: 30px;
+        height: 40px;
+        cursor: pointer;
+            background-position-y: -40px;
+        &.slider_prev{
+            left: -20px;
+            background-position-x: 0px;
+        }
+        &.slick-next{
+            right: -20px;
+            background-position-x: -30px;
+        }
+        &:before{
+            display: none;
+        }
+        &:hover{
+            background-position-y: 0px;
+        }
+        &.slick-disabled{
+            opacity: 0.2;
+            cursor: default;
+            &:hover{
+                background-position-y: -40px;
+            }
+        }
+    }
+}
