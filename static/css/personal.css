@@ -1,2 +1,29 @@
+.personal_box { background-image: url(img/bg_personal.jpg); background-size: auto 200px; background-repeat: no-repeat; padding-top: 65px; }
+
+.personal_box .personal_title { height: 70px; background-size: 500px 70px; background-position: center center; background-repeat: no-repeat; margin: 0px auto 65px 20%; }
+
+.left_menu { width: 20%; float: left; }
+
+.right_main { width: 77.5%; float: right; margin-left: 2.5%; background-color: #fff; color: #000; }
+
+.user_info { background: url(img/bg_gd_white.png) top left repeat-x; padding-top: 1px; }
+
+.user_info .img { width: 140px; height: 140px; margin: -70px auto 20px; }
+
+.user_info .img img { width: 100%; }
+
+.user_info .name { font-size: 13px; }
+
+.user_info .balance { color: #e75b07; font-size: 21px; }
+
+.user_info .refresh { font-size: 15px; }
+
+.psn_menu li a { color: #969696; }
+
+.psn_menu li.active a { color: #d7be63; }
+
+.psn_menu li.active .icon_sprite { background-position-y: -72px; }
+
+#personal-msg .personal_title { background-image: url(img/subtitle_msg.png); }
 
 /*# sourceMappingURL=personal.css.map */
