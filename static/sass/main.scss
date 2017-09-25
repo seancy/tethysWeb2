@@ -1,0 +1,757 @@
+@import 'var';
+
+html, body{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Microsoft YaHei',Helvetica,Arial,sans-serif;
+    background-color: $bgColor;
+    color: $fontColor;
+    font-size: $fontSize;
+}
+*{
+    box-sizing: border-box;
+}
+ul, ol, li{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+h1,h2,h3,h4,h5,h6{
+    margin:0px;
+    font-weight: normal;
+}
+img{
+    vertical-align: middle;
+    border: 0px;
+    line-height: 36px;
+}
+a{
+    text-decoration: none;
+    color: $fontColor;
+    @include transition($style: color, $duration: 200ms);
+    &:hover{
+        color: $colorGold;
+        @include transition($style: color, $duration: 200ms);
+    }
+}
+a:focus{
+    outline: 0px;
+    border: 0px;
+}
+p{
+    margin:0px;
+}
+input{
+    border: none;
+    outline: none;
+}
+
+/* common */
+.contain_width{
+    max-width: 850px;
+    margin: 0px auto;
+}
+
+/* form */
+
+/* icon */
+.icon_sprite {
+    background: url(img/icon_sprite.png) no-repeat;
+    background-size: 256px 256px;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    &.icon_tel{
+        background-position: -24px 0px;
+    }
+    &.icon_account{
+        background-position: -48px 0px;
+    }
+    &.icon_info{
+        background-position: -72px 0px;
+    }
+    &.icon_refresh{
+        background-position: -96px 0px;
+        &.active{
+            transition: all 1.5s ease-in-out;
+            transform: rotate(360deg);
+        }
+    }
+    &.icon_mail{
+        background-position: -120px 0px;
+    }
+}
+
+/* #header */
+#header{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 100;
+}
+.topbar{
+    background-color: #2a1b32;
+    color: #fff;
+    font-size: $fontSize;
+    line-height: 36px;
+    .icon_clock{
+        display: inline-block;
+        background: url(img/icon/clock.png) no-repeat center center #1b112c;
+        background-size: 22px 22px;
+        width: 36px;
+        height: 36px;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+    .topleft{
+        float: left;
+        vertical-align: middle;
+        color: #fbf2e0;
+        small{
+            margin-left: 20px;
+            display: inline-block;
+            font-size: $fontSize_xs;
+            margin-top: -1px;
+        }
+    }
+    .topright{
+        float: right;
+        font-size: $fontSize_xs;
+        color: $fontColor_purple;
+        a{
+            display: inline-block;
+            color: $fontColor_purple;
+            &:hover{
+                color: $colorGold;
+                .icon_sprite{
+                    background-position-y: -24px;
+                }
+            }
+        }
+        .icon_sprite{
+            margin-right: 5px;
+        }
+        .tel{
+            font-size: $fontSize;
+            margin-right: 20px;
+        }
+        .signup{
+            margin-right: 20px;
+        }
+        .help{
+            margin-right: 20px;
+        }
+        .info{
+            margin-right: 10px;
+            color: $fontColor_yellow;
+            span{
+                padding: 0px 10px;
+                border-right: 1px solid $linePurple;
+                &:last-child{ border-right: none;}
+            }
+        }
+    }
+    &:after{
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+.nav{
+    background-color: $bgColor;
+    position: relative;
+    height: 74px;
+    border-bottom: 1px solid #24182f;
+    .logo{
+        float: left;
+        width: 300px;
+        margin-top: 2px;
+        height: 70px;
+        img{
+            width: 100%;
+            display: block;
+        }
+    }
+    .menu{
+        float:right;
+        width: calc( 100% - 300px);
+        .mainmenu{
+            text-align: right;
+            margin: 0px 20px 0px 50px;
+            & > li{
+                float: left;
+                width: 14.2587%;
+                text-align: center;
+                & > a {
+                    display: block;
+                    color: #fff;
+                    height: 74px;
+                    padding-top: 17px;
+                    h2{
+                        font-size: $fontSize_l;
+                        text-shadow: 0px 0px 2px rgba(0,0,0,0.7);
+                    }
+                    small{
+                        color: #565663;
+                        font-size: $fontSize_xs;
+                    }
+                }
+                &:hover{
+                    & > a{
+                        @include gdGold($gdFrom1:#b39a5a, $gdTo1:#654934);
+                        small{
+                            color: #432e18;
+                        }
+                    }
+                    .submenu{
+                        // display: block;
+                        height: 140px;
+                        @include transition($style: height, $duration: 200ms);
+                    }
+                }
+                &:nth-child(2) .submenu li:first-child{ margin-left: 14.2587%;}
+                &:nth-child(3) .submenu li:first-child{ margin-left: 28.5174%;}
+                &:nth-child(4) .submenu li:first-child{ margin-left: 42.7761%;}
+                &:nth-child(5) .submenu li:first-child{ margin-left: 57.0348%;}
+            }
+            .submenu{
+                // display: none;
+                height: 0px;
+                // @include transition($style: height, $duration: 100ms);
+                overflow: hidden;
+                position: absolute;
+                left: 0px;
+                top: 74px;
+                z-index: 10;
+                width: 100%;
+                background-color: rgba(0,0,0,0.9);
+                padding-left: 350px;
+                text-align: left;
+                li {
+                    float: left;
+                    text-align: center;
+                    width: 14.2587%;
+                    margin: 10px 0px;
+                }
+                a {
+                    .img{
+                        position: relative;
+                        width: 90px;
+                        height: 90px;
+                        margin: 0px auto 5px;
+                        span{
+                            display: block;
+                            position: absolute;
+                            width: 90px;
+                            height: 90px;
+                            background-size: 90px auto;
+                            background-position: 0px 0px;
+                            opacity: 1;
+                            @include transition ($style: opacity, $duration: 100ms);
+                            &:last-child{
+                                background-position-y: -90px;
+                                opacity: 0;
+                            }
+                        }
+                    }
+                    h3{
+                        font-size: $fontSize;
+                    }
+                    &:hover{
+                        span{
+                            opacity: 0;
+                            background-position: 0px 0px;
+                            @include transition ($style: opacity, $duration: 300ms);
+                            &:last-child{
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+                &:after{
+                    content: '';
+                    display: table;
+                    clear: both;
+                }
+            }
+        }
+    }
+    &:after{
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+.account_bar{
+    height: 32px;
+    background-color: rgba(0,0,0,0.5);
+    text-align: right;
+    padding-top: 3px;
+    padding-right: calc(2.6% + 20px);
+    & > span{
+        margin-right: 8px;
+        font-size: $fontSize_xs;
+        vertical-align: middle;
+        line-height: 24px;
+        &.code{
+            input{
+                width: 80px;
+            }
+            img{
+                height: 26px;
+                vertical-align: top;
+            }
+        }
+    }
+    input{
+        background-color: #3a3939;
+        color: $fontColor_gray;
+        line-height: 26px;
+        height:26px;
+        padding: 0px 5px;
+    }
+    .btn{
+        line-height: 26px;
+        display: inline-block;
+        margin-right: 0px;
+        a{
+            display: inline-block;
+            padding:0px 15px;
+            &.btn_login{
+                @include gdGold;
+            }
+            &.btn_reg{
+                @include gdOrange($gdFrom1:#fe9500, $gdTo1:#a74300);
+            }
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
+    &.login{
+        & > span{
+            position: relative;
+            padding-right: 10px;
+            &:after{
+                content: '';
+                width: 1px;
+                height: 12px;
+                background-color: $linePurple;
+                position: absolute;
+                right: 0px;
+                top: 1px;
+            }
+            &:last-child{
+                margin-right: 0px;
+                padding-right: 0px;
+                &:after{
+                    display: none;
+                }
+            }
+            .logout{
+                color: #dc7500;
+            }
+        }
+        .account{
+            .icon_mail small{
+                display: inline-block;
+                vertical-align: top;
+                margin-top: 0px;
+                margin-left: 12px;
+                background-color: $colorPink;
+                width: 11px;
+                height: 11px;
+                font-size: $fontSize_xs;
+                line-height: $fontSize_xs;
+                text-align: center;
+                border-radius: 6px;
+            }
+        }
+    }
+}
+
+/* #main */
+#main{
+    padding-top: 111px;
+}
+.mainad{
+    // position: relative;
+    .ad_slider{
+        width: 1280px;
+        height: 410px;
+        margin: 0px auto;
+        // position: relative;
+        li{
+            // position: absolute;
+            // left: 0px;
+            // top: 0px;
+            // z-index: 9;
+            a{
+                display: inline-block;
+            }
+            img{
+                width: 100%;
+            }
+        }
+    }
+    .ad_dot{
+        position: absolute;
+        bottom: 50px;
+        z-index: 10;
+        text-align: center;
+        width: 100%;
+        span{
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0px 3px;
+            border-radius: 5px;
+            background-color: #393645;
+            cursor: pointer;
+            &.active{
+                background-color: #be8949;
+            }
+        }
+    }
+}
+.notice{
+    height: 40px;
+    margin-top: -40px;
+    position: relative;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.7);
+    .notice_box{
+        width: 1280px;
+        margin:0px auto;
+        padding: 0px 30px;
+        height: 40px;
+        overflow: hidden;
+        span{
+            color: $colorGold2;
+            line-height: 40px;
+        }
+        ul{
+            position: relative;
+            vertical-align: top;
+            display: inline-block;
+            color: $fontColor_yellow;
+            li{
+                line-height: 40px;
+            }
+        }
+    }
+}
+.index_block {
+    padding: 25px 0px;
+    .title{
+        text-align: center;
+        margin-bottom: 20px;
+        img{
+            width: 240px;
+        }
+    }
+}
+.index_live{
+    background: url(img/bg_live.jpg) no-repeat;
+    background-size: 100% 100%;
+    .live_slider{
+        position: relative;
+        .item_slider{
+            text-align: center;
+            a{
+                display: inline-block;
+                width: 100%;
+                &:hover{
+                    .img{
+                        background-color: #1c1f26;
+                        border: 3px solid #f4f4e0;
+                        box-shadow: 0px 0px 15px 3px rgba(#edc026, 0.18);
+                        @include transition($style: border-color, $duration: 300ms);
+                    }
+                    img{
+                        margin-top: -47px;
+                        margin-left: -32px;
+                    }
+                    p{
+                        color: #f4f4e0;
+                        @include transition($style: color, $duration: 300ms);
+                    }
+                }
+            }
+            .img{
+                margin: 50px auto 10px;
+                border: 2px solid rgba(255,255,255,0.25);
+                width: 220px;
+                height: 220px;
+                border-radius: 50%;
+                img{
+                    margin-top: -46px;
+                    margin-left: -31px;
+                }
+            }
+            h3 {
+                font-size: $fontSize_xxl;
+                color: $colorGold;
+            }
+            p{
+                color: $colorSecondry;
+                font-size: $fontSize_xs;
+            }
+            // &>div{
+            //     display: inline-block;
+            //     text-align: center;
+            //     width: 33.3333%;
+            // }
+        }
+        .slick-arrow{
+            position: absolute;
+            top: 50%;
+            background: url(img/slider_arrow.png) no-repeat;
+            background-size: 60px 80px;
+            width: 30px;
+            height: 40px;
+            margin-top: -15px;
+            cursor: pointer;
+                background-position-y: -40px;
+            &.slider_prev{
+                left: -20px;
+                background-position-x: 0px;
+            }
+            &.slick-next{
+                right: -20px;
+                background-position-x: -30px;
+            }
+            &:before{
+                display: none;
+            }
+            &:hover{
+                background-position-y: 0px;
+            }
+            &.slick-disabled{
+                opacity: 0.2;
+                cursor: default;
+                &:hover{
+                    background-position-y: -40px;
+                }
+            }
+        }
+    }
+    .index_live_bottom{
+        background: url(img/live_bottom_bg.png);
+        background-size: 850px 80px;
+        height: 80px;
+        padding-left: 8px;
+        padding-top: 23px;
+        margin-top: 20px;
+        position: relative;
+        span{
+            display: inline-block;
+            margin-left: 80px;
+            color: $colorGold;
+        }
+        &:after{
+            content: '';
+            display: block;
+            position: absolute;
+            top: -26px;
+            right: 0px;
+            width: 60px;
+            height: 60px;
+            background: url(img/light.png) no-repeat;
+            background-size: 60px 60px;
+        }
+    }
+}
+.index_casino{
+    background: url(img/bg_casino.jpg) no-repeat;
+    background-size: 100% auto;
+    @media only screen and (max-width:1280px){
+        background-size: auto 100%;
+    }
+    .casino{
+        background: url(img/pic_live.png) no-repeat;
+        background-size: 834px 420px;
+        width: 834px;
+        height: 420px;
+        margin: -94px auto 10px;
+        li{
+            width: 278px;
+            height: 158px;
+            float: left;
+            margin-top: 262px;
+            padding: 15px 25px;
+            background-color: #151d2e;
+            font-size: $fontSize_s;
+            line-height: 20px;
+            position: relative;
+            &:after{
+                content: '';
+                display: block;
+                position: absolute;
+                top: -15px;
+                left: 50%;
+                margin-left: -15px;
+                width:0px;
+                height: 0px;
+                border-style: solid;
+                border-width: 0px 15px 15px 15px;
+                border-color: transparent transparent #151d2e transparent; 
+            }
+            &:nth-child(even){
+                margin-top: 104px;
+                background-color: #150e21;
+                &:after{
+                    top: auto;
+                    bottom: -15px;
+                    border-width: 15px 15px 0px 15px;
+                    border-color: #150e21 transparent transparent transparent; 
+                }
+            }
+            p{
+                color: $fontColor_gray;
+                &.casino_logo{
+                    margin-bottom: 15px;
+                    text-align: center;
+                    img{
+                        max-width: 100%;
+                        max-height: 50px;
+                    }
+                }
+            }
+        }
+    }
+}
+.index_lottery{
+    background-color: #0d0d15;
+    .lottery{
+        li{
+            float: left;
+            padding: 10px;
+            width: 50%;
+            text-align: center;
+            color: $fontColor_gray;
+            img{
+                width: 100%;
+            }
+            h3{
+                font-size: $fontSize_l;
+                margin-top: 20px;
+            }
+            p{
+                font-size: $fontSize_s;
+                margin: 10px 0px;
+            }
+        }
+    }
+    &:after{
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+/* #footer */
+#footer{
+    background-color: #151d2e;
+}
+.link_list{
+    border-bottom: 1px dashed #666;
+    margin: 0px auto;
+    padding: 20px 0px;
+    font-size: $fontSize_xs;
+    .link_block{
+        display: inline-block;
+        &:last-child{
+            float: right;
+        }
+        &:nth-child(odd){
+            margin-right: 50px;
+        }
+        dt{
+            color: #B9B9B9;
+        }
+        dd{
+            display: inline-block;
+            margin: 10px 0px;
+            padding:0px;
+            a{
+                display: inline-block;
+                height: 45px;
+                background-image: url(img/footer_links.png);
+                background-size: 500px auto;
+                margin: 5px 14px 5px 0px;
+                &:last-child{ 
+                    margin-right: 0px;
+                }
+                &:hover{background-position-x: -250px;}
+                &.link-ag{ width: 95px; background-position-y: 0px; }
+                &.link-mg{ width: 45px; background-position-y: -50px; }
+                &.link-bb{ width: 68px; background-position-y: -100px; }
+                &.link-playtech{ width: 135px; background-position-y: -150px; }
+                &.link-pagcor{ width: 150px; background-position-y: -200px; height: 45px; }
+                &.link-unionpay{ width: 110px; background-position-y: -250px; }
+                &.link-wechatpay{ width: 120px; background-position-y: -300px; }
+                &.link-alipay{ width: 80px; background-position-y: -350px; }
+                &.link-18{ width: 35px; background-position-y: -400px; }
+                &.link-gavcare{ width: 35px; background-position-y: -450px; }
+                &.link-lottery{ width: 58px; background-position-y: -500px; }
+                &.link-oriental{ width: 58px; background-position-y: -550px; }
+                &.link-allbet{ width: 77px; background-position-y: -600px; }
+                &.link-deluexgold{ width: 81px; background-position-y: -650px; }
+                &.link-visa{ width: 75px; background-position-y: -700px; }
+                &.link-mastercard{ width: 150px; background-position-y: -750px; }
+                &.link-hand{ width: 35px; background-position-y: -800px; }
+            }
+        }
+        &.pay a{ margin-right: 23px;}
+        &.responsibility a{ margin-right: 18px;}
+    }
+}
+.footer_menu{
+    text-align: center;
+    padding-bottom: 10px;
+    li{
+        display: inline-block;
+        a{
+            display: inline-block;
+            padding: 20px;
+            font-size: $fontSize_m;
+        }
+    }
+}
+.copyright{
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
+    line-height: 34px;
+    font-size: $fontSize_xs;
+    text-align: center;
+    @include gdGold;
+}
+.online-service{
+    position: fixed;
+    top: 180px;
+    left: 0px;
+    z-index: 999;
+    width: 130px;
+    img{
+        width: 100%;
+        height: auto;
+    }
+    .close{
+        position: absolute;
+        bottom: 0px;
+        width: 100px;
+        height: 20px;
+        cursor: pointer;
+        width: 100%;
+    }
+    &.right{
+        left: auto;
+        right: 0px;
+    }
+}
+
+/* plugins */
+@import '../vendor/slick/slick';
+@import '../vendor/slick/slick-theme';
