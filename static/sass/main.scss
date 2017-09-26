@@ -68,6 +68,43 @@ input{
 /* ---------------------------------------------------
 // form
 --------------------------------------------------- */
+$formHeight : 35px;
+.formInput{
+    border: 1px solid #d1d0d0;
+    font-size: $fontSize_s;
+    line-height: $fontSize_m;
+    padding: 10px 5px;
+    &.disable{
+        background-color: #f0f0ef;
+    }
+}
+.fontSelect_wrap{
+    display: inline-block;
+    border: 1px solid #d1d0d0;
+    padding: 0px 5px;
+}
+.formSelect{
+    background: transparent;
+    border: none;
+    font-size: $fontSize_m;
+    height: $formHeight;
+    line-height: $formHeight;
+    &:focus{
+        outline: none;
+    }
+}
+.formBtn{
+    display: inline-block;
+    height: 37px;
+    position: relative;
+    line-height: 17px;
+    padding: 10px 15px;
+    color: #efefef;
+    @include gdGold3();
+    &:hover{
+        color: #efefef;
+    }
+}
 
 /* ---------------------------------------------------
 // icon
@@ -90,10 +127,9 @@ input{
     }
     &.icon_refresh{
         background-position: -96px 0px;
-        &.active{
-            transition: all 1.5s ease-in-out;
-            transform: rotate(360deg);
-        }
+    }
+    &.icon_refresh_money{
+        background-position: -192px 0px;
     }
     &.icon_mail{
         background-position: -120px 0px;

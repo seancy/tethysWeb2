@@ -12,46 +12,95 @@
         background-repeat: no-repeat;
         margin: 0px auto 65px 20%;
     }
+    .pager{
+        margin-bottom: 15px;
+        a{
+            color: #aeaba4;
+            &.active{
+                color: $fontColor_gold;
+            }
+            &:hover{
+                color: $fontColor_gold;
+                background-color: transparent;
+            }
+            &.prev:hover, &.next:hover{
+                background-color:$fontColor_gold;
+            }
+        }
+    }
 }
 .left_menu{
     width: 20%;
     float: left;
+    margin-bottom: 20px;
+    color: #000;
 }
 .right_main{
     width: 77.5%;
     float: right;
     margin-left: 2.5%;
     background-color: #fff;
+    margin-bottom: 20px;
     color: #000;
 }
 .user_info{
     background: url(img/bg_gd_white.png) top left repeat-x;
+    background-size: auto 100%;
     padding-top: 1px;
+    text-align: center;
+    height: 184px;
     .img{
         width: 140px;
         height: 140px;
-        margin: -70px auto 20px;
+        margin: -70px auto 25px;
         img{
             width: 100%;
         }
+    }
+    p{
+        margin: 5px 0px;
     }
     .name{
         font-size: $fontSize_s;
     }
     .balance{
         color: $colorOrange;
-        font-size: $fontSize_xxl;
+        font-size: 24px;
     }
     .refresh{
         font-size: $fontSize_m;
+        letter-spacing: 2px;
+        span{
+            cursor: pointer;
+            margin-left: 5px;
+            margin-top: -3px;
+        }
     }
 }
 .psn_menu{
     li{
+        border-bottom: 1px solid #444;
         a{
+            display: block;
+            padding: 10px 0px;
             color: #969696;
+            position: relative;
+            &:after{
+                content: '';
+                display: block;
+                position: absolute;
+                top: 10px;
+                right: 0px;
+                background: url(img/icon_sprite.png) no-repeat -120px -48px;
+                background-size: 256px 256px;
+                width: 24px;
+                height: 24px;
+            }
         }
-        &.active{
+        .icon_sprite{
+            margin: 0px 10px;
+        }
+        &:hover, &.active{
             a{
                 color: #d7be63;
             }
@@ -61,8 +110,118 @@
         }
     }
 }
+
+.psn_tab{
+    li{
+        cursor: pointer;
+        float: left;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        color: $fontColor_gray;
+        border: 1px solid #d2d2d2;
+        border-top: 5px solid #b4ab9b;
+        margin-right: -1px;
+        padding: 7px 10px;
+        font-size: $fontSize_m;
+        .icon_tab{
+            display: inline-block;
+            vertical-align: middle;
+            width: 40px;
+            height: 40px;
+            background: url(img/icon_tab.png) no-repeat;
+            background-size: 400px 400px;
+            margin-right: 5px;
+        }
+        &:nth-of-type(1) .icon_tab{background-position-x: 0px;}
+        &:nth-of-type(2) .icon_tab{background-position-x: -40px;}
+        &:nth-of-type(3) .icon_tab{background-position-x: -80px;}
+        &:nth-of-type(4) .icon_tab{background-position-x: -120px;}
+        &:last-of-type{}
+        &:hover, &.active{
+            z-index: 2;
+            color: $colorYellow;
+            border-color: $colorYellow;
+            background: rgb(255,255,255); /* Old browsers */
+            background: -moz-linear-gradient(top, rgba(255,255,255,1) 40%, rgba(228,212,179,1) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, rgba(255,255,255,1) 40%,rgba(228,212,179,1) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, rgba(255,255,255,1) 40%,rgba(228,212,179,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e4d4b3',GradientType=0 ); /* IE6-9 */
+        }
+    }
+    &:after{
+        content: '';
+        clear: both;
+        display: table;
+    }
+}
+// .psn_wrap{
+// }
+.psn_content{
+    padding: 20px 15px;
+}
+.psn_filter{
+    margin-bottom: 20px;
+}
+.psn_label{
+    margin-right: 5px;
+    font-size: $fontSize_m;
+}
+.psn_form{
+    span{
+        margin-right: 5px;
+    }
+    .Wdate{
+        background-position: right 5px center;
+    }
+}
+.psn_list{
+    margin-bottom: 20px;
+}
+.psd_table{
+    border-collapse: collapse;
+    th,td{
+        padding: 8px;
+        text-align: left;
+        &:first-child{
+            text-align: center;
+        }
+    }
+    th{
+        background-color: #f1e8c6;
+        color: #6a644c;
+        font-weight: normal;
+        white-space: nowrap;
+    }
+    td{
+        background-color: #f1efe8;
+    }
+    tbody{
+        tr{
+            border-bottom: 1px solid #e1ddd1;
+            &:last-child{
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+/* 消息公告 */
 #personal-msg{
     .personal_title{
         background-image: url(img/subtitle_msg.png);
+    }
+}
+#msg_tab{
+    li{
+        width: 259px;
+        @media only screen and (max-width:1279px){
+            width: 224px;
+        }
+        &:hover, &.active{
+            .icon_tab{
+                background-position-y: -40px;
+            }
+        }
     }
 }

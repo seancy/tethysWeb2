@@ -31,6 +31,20 @@ input { border: none; outline: none; }
 /* ---------------------------------------------------
 // form
 --------------------------------------------------- */
+.formInput { border: 1px solid #d1d0d0; font-size: 13px; line-height: 15px; padding: 10px 5px; }
+
+.formInput.disable { background-color: #f0f0ef; }
+
+.fontSelect_wrap { display: inline-block; border: 1px solid #d1d0d0; padding: 0px 5px; }
+
+.formSelect { background: transparent; border: none; font-size: 15px; height: 35px; line-height: 35px; }
+
+.formSelect:focus { outline: none; }
+
+.formBtn { display: inline-block; height: 37px; position: relative; line-height: 17px; padding: 10px 15px; color: #efefef; background: #a4884d; background: -moz-linear-gradient(top, #a4884d 0%, #654934 100%); background: -webkit-linear-gradient(top, #9e7b3f 0%, #654934 100%); background: -webkit-gradient(linear, left top, left bottom, from(#9e7b3f), to(#654934)); background: -o-linear-gradient(top, #9e7b3f 0%, #654934 100%); background: linear-gradient(to bottom, #9e7b3f 0%, #654934 100%); }
+
+.formBtn:hover { color: #efefef; }
+
 /* ---------------------------------------------------
 // icon
 --------------------------------------------------- */
@@ -44,7 +58,7 @@ input { border: none; outline: none; }
 
 .icon_sprite.icon_refresh { background-position: -96px 0px; }
 
-.icon_sprite.icon_refresh.active { -webkit-transition: all 1.5s ease-in-out; -o-transition: all 1.5s ease-in-out; transition: all 1.5s ease-in-out; -webkit-transform: rotate(360deg); -ms-transform: rotate(360deg); transform: rotate(360deg); }
+.icon_sprite.icon_refresh_money { background-position: -192px 0px; }
 
 .icon_sprite.icon_mail { background-position: -120px 0px; }
 
