@@ -51,7 +51,8 @@ input{
 
 /* common */
 .contain_width{
-    max-width: 1000px;
+    // max-width: 1000px;
+    width: 1000px;
     margin: 0px auto;
     &:after{
         content: '';
@@ -59,11 +60,20 @@ input{
         clear: both;
     }
 }
-@media only screen and (max-width:1279px){
-    .contain_width{
-        width: 864px;
-    }
+.color_red{
+    color: #d63f10;
 }
+.color_green{
+    color: #27860d;
+}
+.color_blue{
+    color: #0166fd;
+}
+// @media only screen and (max-width:1279px){
+//     .contain_width{
+//         width: 864px;
+//     }
+// }
 
 /* ---------------------------------------------------
 // form
@@ -74,7 +84,7 @@ $formHeight : 35px;
     font-size: $fontSize_s;
     line-height: $fontSize_m;
     padding: 10px 5px;
-    &.disable{
+    &[readonly]{
         background-color: #f0f0ef;
     }
 }
@@ -148,6 +158,9 @@ $formHeight : 35px;
     }
     &.icon_psn_funds{
         background-position: -96px -48px;
+    }
+    &.icon_psn_add{
+        background-position: -168px 0px;
     }
 }
 
@@ -276,7 +289,7 @@ $formHeight : 35px;
                     > a{
                         background: url(img/bg_mainmenu_hover.jpg) no-repeat;
                         background-size: 100% 100%;
-                        border: 1px solid rgba(#2d1405,0.8);
+                        // border: 1px solid rgba(#2d1405,0.8);
                         &:before, &:after{
                             content: '';
                             background: url(img/bg_login_btn.png) no-repeat 0px -88px;
@@ -554,9 +567,9 @@ $formHeight : 35px;
                 background-image: url(img/footer_links.png);
                 background-size: 500px auto;
                 margin: 5px 30px 5px 0px;
-                @media only screen and (max-width:1279px){
-                    margin: 5px 14px 5px 0px;
-                }
+                // @media only screen and (max-width:1279px){
+                //     margin: 5px 14px 5px 0px;
+                // }
                 &:last-child{ 
                     margin-right: 0px;
                 }
@@ -582,9 +595,9 @@ $formHeight : 35px;
         }
         &.pay a{ 
             margin-right: 43px;
-            @media only screen and (max-width:1279px){
-                margin-right: 23px;
-            }
+            // @media only screen and (max-width:1279px){
+            //     margin-right: 23px;
+            // }
         }
         &.responsibility a{ margin-right: 18px;}
     }
@@ -620,11 +633,13 @@ $formHeight : 35px;
     }
     .close{
         position: absolute;
-        bottom: 0px;
+        bottom: -24px;
         width: 100px;
         height: 24px;
         cursor: pointer;
         width: 100%;
+        background: url(img/floatad_close.png) no-repeat center top;
+        background-size: 100%;
     }
     &.right{
         left: auto;

@@ -19,6 +19,15 @@ $(function(){
 
     })
 })
+// 浮动广告图开关
+$(function(){
+    $('.online-service.left .close').on('click',function(){
+        $(this).parent().stop().animate({left:'-130px'});
+    })
+    $('.online-service.right .close').on('click',function(){
+        $(this).parent().stop().animate({right:'-130px'});
+    })
+})
 
 
 

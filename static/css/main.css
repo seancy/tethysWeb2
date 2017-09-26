@@ -22,18 +22,22 @@ p { margin: 0px; }
 input { border: none; outline: none; }
 
 /* common */
-.contain_width { max-width: 1000px; margin: 0px auto; }
+.contain_width { width: 1000px; margin: 0px auto; }
 
 .contain_width:after { content: ''; display: table; clear: both; }
 
-@media only screen and (max-width: 1279px) { .contain_width { width: 864px; } }
+.color_red { color: #d63f10; }
+
+.color_green { color: #27860d; }
+
+.color_blue { color: #0166fd; }
 
 /* ---------------------------------------------------
 // form
 --------------------------------------------------- */
 .formInput { border: 1px solid #d1d0d0; font-size: 13px; line-height: 15px; padding: 10px 5px; }
 
-.formInput.disable { background-color: #f0f0ef; }
+.formInput[readonly] { background-color: #f0f0ef; }
 
 .fontSelect_wrap { display: inline-block; border: 1px solid #d1d0d0; padding: 0px 5px; }
 
@@ -71,6 +75,8 @@ input { border: none; outline: none; }
 .icon_sprite.icon_psn_bettin { background-position: -72px -48px; }
 
 .icon_sprite.icon_psn_funds { background-position: -96px -48px; }
+
+.icon_sprite.icon_psn_add { background-position: -168px 0px; }
 
 /* ---------------------------------------------------
 // header
@@ -127,7 +133,7 @@ input { border: none; outline: none; }
 
 .nav .menu .mainmenu > li > a small { color: #565663; font-size: 12px; }
 
-.nav .menu .mainmenu > li:hover > a, .nav .menu .mainmenu > li.active > a { background: url(img/bg_mainmenu_hover.jpg) no-repeat; background-size: 100% 100%; border: 1px solid rgba(45, 20, 5, 0.8); }
+.nav .menu .mainmenu > li:hover > a, .nav .menu .mainmenu > li.active > a { background: url(img/bg_mainmenu_hover.jpg) no-repeat; background-size: 100% 100%; }
 
 .nav .menu .mainmenu > li:hover > a:before, .nav .menu .mainmenu > li:hover > a:after, .nav .menu .mainmenu > li.active > a:before, .nav .menu .mainmenu > li.active > a:after { content: ''; background: url(img/bg_login_btn.png) no-repeat 0px -88px; background-size: 183px 106px; position: absolute; width: 14px; height: 18px; }
 
@@ -229,8 +235,6 @@ input { border: none; outline: none; }
 
 .link_list .link_block dd a { display: inline-block; height: 45px; background-image: url(img/footer_links.png); background-size: 500px auto; margin: 5px 30px 5px 0px; }
 
-@media only screen and (max-width: 1279px) { .link_list .link_block dd a { margin: 5px 14px 5px 0px; } }
-
 .link_list .link_block dd a:last-child { margin-right: 0px; }
 
 .link_list .link_block dd a:hover { background-position-x: -250px; }
@@ -271,8 +275,6 @@ input { border: none; outline: none; }
 
 .link_list .link_block.pay a { margin-right: 43px; }
 
-@media only screen and (max-width: 1279px) { .link_list .link_block.pay a { margin-right: 23px; } }
-
 .link_list .link_block.responsibility a { margin-right: 18px; }
 
 .footer_menu { text-align: center; padding-bottom: 10px; }
@@ -287,7 +289,7 @@ input { border: none; outline: none; }
 
 .online-service img { width: 100%; height: auto; }
 
-.online-service .close { position: absolute; bottom: 0px; width: 100px; height: 24px; cursor: pointer; width: 100%; }
+.online-service .close { position: absolute; bottom: -24px; width: 100px; height: 24px; cursor: pointer; width: 100%; background: url(img/floatad_close.png) no-repeat center top; background-size: 100%; }
 
 .online-service.right { left: auto; right: 0px; }
 

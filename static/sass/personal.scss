@@ -96,17 +96,18 @@
                 width: 24px;
                 height: 24px;
             }
+            &:hover, &.active{
+                color: #d7be63;
+                .icon_sprite{
+                    background-position-y: -72px;
+                }
+                &:after{
+                    background-position: -120px -72px;
+                }
+            }
         }
         .icon_sprite{
             margin: 0px 10px;
-        }
-        &:hover, &.active{
-            a{
-                color: #d7be63;
-            }
-            .icon_sprite{
-                background-position-y: -72px;
-            }
         }
     }
 }
@@ -132,6 +133,7 @@
             background: url(img/icon_tab.png) no-repeat;
             background-size: 400px 400px;
             margin-right: 5px;
+            transform: translateY(-3px);
         }
         &:nth-of-type(1) .icon_tab{background-position-x: 0px;}
         &:nth-of-type(2) .icon_tab{background-position-x: -40px;}
@@ -142,11 +144,7 @@
             z-index: 2;
             color: $colorYellow;
             border-color: $colorYellow;
-            background: rgb(255,255,255); /* Old browsers */
-            background: -moz-linear-gradient(top, rgba(255,255,255,1) 40%, rgba(228,212,179,1) 100%); /* FF3.6-15 */
-            background: -webkit-linear-gradient(top, rgba(255,255,255,1) 40%,rgba(228,212,179,1) 100%); /* Chrome10-25,Safari5.1-6 */
-            background: linear-gradient(to bottom, rgba(255,255,255,1) 40%,rgba(228,212,179,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e4d4b3',GradientType=0 ); /* IE6-9 */
+            @include gdActive();
         }
     }
     &:after{
@@ -161,29 +159,83 @@
     padding: 20px 15px;
 }
 .psn_filter{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    &:after{
+        content: '';
+        clear: both;
+        display: table;
+    }
+}
+.psn_filter_game{
+    padding-top: 7px;
+    border-top: 1px solid $lineGray;
+    &:after{
+        content: '';
+        clear: both;
+        display: table;
+    }
 }
 .psn_label{
     margin-right: 5px;
     font-size: $fontSize_m;
+    float: left;
+    width: 60px;
+    line-height: 35px;
 }
 .psn_form{
-    span{
+    float: left;
+    width: calc( 100% - 65px );
+    >span{
         margin-right: 5px;
     }
     .Wdate{
         background-position: right 5px center;
     }
+    &.game_filter{
+        > span{
+            display: inline-block;
+            width: 80px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            border: 1px solid $lineGray;
+            margin: 4px 1.8px 4px 0px;
+            color: #c5c5c4;
+            cursor: pointer;
+            &.active{
+                border-color: $colorYellow;
+                color: $colorYellow;
+                @include gdActive();
+            }
+            &:nth-child(8n){
+                margin-right: 0px;
+            }
+        }
+        .more{
+            white-space: nowrap;
+            color: #888;
+        }
+    }
+}
+.psn_filter_btn{
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 .psn_list{
     margin-bottom: 20px;
 }
 .psd_table{
+    margin-top: 10px;
     border-collapse: collapse;
+    width: 100%;
     th,td{
         padding: 8px;
         text-align: left;
         &:first-child{
+            text-align: center;
+        }
+        &.td_center{
             text-align: center;
         }
     }
@@ -194,13 +246,31 @@
         white-space: nowrap;
     }
     td{
-        background-color: #f1efe8;
+        font-size: $fontSize_s;
     }
     tbody{
         tr{
-            border-bottom: 1px solid #e1ddd1;
-            &:last-child{
-                border-bottom: none;
+            background-color: #f1efe8;
+            border-top: 1px solid #e1ddd1;
+            &:first-child{
+                border-top: none;
+            }
+            &:nth-child(even){
+                background-color: #fff;
+            }
+        }
+    }
+    tfoot{
+        tr{
+            border-top: 1px solid #e1ddd1;
+        }
+        td{
+            background-color: #f1e8c6;
+            span{
+                margin: 0px 20px;
+                &:last-child{
+                    margin-right: 80px;
+                }
             }
         }
     }
@@ -215,13 +285,41 @@
 #msg_tab{
     li{
         width: 259px;
-        @media only screen and (max-width:1279px){
-            width: 224px;
-        }
+        // @media only screen and (max-width:1279px){
+        //     width: 224px;
+        // }
         &:hover, &.active{
             .icon_tab{
                 background-position-y: -40px;
             }
         }
+    }
+}
+/* 资金纪录 */
+#personal-funds{
+    .personal_title{
+        background-image: url(img/subtitle_funds.png);
+    }
+}
+#funds_tab{
+    li{
+        width: 194.5px;
+        // @media only screen and (max-width:1279px){
+        //     width: 168.25px;
+        // }
+        .icon_tab{
+            background-position-y: -80px
+        }
+        &:hover, &.active{
+            .icon_tab{
+                background-position-y: -120px;
+            }
+        }
+    }
+}
+/* 投注纪录 */
+#personal-bettin{
+    .personal_title{
+        background-image: url(img/subtitle_bettin.png);
     }
 }

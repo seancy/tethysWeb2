@@ -197,10 +197,10 @@
             margin-right: 13.3333px;
             display: block;
             position: relative;
-            @media only screen and (max-width:1279px){
-                margin-right: 14.5px;
-                width: 205px;
-            }
+            // @media only screen and (max-width:1279px){
+            //     margin-right: 14.5px;
+            //     width: 205px;
+            // }
             .title{
                 margin-top: 15px;
             }
@@ -242,9 +242,9 @@
 .index_casino{
     background: url(img/bg_casino.jpg) no-repeat center center #262031;
     background-size: 100% auto;
-    @media only screen and (max-width:1180px){
-        background-size: auto 100%;
-    }
+    // @media only screen and (max-width:1180px){
+    //     background-size: auto 100%;
+    // }
     .title{
         text-align: center;
         margin-bottom: 30px;
@@ -312,9 +312,9 @@
         float: left;
         width: 300px;
         border: 1px solid #3c3c3c;
-        @media only screen and (max-width:1279px){
-            width: 277px;
-        }
+        // @media only screen and (max-width:1279px){
+        //     width: 277px;
+        // }
         img{
             width: 100%;
         }
@@ -322,9 +322,9 @@
     .games{
         float: right;
         width: calc(100% - 300px);
-        @media only screen and (max-width:1279px){
-            width: calc(100% - 277px);
-        }
+        // @media only screen and (max-width:1279px){
+        //     width: calc(100% - 277px);
+        // }
         li{
             float: left;
             width: 23%;
@@ -336,18 +336,18 @@
             overflow: hidden;
             margin-bottom: 11px;
             margin-left: 2%;
-            @media only screen and (max-width:1279px){
-                width: 137px;
-                height: 153px;
-                background-size: 137px 306px;
-                margin-left: 9.7px;
-            }
+            // @media only screen and (max-width:1279px){
+            //     width: 137px;
+            //     height: 153px;
+            //     background-size: 137px 306px;
+            //     margin-left: 9.7px;
+            // }
             img{
                 height: 140px;
                 width: 100%;
-                @media only screen and (max-width:1279px){
-                    height: 129px;
-                }
+                // @media only screen and (max-width:1279px){
+                //     height: 129px;
+                // }
             }
             h3{
                 position: absolute;
@@ -367,10 +367,10 @@
                 padding-top: 50px;
                 background: url(img/bg_games_border.png) no-repeat 0px -166px;
                 background-size: 161px auto;
-                @media only screen and (max-width:1279px){
-                    background: url(img/bg_games_border.png) no-repeat 0px -153px;
-                    background-size: 137px 306px;
-                }
+                // @media only screen and (max-width:1279px){
+                //     background: url(img/bg_games_border.png) no-repeat 0px -153px;
+                //     background-size: 137px 306px;
+                // }
                 @include transition($style: top, $duration: 100ms);
                 &:after{
                     content: '';
@@ -546,10 +546,11 @@
             @include transition($style: background-position, $duration: 150ms);
         }
         .brand{
-            position: relative;
+            position: absolute;
+            width: 100%;
             text-align: left;
-            margin-top: 15px;
-            margin-left: 15px;
+            left: 15px;
+            bottom: 45px;
             z-index: 9;
             .logo{
                 display: block;
@@ -560,7 +561,7 @@
             span{
                 display: block;
                 margin-top: 5px;
-                font-size: 22px;
+                font-size: 18px;
             }
         }
         .btn{
@@ -573,7 +574,7 @@
                 display: block;
                 height: 37px;
                 line-height: 37px;
-                font-size: $fontSize_xl;
+                font-size: $fontSize_m;
                 color: #ada7a1;
                 text-align: center;
                 @include gdGold2;
@@ -611,7 +612,7 @@
                 }
                 span{
                     margin-top: 5px;
-                    font-size: 26px;
+                    font-size: 18px;
                 }
             }
             // .btn a{
@@ -664,9 +665,9 @@
             background-position: center center;
             background-size: 100% auto;
             height: 166px;
-            @media only screen and (max-width:1279px){
-                background-size: auto 100%;
-            }
+            // @media only screen and (max-width:1279px){
+            //     background-size: auto 100%;
+            // }
         }
         .img{
             display: none;
@@ -675,7 +676,7 @@
             a{
                 height: 35px;
                 line-height: 35px;
-                font-size: 20px;
+                font-size: 18px;
             }
         }
         &:nth-child(4n){
@@ -690,13 +691,15 @@
             }
         }
         .brand{
-            text-align: center;
-            margin-top: 0px;
-            margin-left: 0px;
+            // text-align: center;
+            // margin-top: 0px;
+            // margin-left: 0px;
             background-color: rgba(0,0,0,0.5);
             height: 35px;
+            bottom: 35px;
+            left: 0px;
+            padding: 0px 15px;
             color: #fff;
-            font-size: 20px;
             .logo{
                 display: inline-block;
                 background-repeat: no-repeat;
@@ -707,7 +710,7 @@
             span{
                 display: inline-block;
                 margin-top: 0px;
-                font-size: 22px;
+                font-size: 18px;
                 vertical-align: middle;
             }
         }
@@ -816,11 +819,11 @@
         float: left;
         margin: 13px 1.3333% 13px 0px;
         overflow: hidden;
-        @media only screen and (max-width:1279px){
-            width: 200px;
-            height: 150px;
-            margin-right: 21.3333px;
-        }
+        // @media only screen and (max-width:1279px){
+        //     width: 200px;
+        //     height: 150px;
+        //     margin-right: 21.3333px;
+        // }
         &:nth-child(4n){
             margin-right: 0px;;
         }
@@ -855,11 +858,11 @@
             font-size: $fontSize_xl;
             padding-top: 55px;
             @include transition($style: top, $duration: 100ms);
-            @media only screen and (max-width:1279px){
-                height: 150px;
-                background-size: 200px 150px;
-                padding-top: 40px;
-            }
+            // @media only screen and (max-width:1279px){
+            //     height: 150px;
+            //     background-size: 200px 150px;
+            //     padding-top: 40px;
+            // }
             &:after{
                 content: '';
                 width: 30px;
@@ -1011,7 +1014,7 @@
             color: #ddd295;
             background: url(img/promo_tag_bg.png) center center;
             background-size: 100% 100%;
-            @include textShasow();
+            // @include textShasow();
         }
     }
     &:after{
@@ -1034,10 +1037,10 @@
         width: 935px;
         margin: 0px auto 20px;
         transition: height 300ms ease-in;
-        @media only screen and (max-width:1279px){
-            padding: 0px 20px;
-            width: auto;
-        }
+        // @media only screen and (max-width:1279px){
+        //     padding: 0px 20px;
+        //     width: auto;
+        // }
         a{
             display: inline-block;
             img{

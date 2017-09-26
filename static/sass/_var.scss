@@ -24,6 +24,7 @@ $fontColor_purple: #796679;
 $fontColor_gold: #fd950a;
 
 $linePurple: #443063;
+$lineGray: #d2d2d2;
 
 $gdGoldFrom:#9e7b3f;
 $gdGoldTo:#734f28;
@@ -57,6 +58,12 @@ $gdGoldTo3:#654934;
     background: -moz-linear-gradient(top, $gdGoldFrom3 0%, $gdGoldTo3 100%);
     background: -webkit-linear-gradient(top, $gdGoldFrom 0%, $gdGoldTo3 100%);
     background: linear-gradient(to bottom, $gdGoldFrom 0%, $gdGoldTo3 100%);
+}
+@mixin gdActive(){
+    background: rgb(255,255,255); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 40%, rgba(228,212,179,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 40%,rgba(228,212,179,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 40%,rgba(228,212,179,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 @mixin transition($style: all, $duration: 300ms){
     -webkit-transition: $style $duration ease-in;

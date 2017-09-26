@@ -39,15 +39,17 @@
 
 .psn_menu li a:after { content: ''; display: block; position: absolute; top: 10px; right: 0px; background: url(img/icon_sprite.png) no-repeat -120px -48px; background-size: 256px 256px; width: 24px; height: 24px; }
 
+.psn_menu li a:hover, .psn_menu li a.active { color: #d7be63; }
+
+.psn_menu li a:hover .icon_sprite, .psn_menu li a.active .icon_sprite { background-position-y: -72px; }
+
+.psn_menu li a:hover:after, .psn_menu li a.active:after { background-position: -120px -72px; }
+
 .psn_menu li .icon_sprite { margin: 0px 10px; }
-
-.psn_menu li:hover a, .psn_menu li.active a { color: #d7be63; }
-
-.psn_menu li:hover .icon_sprite, .psn_menu li.active .icon_sprite { background-position-y: -72px; }
 
 .psn_tab li { cursor: pointer; float: left; text-align: center; position: relative; z-index: 1; color: #c1c1c1; border: 1px solid #d2d2d2; border-top: 5px solid #b4ab9b; margin-right: -1px; padding: 7px 10px; font-size: 15px; }
 
-.psn_tab li .icon_tab { display: inline-block; vertical-align: middle; width: 40px; height: 40px; background: url(img/icon_tab.png) no-repeat; background-size: 400px 400px; margin-right: 5px; }
+.psn_tab li .icon_tab { display: inline-block; vertical-align: middle; width: 40px; height: 40px; background: url(img/icon_tab.png) no-repeat; background-size: 400px 400px; margin-right: 5px; -webkit-transform: translateY(-3px); -ms-transform: translateY(-3px); transform: translateY(-3px); }
 
 .psn_tab li:nth-of-type(1) .icon_tab { background-position-x: 0px; }
 
@@ -57,43 +59,83 @@
 
 .psn_tab li:nth-of-type(4) .icon_tab { background-position-x: -120px; }
 
-.psn_tab li:hover, .psn_tab li.active { z-index: 2; color: #d8a44e; border-color: #d8a44e; background: white; /* Old browsers */ background: -moz-linear-gradient(top, white 40%, #e4d4b3 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(top, white 40%, #e4d4b3 100%); /* Chrome10-25,Safari5.1-6 */ background: -webkit-gradient(linear, left top, left bottom, color-stop(40%, white), to(#e4d4b3)); background: -o-linear-gradient(top, white 40%, #e4d4b3 100%); background: linear-gradient(to bottom, white 40%, #e4d4b3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e4d4b3',GradientType=0 ); /* IE6-9 */ }
+.psn_tab li:hover, .psn_tab li.active { z-index: 2; color: #d8a44e; border-color: #d8a44e; background: white; /* Old browsers */ background: -moz-linear-gradient(top, white 40%, #e4d4b3 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(top, white 40%, #e4d4b3 100%); /* Chrome10-25,Safari5.1-6 */ background: -webkit-gradient(linear, left top, left bottom, color-stop(40%, white), to(#e4d4b3)); background: -o-linear-gradient(top, white 40%, #e4d4b3 100%); background: linear-gradient(to bottom, white 40%, #e4d4b3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
 
 .psn_tab:after { content: ''; clear: both; display: table; }
 
 .psn_content { padding: 20px 15px; }
 
-.psn_filter { margin-bottom: 20px; }
+.psn_filter { margin-bottom: 10px; }
 
-.psn_label { margin-right: 5px; font-size: 15px; }
+.psn_filter:after { content: ''; clear: both; display: table; }
 
-.psn_form span { margin-right: 5px; }
+.psn_filter_game { padding-top: 7px; border-top: 1px solid #d2d2d2; }
+
+.psn_filter_game:after { content: ''; clear: both; display: table; }
+
+.psn_label { margin-right: 5px; font-size: 15px; float: left; width: 60px; line-height: 35px; }
+
+.psn_form { float: left; width: calc( 100% - 65px); }
+
+.psn_form > span { margin-right: 5px; }
 
 .psn_form .Wdate { background-position: right 5px center; }
 
+.psn_form.game_filter > span { display: inline-block; width: 80px; height: 25px; line-height: 25px; text-align: center; border: 1px solid #d2d2d2; margin: 4px 1.8px 4px 0px; color: #c5c5c4; cursor: pointer; }
+
+.psn_form.game_filter > span.active { border-color: #d8a44e; color: #d8a44e; background: white; /* Old browsers */ background: -moz-linear-gradient(top, white 40%, #e4d4b3 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(top, white 40%, #e4d4b3 100%); /* Chrome10-25,Safari5.1-6 */ background: -webkit-gradient(linear, left top, left bottom, color-stop(40%, white), to(#e4d4b3)); background: -o-linear-gradient(top, white 40%, #e4d4b3 100%); background: linear-gradient(to bottom, white 40%, #e4d4b3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
+
+.psn_form.game_filter > span:nth-child(8n) { margin-right: 0px; }
+
+.psn_form.game_filter .more { white-space: nowrap; color: #888; }
+
+.psn_filter_btn { text-align: right; margin-top: 10px; margin-bottom: 20px; }
+
 .psn_list { margin-bottom: 20px; }
 
-.psd_table { border-collapse: collapse; }
+.psd_table { margin-top: 10px; border-collapse: collapse; width: 100%; }
 
 .psd_table th, .psd_table td { padding: 8px; text-align: left; }
 
 .psd_table th:first-child, .psd_table td:first-child { text-align: center; }
 
+.psd_table th.td_center, .psd_table td.td_center { text-align: center; }
+
 .psd_table th { background-color: #f1e8c6; color: #6a644c; font-weight: normal; white-space: nowrap; }
 
-.psd_table td { background-color: #f1efe8; }
+.psd_table td { font-size: 13px; }
 
-.psd_table tbody tr { border-bottom: 1px solid #e1ddd1; }
+.psd_table tbody tr { background-color: #f1efe8; border-top: 1px solid #e1ddd1; }
 
-.psd_table tbody tr:last-child { border-bottom: none; }
+.psd_table tbody tr:first-child { border-top: none; }
+
+.psd_table tbody tr:nth-child(even) { background-color: #fff; }
+
+.psd_table tfoot tr { border-top: 1px solid #e1ddd1; }
+
+.psd_table tfoot td { background-color: #f1e8c6; }
+
+.psd_table tfoot td span { margin: 0px 20px; }
+
+.psd_table tfoot td span:last-child { margin-right: 80px; }
 
 /* 消息公告 */
 #personal-msg .personal_title { background-image: url(img/subtitle_msg.png); }
 
 #msg_tab li { width: 259px; }
 
-@media only screen and (max-width: 1279px) { #msg_tab li { width: 224px; } }
-
 #msg_tab li:hover .icon_tab, #msg_tab li.active .icon_tab { background-position-y: -40px; }
+
+/* 资金纪录 */
+#personal-funds .personal_title { background-image: url(img/subtitle_funds.png); }
+
+#funds_tab li { width: 194.5px; }
+
+#funds_tab li .icon_tab { background-position-y: -80px; }
+
+#funds_tab li:hover .icon_tab, #funds_tab li.active .icon_tab { background-position-y: -120px; }
+
+/* 投注纪录 */
+#personal-bettin .personal_title { background-image: url(img/subtitle_bettin.png); }
 
 /*# sourceMappingURL=personal.css.map */
