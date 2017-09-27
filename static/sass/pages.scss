@@ -462,6 +462,7 @@
             h3{
                 color: $colorSecondry;
                 margin-top: 10px;
+                font-size: $fontSize_m;
             }
             &:hover, &.active{
                 .img:before{
@@ -501,16 +502,6 @@
         background-image: url(img/page_menu_live.png);
     }
 }
-#live_ag .logo{ background-image: url(img/page_logo_ag.png)}
-#live_mg .logo{ background-image: url(img/page_logo_mg.png)}
-#live_bb .logo{ background-image: url(img/page_logo_bb.png)}
-#live_pt .logo{ background-image: url(img/page_logo_pt.png)}
-#live_dg .logo{ background-image: url(img/page_logo_dg.png)}
-#live_lebo .logo{ background-image: url(img/page_logo_lebo.png)}
-#live_sb .logo{ background-image: url(img/page_logo_sb.png)}
-#live_gd .logo{ background-image: url(img/page_logo_gd.png)}
-#live_og .logo{ background-image: url(img/page_logo_og.png)}
-#live_bg .logo{ background-image: url(img/page_logo_bg.png)}
 .page_liveList{
     padding-bottom: 30px;
     > li{
@@ -555,7 +546,7 @@
             .logo{
                 display: block;
                 background-repeat: no-repeat;
-                background-size: 75px 50px;
+                background-size: 50px 100px;
                 height: 50px;
             }
             span{
@@ -582,10 +573,21 @@
             .btn_list{
                 display: none;
                 position: absolute;
+                background-color: #333;
+                box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
                 top: 35px;
                 left: 0px;
                 width: 100%;
                 z-index: 11;
+                a{
+                    float: left;
+                    width: 50%;
+                }
+                &:after{
+                    content: '';
+                    display: table;
+                    clear: both;
+                }
             }
             &:hover{
                 .btn_list{
@@ -607,12 +609,12 @@
             }
             .brand{
                 .logo{
-                    background-size: 90px 60px;
+                    background-size: 60px 120px;
                     height: 60px;
                 }
                 span{
                     margin-top: 5px;
-                    font-size: 18px;
+                    font-size: $fontSize_m;
                 }
             }
             // .btn a{
@@ -662,7 +664,7 @@
         margin: 10px 1.3333% 10px 0px;
         .bg{
             position: static;
-            background-position: center center;
+            background-position: 0px 0px;
             background-size: 100% auto;
             height: 166px;
             // @media only screen and (max-width:1279px){
@@ -676,7 +678,7 @@
             a{
                 height: 35px;
                 line-height: 35px;
-                font-size: 18px;
+                font-size: $fontSize_m;
             }
         }
         &:nth-child(4n){
@@ -703,14 +705,14 @@
             .logo{
                 display: inline-block;
                 background-repeat: no-repeat;
-                background-size: 51px 34px;
-                height: 34px;
-                width: 51px;
+                background-size: 35px 70px;
+                height: 35px;
+                width: 35px;
             }
             span{
                 display: inline-block;
                 margin-top: 0px;
-                font-size: 18px;
+                font-size: $fontSize_m;
                 vertical-align: middle;
             }
         }

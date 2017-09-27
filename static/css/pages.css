@@ -155,7 +155,7 @@
 
 .pagebox .item_pagemenu a .img span { display: block; width: 72px; height: 72px; position: absolute; top: 27px; left: 27px; z-index: 3; background-size: 72px auto; }
 
-.pagebox .item_pagemenu a h3 { color: #717479; margin-top: 10px; }
+.pagebox .item_pagemenu a h3 { color: #717479; margin-top: 10px; font-size: 15px; }
 
 .pagebox .item_pagemenu a:hover .img:before, .pagebox .item_pagemenu a.active .img:before { background-position: center bottom; }
 
@@ -186,26 +186,6 @@
 
 #live .item_pagemenu a .img:after { background-image: url(img/page_menu_live.png); }
 
-#live_ag .logo { background-image: url(img/page_logo_ag.png); }
-
-#live_mg .logo { background-image: url(img/page_logo_mg.png); }
-
-#live_bb .logo { background-image: url(img/page_logo_bb.png); }
-
-#live_pt .logo { background-image: url(img/page_logo_pt.png); }
-
-#live_dg .logo { background-image: url(img/page_logo_dg.png); }
-
-#live_lebo .logo { background-image: url(img/page_logo_lebo.png); }
-
-#live_sb .logo { background-image: url(img/page_logo_sb.png); }
-
-#live_gd .logo { background-image: url(img/page_logo_gd.png); }
-
-#live_og .logo { background-image: url(img/page_logo_og.png); }
-
-#live_bg .logo { background-image: url(img/page_logo_bg.png); }
-
 .page_liveList { padding-bottom: 30px; }
 
 .page_liveList > li { float: left; width: 24%; height: 372px; margin-right: 1.3333%; position: relative; margin-bottom: 20px; margin-top: 35px; }
@@ -216,7 +196,7 @@
 
 .page_liveList > li .brand { position: absolute; width: 100%; text-align: left; left: 15px; bottom: 45px; z-index: 9; }
 
-.page_liveList > li .brand .logo { display: block; background-repeat: no-repeat; background-size: 75px 50px; height: 50px; }
+.page_liveList > li .brand .logo { display: block; background-repeat: no-repeat; background-size: 50px 100px; height: 50px; }
 
 .page_liveList > li .brand span { display: block; margin-top: 5px; font-size: 18px; }
 
@@ -224,7 +204,11 @@
 
 .page_liveList > li .btn a { display: block; height: 37px; line-height: 37px; font-size: 15px; color: #ada7a1; text-align: center; background: #928872; background: -moz-linear-gradient(top, #928872 0%, #474340 100%); background: -webkit-linear-gradient(top, #928872 0%, #474340 100%); background: -webkit-gradient(linear, left top, left bottom, from(#928872), to(#474340)); background: -o-linear-gradient(top, #928872 0%, #474340 100%); background: linear-gradient(to bottom, #928872 0%, #474340 100%); }
 
-.page_liveList > li .btn .btn_list { display: none; position: absolute; top: 35px; left: 0px; width: 100%; z-index: 11; }
+.page_liveList > li .btn .btn_list { display: none; position: absolute; background-color: #333; -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); top: 35px; left: 0px; width: 100%; z-index: 11; }
+
+.page_liveList > li .btn .btn_list a { float: left; width: 50%; }
+
+.page_liveList > li .btn .btn_list:after { content: ''; display: table; clear: both; }
 
 .page_liveList > li .btn:hover .btn_list { display: block; }
 
@@ -234,9 +218,9 @@
 
 .page_liveList > li:nth-child(1) .img, .page_liveList > li:nth-child(2) .img { height: 405px; margin-top: -45px; background-position: -40px 0px; }
 
-.page_liveList > li:nth-child(1) .brand .logo, .page_liveList > li:nth-child(2) .brand .logo { background-size: 90px 60px; height: 60px; }
+.page_liveList > li:nth-child(1) .brand .logo, .page_liveList > li:nth-child(2) .brand .logo { background-size: 60px 120px; height: 60px; }
 
-.page_liveList > li:nth-child(1) .brand span, .page_liveList > li:nth-child(2) .brand span { margin-top: 5px; font-size: 18px; }
+.page_liveList > li:nth-child(1) .brand span, .page_liveList > li:nth-child(2) .brand span { margin-top: 5px; font-size: 15px; }
 
 .page_liveList > li:nth-child(4n+2) { margin-right: 0px; }
 
@@ -256,11 +240,11 @@
 
 .page_liveList.temp_block > li { width: 24%; height: auto; margin: 10px 1.3333% 10px 0px; }
 
-.page_liveList.temp_block > li .bg { position: static; background-position: center center; background-size: 100% auto; height: 166px; }
+.page_liveList.temp_block > li .bg { position: static; background-position: 0px 0px; background-size: 100% auto; height: 166px; }
 
 .page_liveList.temp_block > li .img { display: none; }
 
-.page_liveList.temp_block > li .btn a { height: 35px; line-height: 35px; font-size: 18px; }
+.page_liveList.temp_block > li .btn a { height: 35px; line-height: 35px; font-size: 15px; }
 
 .page_liveList.temp_block > li:nth-child(4n) { margin-right: 0px; }
 
@@ -270,9 +254,9 @@
 
 .page_liveList.temp_block > li .brand { background-color: rgba(0, 0, 0, 0.5); height: 35px; bottom: 35px; left: 0px; padding: 0px 15px; color: #fff; }
 
-.page_liveList.temp_block > li .brand .logo { display: inline-block; background-repeat: no-repeat; background-size: 51px 34px; height: 34px; width: 51px; }
+.page_liveList.temp_block > li .brand .logo { display: inline-block; background-repeat: no-repeat; background-size: 35px 70px; height: 35px; width: 35px; }
 
-.page_liveList.temp_block > li .brand span { display: inline-block; margin-top: 0px; font-size: 18px; vertical-align: middle; }
+.page_liveList.temp_block > li .brand span { display: inline-block; margin-top: 0px; font-size: 15px; vertical-align: middle; }
 
 .page_liveList.temp_block > li:nth-child(4n) { margin-right: 0px; }
 

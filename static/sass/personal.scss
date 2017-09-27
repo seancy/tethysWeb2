@@ -139,7 +139,6 @@
         &:nth-of-type(2) .icon_tab{background-position-x: -40px;}
         &:nth-of-type(3) .icon_tab{background-position-x: -80px;}
         &:nth-of-type(4) .icon_tab{background-position-x: -120px;}
-        &:last-of-type{}
         &:hover, &.active{
             z-index: 2;
             color: $colorYellow;
@@ -226,7 +225,7 @@
     margin-bottom: 20px;
 }
 .psd_table{
-    margin-top: 10px;
+    margin-top: 20px;
     border-collapse: collapse;
     width: 100%;
     th,td{
@@ -255,7 +254,7 @@
             &:first-child{
                 border-top: none;
             }
-            &:nth-child(even){
+            &:nth-child(odd){
                 background-color: #fff;
             }
         }
@@ -266,11 +265,8 @@
         }
         td{
             background-color: #f1e8c6;
-            span{
+            .td_count{
                 margin: 0px 20px;
-                &:last-child{
-                    margin-right: 80px;
-                }
             }
         }
     }
@@ -295,6 +291,7 @@
         }
     }
 }
+
 /* 资金纪录 */
 #personal-funds{
     .personal_title{
@@ -321,5 +318,20 @@
 #personal-bettin{
     .personal_title{
         background-image: url(img/subtitle_bettin.png);
+    }
+}
+
+/* 个人中心 */
+#personal-info{
+    .personal_title{
+        background-image: url(img/subtitle_info.png);
+    }
+}
+.psn_info{
+    dt{
+
+    }
+    dd{
+        
     }
 }

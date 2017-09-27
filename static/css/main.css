@@ -32,6 +32,10 @@ input { border: none; outline: none; }
 
 .color_blue { color: #0166fd; }
 
+.btn_gdOrange { display: inline-block; padding: 0px 15px; background: #fe9500; background: -moz-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-gradient(linear, left top, left bottom, from(#fe9500), to(#a74300)); background: -o-linear-gradient(top, #fe9500 0%, #a74300 100%); background: linear-gradient(to bottom, #fe9500 0%, #a74300 100%); }
+
+.btn_gdGold { display: inline-block; padding: 0px 15px; background: #9e7b3f; background: -moz-linear-gradient(top, #9e7b3f 0%, #734f28 100%); background: -webkit-linear-gradient(top, #9e7b3f 0%, #734f28 100%); background: -webkit-gradient(linear, left top, left bottom, from(#9e7b3f), to(#734f28)); background: -o-linear-gradient(top, #9e7b3f 0%, #734f28 100%); background: linear-gradient(to bottom, #9e7b3f 0%, #734f28 100%); }
+
 /* ---------------------------------------------------
 // form
 --------------------------------------------------- */

@@ -93,7 +93,7 @@
 
 .psn_list { margin-bottom: 20px; }
 
-.psd_table { margin-top: 10px; border-collapse: collapse; width: 100%; }
+.psd_table { margin-top: 20px; border-collapse: collapse; width: 100%; }
 
 .psd_table th, .psd_table td { padding: 8px; text-align: left; }
 
@@ -109,15 +109,13 @@
 
 .psd_table tbody tr:first-child { border-top: none; }
 
-.psd_table tbody tr:nth-child(even) { background-color: #fff; }
+.psd_table tbody tr:nth-child(odd) { background-color: #fff; }
 
 .psd_table tfoot tr { border-top: 1px solid #e1ddd1; }
 
 .psd_table tfoot td { background-color: #f1e8c6; }
 
-.psd_table tfoot td span { margin: 0px 20px; }
-
-.psd_table tfoot td span:last-child { margin-right: 80px; }
+.psd_table tfoot td .td_count { margin: 0px 20px; }
 
 /* 消息公告 */
 #personal-msg .personal_title { background-image: url(img/subtitle_msg.png); }
@@ -137,5 +135,8 @@
 
 /* 投注纪录 */
 #personal-bettin .personal_title { background-image: url(img/subtitle_bettin.png); }
+
+/* 个人中心 */
+#personal-info .personal_title { background-image: url(img/subtitle_info.png); }
 
 /*# sourceMappingURL=personal.css.map */

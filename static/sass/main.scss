@@ -59,6 +59,11 @@ input{
         display: table;
         clear: both;
     }
+// @media only screen and (max-width:1279px){
+//     .contain_width{
+//         width: 864px;
+//     }
+// }
 }
 .color_red{
     color: #d63f10;
@@ -69,11 +74,17 @@ input{
 .color_blue{
     color: #0166fd;
 }
-// @media only screen and (max-width:1279px){
-//     .contain_width{
-//         width: 864px;
-//     }
-// }
+
+.btn_gdOrange{
+    display: inline-block;
+    padding: 0px 15px;
+    @include gdOrange();
+}
+.btn_gdGold{
+    display: inline-block;
+    padding: 0px 15px;
+    @include gdGold();
+}
 
 /* ---------------------------------------------------
 // form
