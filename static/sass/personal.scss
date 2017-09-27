@@ -188,9 +188,6 @@
     >span{
         margin-right: 5px;
     }
-    .Wdate{
-        background-position: right 5px center;
-    }
     &.game_filter{
         > span{
             display: inline-block;
@@ -272,6 +269,19 @@
         }
     }
 }
+.msg_success{
+    text-align: center;
+    color: $colorRed;
+    font-size: $fontSize_xxl;
+    margin: 20px 0px;
+    .icon_sprite{
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        vertical-align: middle;
+        margin-top: -3px;
+    }
+}
 
 /* 消息公告 */
 #personal-msg{
@@ -346,8 +356,10 @@
         }
     }
     dd{
-        margin-left: 30px;
-        margin-bottom: 30px;
+        margin: 0px 30px 30px;
+        &:last-of-type{
+            margin-bottom: 10px;
+        }
     }
     ul{
         li{
@@ -369,6 +381,9 @@
                 min-width: 300px;
             }
         }
+        .error{
+            color: $colorRed;
+        }
         &.style_item{
             li:before{
                 content: '';
@@ -384,6 +399,16 @@
     a{
         font-size: $fontSize_s;
         margin-right: 10px;
+    }
+}
+.deposit_msg{
+    margin: 0px 58px 30px;
+    h3{
+        color: $colorOrange;
+    }
+    p{
+        font-size: $fontSize_xs;
+        margin: 5px 0px;
     }
 }
 /* 修改密码 */
@@ -470,3 +495,131 @@
         }
     }
 }
+.deposit_step{
+    margin-bottom: 20px;
+    ul{
+        text-align: center;
+        li{
+            display: inline-block;
+            font-size: $fontSize_m;
+            color: #bdbbb6;
+            margin: 0px 5px;
+            &:before{
+                content: '';
+                background: url(img/step.png) no-repeat;
+                background-size: auto 116px;
+                display: inline-block;
+                vertical-align: middle;
+                width: 58px;
+                height: 58px;
+                margin-right: 10px;
+            }
+            &:after{
+                content: '';
+                background: url(img/step.png) no-repeat -174px 0px;
+                background-size: auto 116px;
+                display: inline-block;
+                vertical-align: middle;
+                width: 27px;
+                height: 58px;
+                margin-left: 8px;
+            }
+            &:nth-child(1):before{
+                background-position-x: 0;
+            }
+            &:nth-child(2):before{
+                background-position-x: -58px;
+            }
+            &:nth-child(3):before{
+                background-position-x: -116px;
+            }
+            &:last-child:after{
+                display: none;
+            }
+            &.active{
+                color: #917e3b;
+                &:before,&:after{
+                    background-position-y: -58px;
+                }
+            }
+        }
+    }
+}
+.deposit_wrap{
+    margin-bottom: 15px;
+}
+.wallet_select{
+    margin: 10px 0px 20px;
+    label{
+        margin-right: 50px;
+        color: #9e9e9d;
+        span{
+            margin-right: 5px;
+        }
+    }
+}
+.wallet_content{
+    text-align: center;
+    border-bottom: 1px solid #e2e0e0;
+    margin-top: 30px;
+    .qrcode{
+        width: 180px;
+        height: 364px;
+        display: inline-block;
+        vertical-align: top;
+        background: url(img/iphone.png) no-repeat;
+        background-size: 180px auto;
+        margin-right: 20px;
+        .img{
+            width: 100px;
+            height: 100px;
+            margin: 70px auto 20px;
+            img{
+                width: 100%;
+            }
+        }
+        p{
+            margin: 10px auto;
+        }
+    }
+    .info{
+        display: inline-block;
+        vertical-align: top;
+        width: 240px;
+        text-align: left;
+        font-size: $fontSize_xs;
+        p{
+            margin: 10px 0px;
+        }
+        .pic{
+            margin-top: 50px;
+            width: 80px;
+            img{
+                width: 100%;
+            }
+        }
+    }
+    .tip{
+        color: #fff;
+        background-color: $colorOrange;
+        border-radius: 3px;
+        padding:10px;
+        position: relative;
+        width:150px;
+        &:after{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: -8px;
+            margin-top: -4px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 5px 8px 5px 0;
+            border-color: transparent $colorOrange transparent transparent;
+        }
+    }
+}
+.ani_pic{ width: 200px; height: 170px; background-image: url('img/wechat_msg1@2x.png'); background-size: 200px auto; animation-name: ani_pic; animation-duration: 5s;animation-iteration-count: infinite; }
+@keyframes ani_pic{ 0%{ background-image: url('img/wechat_msg1@2x.png')} 40%{background-image: url('img/wechat_msg1@2x.png')} 50%{background-image: url('img/wechat_msg2@2x.png')} 90%{background-image: url('img/wechat_msg2@2x.png')}}

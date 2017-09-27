@@ -81,8 +81,6 @@
 
 .psn_form > span { margin-right: 5px; }
 
-.psn_form .Wdate { background-position: right 5px center; }
-
 .psn_form.game_filter > span { display: inline-block; width: 80px; height: 25px; line-height: 25px; text-align: center; border: 1px solid #d2d2d2; margin: 4px 1.8px 4px 0px; color: #c5c5c4; cursor: pointer; }
 
 .psn_form.game_filter > span.active { border-color: #d8a44e; color: #d8a44e; background: white; /* Old browsers */ background: -moz-linear-gradient(top, white 40%, #e4d4b3 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(top, white 40%, #e4d4b3 100%); /* Chrome10-25,Safari5.1-6 */ background: -webkit-gradient(linear, left top, left bottom, color-stop(40%, white), to(#e4d4b3)); background: -o-linear-gradient(top, white 40%, #e4d4b3 100%); background: linear-gradient(to bottom, white 40%, #e4d4b3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
@@ -119,6 +117,10 @@
 
 .psd_table tfoot td .td_count { margin: 0px 20px; }
 
+.msg_success { text-align: center; color: #fb0202; font-size: 21px; margin: 20px 0px; }
+
+.msg_success .icon_sprite { width: 30px; height: 30px; margin-right: 10px; vertical-align: middle; margin-top: -3px; }
+
 /* 消息公告 */
 #personal-msg .personal_title { background-image: url(img/subtitle_msg.png); }
 
@@ -149,7 +151,9 @@
 
 .psn_info dt a { display: inline-block; vertical-align: middle; margin-top: -4px; }
 
-.psn_info dd { margin-left: 30px; margin-bottom: 30px; }
+.psn_info dd { margin: 0px 30px 30px; }
+
+.psn_info dd:last-of-type { margin-bottom: 10px; }
 
 .psn_info ul li { padding: 7px 0px; line-height: 35px; border-bottom: 1px solid #d8d8d7; }
 
@@ -161,9 +165,17 @@
 
 .psn_info ul .form input { min-width: 300px; }
 
+.psn_info ul .error { color: #fb0202; }
+
 .psn_info ul.style_item li:before { content: ''; background: url(img/icon_sprite.png) no-repeat -216px 0px; background-size: 256px 256px; display: inline-block; width: 24px; height: 24px; vertical-align: middle; }
 
 .psn_info a { font-size: 13px; margin-right: 10px; }
+
+.deposit_msg { margin: 0px 58px 30px; }
+
+.deposit_msg h3 { color: #e75b07; }
+
+.deposit_msg p { font-size: 12px; margin: 5px 0px; }
 
 /* 修改密码 */
 #personal-modify-password .personal_title { background-image: url(img/subtitle_modify.png); }
@@ -206,5 +218,69 @@
 .deposit_info .text p { margin: 5px 0px; }
 
 .deposit_info .text ul li { list-style: disc; padding: 5px 0px; }
+
+.deposit_step { margin-bottom: 20px; }
+
+.deposit_step ul { text-align: center; }
+
+.deposit_step ul li { display: inline-block; font-size: 15px; color: #bdbbb6; margin: 0px 5px; }
+
+.deposit_step ul li:before { content: ''; background: url(img/step.png) no-repeat; background-size: auto 116px; display: inline-block; vertical-align: middle; width: 58px; height: 58px; margin-right: 10px; }
+
+.deposit_step ul li:after { content: ''; background: url(img/step.png) no-repeat -174px 0px; background-size: auto 116px; display: inline-block; vertical-align: middle; width: 27px; height: 58px; margin-left: 8px; }
+
+.deposit_step ul li:nth-child(1):before { background-position-x: 0; }
+
+.deposit_step ul li:nth-child(2):before { background-position-x: -58px; }
+
+.deposit_step ul li:nth-child(3):before { background-position-x: -116px; }
+
+.deposit_step ul li:last-child:after { display: none; }
+
+.deposit_step ul li.active { color: #917e3b; }
+
+.deposit_step ul li.active:before, .deposit_step ul li.active:after { background-position-y: -58px; }
+
+.deposit_wrap { margin-bottom: 15px; }
+
+.wallet_select { margin: 10px 0px 20px; }
+
+.wallet_select label { margin-right: 50px; color: #9e9e9d; }
+
+.wallet_select label span { margin-right: 5px; }
+
+.wallet_content { text-align: center; border-bottom: 1px solid #e2e0e0; margin-top: 30px; }
+
+.wallet_content .qrcode { width: 180px; height: 364px; display: inline-block; vertical-align: top; background: url(img/iphone.png) no-repeat; background-size: 180px auto; margin-right: 20px; }
+
+.wallet_content .qrcode .img { width: 100px; height: 100px; margin: 70px auto 20px; }
+
+.wallet_content .qrcode .img img { width: 100%; }
+
+.wallet_content .qrcode p { margin: 10px auto; }
+
+.wallet_content .info { display: inline-block; vertical-align: top; width: 240px; text-align: left; font-size: 12px; }
+
+.wallet_content .info p { margin: 10px 0px; }
+
+.wallet_content .info .pic { margin-top: 50px; width: 80px; }
+
+.wallet_content .info .pic img { width: 100%; }
+
+.wallet_content .tip { color: #fff; background-color: #e75b07; border-radius: 3px; padding: 10px; position: relative; width: 150px; }
+
+.wallet_content .tip:after { content: ''; display: block; position: absolute; top: 50%; left: -8px; margin-top: -4px; width: 0; height: 0; border-style: solid; border-width: 5px 8px 5px 0; border-color: transparent #e75b07 transparent transparent; }
+
+.ani_pic { width: 200px; height: 170px; background-image: url("img/wechat_msg1@2x.png"); background-size: 200px auto; -webkit-animation-name: ani_pic; animation-name: ani_pic; -webkit-animation-duration: 5s; animation-duration: 5s; -webkit-animation-iteration-count: infinite; animation-iteration-count: infinite; }
+
+@-webkit-keyframes ani_pic { 0% { background-image: url("img/wechat_msg1@2x.png"); }
+  40% { background-image: url("img/wechat_msg1@2x.png"); }
+  50% { background-image: url("img/wechat_msg2@2x.png"); }
+  90% { background-image: url("img/wechat_msg2@2x.png"); } }
+
+@keyframes ani_pic { 0% { background-image: url("img/wechat_msg1@2x.png"); }
+  40% { background-image: url("img/wechat_msg1@2x.png"); }
+  50% { background-image: url("img/wechat_msg2@2x.png"); }
+  90% { background-image: url("img/wechat_msg2@2x.png"); } }
 
 /*# sourceMappingURL=personal.css.map */
