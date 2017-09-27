@@ -78,12 +78,22 @@ input{
 .btn_gdOrange{
     display: inline-block;
     padding: 0px 15px;
+    line-height: 25px;
+    color: #efefef;
     @include gdOrange();
+    &:hover{
+        color: #fff;
+    }
 }
 .btn_gdGold{
     display: inline-block;
     padding: 0px 15px;
+    line-height: 25px;
+    color: #efefef;
     @include gdGold();
+    &:hover{
+        color: #fff;
+    }
 }
 
 /* ---------------------------------------------------
@@ -97,6 +107,9 @@ $formHeight : 35px;
     padding: 10px 5px;
     &[readonly]{
         background-color: #f0f0ef;
+    }
+    &::placeholder {
+        color: #c9c7c7;
     }
 }
 .fontSelect_wrap{
@@ -123,8 +136,11 @@ $formHeight : 35px;
     color: #efefef;
     @include gdGold3();
     &:hover{
-        color: #efefef;
+        color: #fff;
     }
+}
+.form_submit{
+    text-align: center;
 }
 
 /* ---------------------------------------------------
@@ -172,6 +188,9 @@ $formHeight : 35px;
     }
     &.icon_psn_add{
         background-position: -168px 0px;
+    }
+    &.icon_item{
+        background-position: -216px 0px;
     }
 }
 

@@ -32,9 +32,13 @@ input { border: none; outline: none; }
 
 .color_blue { color: #0166fd; }
 
-.btn_gdOrange { display: inline-block; padding: 0px 15px; background: #fe9500; background: -moz-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-gradient(linear, left top, left bottom, from(#fe9500), to(#a74300)); background: -o-linear-gradient(top, #fe9500 0%, #a74300 100%); background: linear-gradient(to bottom, #fe9500 0%, #a74300 100%); }
+.btn_gdOrange { display: inline-block; padding: 0px 15px; line-height: 25px; color: #efefef; background: #fe9500; background: -moz-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-gradient(linear, left top, left bottom, from(#fe9500), to(#a74300)); background: -o-linear-gradient(top, #fe9500 0%, #a74300 100%); background: linear-gradient(to bottom, #fe9500 0%, #a74300 100%); }
 
-.btn_gdGold { display: inline-block; padding: 0px 15px; background: #9e7b3f; background: -moz-linear-gradient(top, #9e7b3f 0%, #734f28 100%); background: -webkit-linear-gradient(top, #9e7b3f 0%, #734f28 100%); background: -webkit-gradient(linear, left top, left bottom, from(#9e7b3f), to(#734f28)); background: -o-linear-gradient(top, #9e7b3f 0%, #734f28 100%); background: linear-gradient(to bottom, #9e7b3f 0%, #734f28 100%); }
+.btn_gdOrange:hover { color: #fff; }
+
+.btn_gdGold { display: inline-block; padding: 0px 15px; line-height: 25px; color: #efefef; background: #d3ad5b; background: -moz-linear-gradient(top, #d3ad5b 0%, #8a6943 100%); background: -webkit-linear-gradient(top, #d3ad5b 0%, #8a6943 100%); background: -webkit-gradient(linear, left top, left bottom, from(#d3ad5b), to(#8a6943)); background: -o-linear-gradient(top, #d3ad5b 0%, #8a6943 100%); background: linear-gradient(to bottom, #d3ad5b 0%, #8a6943 100%); }
+
+.btn_gdGold:hover { color: #fff; }
 
 /* ---------------------------------------------------
 // form
@@ -43,15 +47,25 @@ input { border: none; outline: none; }
 
 .formInput[readonly] { background-color: #f0f0ef; }
 
+.formInput::-webkit-input-placeholder { color: #c9c7c7; }
+
+.formInput::-moz-placeholder { color: #c9c7c7; }
+
+.formInput:-ms-input-placeholder { color: #c9c7c7; }
+
+.formInput::placeholder { color: #c9c7c7; }
+
 .fontSelect_wrap { display: inline-block; border: 1px solid #d1d0d0; padding: 0px 5px; }
 
 .formSelect { background: transparent; border: none; font-size: 15px; height: 35px; line-height: 35px; }
 
 .formSelect:focus { outline: none; }
 
-.formBtn { display: inline-block; height: 37px; position: relative; line-height: 17px; padding: 10px 15px; color: #efefef; background: #a4884d; background: -moz-linear-gradient(top, #a4884d 0%, #654934 100%); background: -webkit-linear-gradient(top, #9e7b3f 0%, #654934 100%); background: -webkit-gradient(linear, left top, left bottom, from(#9e7b3f), to(#654934)); background: -o-linear-gradient(top, #9e7b3f 0%, #654934 100%); background: linear-gradient(to bottom, #9e7b3f 0%, #654934 100%); }
+.formBtn { display: inline-block; height: 37px; position: relative; line-height: 17px; padding: 10px 15px; color: #efefef; background: #a4884d; background: -moz-linear-gradient(top, #a4884d 0%, #654934 100%); background: -webkit-linear-gradient(top, #d3ad5b 0%, #654934 100%); background: -webkit-gradient(linear, left top, left bottom, from(#d3ad5b), to(#654934)); background: -o-linear-gradient(top, #d3ad5b 0%, #654934 100%); background: linear-gradient(to bottom, #d3ad5b 0%, #654934 100%); }
 
-.formBtn:hover { color: #efefef; }
+.formBtn:hover { color: #fff; }
+
+.form_submit { text-align: center; }
 
 /* ---------------------------------------------------
 // icon
@@ -81,6 +95,8 @@ input { border: none; outline: none; }
 .icon_sprite.icon_psn_funds { background-position: -96px -48px; }
 
 .icon_sprite.icon_psn_add { background-position: -168px 0px; }
+
+.icon_sprite.icon_item { background-position: -216px 0px; }
 
 /* ---------------------------------------------------
 // header
@@ -187,7 +203,7 @@ input { border: none; outline: none; }
 
 .account_bar .btn a { display: inline-block; padding: 0px 15px; }
 
-.account_bar .btn a.btn_login { background: #9e7b3f; background: -moz-linear-gradient(top, #9e7b3f 0%, #734f28 100%); background: -webkit-linear-gradient(top, #9e7b3f 0%, #734f28 100%); background: -webkit-gradient(linear, left top, left bottom, from(#9e7b3f), to(#734f28)); background: -o-linear-gradient(top, #9e7b3f 0%, #734f28 100%); background: linear-gradient(to bottom, #9e7b3f 0%, #734f28 100%); }
+.account_bar .btn a.btn_login { background: #d3ad5b; background: -moz-linear-gradient(top, #d3ad5b 0%, #8a6943 100%); background: -webkit-linear-gradient(top, #d3ad5b 0%, #8a6943 100%); background: -webkit-gradient(linear, left top, left bottom, from(#d3ad5b), to(#8a6943)); background: -o-linear-gradient(top, #d3ad5b 0%, #8a6943 100%); background: linear-gradient(to bottom, #d3ad5b 0%, #8a6943 100%); }
 
 .account_bar .btn a.btn_reg { background: #fe9500; background: -moz-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-gradient(linear, left top, left bottom, from(#fe9500), to(#a74300)); background: -o-linear-gradient(top, #fe9500 0%, #a74300 100%); background: linear-gradient(to bottom, #fe9500 0%, #a74300 100%); }
 
@@ -287,7 +303,7 @@ input { border: none; outline: none; }
 
 .footer_menu li a { display: inline-block; padding: 20px; font-size: 15px; }
 
-.copyright { -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7); box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7); line-height: 34px; font-size: 12px; text-align: center; background: #9e7b3f; background: -moz-linear-gradient(top, #9e7b3f 0%, #734f28 100%); background: -webkit-linear-gradient(top, #9e7b3f 0%, #734f28 100%); background: -webkit-gradient(linear, left top, left bottom, from(#9e7b3f), to(#734f28)); background: -o-linear-gradient(top, #9e7b3f 0%, #734f28 100%); background: linear-gradient(to bottom, #9e7b3f 0%, #734f28 100%); }
+.copyright { -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7); box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7); line-height: 34px; font-size: 12px; text-align: center; background: #d3ad5b; background: -moz-linear-gradient(top, #d3ad5b 0%, #8a6943 100%); background: -webkit-linear-gradient(top, #d3ad5b 0%, #8a6943 100%); background: -webkit-gradient(linear, left top, left bottom, from(#d3ad5b), to(#8a6943)); background: -o-linear-gradient(top, #d3ad5b 0%, #8a6943 100%); background: linear-gradient(to bottom, #d3ad5b 0%, #8a6943 100%); }
 
 .online-service { position: fixed; top: 180px; left: 0px; z-index: 999; width: 130px; }
 

@@ -33,6 +33,8 @@
 
 .user_info .refresh span { cursor: pointer; margin-left: 5px; margin-top: -3px; }
 
+.psn_menu { margin-top: 10px; }
+
 .psn_menu li { border-bottom: 1px solid #444; }
 
 .psn_menu li a { display: block; padding: 10px 0px; color: #969696; position: relative; }
@@ -138,5 +140,71 @@
 
 /* 个人中心 */
 #personal-info .personal_title { background-image: url(img/subtitle_info.png); }
+
+.psn_info { margin: 0px; }
+
+.psn_info dt { font-size: 21px; color: #e75b07; margin-bottom: 5px; }
+
+.psn_info dt h3 { display: inline-block; width: 211px; vertical-align: middle; }
+
+.psn_info dt a { display: inline-block; vertical-align: middle; margin-top: -4px; }
+
+.psn_info dd { margin-left: 30px; margin-bottom: 30px; }
+
+.psn_info ul li { padding: 7px 0px; line-height: 35px; border-bottom: 1px solid #d8d8d7; }
+
+.psn_info ul li span { display: inline-block; font-size: 15px; }
+
+.psn_info ul .label { width: 150px; color: #838080; }
+
+.psn_info ul .form { color: #10061f; }
+
+.psn_info ul .form input { min-width: 300px; }
+
+.psn_info ul.style_item li:before { content: ''; background: url(img/icon_sprite.png) no-repeat -216px 0px; background-size: 256px 256px; display: inline-block; width: 24px; height: 24px; vertical-align: middle; }
+
+.psn_info a { font-size: 13px; margin-right: 10px; }
+
+/* 修改密码 */
+#personal-modify-password .personal_title { background-image: url(img/subtitle_modify.png); }
+
+#personal-modify-password dt h3 { width: auto; }
+
+#personal-modify-password dt a { margin-left: 20px; margin-top: 0px; }
+
+#personal-modify-password dd input { min-width: 400px; }
+
+/* 取款 */
+#personal-deposit .personal_title { background-image: url(img/subtitle_deposit.png); }
+
+#personal-deposit .psn_content:nth-of-type(1) .deposit_info .text { position: absolute; bottom: 10px; left: 285px; width: 335px; border-bottom: none; }
+
+#deposit_tab li { width: 194.5px; }
+
+#deposit_tab li .icon_tab { background-position-y: -160px; width: 80px; height: 80px; display: block; margin: -10px auto; }
+
+#deposit_tab li:nth-of-type(1) .icon_tab { background-position-x: 0px; }
+
+#deposit_tab li:nth-of-type(2) .icon_tab { background-position-x: -80px; }
+
+#deposit_tab li:nth-of-type(3) .icon_tab { background-position-x: -160px; }
+
+#deposit_tab li:nth-of-type(4) .icon_tab { background-position-x: -240px; }
+
+#deposit_tab li:hover .icon_tab, #deposit_tab li.active .icon_tab { background-position-y: -240px; }
+
+.deposit_content { width: 710px; margin: 0px auto 20px; }
+
+.deposit_info { margin-bottom: 35px; position: relative; }
+
+.deposit_info .img { border-bottom: 1px solid #e2e0e0; padding-bottom: 10px; }
+
+.deposit_info .img img { width: 100%; }
+
+.deposit_info .text { padding: 20px 45px; font-size: 12px; border-bottom: 1px solid #e2e0e0; }
+
+.deposit_info .text p { margin: 5px 0px; }
+
+.deposit_info .text ul li { list-style: disc; padding: 5px 0px; }
 
 /*# sourceMappingURL=personal.css.map */

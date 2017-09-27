@@ -78,6 +78,7 @@
     }
 }
 .psn_menu{
+    margin-top: 10px;
     li{
         border-bottom: 1px solid #444;
         a{
@@ -328,10 +329,144 @@
     }
 }
 .psn_info{
+    margin: 0px;
     dt{
-
+        font-size: $fontSize_xxl;
+        color: $colorOrange;
+        margin-bottom: 5px;
+        h3{
+            display: inline-block;
+            width: 211px;
+            vertical-align: middle;
+        }
+        a{
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: -4px;
+        }
     }
     dd{
-        
+        margin-left: 30px;
+        margin-bottom: 30px;
+    }
+    ul{
+        li{
+            padding: 7px 0px;
+            line-height: 35px;
+            border-bottom: 1px solid #d8d8d7;
+            span{
+                display: inline-block;
+                font-size: $fontSize_m;
+            }
+        }
+        .label{
+            width: 150px;
+            color: #838080;
+        }
+        .form{
+            color: $bgColor;
+            input{
+                min-width: 300px;
+            }
+        }
+        &.style_item{
+            li:before{
+                content: '';
+                background: url(img/icon_sprite.png) no-repeat -216px 0px;
+                background-size: 256px 256px;
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                vertical-align: middle;
+            }
+        }
+    }
+    a{
+        font-size: $fontSize_s;
+        margin-right: 10px;
+    }
+}
+/* 修改密码 */
+#personal-modify-password{
+    .personal_title{
+        background-image: url(img/subtitle_modify.png);
+    }
+    dt {
+        h3{
+            width: auto;
+        }
+        a{
+            margin-left: 20px;
+            margin-top: 0px;
+        }
+    }
+    dd{
+        input{
+            min-width: 400px;
+        }
+    }
+}
+
+/* 取款 */
+#personal-deposit{
+    .personal_title{
+        background-image: url(img/subtitle_deposit.png);
+    }
+    .psn_content:nth-of-type(1) .deposit_info .text{
+        position: absolute;
+        bottom: 10px;
+        left: 285px;
+        width: 335px;
+        border-bottom: none;
+    }
+}
+#deposit_tab{
+    li{
+        width: 194.5px;
+        .icon_tab{
+            background-position-y: -160px;
+            width: 80px;
+            height: 80px;
+            display: block;
+            margin: -10px auto;
+        }
+        &:nth-of-type(1) .icon_tab{background-position-x: 0px;}
+        &:nth-of-type(2) .icon_tab{background-position-x: -80px;}
+        &:nth-of-type(3) .icon_tab{background-position-x: -160px;}
+        &:nth-of-type(4) .icon_tab{background-position-x: -240px;}
+        &:hover, &.active{
+            .icon_tab{
+                background-position-y: -240px;
+            }
+        }
+    }
+}
+.deposit_content{
+    width: 710px;
+    margin: 0px auto 20px;
+}
+.deposit_info{
+    margin-bottom: 35px;
+    position: relative;
+    .img{
+        border-bottom: 1px solid #e2e0e0;
+        padding-bottom: 10px;
+        img{
+            width: 100%;
+        }
+    }
+    .text{
+        padding: 20px 45px;
+        font-size: $fontSize_xs;
+        border-bottom: 1px solid #e2e0e0;
+        p{
+            margin: 5px 0px;
+        }
+        ul{
+            li{
+                list-style: disc;
+                padding: 5px 0px;
+            }
+        }
     }
 }

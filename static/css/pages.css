@@ -198,7 +198,7 @@
 
 .page_liveList > li .brand .logo { display: block; background-repeat: no-repeat; background-size: 50px 100px; height: 50px; }
 
-.page_liveList > li .brand span { display: block; margin-top: 5px; font-size: 18px; }
+.page_liveList > li .brand span { display: block; margin-top: 5px; font-size: 15px; }
 
 .page_liveList > li .btn { position: absolute; bottom: 0px; left: 0px; width: 100%; z-index: 10; }
 
@@ -230,7 +230,7 @@
 
 .page_liveList > li:hover .img { background-position-x: 0px; -webkit-transition: background-position 300ms ease-in; -ms-transition: background-position 300ms ease-in; -o-transition: background-position 300ms ease-in; transition: background-position 300ms ease-in; }
 
-.page_liveList > li:hover .btn a { color: #fff; background: #a4884d; background: -moz-linear-gradient(top, #a4884d 0%, #654934 100%); background: -webkit-linear-gradient(top, #9e7b3f 0%, #654934 100%); background: -webkit-gradient(linear, left top, left bottom, from(#9e7b3f), to(#654934)); background: -o-linear-gradient(top, #9e7b3f 0%, #654934 100%); background: linear-gradient(to bottom, #9e7b3f 0%, #654934 100%); }
+.page_liveList > li:hover .btn a { color: #fff; background: #a4884d; background: -moz-linear-gradient(top, #a4884d 0%, #654934 100%); background: -webkit-linear-gradient(top, #d3ad5b 0%, #654934 100%); background: -webkit-gradient(linear, left top, left bottom, from(#d3ad5b), to(#654934)); background: -o-linear-gradient(top, #d3ad5b 0%, #654934 100%); background: linear-gradient(to bottom, #d3ad5b 0%, #654934 100%); }
 
 .page_liveList > li:hover:nth-child(1) .bg, .page_liveList > li:hover:nth-child(2) .bg { background-position-x: -40px; }
 
