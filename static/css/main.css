@@ -43,7 +43,7 @@ input { border: none; outline: none; }
 /* ---------------------------------------------------
 // form
 --------------------------------------------------- */
-.formInput { border: 1px solid #d1d0d0; font-size: 13px; line-height: 15px; padding: 10px 5px; }
+.formInput { border: 1px solid #d1d0d0; font-size: 13px; line-height: 15px; padding: 5px 5px; line-height: 25px; background-color: transparent; }
 
 .formInput[readonly] { background-color: #f0f0ef; }
 
@@ -55,7 +55,7 @@ input { border: none; outline: none; }
 
 .formInput::placeholder { color: #c9c7c7; }
 
-.fontSelect_wrap { display: inline-block; border: 1px solid #d1d0d0; padding: 0px 5px; }
+.formSelect_wrap { display: inline-block; border: 1px solid #d1d0d0; padding: 0px 5px; }
 
 .formSelect { background: transparent; border: none; font-size: 15px; height: 35px; line-height: 35px; }
 
@@ -103,6 +103,22 @@ input { border: none; outline: none; }
 .icon_sprite.icon_zfb { background-position: -24px -24px; }
 
 .icon_sprite.icon_success { background-position: -216px -24px; }
+
+.icon_sprite.icon_copy { background-position: -96px -24px; }
+
+.icon_sprite.icon_about { background-position: 0px -96px; }
+
+.icon_sprite.icon_policy { background-position: -24px -96px; }
+
+.icon_sprite.icon_duty { background-position: -48px -96px; }
+
+.icon_sprite.icon_disclaimer { background-position: -72px -96px; }
+
+.icon_sprite.icon_join { background-position: -96px -96px; }
+
+.icon_sprite.icon_contact { background-position: -120px -96px; }
+
+.icon_sprite.icon_ok { background-position: -144px -24px; }
 
 /* ---------------------------------------------------
 // header
@@ -259,11 +275,9 @@ input { border: none; outline: none; }
 
 .link_list .link_block dd { display: inline-block; margin: 10px 0px; padding: 0px; }
 
-.link_list .link_block dd a { display: inline-block; height: 45px; background-image: url(img/footer_links.png); background-size: 500px auto; margin: 5px 30px 5px 0px; }
+.link_list .link_block dd a { display: inline-block; height: 45px; background-image: url(img/footer_links.png); background-size: 500px auto; background-position-x: -250px; margin: 5px 30px 5px 0px; }
 
 .link_list .link_block dd a:last-child { margin-right: 0px; }
-
-.link_list .link_block dd a:hover { background-position-x: -250px; }
 
 .link_list .link_block dd a.link-ag { width: 95px; background-position-y: 0px; }
 
@@ -442,7 +456,7 @@ input { border: none; outline: none; }
 
 .slick-dots li.slick-active button:before { color: #be8949; background-color: #be8949; }
 
-/* plugins corver */
+/* slick cover */
 #main .slick-arrow { position: absolute; top: 50%; background-image: url(img/slider_arrow.png); background-size: 60px 80px; width: 30px; height: 40px; cursor: pointer; background-position-y: -40px; }
 
 #main .slick-arrow.slider_prev { left: -20px; background-position-x: 0px; }

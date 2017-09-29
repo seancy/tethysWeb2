@@ -39,7 +39,7 @@
     width: 77.5%;
     float: right;
     margin-left: 2.5%;
-    background-color: #fff;
+    background-color: #fcfbf8;
     margin-bottom: 20px;
     color: #000;
 }
@@ -49,6 +49,7 @@
     padding-top: 1px;
     text-align: center;
     height: 184px;
+    margin-bottom: 10px;
     .img{
         width: 140px;
         height: 140px;
@@ -78,7 +79,6 @@
     }
 }
 .psn_menu{
-    margin-top: 10px;
     li{
         border-bottom: 1px solid #444;
         a{
@@ -110,6 +110,9 @@
         .icon_sprite{
             margin: 0px 10px;
         }
+    }
+    &#footer_menu a:hover .icon_sprite, &#footer_menu a.active .icon_sprite{
+        background-position-y: -120px;
     }
 }
 
@@ -222,13 +225,14 @@
 .psn_list{
     margin-bottom: 20px;
 }
-.psd_table{
+.psn_table{
     margin-top: 20px;
     border-collapse: collapse;
     width: 100%;
     th,td{
         padding: 8px;
         text-align: left;
+        word-break: break-all;
         &:first-child{
             text-align: center;
         }
@@ -283,7 +287,9 @@
     }
 }
 
-/* 消息公告 */
+/* ---------------------------------------------------
+// 消息公告
+--------------------------------------------------- */
 #personal-msg{
     .personal_title{
         background-image: url(img/subtitle_msg.png);
@@ -303,7 +309,9 @@
     }
 }
 
-/* 资金纪录 */
+/* ---------------------------------------------------
+// 资金纪录
+--------------------------------------------------- */
 #personal-funds{
     .personal_title{
         background-image: url(img/subtitle_funds.png);
@@ -325,14 +333,19 @@
         }
     }
 }
-/* 投注纪录 */
+
+/* ---------------------------------------------------
+// 投注纪录
+--------------------------------------------------- */
 #personal-bettin{
     .personal_title{
         background-image: url(img/subtitle_bettin.png);
     }
 }
 
-/* 个人中心 */
+/* ---------------------------------------------------
+// 个人中心 
+--------------------------------------------------- */
 #personal-info{
     .personal_title{
         background-image: url(img/subtitle_info.png);
@@ -346,8 +359,9 @@
         margin-bottom: 5px;
         h3{
             display: inline-block;
-            width: 211px;
+            width: 204px;
             vertical-align: middle;
+            font-size: $fontSize_xxl;
         }
         a{
             display: inline-block;
@@ -356,10 +370,12 @@
         }
     }
     dd{
-        margin: 0px 30px 30px;
-        &:last-of-type{
-            margin-bottom: 10px;
-        }
+        // margin: 0px 30px 30px;
+        margin: 0px auto 30px;
+        width: 685px;
+        // &:last-of-type{
+        //     margin-bottom: 10px;
+        // }
     }
     ul{
         li{
@@ -370,19 +386,47 @@
                 display: inline-block;
                 font-size: $fontSize_m;
             }
+            &:after{
+                content: '';
+                display: table;
+                clear: both;
+            }
         }
         .label{
             width: 150px;
+            float: left;
             color: #838080;
         }
         .form{
+            max-width: 511px;
+            float: left;
             color: $bgColor;
-            input{
-                min-width: 300px;
+            input[type='text']{
+                min-width: 250px;
             }
+            label{
+                display: inline-block;
+                min-width: 170px;
+            }
+        }
+        .copy{
+            float: right;
+            cursor: pointer;
+            width: 200px;
+            color: $colorOrange;
+        }
+        .edit{
+            float: left;
+            margin-left: 10px;
+            color: $colorOrange;
+            font-size: $fontSize_m;
         }
         .error{
             color: $colorRed;
+            margin-left: 5px;
+            max-width: 255px;
+            line-height: 1.2em;
+            font-size: $fontSize_s;
         }
         &.style_item{
             li:before{
@@ -390,6 +434,8 @@
                 background: url(img/icon_sprite.png) no-repeat -216px 0px;
                 background-size: 256px 256px;
                 display: inline-block;
+                float: left;
+                margin-top: 7px;
                 width: 24px;
                 height: 24px;
                 vertical-align: middle;
@@ -411,6 +457,13 @@
         margin: 5px 0px;
     }
 }
+.deposit_msg_plus{
+    padding-left: 174px;
+    color: $colorRed;
+    margin: 10px auto;
+    font-size: $fontSize_xs;
+}
+
 /* 修改密码 */
 #personal-modify-password{
     .personal_title{
@@ -432,7 +485,9 @@
     }
 }
 
-/* 取款 */
+/* ---------------------------------------------------
+// 存款
+--------------------------------------------------- */
 #personal-deposit{
     .personal_title{
         background-image: url(img/subtitle_deposit.png);
@@ -496,7 +551,7 @@
     }
 }
 .deposit_step{
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     ul{
         text-align: center;
         li{
@@ -548,6 +603,7 @@
 .deposit_wrap{
     margin-bottom: 15px;
 }
+/* 钱包支付 */
 .wallet_select{
     margin: 10px 0px 20px;
     label{
@@ -623,3 +679,104 @@
 }
 .ani_pic{ width: 200px; height: 170px; background-image: url('img/wechat_msg1@2x.png'); background-size: 200px auto; animation-name: ani_pic; animation-duration: 5s;animation-iteration-count: infinite; }
 @keyframes ani_pic{ 0%{ background-image: url('img/wechat_msg1@2x.png')} 40%{background-image: url('img/wechat_msg1@2x.png')} 50%{background-image: url('img/wechat_msg2@2x.png')} 90%{background-image: url('img/wechat_msg2@2x.png')}}
+
+/* 银行转帐 */
+.bank_select{
+    margin: 10px 0px;
+    padding: 10px;
+    border-bottom: 1px solid #e2e0e0;
+    label{
+        display: inline-block;
+        width: 24%;
+        padding: 8px 15px;
+        color: #9e9e9d;
+        font-size: $fontSize_xs;
+        img{
+            width: 16px;
+            vertical-align: middle;
+            margin: 0px 3px;
+        }
+    }
+}
+
+/* ---------------------------------------------------
+// 取款
+--------------------------------------------------- */
+#personal-callin{
+    .personal_title{
+        background-image: url(img/subtitle_callin.png);
+    }
+    .formSelect_wrap{
+        width: 250px;
+        .formSelect{
+            width: 100%;
+        }
+    }
+}
+
+/* ---------------------------------------------------
+// 代理加盟
+--------------------------------------------------- */
+#join{
+    .personal_title{
+        background-image: url(img/subtitle_join.png);
+    }
+}
+#join_tab{
+    li{
+        width: 259px;
+        .icon_tab{
+            background-position-y: -320px;
+        }
+        &:hover, &.active{
+            .icon_tab{
+                background-position-y: -360px;
+            }
+        }
+    }
+}
+#join .psn_table{
+    margin-top: 0px;
+    th,td{
+        text-align: center;
+    }
+    thead{
+        tr{
+            border-bottom: 1px solid #e1ddd1;
+        }
+    }
+}
+.join_wrap{
+    margin: 10px 30px;
+    h4{
+        font-size: $fontSize_l;
+        margin: 10px 0px;
+    }
+    p{
+        margin-bottom: 10px;
+        font-size: $fontSize_m;
+        line-height: 24px;
+        &.bottom_line{
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e0e0;
+            margin-bottom: 20px;
+        }
+    }
+    .formSelect_wrap{
+        width: 250px;
+        .formSelect{
+            width: 100%;
+        }
+    }
+    .join_list{
+        li{
+            margin-bottom: 10px;
+            &:before{
+                content: '．';
+                font-size: $fontSize_xl;
+                line-height: $fontSize;
+                color: #e75b07;
+            }
+        }
+    }
+}

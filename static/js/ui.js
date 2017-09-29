@@ -3,7 +3,7 @@ $(function(){
     $('.pagemenu_slider').slick({
         arrows: true,
         slidesToShow: 5,
-        slidesToScroll: 3,
+        slidesToScroll: 1,
         infinite: false,
     });
 })

@@ -104,7 +104,9 @@ $formHeight : 35px;
     border: 1px solid #d1d0d0;
     font-size: $fontSize_s;
     line-height: $fontSize_m;
-    padding: 10px 5px;
+    padding: 5px 5px;
+    line-height: 25px;
+    background-color: transparent;
     &[readonly]{
         background-color: #f0f0ef;
     }
@@ -112,7 +114,7 @@ $formHeight : 35px;
         color: #c9c7c7;
     }
 }
-.fontSelect_wrap{
+.formSelect_wrap{
     display: inline-block;
     border: 1px solid #d1d0d0;
     padding: 0px 5px;
@@ -201,6 +203,30 @@ $formHeight : 35px;
     }
     &.icon_success{
         background-position: -216px -24px;
+    }
+    &.icon_copy{
+        background-position: -96px -24px;
+    }
+    &.icon_about{
+        background-position: 0px -96px;
+    }
+    &.icon_policy{
+        background-position: -24px -96px;
+    }
+    &.icon_duty{
+        background-position: -48px -96px;
+    }
+    &.icon_disclaimer{
+        background-position: -72px -96px;
+    }
+    &.icon_join{
+        background-position: -96px -96px;
+    }
+    &.icon_contact{
+        background-position: -120px -96px;
+    }
+    &.icon_ok{
+        background-position: -144px -24px;
     }
 }
 
@@ -606,6 +632,7 @@ $formHeight : 35px;
                 height: 45px;
                 background-image: url(img/footer_links.png);
                 background-size: 500px auto;
+                background-position-x: -250px;
                 margin: 5px 30px 5px 0px;
                 // @media only screen and (max-width:1279px){
                 //     margin: 5px 14px 5px 0px;
@@ -613,7 +640,7 @@ $formHeight : 35px;
                 &:last-child{ 
                     margin-right: 0px;
                 }
-                &:hover{background-position-x: -250px;}
+                // &:hover{background-position-x: -250px;}
                 &.link-ag{ width: 95px; background-position-y: 0px; }
                 &.link-mg{ width: 45px; background-position-y: -50px; }
                 &.link-bb{ width: 68px; background-position-y: -100px; }
@@ -758,7 +785,7 @@ $formHeight : 35px;
 @import '../vendor/slick/slick';
 @import '../vendor/slick/slick-theme';
 
-/* plugins corver */
+/* slick cover */
 #main{
     .slick-arrow{
         position: absolute;
