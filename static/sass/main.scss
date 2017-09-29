@@ -68,6 +68,9 @@ input{
 .color_red{
     color: #d63f10;
 }
+.color_orange{
+    color: $colorOrange;
+}
 .color_green{
     color: #27860d;
 }
@@ -107,6 +110,9 @@ $formHeight : 35px;
     padding: 5px 5px;
     line-height: 25px;
     background-color: transparent;
+    &.error{
+        border-color: #fb0202;
+    }
     &[readonly]{
         background-color: #f0f0ef;
     }
@@ -129,7 +135,7 @@ $formHeight : 35px;
         outline: none;
     }
 }
-.formBtn{
+a.formBtn, .formBtn{
     display: inline-block;
     height: 37px;
     position: relative;
@@ -227,6 +233,15 @@ $formHeight : 35px;
     }
     &.icon_ok{
         background-position: -144px -24px;
+    }
+    &.icon_help-withdrawal{
+        background-position: 0px -144px;
+    }
+    &.icon_help-deposit{
+        background-position: -24px -144px;
+    }
+    &.icon_help_duty{
+        background-position: -48px -144px;
     }
 }
 

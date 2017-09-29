@@ -295,63 +295,32 @@
         </div><!--end 登录后资讯（登录后显示）-->
     </div>
     <div id="main">
-        <div class="personal_box" id="personal-deposit">
+        <div class="personal_box" id="disclaimer">
             <div class="contain_width">
                 <h2 class="personal_title"></h2>
             </div>
             <div class="contain_width">
                 <!--左侧选单-->
                 <div class="left_menu">
-                    <div class="user_info">
-                        <div class="img"><img src="../static/images/pic_user.png"></div>
-                        <p class="name">vivien</p>
-                        <p class="balance">0.00</p>
-                        <p class="refresh">Your Balance<span class="icon_sprite icon_refresh_money"></span></p>
-                    </div>
-                    <ul class="psn_menu">
-                        <li><a href="personal-info.html"><span class="icon_sprite icon_psn_info"></span>个人中心</a></li>
-                        <li><a href="personal-deposit.html" class="active"><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
-                        <li><a href="personal-callin.html"><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
-                        <li><a href="personal-bettin.html"><span class="icon_sprite icon_psn_bettin"></span>投注记录</a></li>
-                        <li><a href="personal-funds.html"><span class="icon_sprite icon_psn_funds"></span>资金纪录</a></li>
+                    <ul class="psn_menu" id="footer_menu">
+                        <li><a href="about.html"><span class="icon_sprite icon_about"></span>关于我们</a></li>
+                        <li><a href="policy.html"><span class="icon_sprite icon_policy"></span>隐私政策</a></li>
+                        <li><a href="duty.html"><span class="icon_sprite icon_duty"></span>责任博彩</a></li>
+                        <li><a href="disclaimer.html" class="active"><span class="icon_sprite icon_disclaimer"></span>免责声明</a></li>
+                        <li><a href="join.html"><span class="icon_sprite icon_join"></span>代理加盟</a></li>
+                        <li><a href="contact.html"><span class="icon_sprite icon_contact"></span>联系我们</a></li>
                     </ul>
                 </div>
                 <!--end 左侧选单-->
                 <!--右侧内容-->
                 <div class="right_main">
                     <div class="psn_wrap">
-                        <!--在线支付-->
+                        <!--关於我们-->
                         <div class="psn_content">
-                            <div class="deposit_wrap">
-                                <dl class="psn_info">
-                                    <dt><h3>在线支付信息</h3></dt>
-                                    <dd>
-                                        <ul class="style_item">
-                                            <li>
-                                                <span class="label">会员账号</span>
-                                                <span class="form">vivien_text</span>
-                                            </li>
-                                            <li>
-                                                <span class="label">会员账号</span>
-                                                <span class="form">
-                                                    <label for="pay_zfb"><input type="radio" id="pay_zfb" name="pay_wallet" checked><span class="icon_sprite icon_wechat"></span>微信支付</label>
-                                                    <label for="pay_wx"><input type="radio" id="pay_wx" name="pay_wallet"><span class="icon_sprite icon_zfb"></span>支付宝支付</label>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <span class="label">存入金额<span class="color_red">※</span></span>
-                                                <span class="form"><input type="text" class="formInput" placeholder="范围1~10000"></span>
-                                                <span class="ui_error">请输入正确金额！</span>
-                                            </li>
-                                        </ul>
-                                        <div class="deposit_msg_plus">当前享受优惠：10.00</div>
-                                    </dd>
-                                </dl>
-                                <div class="form_submit">
-                                    <a class="formBtn" href="javascript:;">确&nbsp;&nbsp;认</a>
-                                </div>
+                            <div class="join_wrap">
+                                <p>本公司只接受年龄已满18岁的注册用户。本网欢迎全世界的客户，但部份地区或国家法律尚未明定线上博彩的合法性问题，甚至某些地区或国家已明确规范线上博彩为非法行为。凡於禁止博彩的国家地区居住之人士，本公司一律不接受其帐户注册，投注或任何财务上之交易，我们无意邀请任何人在这些地区或国家非法使用本服务平台。使用者必需确定在您所居住的地区或国家使用线上博彩是否合法，并负完全的责任，使用本服务之会员请遵守使用者当地法令之许可，如有违反之情事恕非本公司之负责范围。</p>
                             </div>
-                        </div><!--end 在线支付-->
+                        </div><!--end 关於我们-->
                     </div>
                 </div>
                 <!--end 右侧内容-->
@@ -435,11 +404,15 @@
 
     <script type="text/javascript" src="../static/vendor/jquery.min.js"></script>
     <script type="text/javascript" src="../static/vendor/slick/slick.min.js"></script>
-    <script type="text/javascript" src="../static/vendor/My97DatePicker/WdatePicker.js"></script>
     <script type="text/javascript" src="../static/js/ui.js"></script>
 
     <script type="text/javascript">
         $(function(){
+            $('.psn_tab li').on('click',function(){
+                var index = $(this).index();
+                $(this).addClass('active').siblings().removeClass('active');
+                $('.psn_content').eq(index).show().siblings().hide();
+            })
         })
     </script>
 </body>

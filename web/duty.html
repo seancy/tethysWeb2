@@ -295,63 +295,58 @@
         </div><!--end 登录后资讯（登录后显示）-->
     </div>
     <div id="main">
-        <div class="personal_box" id="personal-deposit">
+        <div class="personal_box" id="duty">
             <div class="contain_width">
                 <h2 class="personal_title"></h2>
             </div>
             <div class="contain_width">
                 <!--左侧选单-->
                 <div class="left_menu">
-                    <div class="user_info">
-                        <div class="img"><img src="../static/images/pic_user.png"></div>
-                        <p class="name">vivien</p>
-                        <p class="balance">0.00</p>
-                        <p class="refresh">Your Balance<span class="icon_sprite icon_refresh_money"></span></p>
-                    </div>
-                    <ul class="psn_menu">
-                        <li><a href="personal-info.html"><span class="icon_sprite icon_psn_info"></span>个人中心</a></li>
-                        <li><a href="personal-deposit.html" class="active"><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
-                        <li><a href="personal-callin.html"><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
-                        <li><a href="personal-bettin.html"><span class="icon_sprite icon_psn_bettin"></span>投注记录</a></li>
-                        <li><a href="personal-funds.html"><span class="icon_sprite icon_psn_funds"></span>资金纪录</a></li>
+                    <ul class="psn_menu" id="footer_menu">
+                        <li><a href="about.html"><span class="icon_sprite icon_about"></span>关于我们</a></li>
+                        <li><a href="policy.html"><span class="icon_sprite icon_policy"></span>隐私政策</a></li>
+                        <li><a href="duty.html" class="active"><span class="icon_sprite icon_duty"></span>责任博彩</a></li>
+                        <li><a href="disclaimer.html"><span class="icon_sprite icon_disclaimer"></span>免责声明</a></li>
+                        <li><a href="join.html"><span class="icon_sprite icon_join"></span>代理加盟</a></li>
+                        <li><a href="contact.html"><span class="icon_sprite icon_contact"></span>联系我们</a></li>
                     </ul>
                 </div>
                 <!--end 左侧选单-->
                 <!--右侧内容-->
                 <div class="right_main">
                     <div class="psn_wrap">
-                        <!--在线支付-->
+                        <!--关於我们-->
                         <div class="psn_content">
-                            <div class="deposit_wrap">
-                                <dl class="psn_info">
-                                    <dt><h3>在线支付信息</h3></dt>
-                                    <dd>
-                                        <ul class="style_item">
-                                            <li>
-                                                <span class="label">会员账号</span>
-                                                <span class="form">vivien_text</span>
-                                            </li>
-                                            <li>
-                                                <span class="label">会员账号</span>
-                                                <span class="form">
-                                                    <label for="pay_zfb"><input type="radio" id="pay_zfb" name="pay_wallet" checked><span class="icon_sprite icon_wechat"></span>微信支付</label>
-                                                    <label for="pay_wx"><input type="radio" id="pay_wx" name="pay_wallet"><span class="icon_sprite icon_zfb"></span>支付宝支付</label>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <span class="label">存入金额<span class="color_red">※</span></span>
-                                                <span class="form"><input type="text" class="formInput" placeholder="范围1~10000"></span>
-                                                <span class="ui_error">请输入正确金额！</span>
-                                            </li>
-                                        </ul>
-                                        <div class="deposit_msg_plus">当前享受优惠：10.00</div>
-                                    </dd>
-                                </dl>
-                                <div class="form_submit">
-                                    <a class="formBtn" href="javascript:;">确&nbsp;&nbsp;认</a>
-                                </div>
+                            <div class="join_wrap">
+                                <p class="highlight">概况：</p>
+                                <p>对于大多数人来说，赌博是一个娱乐休闲和具娱乐性的活动，然而，对于另一些人来说，博弈有负面影响。我们对&ldquo;小赌怡情、适可而止&rdquo;的宗旨非常重视。我们希望我们的顾客在投注时得到娱乐，但也希望赌博不会影响到他们的财政状况和生活。</p>
+                                <p class="highlight">博彩调查问卷：</p>
+                                <p>本公司一直积极努力为玩家提供一个优质的娱乐平台。这些问题设置的目的在于，我们已经设置升级了多项安全设施来确保我们游戏的公平公正。我们鼓励客户通过回答我们的问卷来了解客户对博彩的危害问题的状况:</p>
+                                <p>如果阁下想了解自己是否已成为问题者，可回答以下问题以寻找答案：</p>
+                                <p>1.会因为躲避工作和学习来进行赌博吗？</p>
+                                <p>2.您参与博彩是否为了逃避沉闷或不快的生活？</p>
+                                <p>3.您在注金投注完时，是否感觉钱已经丢掉或者说要尽快的再次下注？</p>
+                                <p>4.您会一直赌博直到您的钱都输完才方肯罢休吗？</p>
+                                <p>5.您是否刻意隐瞒过您在博彩中花费的时间和资金呢？</p>
+                                <p>6.您是否有人批评过您的赌博行为？</p>
+                                <p>7.您是否对自己的家人，朋友或爱好失去兴趣？</p>
+                                <p>8.您输了后，会否马上想把输的钱赢回来？</p>
+                                <p>9.您是否不愿意花费您的赌金在其他方面呢？</p>
+                                <p>10.假如您的注金全部投注完，您是否会感到尽快赢回您输掉的资金？</p>
+                                <p class="highlight">以上问题中所回答的「是」愈多(例如5题或以上表示你可能是&ldquo;病态赌徒&rdquo;)，则代表愈有机会遇上赌博问题，甚至成为问题赌博者，我们建议您:</p>
+                                <p>1.把博彩当做一种娱乐休闲项目</p>
+                                <p>2.避免连续的损失</p>
+                                <p>3.对博彩有自己的认识</p>
+                                <p>4.合理安排自己在博彩中的时间和精力</p>
+                                <p>若想了解更多相关资讯，请您咨询新葡京娱乐场网站联系：新葡京娱乐场。</p>
+                                <p class="highlight">自我隔离：</p>
+                                <p>对于一些客户希望暂时远离博彩，我们将提供一个自我排除的功能，您可以申请一定时间的帐户冻结。请点击网页中的<a href="javascript:;">"联系客服"</a>，将由专员为您服务。</p>
+                                <p class="highlight">年龄限制：</p>
+                                <p>我们的游戏规则不允许任何未满18岁的人士向我们投注或领奖。如果您未满18岁，请马上退出网站。</p>
+                                <p class="highlight">家长控制：</p>
+                                <p>对于家里有未成年人士的客户，我们鼓励他们安装保护儿童软体，来限制未成年家庭成员接触成人或赌博网站。此外，我们也确保我们的广告和促销宣传活动并非以未成年人士为物件。</p>
                             </div>
-                        </div><!--end 在线支付-->
+                        </div><!--end 关於我们-->
                     </div>
                 </div>
                 <!--end 右侧内容-->
@@ -435,11 +430,15 @@
 
     <script type="text/javascript" src="../static/vendor/jquery.min.js"></script>
     <script type="text/javascript" src="../static/vendor/slick/slick.min.js"></script>
-    <script type="text/javascript" src="../static/vendor/My97DatePicker/WdatePicker.js"></script>
     <script type="text/javascript" src="../static/js/ui.js"></script>
 
     <script type="text/javascript">
         $(function(){
+            $('.psn_tab li').on('click',function(){
+                var index = $(this).index();
+                $(this).addClass('active').siblings().removeClass('active');
+                $('.psn_content').eq(index).show().siblings().hide();
+            })
         })
     </script>
 </body>

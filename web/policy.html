@@ -295,63 +295,36 @@
         </div><!--end 登录后资讯（登录后显示）-->
     </div>
     <div id="main">
-        <div class="personal_box" id="personal-deposit">
+        <div class="personal_box" id="policy">
             <div class="contain_width">
                 <h2 class="personal_title"></h2>
             </div>
             <div class="contain_width">
                 <!--左侧选单-->
                 <div class="left_menu">
-                    <div class="user_info">
-                        <div class="img"><img src="../static/images/pic_user.png"></div>
-                        <p class="name">vivien</p>
-                        <p class="balance">0.00</p>
-                        <p class="refresh">Your Balance<span class="icon_sprite icon_refresh_money"></span></p>
-                    </div>
-                    <ul class="psn_menu">
-                        <li><a href="personal-info.html"><span class="icon_sprite icon_psn_info"></span>个人中心</a></li>
-                        <li><a href="personal-deposit.html" class="active"><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
-                        <li><a href="personal-callin.html"><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
-                        <li><a href="personal-bettin.html"><span class="icon_sprite icon_psn_bettin"></span>投注记录</a></li>
-                        <li><a href="personal-funds.html"><span class="icon_sprite icon_psn_funds"></span>资金纪录</a></li>
+                    <ul class="psn_menu" id="footer_menu">
+                        <li><a href="about.html"><span class="icon_sprite icon_about"></span>关于我们</a></li>
+                        <li><a href="policy.html" class="active"><span class="icon_sprite icon_policy"></span>隐私政策</a></li>
+                        <li><a href="duty.html"><span class="icon_sprite icon_duty"></span>责任博彩</a></li>
+                        <li><a href="disclaimer.html"><span class="icon_sprite icon_disclaimer"></span>免责声明</a></li>
+                        <li><a href="join.html"><span class="icon_sprite icon_join"></span>代理加盟</a></li>
+                        <li><a href="contact.html"><span class="icon_sprite icon_contact"></span>联系我们</a></li>
                     </ul>
                 </div>
                 <!--end 左侧选单-->
                 <!--右侧内容-->
                 <div class="right_main">
                     <div class="psn_wrap">
-                        <!--在线支付-->
+                        <!--关於我们-->
                         <div class="psn_content">
-                            <div class="deposit_wrap">
-                                <dl class="psn_info">
-                                    <dt><h3>在线支付信息</h3></dt>
-                                    <dd>
-                                        <ul class="style_item">
-                                            <li>
-                                                <span class="label">会员账号</span>
-                                                <span class="form">vivien_text</span>
-                                            </li>
-                                            <li>
-                                                <span class="label">会员账号</span>
-                                                <span class="form">
-                                                    <label for="pay_zfb"><input type="radio" id="pay_zfb" name="pay_wallet" checked><span class="icon_sprite icon_wechat"></span>微信支付</label>
-                                                    <label for="pay_wx"><input type="radio" id="pay_wx" name="pay_wallet"><span class="icon_sprite icon_zfb"></span>支付宝支付</label>
-                                                </span>
-                                            </li>
-                                            <li>
-                                                <span class="label">存入金额<span class="color_red">※</span></span>
-                                                <span class="form"><input type="text" class="formInput" placeholder="范围1~10000"></span>
-                                                <span class="ui_error">请输入正确金额！</span>
-                                            </li>
-                                        </ul>
-                                        <div class="deposit_msg_plus">当前享受优惠：10.00</div>
-                                    </dd>
-                                </dl>
-                                <div class="form_submit">
-                                    <a class="formBtn" href="javascript:;">确&nbsp;&nbsp;认</a>
-                                </div>
+                            <div class="join_wrap">
+                                <p>一、我们致力为客户保护隐私并提供一个最安全的游戏平台，我们在此网站搜集的资料将会为您提供最卓越的服务，我们不会出卖或租赁您的个人资料给第三方，客户所提供的个人资料均经过SSL128加密技术处理，并储存在安全的、非公开的作业系统，对于有机会接触客户的个人资料的协助伙伴也必需遵守我们订立的隐私保密规则。</p>
+                                <p>二、您需要保管好您的帐号和密码安全。不得允许任何其他人或协力厂商，包括任何未成年人使用或重复使用您的帐户进行任何网站访问及投注操作。本公司将有权拒绝支付由此产生的任何奖励或奖金。您将独自为协力厂商在帐户中产生的所有损失负责。</p>
+                                <p>三、您可能会收到一些定期的电邮，向您更新有关本公司产品的资讯与服务，当本网推出新颖，好玩和有趣的推广活动，这些电邮就可帮助您充分享受到本网的服务。</p>
+                                <p>四、我们的系统会自动记录浏览者的网路IP位址，但我们决不会记录网站访问者的电邮位址，而此项主要是用作网站流量统计之用。</p>
+                                <p>五、本公司保留权力可自行对隐私政策做出任何修改，此政策如有任何更改均具有约束力，并立即生效</p>
                             </div>
-                        </div><!--end 在线支付-->
+                        </div><!--end 关於我们-->
                     </div>
                 </div>
                 <!--end 右侧内容-->
@@ -435,11 +408,15 @@
 
     <script type="text/javascript" src="../static/vendor/jquery.min.js"></script>
     <script type="text/javascript" src="../static/vendor/slick/slick.min.js"></script>
-    <script type="text/javascript" src="../static/vendor/My97DatePicker/WdatePicker.js"></script>
     <script type="text/javascript" src="../static/js/ui.js"></script>
 
     <script type="text/javascript">
         $(function(){
+            $('.psn_tab li').on('click',function(){
+                var index = $(this).index();
+                $(this).addClass('active').siblings().removeClass('active');
+                $('.psn_content').eq(index).show().siblings().hide();
+            })
         })
     </script>
 </body>

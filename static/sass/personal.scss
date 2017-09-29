@@ -79,9 +79,9 @@
     }
 }
 .psn_menu{
-    li{
+    >li{
         border-bottom: 1px solid #444;
-        a{
+        >a{
             display: block;
             padding: 10px 0px;
             color: #969696;
@@ -113,6 +113,10 @@
     }
     &#footer_menu a:hover .icon_sprite, &#footer_menu a.active .icon_sprite{
         background-position-y: -120px;
+    }
+
+    &#help_menu a:hover .icon_sprite, &#help_menu a.active .icon_sprite{
+        background-position-y: -168px;
     }
 }
 
@@ -421,12 +425,22 @@
             color: $colorOrange;
             font-size: $fontSize_m;
         }
-        .error{
+        input~label{
             color: $colorRed;
             margin-left: 5px;
             max-width: 255px;
             line-height: 1.2em;
             font-size: $fontSize_s;
+        }
+        .ui_error{
+            color: $colorRed;
+            margin-left: 5px;
+            max-width: 255px;
+            line-height: 1.2em;
+            font-size: $fontSize_s;
+            &.orange{
+                color: $colorOrange;
+            }
         }
         &.style_item{
             li:before{
@@ -739,28 +753,36 @@
     margin-top: 0px;
     th,td{
         text-align: center;
+        border: 1px solid #e1ddd1;
     }
     thead{
         tr{
-            border-bottom: 1px solid #e1ddd1;
+            border-bottom: none;
         }
     }
 }
 .join_wrap{
     margin: 10px 30px;
-    h4{
+    h4, .highlight{
+        color: $colorOrange;
         font-size: $fontSize_l;
-        margin: 10px 0px;
+        margin: 20px 0px 10px;
     }
-    p{
+    >p{
         margin-bottom: 10px;
         font-size: $fontSize_m;
         line-height: 24px;
-        &.bottom_line{
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e2e0e0;
-            margin-bottom: 20px;
+        a{
+            color: $colorOrange;
+            // &:hover{
+            //     color: $colorRed;
+            // }
         }
+    }
+    .bottom_line{
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e2e0e0;
+        margin-bottom: 20px;
     }
     .formSelect_wrap{
         width: 250px;
@@ -768,14 +790,158 @@
             width: 100%;
         }
     }
-    .join_list{
-        li{
-            margin-bottom: 10px;
-            &:before{
-                content: '．';
-                font-size: $fontSize_xl;
-                line-height: $fontSize;
-                color: #e75b07;
+}
+ul.join_list{
+    margin: 20px 0px;
+    li{
+        border-bottom: 0px;
+        margin-bottom: 10px;
+        line-height: 1.5em;
+        padding: 0px;
+        &:before{
+            content: '．';
+            font-size: $fontSize_xl;
+            line-height: $fontSize;
+            color: #e75b07;
+        }
+    }
+}
+
+/* ---------------------------------------------------
+// 会员注册
+--------------------------------------------------- */
+#sing-up{
+    .personal_title{
+        background-image: url(img/subtitle_sign-up.png);
+    }
+}
+.sing-up_msg{
+    margin: 0px auto 30px;
+    width: 630px;
+    h3{
+        color: $colorOrange;
+    }
+    p{
+        font-size: $fontSize_m;
+        margin: 5px 0px;
+    }
+}
+.sing-up_msg_plus{
+    margin: 10px auto;
+    padding-left: 174px;
+    color: #838080;
+    a{
+        display: inline-block;
+        background-color: $colorOrange;
+        color: #fff;
+        border-radius: 3px;
+        padding: 0px 5px;
+        margin: 0px 3px;
+    }
+}
+
+/* ---------------------------------------------------
+// 关於我们
+--------------------------------------------------- */
+#about{
+    .personal_title{
+        background-image: url(img/subtitle_about.png);
+    }
+}
+
+/* ---------------------------------------------------
+// 隐私政策
+--------------------------------------------------- */
+#policy{
+    .personal_title{
+        background-image: url(img/subtitle_policy.png);
+    }
+}
+
+/* ---------------------------------------------------
+// 责任博彩
+--------------------------------------------------- */
+#duty{
+    .personal_title{
+        background-image: url(img/subtitle_duty.png);
+    }
+}
+
+/* ---------------------------------------------------
+// 免责声明
+--------------------------------------------------- */
+#disclaimer{
+    .personal_title{
+        background-image: url(img/subtitle_disclaimer.png);
+    }
+}
+
+/* ---------------------------------------------------
+// 联系我们
+--------------------------------------------------- */
+#contact{
+    .personal_title{
+        background-image: url(img/subtitle_contact.png);
+    }
+}
+
+/* ---------------------------------------------------
+// 帮助中心
+--------------------------------------------------- */
+#help{
+    .personal_title{
+        background-image: url(img/subtitle_help.png);
+    }
+}
+.psn_menu{
+    >li{
+        position: relative;
+        >ul{
+            display: none;
+            position: absolute;
+            min-width: 200px;
+            left: 100%;
+            top: 0px;
+            border: 1px solid #efece5;
+            border-left: 2px solid $colorOrange;
+            background-color: #efece5;
+            li{
+                border-bottom: 1px solid #dfd3a6;
+                a{
+                    color: #b8aa78;
+                    display: block;
+                    padding: 10px 13px;
+                    line-height: 24px;
+                    font-size: $fontSize;
+                    white-space: nowrap;
+                }
+                &:hover, &.active{
+                    a{
+                        background-color: #fcfbf8;
+                        color: $colorOrange;
+                    }
+                }
+                &:last-child{
+                    border-bottom: 0px;
+                }
+            }
+            &::before{
+                content: '';
+                display: block;
+                position: absolute;
+                top: 20px;
+                left: -8px;
+                margin-top: -4px;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 5px 8px 5px 0;
+                border-color: transparent $colorOrange transparent transparent;
+            }
+        }
+        &:hover{
+            >ul{
+                display: block;
             }
         }
     }
