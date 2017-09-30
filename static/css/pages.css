@@ -2,6 +2,18 @@
 /* ---------------------------------------------------
 // index
 --------------------------------------------------- */
+.mainbox { position: relative; }
+
+.mainad { background-color: #110e1b; }
+
+.mainad .ad_slider { width: 1280px; height: 410px; margin: 0px auto; text-align: center; }
+
+.mainad .ad_slider a { display: inline-block; }
+
+.mainad .ad_slider img { height: 410px; }
+
+.mainad .slick-dots { bottom: 50px; }
+
 .login_box { position: absolute; top: 40px; background: url(img/bg_login.png) no-repeat; padding: 0 10px; width: 200px; height: 302px; left: 50%; margin-left: 300px; }
 
 .login_box .title { margin-top: 20px; margin-bottom: 10px; font-size: 20px; color: #fff; letter-spacing: 4px; }
@@ -82,7 +94,7 @@
 
 .index_product .product_list:after { content: ''; display: table; clear: both; }
 
-.index_casino { background: url(img/bg_casino.jpg) no-repeat center center #262031; background-size: 100% auto; }
+.index_casino { background: url(img/bg_casino.jpg) no-repeat center center #262031; background-size: auto 100%; }
 
 .index_casino .title { text-align: center; margin-bottom: 30px; }
 

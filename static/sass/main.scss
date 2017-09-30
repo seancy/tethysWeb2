@@ -243,6 +243,17 @@ a.formBtn, .formBtn{
     &.icon_help_duty{
         background-position: -48px -144px;
     }
+    &.icon_close{
+        background-position: -168px -24px;
+    }
+    &.icon_close2{
+        background-position: -192px -24px;
+    }
+    &.icon_success_big{
+        width: 50px;
+        height: 50px;
+        background-position: -192px -72px;
+    }
 }
 
 /* ---------------------------------------------------
@@ -315,6 +326,59 @@ a.formBtn, .formBtn{
                 border-right: 1px solid $linePurple;
                 &:last-child{ 
                     border-right: none;
+                }
+            }
+            .link{
+                display: inline-block;
+                -webkit-animation-iteration-count: infinite;
+                -webkit-animation-duration: 2s;
+                animation-iteration-count: infinite;
+                animation-duration: 2s;
+                margin: 0px 3px;
+                &:hover{
+                    text-decoration: underline;
+                }
+                &.red{
+                    color:#ca1946;
+                    -webkit-animation-name: link-red;
+                    -webkit-animation-delay: 300ms;
+                    animation-name: link-red;
+                    animation-delay: 300ms;
+                }
+                &.yellow{
+                    color:#d58808;
+                    -webkit-animation-name: link-yellow;
+                    -webkit-animation-delay: 1800ms;
+                    animation-name: link-yellow;
+                    animation-delay: 1800ms;
+                }
+                &.yellow-green{
+                    color:#4a8f07;
+                    -webkit-animation-name: link-yellow-green;
+                    -webkit-animation-delay: 600ms;
+                    animation-name: link-yellow-green;
+                    animation-delay: 600ms;
+                }
+                &.green{
+                    color: #0c7224;
+                    -webkit-animation-name: link-green;
+                    -webkit-animation-delay: 1500ms;
+                    animation-name: link-green;
+                    animation-delay: 1500ms;
+                }
+                &.blue-green{
+                    color: #05735a;
+                    -webkit-animation-name: link-blue-green;
+                    -webkit-animation-delay: 900ms;
+                    animation-name: link-blue-green;
+                    animation-delay: 900ms;
+                }
+                &.blue{
+                    color: #0168ab;
+                    -webkit-animation-name: link-blue;
+                    -webkit-animation-delay: 1200ms;
+                    animation-name: link-blue;
+                    animation-delay: 1200ms;
                 }
             }
         }
@@ -589,32 +653,6 @@ a.formBtn, .formBtn{
 #main{
     padding-top: 111px;
 }
-.mainbox{
-    position: relative;
-}
-.mainad{
-    // position: relative;
-    .ad_slider{
-        width: 1280px;
-        height: 410px;
-        margin: 0px auto;
-        text-align: center;
-        // position: relative;
-        // position: absolute;
-        // left: 0px;
-        // top: 0px;
-        // z-index: 9;
-        a{
-            display: inline-block;
-        }
-        img{
-            height: 410px;
-        }
-    }
-    .slick-dots{
-        bottom: 50px;
-    }
-}
 
 /* ---------------------------------------------------
 // footer
@@ -791,7 +829,173 @@ a.formBtn, .formBtn{
     from{transform: rotate(0deg)}
     to{transform: rotate(360deg)}
 }
+@keyframes link-red {
+    0%  {color: #ca1946;}
+    50%  {color: #ff0;}
+    100% {color: #ca1946;}
+}
+@keyframes link-yellow {
+    0%  {color: #d58808;}
+    50%  {color: #ff0;}
+    100% {color: #d58808;}
+}
+@keyframes link-yellow-green {
+    0%  {color: #4a8f07;}
+    50%  {color: #ff0;}
+    100% {color: #4a8f07;}
+}
+@keyframes link-green {
+    0%  {color: #0c7224;}
+    50%  {color: #fff;}
+    100% {color: #0c7224;}
+}
+@keyframes link-blue-green {
+    0%  {color: #05735a;}
+    50%  {color: #ff0;}
+    100% {color: #05735a;}
+}
+@keyframes link-blue {
+    0%  {color: #0168ab;}
+    50%  {color: #ff0;}
+    100% {color: #0168ab;}
+}
 
+/* ---------------------------------------------------
+// popup
+--------------------------------------------------- */
+#mdOverlay {
+	top: 0;
+	left: 0;
+	width: 100%;
+	position: fixed;
+	z-index: 1000;
+	background: #000;
+	display: none;
+}
+#mdWindow {
+	// margin-top: -200px;
+	margin-left: -250px;
+	top: 20%;
+	left: 50%;
+	width: 500px;
+	// height: 400px;
+	position: fixed;
+	z-index: 1001;
+	background: #fcfbf8;
+	display: none;
+    border: 1px solid #d8a44e;
+}
+#mdWindow > .mdClose {
+	top: 5px;
+	right: 5px;
+	position: absolute;
+	z-index: 1002;
+	cursor: pointer;
+}
+/* 自订弹窗样式 */
+.modalContent{
+    text-align: center;
+    color: $bgColor;
+    padding: 50px 20px;
+    .modalIcon{
+        margin: 0px auto 10px;
+    }
+    h2{
+        color: $colorRed;
+    }
+    p{
+        margin-top: 20px;
+        &.warning_text{
+            font-size: $fontSize_xxl;
+        }
+    }
+    .icon_warning{
+        width: 204px;
+        height: 204px;
+        display: inline-block;
+        background: url(img/icon_warning.png) no-repeat center center;
+        background-size: 204px;
+    }
+    .callin_popup{
+        h3{
+            color: $bgColor;
+            font-size: 27px;
+        }
+        p{
+            margin-top: 10px;
+        }
+        .icon_conform{
+            display: inline-block;
+            margin-top: -25px;
+            width: 120px;
+            height: 115px;
+            background: url(img/icon_conform.png) no-repeat center center;
+            background-size: 120px 115px;
+        }
+        .icon_noconform{
+            display: inline-block;
+            margin-top: -25px;
+            width: 120px;
+            height: 115px;
+            background: url(img/icon_noconform.png) no-repeat center center;
+            background-size: 120px 115px;
+        }
+        .callin_money{
+            display: inline-block;
+            background-color: $colorOrange;
+            color: #fff;
+            font-size: 22px;
+            border-radius: 5px;
+            padding: 3px 15px;
+        }
+        .modal_btn{
+            margin-top: 30px;
+            a{
+                margin: 0px 30px;
+            }
+        }
+    }
+}
+
+/* 首页弹窗广告 */
+.popupad{
+    position: fixed;
+    background-color: rgba(0,0,0,0.5);
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    z-index: 1000;
+}
+.popupad_window{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -345px;
+    margin-top: -230px;
+    z-index: 10001;
+    width: 690px;
+}
+.popupad_close{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color:  rgba(0,0,0,.8);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    a{
+        text-align: center;
+    }
+}
+.popupad_content{
+    width: 690px;
+    img{
+        width: 100%;
+    }
+}
 
 /* ---------------------------------------------------
 // plugins

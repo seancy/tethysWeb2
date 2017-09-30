@@ -343,18 +343,45 @@
                                             <li>
                                                 <span class="label">取款金额</span>
                                                 <span class="form"><input type="text" class="formInput" placeholder="¥ 1-9999999999"></span>
-                                                <span class="ui_error">请输入正确金额！</span>
+                                                <span class="error">请输入正确金额！</span>
                                             </li>
                                             <li>
                                                 <span class="label">取款金额</span>
                                                 <span class="form"><input type="text" class="formInput" placeholder="请输入密码"></span>
-                                                <span class="ui_error"></span>
+                                                <span class="error"></span>
                                             </li>
                                         </ul>
                                     </dd>
                                 </dl>
                                 <div class="form_submit">
-                                    <a class="formBtn" href="javascript:;">申请取款</a>
+                                    <a class="formBtn modalBtn" href="#modalConform">申请取款</a>
+                                    <!--！仅供UI测试弹窗--><p><a class="modalBtn" href="#modalConform">打码量符合弹窗</a> <a class="modalBtn" href="#modalNoConform">打码量不符合弹窗</a></p><!--end ！仅供UI测试弹窗-->
+                                    <!--打码量符合讯息-->
+                                    <div id="modalConform" style="display:none;">
+                                        <div class="callin_popup">
+                                            <div class="icon_conform"></div>
+                                            <h3>取款确认</h3>
+                                            <p>当前取款申请符合出款要求</p>
+                                            <p><span class="callin_money">本次取款：¥ 9999999999</span></p>
+                                            <div class="modal_btn">
+                                                <a class="formBtn btn_modal" href="javascript:;">取&nbsp;&nbsp;消</a>
+                                                <a class="formBtn btn_modal" href="javascript:;">确&nbsp;&nbsp;认</a>
+                                            </div>
+                                        </div>
+                                    </div><!--end 打码量符合讯息-->
+                                    <!--打码量不符合讯息-->
+                                    <div id="modalNoConform" style="display:none;">
+                                        <div class="callin_popup">
+                                            <div class="icon_noconform"></div>
+                                            <h3>警告</h3>
+                                            <p>当前取款申请不符合出款要求，须扣除<span class="color_red">1000.00</span>元</p>
+                                            <p><span class="callin_money">最终可取款：¥ 1000.00</span></p>
+                                            <div class="modal_btn">
+                                                <a class="formBtn btn_modal" href="javascript:;">取&nbsp;&nbsp;消</a>
+                                                <a class="formBtn btn_modal" href="javascript:;">确&nbsp;&nbsp;认</a>
+                                            </div>
+                                        </div>
+                                    </div><!--end 打码量不符合讯息-->
                                 </div>
                             </div>
                         </div><!--end 取款-->

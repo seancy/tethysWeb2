@@ -21,6 +21,12 @@
                 <a class="signup" href="sign-up.html"><span class="icon_sprite icon_account"></span>免费开户</a>
                 <a class="help" href="help.html"><span class="icon_sprite icon_info"></span>新手指南</a>
                 <span class="info">
+                    <a class="link blue-green" href="javascript:;">糖果派对1-2</a>
+                    <a class="link blue" href="javascript:;">MG老虎机</a>
+                    <a class="link green" href="javascript:;">PT角子机</a>
+                    <a class="link yellow-green" href="javascript:;">MW千炮捕鱼</a>
+                    <a class="link yellow" href="javascript:;">时时彩</a>
+                    <a class="link red" href="javascript:;">连环夺宝</a>
                     <span>BC彩票天天返水1.2%</span>
                     <span>MG返水1.2%</span>
                 </span>
@@ -217,7 +223,6 @@
                 <div class="ad_slider">
                     <div><a href="javascript:;"><img src="../static/images/banner/mainad_1.jpg"></a></div>
                     <div><a href="javascript:;"><img src="../static/images/banner/mainad_2.jpg"></a></div>
-                    <div><a href="javascript:;"><img src="../static/images/banner/mainad_3.jpg"></a></div>
                 </div>
             </div><!--end 广告轮播图-->
             <!--登录（首页）-->
@@ -446,6 +451,17 @@
     </div>
     <!--end 浮动广告-->
 
+    <!--弹窗广告-->
+    <div class="popupad">
+        <div class="popupad_window">
+            <a class="popupad_close" href="javascript:;"><span class="icon_sprite icon_close2"></span></a>
+            <div class="popupad_content">
+                <img src="../static/images/banner/popupad.png">
+            </div>
+        </div>
+    </div>
+    <!--end 弹窗广告-->
+
     <script type="text/javascript" src="../static/vendor/jquery.min.js"></script>
     <script type="text/javascript" src="../static/vendor/slick/slick.min.js"></script>
     <script type="text/javascript" src="../static/js/ui.js"></script>
@@ -529,6 +545,13 @@
                 autoplay: true,
                 autoplaySpeed: 3000,
             });
+        })
+
+        // 关闭弹窗
+        $(function(){
+            $('.popupad_close').on('click',function(){
+                $('.popupad').hide();
+            })
         })
     </script>
 </body>

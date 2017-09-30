@@ -130,6 +130,12 @@ a.formBtn:hover, .formBtn:hover { color: #fff; background: #fe9500; background: 
 
 .icon_sprite.icon_help_duty { background-position: -48px -144px; }
 
+.icon_sprite.icon_close { background-position: -168px -24px; }
+
+.icon_sprite.icon_close2 { background-position: -192px -24px; }
+
+.icon_sprite.icon_success_big { width: 50px; height: 50px; background-position: -192px -72px; }
+
 /* ---------------------------------------------------
 // header
 --------------------------------------------------- */
@@ -164,6 +170,22 @@ a.formBtn:hover, .formBtn:hover { color: #fff; background: #fe9500; background: 
 .topbar .topright .info span { padding: 0px 10px; border-right: 1px solid #443063; }
 
 .topbar .topright .info span:last-child { border-right: none; }
+
+.topbar .topright .info .link { display: inline-block; -webkit-animation-iteration-count: infinite; -webkit-animation-duration: 2s; animation-iteration-count: infinite; animation-duration: 2s; margin: 0px 3px; }
+
+.topbar .topright .info .link:hover { text-decoration: underline; }
+
+.topbar .topright .info .link.red { color: #ca1946; -webkit-animation-name: link-red; -webkit-animation-delay: 300ms; animation-name: link-red; animation-delay: 300ms; }
+
+.topbar .topright .info .link.yellow { color: #d58808; -webkit-animation-name: link-yellow; -webkit-animation-delay: 1800ms; animation-name: link-yellow; animation-delay: 1800ms; }
+
+.topbar .topright .info .link.yellow-green { color: #4a8f07; -webkit-animation-name: link-yellow-green; -webkit-animation-delay: 600ms; animation-name: link-yellow-green; animation-delay: 600ms; }
+
+.topbar .topright .info .link.green { color: #0c7224; -webkit-animation-name: link-green; -webkit-animation-delay: 1500ms; animation-name: link-green; animation-delay: 1500ms; }
+
+.topbar .topright .info .link.blue-green { color: #05735a; -webkit-animation-name: link-blue-green; -webkit-animation-delay: 900ms; animation-name: link-blue-green; animation-delay: 900ms; }
+
+.topbar .topright .info .link.blue { color: #0168ab; -webkit-animation-name: link-blue; -webkit-animation-delay: 1200ms; animation-name: link-blue; animation-delay: 1200ms; }
 
 .topbar:after { content: ''; display: table; clear: both; }
 
@@ -257,16 +279,6 @@ a.formBtn:hover, .formBtn:hover { color: #fff; background: #fe9500; background: 
 // main
 --------------------------------------------------- */
 #main { padding-top: 111px; }
-
-.mainbox { position: relative; }
-
-.mainad .ad_slider { width: 1280px; height: 410px; margin: 0px auto; text-align: center; }
-
-.mainad .ad_slider a { display: inline-block; }
-
-.mainad .ad_slider img { height: 410px; }
-
-.mainad .slick-dots { bottom: 50px; }
 
 /* ---------------------------------------------------
 // footer
@@ -381,6 +393,103 @@ a.formBtn:hover, .formBtn:hover { color: #fff; background: #fe9500; background: 
 
 @keyframes menuRotate { from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
   to { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+
+@-webkit-keyframes link-red { 0% { color: #ca1946; }
+  50% { color: #ff0; }
+  100% { color: #ca1946; } }
+
+@keyframes link-red { 0% { color: #ca1946; }
+  50% { color: #ff0; }
+  100% { color: #ca1946; } }
+
+@-webkit-keyframes link-yellow { 0% { color: #d58808; }
+  50% { color: #ff0; }
+  100% { color: #d58808; } }
+
+@keyframes link-yellow { 0% { color: #d58808; }
+  50% { color: #ff0; }
+  100% { color: #d58808; } }
+
+@-webkit-keyframes link-yellow-green { 0% { color: #4a8f07; }
+  50% { color: #ff0; }
+  100% { color: #4a8f07; } }
+
+@keyframes link-yellow-green { 0% { color: #4a8f07; }
+  50% { color: #ff0; }
+  100% { color: #4a8f07; } }
+
+@-webkit-keyframes link-green { 0% { color: #0c7224; }
+  50% { color: #fff; }
+  100% { color: #0c7224; } }
+
+@keyframes link-green { 0% { color: #0c7224; }
+  50% { color: #fff; }
+  100% { color: #0c7224; } }
+
+@-webkit-keyframes link-blue-green { 0% { color: #05735a; }
+  50% { color: #ff0; }
+  100% { color: #05735a; } }
+
+@keyframes link-blue-green { 0% { color: #05735a; }
+  50% { color: #ff0; }
+  100% { color: #05735a; } }
+
+@-webkit-keyframes link-blue { 0% { color: #0168ab; }
+  50% { color: #ff0; }
+  100% { color: #0168ab; } }
+
+@keyframes link-blue { 0% { color: #0168ab; }
+  50% { color: #ff0; }
+  100% { color: #0168ab; } }
+
+/* ---------------------------------------------------
+// popup
+--------------------------------------------------- */
+#mdOverlay { top: 0; left: 0; width: 100%; position: fixed; z-index: 1000; background: #000; display: none; }
+
+#mdWindow { margin-left: -250px; top: 20%; left: 50%; width: 500px; position: fixed; z-index: 1001; background: #fcfbf8; display: none; border: 1px solid #d8a44e; }
+
+#mdWindow > .mdClose { top: 5px; right: 5px; position: absolute; z-index: 1002; cursor: pointer; }
+
+/* 自订弹窗样式 */
+.modalContent { text-align: center; color: #10061f; padding: 50px 20px; }
+
+.modalContent .modalIcon { margin: 0px auto 10px; }
+
+.modalContent h2 { color: #fb0202; }
+
+.modalContent p { margin-top: 20px; }
+
+.modalContent p.warning_text { font-size: 20px; }
+
+.modalContent .icon_warning { width: 204px; height: 204px; display: inline-block; background: url(img/icon_warning.png) no-repeat center center; background-size: 204px; }
+
+.modalContent .callin_popup h3 { color: #10061f; font-size: 27px; }
+
+.modalContent .callin_popup p { margin-top: 10px; }
+
+.modalContent .callin_popup .icon_conform { display: inline-block; margin-top: -25px; width: 120px; height: 115px; background: url(img/icon_conform.png) no-repeat center center; background-size: 120px 115px; }
+
+.modalContent .callin_popup .icon_noconform { display: inline-block; margin-top: -25px; width: 120px; height: 115px; background: url(img/icon_noconform.png) no-repeat center center; background-size: 120px 115px; }
+
+.modalContent .callin_popup .callin_money { display: inline-block; background-color: #e75b07; color: #fff; font-size: 22px; border-radius: 5px; padding: 3px 15px; }
+
+.modalContent .callin_popup .modal_btn { margin-top: 30px; }
+
+.modalContent .callin_popup .modal_btn a { margin: 0px 30px; }
+
+/* 首页弹窗广告 */
+.popupad { position: fixed; background-color: rgba(0, 0, 0, 0.5); top: 0px; left: 0px; right: 0px; bottom: 0px; width: 100%; z-index: 1000; }
+
+.popupad_window { position: absolute; left: 50%; top: 50%; margin-left: -345px; margin-top: -230px; z-index: 10001; width: 690px; }
+
+.popupad_close { position: absolute; top: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.8); border-radius: 50%; width: 40px; height: 40px; padding: 8px; }
+
+.popupad_close a { text-align: center; }
+
+.popupad_content { width: 690px; }
+
+.popupad_content img { width: 100%; }
 
 /* ---------------------------------------------------
 // plugins

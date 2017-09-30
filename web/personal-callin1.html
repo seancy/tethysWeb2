@@ -379,7 +379,12 @@
                                     </dd>
                                 </dl>
                                 <div class="form_submit">
-                                    <a class="formBtn" href="javascript:;">申请取款</a>
+                                    <a class="formBtn modalBtn" href="#modalWaring">确&nbsp;&nbsp;认</a>
+                                    <!--提示讯息-->
+                                    <div id="modalWaring" style="display:none;">
+                                        <div class="icon_warning"></div>
+                                        <p class="warning_text">当前没有绑定取款银行卡，无法完成取款，<br />请绑定银行卡继续操作！</p>
+                                    </div><!--end 提示讯息-->
                                 </div>
                             </div>
                         </div><!--end 取款-->
@@ -470,6 +475,7 @@
 
     <script type="text/javascript">
         $(function(){
+            $('.modalBtn').click();
         })
     </script>
 </body>
