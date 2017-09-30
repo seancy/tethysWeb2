@@ -221,7 +221,13 @@ a.formBtn:hover, .formBtn:hover { color: #fff; background: #fe9500; background: 
 
 .nav .menu .mainmenu > li:hover .submenu { height: 100px; -webkit-transition: height 200ms ease-in; -ms-transition: height 200ms ease-in; -o-transition: height 200ms ease-in; transition: height 200ms ease-in; }
 
-.nav .menu .mainmenu > li.hot:after { content: ''; display: block; margin-top: -78px; margin-right: -4px; float: right; position: relative; z-index: 1; width: 58px; height: 53px; background: url(img/menu_hot.png) no-repeat; }
+.nav .menu .mainmenu > li.hot { background-color: rgba(112, 67, 19, 0.13); }
+
+.nav .menu .mainmenu > li.hot h2, .nav .menu .mainmenu > li.hot small { color: #e75b07; }
+
+.nav .menu .mainmenu > li.hot > a:after { content: ''; display: block; position: absolute; top: -4px; right: -4px; z-index: 1; width: 58px; height: 53px; background: url(img/menu_hot.png) no-repeat; background-size: 58px 53px; }
+
+.nav .menu .mainmenu > li.hot:hover h2, .nav .menu .mainmenu > li.hot.active h2 { color: #fff; }
 
 .nav .menu .mainmenu .submenu { height: 0px; overflow: hidden; position: absolute; left: 0px; top: 74px; z-index: 10; width: 100%; padding-left: calc(350px + 2.5%); background-color: rgba(0, 0, 0, 0.9); text-align: center; }
 

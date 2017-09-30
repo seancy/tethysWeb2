@@ -476,17 +476,26 @@ a.formBtn, .formBtn{
                 // &:nth-child(3) .submenu li:first-child{ margin-left: 28.5174%;}
                 // &:nth-child(4) .submenu li:first-child{ margin-left: 42.7761%;}
                 // &:nth-child(5) .submenu li:first-child{ margin-left: 57.0348%;}
-                &.hot:after{
-                    content: '';
-                    display: block;
-                    margin-top: -78px;
-                    margin-right: -4px;
-                    float: right;
-                    position: relative;
-                    z-index: 1;
-                    width: 58px;
-                    height: 53px;
-                    background: url(img/menu_hot.png) no-repeat;
+                &.hot {
+                    background-color: rgba( #704313, 0.13);
+                    h2,small{
+                        color: $colorOrange;
+                    }
+                    > a:after{
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        top: -4px;
+                        right: -4px;
+                        z-index: 1;
+                        width: 58px;
+                        height: 53px;
+                        background: url(img/menu_hot.png) no-repeat;
+                        background-size: 58px 53px;
+                    }
+                    &:hover h2, &.active h2{
+                        color: #fff;
+                    }
                 }
             }
             .submenu{

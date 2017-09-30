@@ -36,11 +36,11 @@
 
 .login_box .btn a { display: block; padding: 9px 15px; height: 44px; margin: 10px 0px 0px; width: 100%; text-align: center; font-size: 16px; background-image: url(img/bg_login_btn.png); background-size: 183px 106px; background-repeat: no-repeat; }
 
-.login_box .btn a.btn_login { background-position: 0px 0px; }
+.login_box .btn a.btn_login { background-position: 0px -44px; }
 
 .login_box .btn a.btn_reg { background-position: 0px -44px; }
 
-.login_box .btn a:hover { position: relative; color: #fff; }
+.login_box .btn a:hover { position: relative; color: #fff; background-position: 0px 0px; }
 
 .login_box .btn a:hover:before, .login_box .btn a:hover:after { content: ''; background: url(img/bg_login_btn.png) no-repeat 0px -88px; background-size: 183px 106px; position: absolute; width: 14px; height: 18px; }
 
@@ -79,6 +79,8 @@
 .index_product .product_list a { float: left; width: 240px; height: 360px; margin-right: 13.3333px; display: block; position: relative; }
 
 .index_product .product_list a .title { margin-top: 15px; }
+
+.index_product .product_list a .title img { width: 205px; }
 
 .index_product .product_list a .img { margin-top: 25px; margin-bottom: 20px; text-align: center; }
 
@@ -149,7 +151,7 @@
 --------------------------------------------------- */
 .pagebox { min-height: 295px; background-size: 1280px; background-repeat: no-repeat; background-position: center top; padding-top: 60px; }
 
-.pagebox .page_title { text-align: center; margin: 0 auto 165px; width: 330px; height: 70px; background-position: center center; background-repeat: no-repeat; background-size: 330px 70px; }
+.pagebox .page_title { text-align: center; margin: 0 auto 145px; width: 330px; height: 70px; background-position: center center; background-repeat: no-repeat; background-size: 330px 70px; }
 
 .pagebox .page_title img { width: 330px; height: 70px; margin: 0px auto; }
 
@@ -214,11 +216,15 @@
 
 .page_liveList > li .btn { position: absolute; bottom: 0px; left: 0px; width: 100%; z-index: 10; }
 
-.page_liveList > li .btn a { display: block; height: 37px; line-height: 37px; font-size: 15px; color: #ada7a1; text-align: center; background: #928872; background: -moz-linear-gradient(top, #928872 0%, #474340 100%); background: -webkit-linear-gradient(top, #928872 0%, #474340 100%); background: -webkit-gradient(linear, left top, left bottom, from(#928872), to(#474340)); background: -o-linear-gradient(top, #928872 0%, #474340 100%); background: linear-gradient(to bottom, #928872 0%, #474340 100%); }
+.page_liveList > li .btn > a { display: block; height: 37px; line-height: 37px; font-size: 15px; color: #ada7a1; text-align: center; background: #928872; background: -moz-linear-gradient(top, #928872 0%, #474340 100%); background: -webkit-linear-gradient(top, #928872 0%, #474340 100%); background: -webkit-gradient(linear, left top, left bottom, from(#928872), to(#474340)); background: -o-linear-gradient(top, #928872 0%, #474340 100%); background: linear-gradient(to bottom, #928872 0%, #474340 100%); }
 
-.page_liveList > li .btn .btn_list { display: none; position: absolute; background-color: #333; -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); top: 35px; left: 0px; width: 100%; z-index: 11; }
+.page_liveList > li .btn .btn_list { display: none; position: absolute; background-color: #201e1c; -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); top: 35px; left: 0px; width: 100%; z-index: 11; }
 
-.page_liveList > li .btn .btn_list a { float: left; width: 50%; }
+.page_liveList > li .btn .btn_list a { float: left; width: 50%; border-bottom: 1px solid #47443f; height: 35px; line-height: 35px; text-align: center; background-color: #201e1c; background-image: none; cursor: pointer; }
+
+.page_liveList > li .btn .btn_list a:nth-child(odd) { width: calc( 50% - 1px); border-right: 1px solid #47443f; }
+
+.page_liveList > li .btn .btn_list a:hover { color: #fff; background-color: #432e10; }
 
 .page_liveList > li .btn .btn_list:after { content: ''; display: table; clear: both; }
 
@@ -242,7 +248,7 @@
 
 .page_liveList > li:hover .img { background-position-x: 0px; -webkit-transition: background-position 300ms ease-in; -ms-transition: background-position 300ms ease-in; -o-transition: background-position 300ms ease-in; transition: background-position 300ms ease-in; }
 
-.page_liveList > li:hover .btn a { color: #fff; background: #a4884d; background: -moz-linear-gradient(top, #a4884d 0%, #654934 100%); background: -webkit-linear-gradient(top, #d3ad5b 0%, #654934 100%); background: -webkit-gradient(linear, left top, left bottom, from(#d3ad5b), to(#654934)); background: -o-linear-gradient(top, #d3ad5b 0%, #654934 100%); background: linear-gradient(to bottom, #d3ad5b 0%, #654934 100%); }
+.page_liveList > li:hover .btn > a { color: #fff; background: #a4884d; background: -moz-linear-gradient(top, #a4884d 0%, #654934 100%); background: -webkit-linear-gradient(top, #d3ad5b 0%, #654934 100%); background: -webkit-gradient(linear, left top, left bottom, from(#d3ad5b), to(#654934)); background: -o-linear-gradient(top, #d3ad5b 0%, #654934 100%); background: linear-gradient(to bottom, #d3ad5b 0%, #654934 100%); }
 
 .page_liveList > li:hover:nth-child(1) .bg, .page_liveList > li:hover:nth-child(2) .bg { background-position-x: -40px; }
 
@@ -256,7 +262,9 @@
 
 .page_liveList.temp_block > li .img { display: none; }
 
-.page_liveList.temp_block > li .btn a { height: 35px; line-height: 35px; font-size: 15px; }
+.page_liveList.temp_block > li .btn > a { height: 35px; line-height: 35px; font-size: 15px; }
+
+.page_liveList.temp_block > li .btn > a:hover { background: #fe9500; background: -moz-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-gradient(linear, left top, left bottom, from(#fe9500), to(#a74300)); background: -o-linear-gradient(top, #fe9500 0%, #a74300 100%); background: linear-gradient(to bottom, #fe9500 0%, #a74300 100%); }
 
 .page_liveList.temp_block > li:nth-child(4n) { margin-right: 0px; }
 
@@ -264,7 +272,7 @@
 
 .page_liveList.temp_block > li:hover .btn_list { z-index: 20; }
 
-.page_liveList.temp_block > li .brand { background-color: rgba(0, 0, 0, 0.5); height: 35px; bottom: 35px; left: 0px; padding: 0px 15px; color: #fff; }
+.page_liveList.temp_block > li .brand { background-color: rgba(0, 0, 0, 0.5); height: 35px; top: 0px; left: 0px; padding: 0px 15px; color: #fff; }
 
 .page_liveList.temp_block > li .brand .logo { display: inline-block; background-repeat: no-repeat; background-size: 35px 70px; height: 35px; width: 35px; }
 
