@@ -8,7 +8,7 @@
         <!--左侧选单-->
         <div class="left_menu">
           <div class="user_info">
-            <div class="img"><img src="../static/images/pic_user.png"></div>
+            <div class="img"><img src="../../../static/images/pic_user.png"></div>
             <p class="name">vivien</p>
             <p class="balance">0.00</p>
             <p class="refresh">Your Balance<span class="icon_sprite icon_refresh_money"></span></p>
@@ -35,7 +35,7 @@
             <div class="psn_content">
               <div class="deposit_content">
                 <div class="deposit_info">
-                  <div class="img"><img src="../static/images/deposit_wallet.jpg" width="710" height="300" alt=""></div>
+                  <div class="img"><img src="../../../static/images/deposit_wallet.jpg" width="710" height="300" alt=""></div>
                   <div class="text">
                     <ul>
                       <li>钱包秒充支持：支付宝、微信扫码汇款，支付便捷，到款迅速！</li>
@@ -52,7 +52,7 @@
             <div class="psn_content" style="display:none;">
               <div class="deposit_content">
                 <div class="deposit_info">
-                  <div class="img"><img src="../static/images/deposit_bank.jpg" alt=""></div>
+                  <div class="img"><img src="../../../static/images/deposit_bank.jpg" alt=""></div>
                   <div class="text">
                     <p>※什么是银行转账？</p>
                     <p>通过网银转账、ATM/柜台存入、手机网银转账等方式汇款。</p>
@@ -69,7 +69,7 @@
             <div class="psn_content" style="display:none">
               <div class="deposit_content">
                 <div class="deposit_info">
-                  <div class="img"><img src="../static/images/deposit_online.jpg" alt=""></div>
+                  <div class="img"><img src="../../../static/images/deposit_online.jpg" alt=""></div>
                   <div class="text">
                     <p>※ 跨行汇款或存款金额低于1000000元建议使用在线支付，无需手续费，支付完成，立即火速到账。</p>
                   </div>
@@ -83,7 +83,7 @@
             <div class="psn_content" style="display:none">
               <div class="deposit_content">
                 <div class="deposit_info">
-                  <div class="img"><img src="../static/images/deposit_code.jpg" alt=""></div>
+                  <div class="img"><img src="../../../static/images/deposit_code.jpg" alt=""></div>
                   <div class="text">
                     <p>※温馨提示：支持微信、支付宝、QQ扫码支付，建议小额支付、大额支付可选择其它支付方式或分多次支付 ※支付成功后，请等待几秒钟，提示「支付成功」按确认键后再关闭支付窗口，款项会即时入账。</p>
                   </div>

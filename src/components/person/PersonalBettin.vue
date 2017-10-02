@@ -7,13 +7,13 @@
       <!--左侧选单-->
       <div class="left_menu">
         <div class="user_info">
-          <div class="img"><img src="../static/images/pic_user.png"></div>
+          <div class="img"><img src="../../../static/images/pic_user.png"></div>
           <p class="name">vivien</p>
           <p class="balance">0.00</p>
           <p class="refresh">Your Balance<span class="icon_sprite icon_refresh_money"></span></p>
         </div>
         <ul class="psn_menu">
-          <li><a href="personal-info.html"><span class="icon_sprite icon_psn_info"></span>个人中心</a></li>
+          <li><a href="info"><span class="icon_sprite icon_psn_info"></span>个人中心</a></li>
           <li><a href="personal-deposit.html"><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
           <li><a href="personal-callin.html"><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
           <li><a href="personal-bettin.html" class="active"><span class="icon_sprite icon_psn_bettin"></span>投注记录</a></li>

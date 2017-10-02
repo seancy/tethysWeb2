@@ -8,17 +8,17 @@
         <!--左侧选单-->
         <div class="left_menu">
           <div class="user_info">
-            <div class="img"><img src="../static/images/pic_user.png"></div>
-            <p class="name">vivien</p>
-            <p class="balance">0.00</p>
+            <div class="img"><img src="../../../static/images/pic_user.png"></div>
+            <p class="name"></p>
+            <p class="balance"></p>
             <p class="refresh">Your Balance<span class="icon_sprite icon_refresh_money"></span></p>
           </div>
           <ul class="psn_menu">
-            <li><a href="personal-info.html" class="active"><span class="icon_sprite icon_psn_info"></span>个人中心</a></li>
-            <li><a href="personal-deposit.html"><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
-            <li><a href="personal-callin.html"><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
-            <li><a href="personal-bettin.html"><span class="icon_sprite icon_psn_bettin"></span>投注记录</a></li>
-            <li><a href="personal-funds.html"><span class="icon_sprite icon_psn_funds"></span>资金纪录</a></li>
+            <li><a href="info" class="active"><span class="icon_sprite icon_psn_info"></span>个人中心</a></li>
+            <li><a href="deposit1"><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
+            <li><a href="callinl"><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
+            <li><a href="bettin"><span class="icon_sprite icon_psn_bettin"></span>投注记录</a></li>
+            <li><a href="funds"><span class="icon_sprite icon_psn_funds"></span>资金纪录</a></li>
           </ul>
         </div>
         <!--end 左侧选单-->
@@ -98,16 +98,15 @@
     </div>
   </div>
 </template>
-
 <script>
-export default {
-  name: 'hello',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  export default {
+    name: 'hello',
+    data () {
+      return {
+        msg: 'Welcome to Your Vue.js App'
+      }
     }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

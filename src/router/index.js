@@ -12,7 +12,6 @@ import Help from '@/components/Help'
 import Join from '@/components/Join'
 import Live from '@/components/Live'
 import Lottery from '@/components/Lottery'
-
 import PersonalBettin from '@/components/person/PersonalBettin'
 
 import PersonalCallin from '@/components/person/PersonalCallin'
@@ -26,7 +25,6 @@ import PersonalInfo from '@/components/person/PersonalInfo'
 import PersonalModifyPassword from '@/components/person/PersonalModifyPassword'
 
 import PersonalMsg from '@/components/person/PersonalMsg'
-
 import Policy from '@/components/Policy'
 import Promo from '@/components/Promo'
 import SignUp from '@/components/SignUp'
@@ -95,56 +93,56 @@ export default new Router({
       component: Lottery
     },
     {
-      path: '/bettin',
-      name: 'Bettin',
+      path: '/personal-bettin',
+      name: 'PersonalBettin',
       component: PersonalBettin
     },
 
     {
-      path: '/callin',
-      name: 'Callin',
+      path: '/personal-callin',
+      name: 'PersonalCallin',
       component: PersonalCallin
     },
     {
-      path: '/callinEdit',
-      name: 'CallinEdit',
+      path: '/personal-callin_edit',
+      name: 'PersonalCallinEdit',
       component: PersonalCallinEdit
     },
     {
-      path: '/callin1',
-      name: 'Callin1',
+      path: '/personal-callin1',
+      name: 'PersonalCallin1',
       component: PersonalCallin1
     },
     {
-      path: '/deposit',
-      name: 'Deposit',
+      path: '/personal-deposit',
+      name: 'PersonalDeposit',
       component: PersonalDeposit
     },
 
     {
-      path: '/deposit1_1',
-      name: 'Deposit11',
+      path: '/personal-deposit1_1',
+      name: 'PersonalDeposit11',
       component: PersonalDeposit11
     },
     {
-      path: '/funds',
-      name: 'Funds',
+      path: '/personal-funds',
+      name: 'PersonalFunds',
       component: PersonalFunds
     },
     {
-      path: '/info',
-      name: 'Info',
+      path: '/personal-info',
+      name: 'PersonalInfo',
       component: PersonalInfo
     },
     {
-      path: '/modifyPassword',
-      name: 'ModifyPassword',
+      path: '/personal-modify-password',
+      name: 'PersonalModifyPassword',
       component: PersonalModifyPassword
     },
 
     {
-      path: '/msg',
-      name: 'Msg',
+      path: '/personal-msg',
+      name: 'PersonalMsg',
       component: PersonalMsg
     },
     {

@@ -8,7 +8,7 @@
         <!--左侧选单-->
         <div class="left_menu">
           <div class="user_info">
-            <div class="img"><img src="../static/images/pic_user.png"></div>
+            <div class="img"><img src="../../../static/images/pic_user.png"></div>
             <p class="name">vivien</p>
             <p class="balance">0.00</p>
             <p class="refresh">Your Balance<span class="icon_sprite icon_refresh_money"></span></p>
