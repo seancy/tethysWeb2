@@ -14,11 +14,11 @@
             <p class="refresh">Your Balance<span class="icon_sprite icon_refresh_money"></span></p>
           </div>
           <ul class="psn_menu">
-            <li><a href="info" class="active"><span class="icon_sprite icon_psn_info"></span>个人中心</a></li>
-            <li><a href="deposit1"><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
-            <li><a href="callinl"><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
-            <li><a href="bettin"><span class="icon_sprite icon_psn_bettin"></span>投注记录</a></li>
-            <li><a href="funds"><span class="icon_sprite icon_psn_funds"></span>资金纪录</a></li>
+            <li><a href="personalInfo" class="active"><span class="icon_sprite icon_psn_info"></span>个人中心</a></li>
+            <li><a href="personalDeposit"><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
+            <li><a href="personalCallin"><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
+            <li><a href="personalBettin"><span class="icon_sprite icon_psn_bettin"></span>投注记录</a></li>
+            <li><a href="personalFunds"><span class="icon_sprite icon_psn_funds"></span>资金纪录</a></li>
           </ul>
         </div>
         <!--end 左侧选单-->
@@ -100,7 +100,7 @@
 </template>
 <script>
   export default {
-    name: 'hello',
+    name: 'PersonalInfo',
     data () {
       return {
         msg: 'Welcome to Your Vue.js App'
@@ -109,23 +109,4 @@
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>

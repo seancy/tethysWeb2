@@ -93,55 +93,55 @@ export default new Router({
       component: Lottery
     },
     {
-      path: '/personal-bettin',
+      path: '/personalBettin',
       name: 'PersonalBettin',
       component: PersonalBettin
     },
 
     {
-      path: '/personal-callin',
+      path: '/personalCallin',
       name: 'PersonalCallin',
       component: PersonalCallin
     },
     {
-      path: '/personal-callin_edit',
+      path: '/personalCallin_edit',
       name: 'PersonalCallinEdit',
       component: PersonalCallinEdit
     },
     {
-      path: '/personal-callin1',
+      path: '/personalCallin1',
       name: 'PersonalCallin1',
       component: PersonalCallin1
     },
     {
-      path: '/personal-deposit',
+      path: '/personalDeposit',
       name: 'PersonalDeposit',
       component: PersonalDeposit
     },
 
     {
-      path: '/personal-deposit1_1',
+      path: '/personalDeposit1_1',
       name: 'PersonalDeposit11',
       component: PersonalDeposit11
     },
     {
-      path: '/personal-funds',
+      path: '/personalFunds',
       name: 'PersonalFunds',
       component: PersonalFunds
     },
     {
-      path: '/personal-info',
+      path: '/personalInfo',
       name: 'PersonalInfo',
       component: PersonalInfo
     },
     {
-      path: '/personal-modify-password',
+      path: '/personalModifyPassword',
       name: 'PersonalModifyPassword',
       component: PersonalModifyPassword
     },
 
     {
-      path: '/personal-msg',
+      path: '/personalMsg',
       name: 'PersonalMsg',
       component: PersonalMsg
     },

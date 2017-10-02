@@ -14,6 +14,7 @@
 <script>
 import '../static/css/main.css'
 import '../static/css/pages.css'
+import '../static/css/personal.css'
 import TopHeader from '@/components/TopHeader'
 import BottomFooter from '@/components/BottomFooter'
 import OnlineService from '@/components/OnlineService'
