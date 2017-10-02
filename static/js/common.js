@@ -871,12 +871,13 @@ window.common = {
     changeTime: changeTime ,
     newTab: null,
     toast: function(msg) {
-        $message({
-            content: msg.content || msg,
-            time: 3,
-            hh: true,
-            hf: true
-        });
+        console.log(msg)
+        // $message({
+        //     content: msg.content || msg,
+        //     time: 3,
+        //     hh: true,
+        //     hf: true
+        // });
     },
     toast_drawMoney: function(msg) {
       //  console.log(msg);
