@@ -1,7 +1,7 @@
 <template>
-  <div id="main">
+<!--  <div id="main">
 
-  </div>
+  </div>-->
   <div class="personal_box" id="personal-callin">
     <div class="contain_width">
       <h2 class="personal_title"></h2>
@@ -10,7 +10,7 @@
       <!--左侧选单-->
       <div class="left_menu">
         <div class="user_info">
-          <div class="img"><img src="../static/images/pic_user.png"></div>
+          <div class="img"><img src="../../../static/images/pic_user.png"></div>
           <p class="name">vivien</p>
           <p class="balance">0.00</p>
           <p class="refresh">Your Balance<span class="icon_sprite icon_refresh_money"></span></p>
