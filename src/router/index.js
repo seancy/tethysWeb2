@@ -12,19 +12,21 @@ import Help from '@/components/Help'
 import Join from '@/components/Join'
 import Live from '@/components/Live'
 import Lottery from '@/components/Lottery'
-import PersonalBettin from '@/components/PersonalBettin'
 
-import PersonalCallin from '@/components/PersonalCallin'
-import PersonalCallinEdit from '@/components/PersonalCallinEdit'
-import PersonalCallin1 from '@/components/PersonalCallin1'
-import PersonalDeposit from '@/components/PersonalDeposit'
+import PersonalBettin from '@/components/person/PersonalBettin'
 
-import PersonalDeposit11 from '@/components/PersonalDeposit11'
-import PersonalFunds from '@/components/PersonalFunds'
-import PersonalInfo from '@/components/PersonalInfo'
-import PersonalModifyPassword from '@/components/PersonalModifyPassword'
+import PersonalCallin from '@/components/person/PersonalCallin'
+import PersonalCallinEdit from '@/components/person/PersonalCallinEdit'
+import PersonalCallin1 from '@/components/person/PersonalCallin1'
+import PersonalDeposit from '@/components/person/PersonalDeposit'
 
-import PersonalMsg from '@/components/PersonalMsg'
+import PersonalDeposit11 from '@/components/person/PersonalDeposit11'
+import PersonalFunds from '@/components/person/PersonalFunds'
+import PersonalInfo from '@/components/person/PersonalInfo'
+import PersonalModifyPassword from '@/components/person/PersonalModifyPassword'
+
+import PersonalMsg from '@/components/person/PersonalMsg'
+
 import Policy from '@/components/Policy'
 import Promo from '@/components/Promo'
 import SignUp from '@/components/SignUp'
@@ -93,40 +95,40 @@ export default new Router({
       component: Lottery
     },
     {
-      path: '/personal-bettin',
-      name: 'PersonalBettin',
+      path: '/bettin',
+      name: 'Bettin',
       component: PersonalBettin
     },
 
     {
-      path: '/personal-callin',
-      name: 'PersonalCallin',
+      path: '/callin',
+      name: 'Callin',
       component: PersonalCallin
     },
     {
-      path: '/personal-callin_edit',
-      name: 'PersonalCallinEdit',
+      path: '/callinEdit',
+      name: 'CallinEdit',
       component: PersonalCallinEdit
     },
     {
-      path: '/personal-callin1',
-      name: 'PersonalCallin1',
+      path: '/callin1',
+      name: 'Callin1',
       component: PersonalCallin1
     },
     {
-      path: '/personal-deposit',
-      name: 'PersonalDeposit',
+      path: '/deposit',
+      name: 'Deposit',
       component: PersonalDeposit
     },
 
     {
-      path: '/personal-deposit1_1',
-      name: 'PersonalDeposit11',
+      path: '/deposit1_1',
+      name: 'Deposit11',
       component: PersonalDeposit11
     },
     {
-      path: '/personal-funds',
-      name: 'PersonalFunds',
+      path: '/funds',
+      name: 'Funds',
       component: PersonalFunds
     },
     {
@@ -135,14 +137,14 @@ export default new Router({
       component: PersonalInfo
     },
     {
-      path: '/personal-modify-password',
-      name: 'PersonalModifyPassword',
+      path: '/modifyPassword',
+      name: 'ModifyPassword',
       component: PersonalModifyPassword
     },
 
     {
-      path: '/personal-msg',
-      name: 'PersonalMsg',
+      path: '/msg',
+      name: 'Msg',
       component: PersonalMsg
     },
     {
