@@ -1,38 +1,57 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="/">首页</a></li>
-      <li><a href="/about">About</a></li>
-      <!-- <li><a href="/Casino">Casino</a></li>
-      <li><a href="/About">About</a></li>
-      <li><a href="/About">About</a></li> -->
-      <br>
-      <!-- <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li> -->
-      <br>
-      <!-- <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br> -->
-      <!-- <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li> -->
-    </ul>
-    <!-- <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul> -->
+  <div id="main">
+    <div class="personal_box" id="personal-modify-password">
+      <div class="contain_width">
+        <h2 class="personal_title"></h2>
+      </div>
+      <div class="contain_width">
+        <!--左侧选单-->
+        <div class="left_menu">
+          <div class="user_info">
+            <div class="img"><img src="../static/images/pic_user.png"></div>
+            <p class="name">vivien</p>
+            <p class="balance">0.00</p>
+            <p class="refresh">Your Balance<span class="icon_sprite icon_refresh_money"></span></p>
+          </div>
+          <ul class="psn_menu">
+            <li><a href="personal-info.html" class="active"><span class="icon_sprite icon_psn_info"></span>个人中心</a></li>
+            <li><a href="personal-deposit.html"><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
+            <li><a href="personal-callin.html"><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
+            <li><a href="personal-bettin.html"><span class="icon_sprite icon_psn_bettin"></span>投注记录</a></li>
+            <li><a href="personal-funds.html"><span class="icon_sprite icon_psn_funds"></span>资金纪录</a></li>
+          </ul>
+        </div>
+        <!--end 左侧选单-->
+        <!--右侧内容-->
+        <div class="right_main">
+          <div class="psn_wrap">
+            <!--修改密码-->
+            <div class="psn_content">
+              <dl class="psn_info">
+                <dt><h3>修改登录密码</h3><a class="btn_gdGold" href="javascript:;">修改支付密码</a></dt>
+                <dd>
+                  <ul class="style_item">
+                    <li>
+                      <span class="form"><input type="text" class="formInput" placeholder="请输入原登录密码"></span>
+                    </li>
+                    <li>
+                      <span class="form"><input type="text" class="formInput" placeholder="新登录密码"></span>
+                    </li>
+                    <li>
+                      <span class="form"><input type="text" class="formInput" placeholder="重复登录密码"></span>
+                    </li>
+                  </ul>
+                </dd>
+              </dl>
+              <div class="form_submit">
+                <a class="formBtn" href="javascript:;">提交申请</a>
+              </div>
+            </div><!--end 修改密码-->
+          </div>
+        </div>
+        <!--end 右侧内容-->
+      </div>
+    </div>
   </div>
 </template>
 

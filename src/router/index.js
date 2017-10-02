@@ -132,8 +132,8 @@ export default new Router({
       component: PersonalFunds
     },
     {
-      path: '/personal-info',
-      name: 'PersonalInfo',
+      path: '/info',
+      name: 'Info',
       component: PersonalInfo
     },
     {
