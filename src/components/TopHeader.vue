@@ -69,7 +69,7 @@
       </div><!--end 登录后资讯（登录后显示）-->
 
       <!--登录列-->
-      <div class="account_bar" v-if="hasLogin===false">
+      <div class="account_bar" v-if="hasLogin===false && this.$route.name != 'Index'">
           <span class="account">
               <input placeholder="请输入会员账号" type="text" v-model="loginParam.username" @keyup.enter="logIn()">
           </span>
@@ -77,9 +77,12 @@
               <input placeholder="请输入密码" type="password" v-model="loginParam.password" @keyup.enter="logIn()">
           </span>
           <span class="code">
+              <!-- <img v-show="verImgCode!==''" v-lazy="verImgCode" @click="getCode" style="cursor: pointer;"/>
+              <a class="icon-refresh" @click="getCode" style="cursor: pointer;"></a>
+              <em class="line"></em> -->
               <input placeholder="请输入验证码" type="text" v-model="loginParam.code">
-              <img src="static/images/verification-code.jpg" alt=""><a class="icon_refresh" href="javascript:;"></a>
-              <a href="javascript:;" class="icon_sprite icon_refresh"></a>
+              <img v-show="verImgCode!==''" v-lazy="verImgCode" @click="getCode" style="cursor: pointer;"alt="">
+              <a href="javascript:;" class="icon_sprite icon_refresh" @click="getCode"></a>
           </span>
           <span class="btn">
               <a class="btn_login" href="javascript:;" @click="logIn" :class="'btn-login '+(isLoging?'link_disable':'')">会员登录</a>
@@ -196,7 +199,7 @@ export default {
             _self.siteName = data && data.result && data.result.siteName;
             document.title = _self.siteName||'';
             _self.logoPhoto = common.photo_url + "/pic/" + _self.siteLogo + "/0"; //0原图大小 other 就是百分比（10%）
-            $(".logo").css("backgroundImage", "url(" + _self.logoPhoto + ")");
+            // $(".logo").css("backgroundImage", "url(" + _self.logoPhoto + ")");
             _self.$nextTick(function () {
                 // 加载完后再调用，否则会有问题
                 // _self.indexDrog() ;
@@ -334,12 +337,13 @@ export default {
             //     common.toast({content: '请先登录！', time: 2});
             // }
         } else if(ab=="lottery"){
-            if(_self.hasLogin){ //已经登录
-               _self.loadGameList(1003);
-             //   location.href = "lottery";
-            } else {
-                common.toast({content: '请先登录！', time: 2});
-            }
+            location.href = "lottery";
+            // if(_self.hasLogin){ //已经登录
+            //    _self.loadGameList(1003);
+            //  //   location.href = "lottery";
+            // } else {
+            //     common.toast({content: '请先登录！', time: 2});
+            // }
         }
     },
     indexToGmae:function(ab,id){

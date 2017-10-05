@@ -1,69 +1,191 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="/">首页</a></li>
-      <li><a href="/about">About</a></li>
-      <!-- <li><a href="/Casino">Casino</a></li>
-      <li><a href="/About">About</a></li>
-      <li><a href="/About">About</a></li> -->
-      <br>
-      <!-- <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li> -->
-      <br>
-      <!-- <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br> -->
-      <!-- <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li> -->
-    </ul>
-    <!-- <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul> -->
+  <div id="main">
+     <div class="banner banner-sports">
+    </div>
+    <div class="container">
+        <!--體育競技-->
+        <div class="sports_list">
+            <ul class="sports_list_content">
+                <li :class="game_sub_image[item.id]" v-for="(item, index) in computers">
+                    <div class="img_div">
+                        <div class="bg" :style="{backgroundImage: 'url('+[photo_url +'/pic/'+[item.img]+'/0']+')'}"></div>
+                        <div class="img" :style="{backgroundImage: 'url('+[photo_url +'/pic/'+[item.img]+'/0']+')'}"></div>
+                        <div class="title">
+                            <div class="title_img"></div>
+                            <div class="btn_enter">
+                                <a class="gameopen_parent" href="javascript:;" @click="enterGame(item.id)">进入游戏</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- <li class="sport_bb">
+                    <div class="img_div">
+                        <div class="bg" style="background-image:url(../static/images/sports/bb.png)"></div>
+                        <div class="img" style="background-image:url(../static/images/sports/bb.png)"></div>
+                        <div class="title">
+                            <div class="title_img"></div>
+                            <div class="btn_enter">
+                                <a class="gameopen_parent" href="javascript:;">进入游戏</a>
+                            </div>
+                        </div>
+                    </div>
+                </li> -->
+            </ul>
+            <!--
+                <a class="carousel-prev" href="#carousel-tag" data-slide="prev">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                </a>
+                <a class="carousel-next" href="#carousel-tag" data-slide="next">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </a>
+            -->
+        </div>
+        <!--end 體育競技-->
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'hello',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  name: 'sports',
+  data: function() {
+        return {
+            loginParam: {
+                username: '',
+                password: '',
+                code: ''
+            },
+            verImgCode: '',
+            hasLogin: false,
+            url: {},
+            computers: [],
+            computersDock: 0,
+            isLoging: false,
+            game_sub_image:{"824":"sport_bb","1257":"sport_ug"}
+        }
+    },
+    created: function() {
+        var _self = this;
+        _self.topBar = common.Cookie.get('topBar') && JSON.parse(common.Cookie.get('topBar')) || [];
+        _self.hasLogin = common.ifLanded();
+        _self.photo_url = common.photo_url;
+
+        if (_self.hasLogin === true) {
+            _self.memberInfo = common.Cookie.get('memberInfo') && JSON.parse(common.Cookie.get('memberInfo')) || {};
+        } else {
+            // $(document).on("keydown",function(e){
+            //     if(e.keyCode==13) {
+            //         _self.logIn();
+            //     }
+            // });
+            // this.getCode();
+        }
+        _self.loadSports(1002);
+        //  _self.computersDock = common.Cookie.get('computersDock') || 0;
+        //  _self.computers = common.Cookie.get('computers') && JSON.parse(common.Cookie.get('computers')) || [];
+
+
+    },
+    methods: {
+        loadSports: function(id) {
+            var _self = this;
+            // common.ajax('config/kd/game/iframe/load', {
+            common.ajax('config/kd/game/special/load', {
+                id: id
+            }, function(data) {
+                if (data.apistatus == '0') {
+                    common.toast({
+                        content: "网络较差，请稍后重试！"
+                    });
+                } else if (data.apistatus == '1') {
+                    if (data && data.result && data.result.game && data.result.game.list) {
+                        _self.computers = data.result.game.list;
+                    }
+                    // if (data && data.result) {
+                    //   /*  var url = data.result.url;
+                    //    $('#iframeId').attr('src',url);*/
+                    //     var resUrl = data && data.result || {};
+                    //     _self.url = resUrl ;
+                    //    // common.Cookie.set('url', JSON.stringify(_self.url));
+                    //     var list = data && data.result && data.result.apiList || [];
+                    //     var arr = [];
+                    //     _self.computersDock = list.length % 2 === 0 ? parseInt(list.length / 2, 10) : parseInt(list.length / 2, 10) + 1;
+                    //     for (var i = 0; i < _self.computersDock; i++) {
+                    //         var sub_arr = [];
+                    //         var start = i * 2;
+                    //         var length = i == _self.computersDock - 1 ? list.length - i * 2 : 2;
+                    //         for (var j = 0; j < length; j++) {
+                    //             sub_arr.push(list[start + j]);
+                    //         }
+                    //         arr.push(sub_arr);
+                    //     }
+                    //     _self.computers = arr;
+                    //   //  common.Cookie.set('computers', JSON.stringify(_self.computers));
+                    //   //  common.Cookie.set('computersDock', _self.computersDock);
+                    //
+                    //
+                    // }
+                }
+            });
+        },
+        // 进入游戏
+        enterGame: function(id) {
+            var _self = this;
+            if (_self.hasLogin === false) {
+                common.toast({
+                    content: "请先登录！！"
+                });
+                return;
+            }
+            common.ajax('config/kd/game/start', {
+                id: id
+            }, function(data) {
+                if (data.apistatus == '0') {
+                    common.toast({
+                        content: "网络较差，请稍后重试！"
+                    });
+                } else {
+                    var win = common.openGame();
+                    if(openGameSize<2){
+                        win.document.write(loadStr) ;
+                    }
+                    var loop = setInterval(function() {
+                        if(win .closed) {
+                            openGameSize = 0 ;
+                            clearInterval(loop);
+                        }
+                    }, 500);
+                    if (data && data.result) {
+                        var url = data.result.content;
+                        // $('#iframeId').attr('src', url);
+                        win = common.openGame(url);
+                    }
+                }
+            }, 'post');
+        }
+
     }
-  }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
+  .sports-show { padding-top: 105px; background: #1F1F1F center center no-repeat; }
+  .banner-sports { height: 295px; background: url(../../static/css/img/banner-sports.png) top center no-repeat; position: relative; background-size: 1920px auto; }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+  .sports_list{ width: 1020px; margin: 40px auto;}
+  .sports_list .sports_list_content{ margin:0px; padding: 0px;}
+  .sports_list .sports_list_content li{ list-style: none; padding:0px; width: 48%; height: 374px; display: inline-table; margin: 40px 1% 30px; position: relative; text-align: center; border: 2px solid #313131; float: left;}
+  .sports_list .sports_list_content li:hover{border-color: #ff6000;box-shadow: 0px 0px 30px rgba(0,0,0,0.6);-webkit-transition: border-color 300ms ease-in;-moz-transition: border-color 300ms ease-in;-ms-transition: border-color 300ms ease-in;transition: border-color 300ms ease-in; }
+  .sports_list .sports_list_content li .bg {width: 485px; height: 405px;position: absolute;bottom: 0px;left: 0px;background-repeat: no-repeat;background-position: -40px -370px;-webkit-transition: background-position 200ms ease-out;-moz-transition: background-position 500ms ease-out;-ms-transition: background-position 500ms ease-out;transition: background-position 500ms ease-out;}
+  .sports_list .sports_list_content li:hover .bg{background-position-x: 0px;}
+  .sports_list .sports_list_content li .img {width: 485px;height: 370px;position: absolute;bottom: 0px;left: 0px;background-repeat: no-repeat;background-position: 40px 0px;-webkit-transition: background-position 200ms ease-out;-moz-transition: background-position 200ms ease-out;-ms-transition: background-position 500ms ease-out;transition: background-position 500ms ease-out;}
+  .sports_list .sports_list_content li:hover .img{background-position-x: -20px;}
+  .sports_list .sports_list_content li .title{height: 108px; position: absolute;bottom: 0;left: 0;z-index: 3;width: 100%;padding: 15px;text-align: center;background-color: rgba(0,0,0,0.8);}
+  .sports_list .sports_list_content li .title_img{margin-top: 5px;width: 150px;height: 50px;background-size: 100%;display: inline-block;float: left;}
+  .sports_list .sports_list_content li.sport_ug .title_img{background-image: url(../../static/css/img/logo_ug.png); width: 208px; height: 76px;}
+  .sports_list .sports_list_content li.sport_bb .title_img{background-image: url(../../static/css/img/logo_bb.png); width:126px; height: 68px;}
+  .sports_list .sports_list_content li h2{font-size: 18px;margin-top: 23px; display: inline-block;margin-left: 10px; color: #fff;font-weight: normal;vertical-align: bottom; float: left;}
+  .sports_list .sports_list_content li .btn_enter{position: absolute;bottom: 13px;z-index: 4;left: 50%;}
+  .sports_list .sports_list_content li .gameopen_parent{margin-left: 100px; display: inline-block;margin-top: 10px;color: #fff;line-height: 34px;height: 34px;padding: 0px 30px;background-color: #ff6000;border-radius: 17px;}
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
 
-a {
-  color: #42b983;
-}
 </style>

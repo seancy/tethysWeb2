@@ -4,12 +4,10 @@
         <!--广告轮播图-->
         <div class="mainad">
             <div class="ad_slider">
-              <!--'+photo_url+'/pic/' + [car.titlePic] + '/0-->
-photo_url
                 <div v-for="car in LBT.carouselFigurePics"><a :href="car.link" target="_blank"><img v-bind:src="photo_url + '/pic/' + [car.titlePic]+'/0'"></a></div>
-                <!-- <div><a href="javascript:;"><img src="static/images/banner/mainad_2.jpg"></a></div> -->
             </div>
-        </div><!--end 广告轮播图-->
+        </div>
+        <!--end 广告轮播图-->
         <!--登录（首页）-->
         <ul class="login_box" v-if="!hasLogin">
             <p class="title">会员登录<span>LOGIN</span></p>
@@ -30,15 +28,14 @@ photo_url
             </li>
         </ul><!--end 登录（首页）-->
     </div>
+
     <!--公告-->
     <div class="notice">
         <div class="contain_width">
             <div class="notice_box">
                 <span>公告：</span>
                 <ul>
-                    <li>系统维护：2017-05-25 10:02:57</li>
-                    <li>0802test：优惠大放送，即享优惠，优惠大放送，即享优惠。</li>
-                    <li>公告0802：上限优惠，注册即享，上限优惠</li>
+                    <li v-for="message in messages">{{message.title}}：{{message.content}}</li>
                 </ul>
             </div>
         </div>
@@ -82,6 +79,7 @@ photo_url
             </div>
         </div>
     </div>
+
     <div class="index_block index_casino">
         <div class="contain_width">
             <div class="title"><img src="static/images/title_casino.png" alt="电子游戏 欢乐无穷"></div>
@@ -109,6 +107,21 @@ photo_url
             </div>
         </div>
     </div>
+
+    <!-- :src="photo_url+'/pic/'+item.img+'/0'" -->
+    <!-- src="static/images/casino_1.jpg" -->
+    <!-- <div class="index_block index_casino slide">
+        <div class="contain_width">
+            <div class="title"><img src="static/images/title_casino.png" alt="电子游戏 欢乐无穷"></div>
+            <div class="casino_slider">
+                <div class="item_casino" v-for="(item,index) in computers" @click="enterGame(item.id)" v-bind:class="{ 'active': index===1 }">
+                    <div class="img"><img :src="photo_url+'/pic/'+item.img+'/0'" alt=""></div>
+                    <div class="item item_mg">{{item.name}}<br />MACHINE SLOTS?</div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
     <div class="index_block index_games">
         <div class="contain_width">
             <div class="gamead_slider">
@@ -116,46 +129,12 @@ photo_url
                 <div><a href="javascript:;"><img src="static/images/banner/gamead_1.jpg" alt=""></a></div>
                 <div><a href="javascript:;"><img src="static/images/banner/gamead_1.jpg" alt=""></a></div>
             </div>
+
             <ul class="games">
-                <li>
-                    <img src="static/images/game_1.png" alt="">
-                    <h3>黄金工厂</h3>
-                    <a href="javascript:;">进入游戏</a>
-                </li>
-                <li>
-                    <img src="static/images/game_2.png" alt="">
-                    <h3>伟大的狮鸠兽</h3>
-                    <a href="javascript:;">进入游戏</a>
-                </li>
-                <li>
-                    <img src="static/images/game_3.png" alt="">
-                    <h3>刮刮乐玩家</h3>
-                    <a href="javascript:;">进入游戏</a>
-                </li>
-                <li>
-                    <img src="static/images/game_4.png" alt="">
-                    <h3>富翁联盟</h3>
-                    <a href="javascript:;">进入游戏</a>
-                </li>
-                <li>
-                    <img src="static/images/game_5.png" alt="">
-                    <h3>花旗骰</h3>
-                    <a href="javascript:;">进入游戏</a>
-                </li>
-                <li>
-                    <img src="static/images/game_6.png" alt="">
-                    <h3>侠盗猎车手</h3>
-                    <a href="javascript:;">进入游戏</a>
-                </li>
-                <li>
-                    <img src="static/images/game_7.png" alt="">
-                    <h3>美式轮盘</h3>
-                    <a href="javascript:;">进入游戏</a>
-                </li>
-                <li>
-                    <img src="static/images/game_8.png" alt="">
-                    <h3>黄金地鼠</h3>
-                    <a href="javascript:;">进入游戏</a>
+                <li v-for="(item,index) in computers">
+                    <img :src="photo_url+'/pic/'+item.img+'/0'" alt="">
+                    <h3>{{item.name}}</h3>
+                    <a href="javascript:;" @click="enterGame(item.id)">进入游戏</a>
                 </li>
             </ul>
         </div>
@@ -168,13 +147,13 @@ export default {
   name: 'index',
   data: function () {
     return {
-      formatTime: common.formatTime,
+      // formatTime: common.formatTime,
       hasLogin: false,
       loginParam: {
           username: '',
           password: ''
       },
-      memberInfo: {},
+      // memberInfo: {},
       messages: [],
       LBT: {},
       // sports: [],
@@ -195,64 +174,184 @@ export default {
   },
   mounted: function () {
       this.photo_url = common.photo_url;
-      this.computersDock = common.Cookie.get('computersDock') || 0;
       this.hasLogin = common.ifLanded();
-      this.LBT = common.Cookie.get('LBT') && JSON.parse(common.Cookie.get('LBT')) || {};
-      // this.sports = common.Cookie.get('sports') && JSON.parse(common.Cookie.get('sports')) || [];
-      this.liveList = common.Cookie.get('liveList') && JSON.parse(common.Cookie.get('liveList')) || [];
-      this.computers = common.Cookie.get('computers') && JSON.parse(common.Cookie.get('computers')) || [];
-      if (this.hasLogin === true) {
-          this.memberInfo = common.Cookie.get('memberInfo') && JSON.parse(common.Cookie.get('memberInfo')) || {};
-      }
-      this.getSysMessage();
-      // this.getSportsGame();
-      this.getLiveGame();
-      this.getComputerGame();
-      this.getIndexMessage();
-      var _self = this;
-      if (!this.hasLogin) {
-          this.getCode();
-      } else {
-          var _self = this;
-          var already_refresh = common.Cookie.get("already_refresh");
-          common.pollingTheMail();
 
-          if(!already_refresh){
-              common.Cookie.set("already_refresh","1");
-              $(".lone").click();
-              $(".sone").removeClass("icon-refreshhover");
-              common.ajax('member/refresh', {}, function (data) {
-                  $(".sone").addClass("icon-refreshmyword");
-                  setTimeout(function(){
-                      $(".sone").removeClass("icon-refreshmyword");
-                  },600);
-                  _self.memberInfo = $.extend({}, data && data.result || {});
-                  _self.memberInfo.balance = data&&data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,');
-                  $("#mynew_balance").html(_self.memberInfo.balance);
-                  common.Cookie.set('memberInfo', JSON.stringify(_self.memberInfo));
-              });
-          }
-      }
-      // 首頁彈窗
-      if(!this.hasLogin){
-          var popup = sessionStorage.getItem('closePopupUnlogin');
-          if (!popup){
-              this.getPopUPInfo();
-          }
-      }else{
-          var popup = sessionStorage.getItem('closePopupLogin');
-          if (!popup){
-              this.getPopUPInfo();
-          }
-      }
-      // 监测网页加载时间
-      window.onload = function () {
-          var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart;
-          console.log('Page load time is '+ loadTime);
-      }
+      this.getComputerGame();
+      this.getSysMessage();
+      this.useAnimation();
+      this.getIndexMessage();
+      // this.computersDock = common.Cookie.get('computersDock') || 0;
+      // this.LBT = common.Cookie.get('LBT') && JSON.parse(common.Cookie.get('LBT')) || {};
+      // // this.sports = common.Cookie.get('sports') && JSON.parse(common.Cookie.get('sports')) || [];
+      // this.liveList = common.Cookie.get('liveList') && JSON.parse(common.Cookie.get('liveList')) || [];
+      // this.computers = common.Cookie.get('computers') && JSON.parse(common.Cookie.get('computers')) || [];
+      // if (this.hasLogin === true) {
+      //     this.memberInfo = common.Cookie.get('memberInfo') && JSON.parse(common.Cookie.get('memberInfo')) || {};
+      // }
+      // // this.getSportsGame();
+      // this.getLiveGame();
+      // this.getComputerGame();
+      // var _self = this;
+      // if (!this.hasLogin) {
+      //     this.getCode();
+      // } else {
+      //     var _self = this;
+      //     var already_refresh = common.Cookie.get("already_refresh");
+      //     common.pollingTheMail();
+
+      //     if(!already_refresh){
+      //         common.Cookie.set("already_refresh","1");
+      //         $(".lone").click();
+      //         $(".sone").removeClass("icon-refreshhover");
+      //         common.ajax('member/refresh', {}, function (data) {
+      //             $(".sone").addClass("icon-refreshmyword");
+      //             setTimeout(function(){
+      //                 $(".sone").removeClass("icon-refreshmyword");
+      //             },600);
+      //             _self.memberInfo = $.extend({}, data && data.result || {});
+      //             _self.memberInfo.balance = data&&data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,');
+      //             $("#mynew_balance").html(_self.memberInfo.balance);
+      //             common.Cookie.set('memberInfo', JSON.stringify(_self.memberInfo));
+      //         });
+      //     }
+      // }
+      // // 首頁彈窗
+      // if(!this.hasLogin){
+      //     var popup = sessionStorage.getItem('closePopupUnlogin');
+      //     if (!popup){
+      //         this.getPopUPInfo();
+      //     }
+      // }else{
+      //     var popup = sessionStorage.getItem('closePopupLogin');
+      //     if (!popup){
+      //         this.getPopUPInfo();
+      //     }
+      // }
+      // // 监测网页加载时间
+      // window.onload = function () {
+      //     var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart;
+      //     console.log('Page load time is '+ loadTime);
+      // }
 
   },
   methods: {
+    useAnimation:function(){
+      $('.casino_slider').slick({
+          arrows: true,
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: false,
+      });
+      $('.gamead_slider').slick({
+          arrows: false,
+          dots: true,
+          infinite: true,
+          autoplay: true,
+          autoplaySpeed: 3000,
+      });
+    },
+    // 进入游戏
+    enterGame: function (id) {
+        var _self = this;
+        if (_self.hasLogin === false) {
+            common.toast({content: "请先登录！！"});
+            return;
+        }
+        var win = common.openGame();
+        if(openGameSize<2){
+            win.document.write(loadStr) ;
+        }
+        var loop = setInterval(function() {
+            if(win .closed) {
+                openGameSize = 0 ;
+                clearInterval(loop);
+            }
+        }, 500);
+        common.ajax('config/kd/game/start',{id: id}, function (data) {
+            if(data.apistatus =='0'){
+                win.close();
+                common.toast({content: "网络较差，请稍后重试！"});
+            } else {
+                if (data && data.result) {
+                    var url = data.result.content;
+                    win = common.openGame(url);
+                }
+            }
+        }, 'post');
+    },
+    // 电子游戏
+    getComputerGame: function () {
+        var _self = this;
+        common.ajax('config/kd/hot/game/list',
+            {
+                id: 1001,
+                count: 8,
+            }, function (data) {
+                var list = data && data.result && data.result.list || [];
+                _self.computers = list;
+            }
+        )
+    },
+    getSysMessage: function () {
+        var _self = this;
+        common.ajax('cms/client/index', {}, function (data) {
+            var ad = data && data.result && data.result.ad || {};
+            _self.LBT = ad && ad.LBT || {};
+            common.Cookie.set('LBT', JSON.stringify(_self.LBT));
+            // 滚动
+            _self.$nextTick(function () {
+              $('.ad_slider').slick({
+                  arrows: false,
+                  dots: true,
+                  infinite: true,
+                  autoplay: true,
+                  autoplaySpeed: 3000,
+              });
+                // $(window).resize(function () {
+                //     if (($(window).width() > 1680)) {
+                //         $(".picList li").css("hight", "700px");
+                //     } else {
+                //         $(".picList li").css("hight", "505px");
+                //     }
+                // });
+
+            });
+        })
+    },
+    getIndexMessage: function () {   // 首页公告
+        var _self = this;
+        common.ajax('cms/client/bulletin/list', {}, function (data) {
+            var ms = data && data.result || {};
+            _self.messages = ms || [];
+            // 滚动
+            _self.$nextTick(function () {
+              if($('.notice_box li').length > 1){
+                  function run() {
+                      $('.notice_box ul').animate({top:-40},500,function(){
+                          $(this).css({top:0}).children('li').eq(0).remove().appendTo('.notice_box ul');
+                      })
+                  }
+
+                  var TT = setInterval(run,3000)
+
+                  $(".notice_box").on('mouseenter',function(e){
+                      clearInterval(TT);
+                      $(this).removeClass('hidden');
+                  }).on('mouseleave',function(e){
+                      var position = Math.round($(this).scrollTop() / 40);
+                      $(this).scrollTop(0).addClass('hidden');
+                      $('.notice_box ul').children('li').slice( 0, position ).appendTo('.notice_box ul');
+                      TT = setInterval(run,3000);
+                  })
+
+                  $('.notice_box').scrollTop(0).addClass('hidden');
+              }
+            });
+        })
+    },
+
+
+
     getPopUPInfo:function(){
         var _self = this;
         var varg = null;
@@ -314,55 +413,8 @@ export default {
         });
     },
 
-    getIndexMessage: function () {   // 首页公告
-        var _self = this;
-        common.ajax('cms/client/bulletin/list', {}, function (data) {
-            var ms = data && data.result || {};
-            _self.messages = ms || [];
-            // 滚动
-            _self.$nextTick(function () {
-                $(".sys-notice").slide({
-                    mainCell: ".bd ul",
-                    autoPage: true,
-                    effect: "leftMarquee",
-                    autoPlay: true,
-                    vis: 1, interTime: 50
-                });
-            });
-        })
-    },
-    getSysMessage: function () {
-        var _self = this;
-        common.ajax('cms/client/index', {}, function (data) {
-           // alert(data);
-            var ad = data && data.result && data.result.ad || {};
-            _self.LBT = ad && ad.LBT || {};
-            common.Cookie.set('LBT', JSON.stringify(_self.LBT));
-          //  _self.messages = ad && ad.HYGG || [];
-          //  common.Cookie.set('messages', JSON.stringify(_self.messages));
-            // 滚动
-            _self.$nextTick(function () {
-                $(".picScroll-top").slide({
-                    titCell: ".hd ul",
-                    mainCell: ".bd ul",
-                    autoPage: true,
-                    effect: "top",
-                    autoPlay: true,
-                    vis: 1,
-                    trigger: "click",
-                    interTime: 5000
-                });
-                $(window).resize(function () {
-                    if (($(window).width() > 1680)) {
-                        $(".picList li").css("hight", "700px");
-                    } else {
-                        $(".picList li").css("hight", "505px");
-                    }
-                });
-
-            });
-        })
-    },
+    
+    
 
     // 真人视讯
     getLiveGame: function () {
@@ -376,85 +428,7 @@ export default {
                 common.Cookie.set('liveList', JSON.stringify(_self.liveList));
             });
     },
-    // 电子游戏
-    getComputerGame: function () {
-        var _self = this;
-        common.ajax('config/kd/hot/game/list',
-            {
-                id: 1001,
-                count: 15,
-            }, function (data) {
-                var list = data && data.result && data.result.list || [];
-                var arr = [];
-                _self.computersDock = list.length % 5 === 0 ? parseInt(list.length / 5, 10) : parseInt(list.length / 5, 10) + 1;
-                for (var i = 0; i < _self.computersDock; i++) {
-                    var sub_arr = [];
-                    var start = i * 5;
-                    var length = i == _self.computersDock - 1 ? list.length - i * 5 : 5;
-                    for (var j = 0; j < length; j++) {
-                        sub_arr.push(list[start + j]);
-                    }
-                    arr.push(sub_arr);
-                }
-                _self.computers = arr;
-                common.Cookie.set('computers', JSON.stringify(_self.computers));
-                common.Cookie.set('computersDock', _self.computersDock);
-                _self.$nextTick(function () {
-                    $('#carousel-generic').carousel();
-                });
-            }
-        )
-    },
-    // 进入游戏
-    enterGame: function (id) {
-        var _self = this;
-        if (_self.hasLogin === false) {
-            common.toast({content: "请先登录！！"});
-            return;
-        }
-        var win = common.openGame();
-        if(openGameSize<2){
-            win.document.write(loadStr) ;
-        }
-        var loop = setInterval(function() {
-            if(win .closed) {
-                openGameSize = 0 ;
-                clearInterval(loop);
-            }
-        }, 500);
-        common.ajax('config/kd/game/start',{id: id}, function (data) {
-            if(data.apistatus =='0'){
-                win.close();
-                common.toast({content: "网络较差，请稍后重试！"});
-            } else {
-                if (data && data.result) {
-                    var url = data.result.content;
-                    win = common.openGame(url);
-                }
-            }
-        }, 'post');
-    }
+    
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-/*h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}*/
-</style>

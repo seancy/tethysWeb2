@@ -66,6 +66,10 @@
 
 <script>
 var md5 = require('md5');
+const queryString = require('query-string');
+
+
+
 export default {
     name: 'Live',
     data: function () {
@@ -102,7 +106,7 @@ export default {
         }
     },
     created: function () {
-        var idStr = common.getQueryString('id');
+        var idStr = queryString.parse(location.search).id;
         this.catId = idStr ? parseInt(idStr) : '';
         this.hasLogin = common.ifLanded();
         this.photo_url = common.photo_url;
