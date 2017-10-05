@@ -18,7 +18,9 @@
           <div class="contain_width">
             <template v-for="(item,index) in lives" >
             <!--mg视讯-->
-            <ul class="page_liveList" id="live_mg" v-bind:class="{'active' : index===0}">
+            <!-- $('#live_bb, #live_sb, #live_gd').addClass('temp_block'); -->
+            <!-- v-bind:class="{'active' : index===0, 'temp_block':id === 10011 || id === 10082|| id === 10092}" -->
+            <ul class="page_liveList" :id="'live_' + kind[id]" v-bind:class="{'active' : index===0, 'temp_block':id === 10011 || id === 10082|| id === 10092}">
               <li v-for="(game,key) in item" >
                   <div class="bg" :style="{backgroundImage: 'url('+[photo_url +'/pic/'+[game.img]+'/0']+')'}"></div>
                   <div class="img" :style="{backgroundImage: 'url('+[photo_url +'/pic/'+[game.img]+'/0']+')'}"></div>
@@ -39,10 +41,9 @@
             </template>
             
             <!--bb视讯 （版型不同）-->
-            <ul class="page_liveList" id="live_bb" style="display:none;">
+            <!-- <ul class="page_liveList" id="live_bb" style="display:none;">
               <li>
                   <div class="bg" style="background-image: url(../static/images/live/bb/Game_3008_80.jpg)"></div>
-                  <!--<div class="img" style=""></div>-->
                   <div class="brand">
                       <span class="logo" style="background-image: url(../static/images/brand/bbin.png)"></span>
                       <span>骰宝</span>
@@ -56,7 +57,7 @@
                       </div>
                   </div>
               </li>
-            </ul><!--end bb视讯-->
+            </ul> --><!--end bb视讯-->
             
           </div>
         </div>
@@ -101,7 +102,8 @@ export default {
         }
     },
     created: function () {
-        this.catId = common.getQueryString('id') || '';
+        var idStr = common.getQueryString('id');
+        this.catId = idStr ? parseInt(idStr) : '';
         this.hasLogin = common.ifLanded();
         this.photo_url = common.photo_url;
         this.getGameAll('system', this.catId);
