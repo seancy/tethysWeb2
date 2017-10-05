@@ -25,166 +25,29 @@
           <div class="logo"><h1><img src="static/images/logo.png" alt="金沙赌场"></h1></div>
           <div class="menu">
               <ul class="mainmenu">
-                  <li class="active">
+                <!-- setActive  class="active" -->
+                  <li id="nav_" :class="{active: urlPath === ''}">
                       <a href="/"><h2>首页</h2><small>HOME</small></a>
                   </li>
-                  <li class="hot">
-                      <a href="/live"><h2>真人视讯</h2><small>LIVE</small></a>
-                      <ul class="submenu">
-                          <li>
-                              <a href="live.html">
+                  <!-- class="hot" -->
+                  <li v-for="nav in navBar" v-if="nav.id >= 1000" :id="'nav_' + [nav.enName.toLowerCase()]" :class="{active: urlPath === nav.enName.toLowerCase()}">
+                      <a class="link" @click="judge_towhere([nav.enName.toLowerCase()])"><h2>{{nav.name}}</h2><small>{{nav.enName}}</small></a>
+                      <ul class="submenu" v-if="nav.isDrop === 1 && nav.list && nav.list.length > 0">
+                          <li v-for="sub in nav.list">
+                              <a @click="indexToGmae([nav.enName.toLowerCase()],sub.id)">
                                   <div class="img">
-                                      <span style="background-image: url(../static/images/brand/mg.png)"></span>
-                                      <span style="background-image: url(../static/images/brand/mg.png)"></span>
+                                      <span :style="{backgroundImage: 'url('+[photo_url+'/pic/'+sub.img+'/0']+')'}"></span>
+                                      <span :style="{backgroundImage: 'url('+[photo_url+'/pic/'+sub.img+'/0']+')'}"></span>
                                   </div>
-                                  <h3>MG视讯</h3>
-                              </a>
-                          </li>
-                          <li>
-                              <a href="live.html">
-                                  <div class="img">
-                                      <span style="background-image: url(../static/images/brand/bbin.png)"></span>
-                                      <span style="background-image: url(../static/images/brand/bbin.png)"></span>
-                                  </div>
-                                  <h3>BB视讯</h3>
-                              </a>
-                          </li>
-                          <li>
-                              <a href="live.html">
-                                  <div class="img">
-                                      <span style="background-image: url(../static/images/brand/ag.png)"></span>
-                                      <span style="background-image: url(../static/images/brand/ag.png)"></span>
-                                  </div>
-                                  <h3>AG视讯</h3>
-                              </a>
-                          </li>
-                          <li>
-                              <a href="live.html">
-                                  <div class="img">
-                                      <span style="background-image: url(../static/images/brand/pt.png)"></span>
-                                      <span style="background-image: url(../static/images/brand/pt.png)"></span>
-                                  </div>
-                                  <h3>PT视讯</h3>
-                              </a>
-                          </li>
-                          <li>
-                              <a href="live.html">
-                                  <div class="img">
-                                      <span style="background-image: url(../static/images/brand/dg.png)"></span>
-                                      <span style="background-image: url(../static/images/brand/dg.png)"></span>
-                                  </div>
-                                  <h3>DG视讯</h3>
-                              </a>
-                          </li>
-                          <li>
-                              <a href="live.html">
-                                  <div class="img">
-                                      <span style="background-image: url(../static/images/brand/lebo.png)"></span>
-                                      <span style="background-image: url(../static/images/brand/lebo.png)"></span>
-                                  </div>
-                                  <h3>LEBO视讯</h3>
-                              </a>
-                          </li>
-                          <li>
-                              <a href="live.html">
-                                  <div class="img">
-                                      <span style="background-image: url(../static/images/brand/sb.png)"></span>
-                                      <span style="background-image: url(../static/images/brand/sb.png)"></span>
-                                  </div>
-                                  <h3>SB视讯</h3>
-                              </a>
-                          </li>
-                          <li>
-                              <a href="live.html">
-                                  <div class="img">
-                                      <span style="background-image: url(../static/images/brand/gd.png)"></span>
-                                      <span style="background-image: url(../static/images/brand/gd.png)"></span>
-                                  </div>
-                                  <h3>GD视讯</h3>
+                                  <h3>{{sub.name}}</h3>
                               </a>
                           </li>
                       </ul>
                   </li>
-                  <li>
-                      <a href="/casino"><h2>电子游艺</h2><small>CASINO</small></a>
-                      <ul class="submenu">
-                          <li>
-                              <a href="casino.html">
-                                  <div class="img">
-                                      <span style="background-image: url(../static/images/brand/mg.png)"></span>
-                                      <span style="background-image: url(../static/images/brand/mg.png)"></span>
-                                  </div>
-                                  <h3>MG电子</h3>
-                              </a>
-                          </li>
-                          <li>
-                              <a href="casino.html">
-                                  <div class="img">
-                                      <span style="background-image: url(../static/images/brand/bbin.png)"></span>
-                                      <span style="background-image: url(../static/images/brand/bbin.png)"></span>
-                                  </div>
-                                  <h3>BB电子</h3>
-                              </a>
-                          </li>
-                          <li>
-                              <a href="casino.html">
-                                  <div class="img">
-                                      <span style="background-image: url(../static/images/brand/ag.png)"></span>
-                                      <span style="background-image: url(../static/images/brand/ag.png)"></span>
-                                  </div>
-                                  <h3>AG电子</h3>
-                              </a>
-                          </li>
-                          <li>
-                              <a href="casino.html">
-                                  <div class="img">
-                                      <span style="background-image: url(../static/images/brand/pt.png)"></span>
-                                      <span style="background-image: url(../static/images/brand/pt.png)"></span>
-                                  </div>
-                                  <h3>PT电子</h3>
-                              </a>
-                          </li>
-                          <li>
-                              <a href="casino.html">
-                                  <div class="img">
-                                      <span style="background-image: url(../static/images/brand/mgw.png)"></span>
-                                      <span style="background-image: url(../static/images/brand/mgw.png)"></span>
-                                  </div>
-                                  <h3>MGW电子</h3>
-                              </a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                      <a href="/sports"><h2>体育竞技</h2><small>SPORTS</small></a>
-                      <ul class="submenu">
-                          <li>
-                              <a href="sports.html">
-                                  <div class="img">
-                                      <span style="background-image: url(../static/images/brand/mg.png)"></span>
-                                      <span style="background-image: url(../static/images/brand/mg.png)"></span>
-                                  </div>
-                                  <h3>BB体育</h3>
-                              </a>
-                          </li>
-                          <li>
-                              <a href="sports.html">
-                                  <div class="img">
-                                      <span style="background-image: url(../static/images/brand/ug.png)"></span>
-                                      <span style="background-image: url(../static/images/brand/ug.png)"></span>
-                                  </div>
-                                  <h3>UG体育</h3>
-                              </a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li>
-                      <a href="/lottery"><h2>彩票游戏</h2><small>LOTTERY</small></a>
-                  </li>
-                  <li>
+                  <li :class="{active: urlPath === 'promo'}">
                       <a href="/promo"><h2>优惠活动</h2><small>PROMO</small></a>
                   </li>
-                  <li>
+                  <li @click="onlineServices">
                       <a href="javascript:;"><h2>在线客服</h2><small>SERVICE</small></a>
                   </li>
               </ul>
@@ -237,7 +100,7 @@ export default {
     return {
       common:common,
       pagename: '',
-      urlPath: '',
+      // urlPath: '',
       userName: '',
       siteName: '',
       hasLogin: false,
@@ -260,12 +123,19 @@ export default {
       },
       verImgCode:'',
       isLoging: false
+
+      // moduleName:''
       // msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  computed:{
+    urlPath:function(){
+      return this.$route.path.replace('/', '');
     }
   },
   created:function() {
     var _this = this;
-    _this.urlPath = _this.$route.path.replace('/', '');
+    // _this.urlPath = _this.$route.path.replace('/', '');
     _this.userName = common.Cookie.get('userName') || '';
     _this.hasLogin = common.ifLanded();
     _this.pagename = _this.$route.name || '';
@@ -274,7 +144,8 @@ export default {
     _this.siteName = common.Cookie.get('siteName') || [];
     _this.navBar = common.Cookie.get('navBar') && JSON.parse(common.Cookie.get('navBar')) || [];
     _this.footer = common.Cookie.get('footer') && JSON.parse(common.Cookie.get('footer')) || [];
-
+    this.updateTime();
+    this.getNavData();
     var that = this;
     if (this.hasLogin === true) {
         this.memberInfo = common.Cookie.get('memberInfo') && JSON.parse(common.Cookie.get('memberInfo')) || {};
@@ -297,6 +168,7 @@ export default {
         });*/
         that.getCode();
     }
+    this.getNavData();
   },
   filters: {
       balanceNo: function(value) {
@@ -307,6 +179,82 @@ export default {
       }
   },
   methods: {
+    isActive:function(e){
+      // debugger;
+      //return window.location.pathname.split('?')[0];
+    },
+    getNavData: function() {
+        var _self = this;
+        common.ajax('cms/client/tab', {}, function(data) {
+            _self.siteName = data && data.result.siteName;
+            common.Cookie.set('siteName', JSON.stringify(_self.siteName));
+            _self.navBar = data && data.result && data.result.tabList || [];
+            // common.Cookie.set('navBar', JSON.stringify(_self.navBar));
+            _self.serviceUrl = data && data.result && data.result.tabList && data.result.tabList[6] && data.result.tabList[6].serviceUrl;
+            common.Cookie.set('serviceUrl', typeof(_self.serviceUrl) == "undefined" ? "" : _self.serviceUrl);
+            _self.siteLogo = data && data.result && data.result.siteLogo;
+            _self.siteName = data && data.result && data.result.siteName;
+            document.title = _self.siteName||'';
+            _self.logoPhoto = common.photo_url + "/pic/" + _self.siteLogo + "/0"; //0原图大小 other 就是百分比（10%）
+            $(".logo").css("backgroundImage", "url(" + _self.logoPhoto + ")");
+            _self.$nextTick(function () {
+                // 加载完后再调用，否则会有问题
+                // _self.indexDrog() ;
+        })
+
+        });
+
+    },
+    updateTime: function() {
+        var _self = this;
+        var timeDate = function() {
+            var start_date = new Date();
+            var len = start_date.getTime();
+            var offset = start_date.getTimezoneOffset() * 60 * 1000;
+            var utcTime = len + offset;
+            var start = new Date(start_date.getTime());
+            start.setMonth(0);
+            start.setDate(1);
+            start.setHours(0);
+            start.setMinutes(0);
+            start.setSeconds(0);
+            var middle = new Date(start.getTime());
+            middle.setMonth(6);
+            // 夏令时
+            if ((middle.getTimezoneOffset() - start.getTimezoneOffset()) == 0) {
+                var date = new Date(utcTime + 3600000 * -4);
+            } else {
+                var date = new Date(utcTime + 3600000 * -5);
+            }
+            var years = date.getFullYear();
+            var hour = date.getHours();
+            if (hour < 10) {
+                hour = '0' + hour.toString();
+            }
+            var minutes = date.getMinutes();
+            if (minutes < 10) {
+                minutes = '0' + minutes.toString();
+            }
+            var seconds = date.getSeconds();
+            if (seconds < 10) {
+                seconds = '0' + seconds.toString();
+            }
+            var day = date.getDate();
+            if (day < 10) {
+                day = '0' + day.toString();
+            }
+            var weeks = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            var month_str = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            var workDay = weeks[date.getDay()];
+            var month = date.getMonth() + 1;
+            var htm = years + "/" + month + "/" + day + " " + hour + ":" + minutes + ":" + seconds;
+            // var htm = " " + workDay + ', ' + day + ' ' + (month_str[month]) + " " + years + " " + hour + ":" + minutes + ":" + seconds + " GMT";
+            _self.times = htm;
+            //$("#server-time").html(htm)
+            var t = setTimeout(timeDate, 1000);
+        };
+        timeDate();
+    },
     logIn: function () {
       var _self = this
       var username = _self.loginParam.username
@@ -370,6 +318,40 @@ export default {
                 });
             }, 300);
         });
+    },
+    judge_towhere:function(ab){
+        var _self = this;
+        if(ab=="live"){
+            location.href = "live";
+        } else if(ab=="casino"){
+            location.href = "casino";
+        } else if(ab=="sports"){
+            location.href = "sports";
+            // if(_self.hasLogin){ //已经登录
+            //    _self.loadGameList(1002);
+            // //    location.href = "sports";
+            // } else {
+            //     common.toast({content: '请先登录！', time: 2});
+            // }
+        } else if(ab=="lottery"){
+            if(_self.hasLogin){ //已经登录
+               _self.loadGameList(1003);
+             //   location.href = "lottery";
+            } else {
+                common.toast({content: '请先登录！', time: 2});
+            }
+        }
+    },
+    indexToGmae:function(ab,id){
+        var _self = this;
+        if(ab=="live"){
+            location.href = "live?id="+id;
+        } else if(ab=="casino"){
+            location.href = "casino?id="+id;
+        } else if(ab=="sports"){
+            location.href = "sports";
+            // location.href = "casino?id="+id;
+        }
     },
     deposit_judge:function(){
       common.ajax('tethys-user/user/menu/level/auth', {}, function(data) {
@@ -455,6 +437,12 @@ export default {
             }
         });
     },
+    onlineServices: function() {
+        var cookieserviceUrl = common.Cookie.get("serviceUrl");
+        if (cookieserviceUrl.replace(/(^s*)|(s*$)/g, "").length !== 0) {
+            window.open(cookieserviceUrl, "_bank");
+        }
+    }
   }
   
 }

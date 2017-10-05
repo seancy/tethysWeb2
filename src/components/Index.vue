@@ -4,8 +4,10 @@
         <!--广告轮播图-->
         <div class="mainad">
             <div class="ad_slider">
-                <div><a href="javascript:;"><img src="static/images/banner/mainad_1.jpg"></a></div>
-                <div><a href="javascript:;"><img src="static/images/banner/mainad_2.jpg"></a></div>
+              <!--'+photo_url+'/pic/' + [car.titlePic] + '/0-->
+photo_url
+                <div v-for="car in LBT.carouselFigurePics"><a :href="car.link" target="_blank"><img v-bind:src="photo_url + '/pic/' + [car.titlePic]+'/0'"></a></div>
+                <!-- <div><a href="javascript:;"><img src="static/images/banner/mainad_2.jpg"></a></div> -->
             </div>
         </div><!--end 广告轮播图-->
         <!--登录（首页）-->
@@ -23,7 +25,7 @@
                 <a href="javascript:;" class="icon_sprite icon_refresh"></a>
             </li>
             <li class="btn">
-                <a class="btn_login" href="javascript:;" @click="logIn" :class="'btn-login '+(isLoging?'link_disable':'')">会员登录</a>
+                <a class="btn_login" href="javascript:;" :class="'btn-login '+(isLoging?'link_disable':'')">会员登录</a>
                 <a class="btn_reg" href="javascript:;">注册会员</a>
             </li>
         </ul><!--end 登录（首页）-->
@@ -166,79 +168,271 @@ export default {
   name: 'index',
   data: function () {
     return {
-      pagename: '',
-      urlPath: '',
-      userName: '',
-      siteName: '',
+      formatTime: common.formatTime,
       hasLogin: false,
-      footer: [],
-      navBar: [],
-      customtemplate:[],
-      memberInfo: {},
-      times: '',
-      photo_url: '',
-      leftURL: [],
-      rightURL: [],
-      newBalance: '',
-      leftLink:'',
-      rightLink:'',
-      userId:'',
       loginParam: {
-        username: 'test1',
-        password: '123456',
-        code: '1'
+          username: '',
+          password: ''
       },
-      verImgCode:'',
+      memberInfo: {},
+      messages: [],
+      LBT: {},
+      // sports: [],
+      liveList: [],
+      computers: [],
+      computersDock: 0,
+      verImgCode: '',
+      photo_url:'',
+      adv_title:'',
+      adv_picurl:'',
+      linkUrl:'',
       isLoging: false
-      // msg: 'Welcome to Your Vue.js App'
     }
   },
   created:function(){
     var _this = this;
     _this.hasLogin = common.ifLanded();
   },
+  mounted: function () {
+      this.photo_url = common.photo_url;
+      this.computersDock = common.Cookie.get('computersDock') || 0;
+      this.hasLogin = common.ifLanded();
+      this.LBT = common.Cookie.get('LBT') && JSON.parse(common.Cookie.get('LBT')) || {};
+      // this.sports = common.Cookie.get('sports') && JSON.parse(common.Cookie.get('sports')) || [];
+      this.liveList = common.Cookie.get('liveList') && JSON.parse(common.Cookie.get('liveList')) || [];
+      this.computers = common.Cookie.get('computers') && JSON.parse(common.Cookie.get('computers')) || [];
+      if (this.hasLogin === true) {
+          this.memberInfo = common.Cookie.get('memberInfo') && JSON.parse(common.Cookie.get('memberInfo')) || {};
+      }
+      this.getSysMessage();
+      // this.getSportsGame();
+      this.getLiveGame();
+      this.getComputerGame();
+      this.getIndexMessage();
+      var _self = this;
+      if (!this.hasLogin) {
+          this.getCode();
+      } else {
+          var _self = this;
+          var already_refresh = common.Cookie.get("already_refresh");
+          common.pollingTheMail();
+
+          if(!already_refresh){
+              common.Cookie.set("already_refresh","1");
+              $(".lone").click();
+              $(".sone").removeClass("icon-refreshhover");
+              common.ajax('member/refresh', {}, function (data) {
+                  $(".sone").addClass("icon-refreshmyword");
+                  setTimeout(function(){
+                      $(".sone").removeClass("icon-refreshmyword");
+                  },600);
+                  _self.memberInfo = $.extend({}, data && data.result || {});
+                  _self.memberInfo.balance = data&&data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,');
+                  $("#mynew_balance").html(_self.memberInfo.balance);
+                  common.Cookie.set('memberInfo', JSON.stringify(_self.memberInfo));
+              });
+          }
+      }
+      // 首頁彈窗
+      if(!this.hasLogin){
+          var popup = sessionStorage.getItem('closePopupUnlogin');
+          if (!popup){
+              this.getPopUPInfo();
+          }
+      }else{
+          var popup = sessionStorage.getItem('closePopupLogin');
+          if (!popup){
+              this.getPopUPInfo();
+          }
+      }
+      // 监测网页加载时间
+      window.onload = function () {
+          var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart;
+          console.log('Page load time is '+ loadTime);
+      }
+
+  },
   methods: {
-    logIn: function () {
-      var _self = this
-      var username = _self.loginParam.username
-      var password = _self.loginParam.password
-      var enterCode = _self.loginParam.code
-      if (!common.positiveEngNum(username) || username.length<4 || username.length>15) {
-        common.toast({content: "账号应在4-15个字符之间！"});
-        return;
-      }
-      if (!common.positiveEngNum(password) || password.length<6 || password.length>20) {
-        common.toast({content: "密码应在6-20个字符之间！"});
-        return;
-      }
-      $(".btn-login").attr("disabled","true");
-      setTimeout("$('.btn-login').removeAttr('disabled')",2000);
-      _self.isLoging = true;
-      common.ajax('member/login', {
-        username: username,
-        password: md5(password),
-        code: enterCode
-      }, (data) => {
-        // _self.isLoging = false;
-        common.Cookie.set('userName', data.result && data.result.username || '');
-        common.Cookie.set('token', data.result && data.result.token || '');
-        common.Cookie.set('memberInfo', JSON.stringify(data.result));
-        common.toast({title: '提示信息', content: '登录成功！', time: 2});
-        $("#free_open_account").hide();
-        setTimeout(function () {
-          window.location.reload();
-        }, 2000);
-      }, 'post', function () {
-        setTimeout(function () {
-          _self.isLoging = false;
-        }, 800);
-        _self.getCode();
-      }, function () {
-        setTimeout(function () {
-          _self.isLoging = false;
-        }, 800);
-        _self.getCode();
-      });
+    getPopUPInfo:function(){
+        var _self = this;
+        var varg = null;
+        common.ajax('cms/popup/getPopUpInfo', {}, function(data) {
+            if (data && data.apistatus == 1) {
+                $(".popupad").show();
+                _self.adv_title = data&&data.result&&data.result.title;
+                var picurl = _self.photo_url+"/pic/";
+                picurl+=data&&data.result&&data.result.titlePic+"/0";
+                _self.adv_picurl = picurl;
+                _self.linkUrl = data&&data.result&&data.result.linkUrl;
+                if(!_self.linkUrl){
+                } else {
+                    $(".popupad_body img").css("cursor","pointer");
+                }
+            }
+        },"post");
+
+        $('.popupad_close').on('click', function(){
+           // console.log(this.hasLogin);
+            if (!_self.hasLogin){
+                sessionStorage.setItem('closePopupUnlogin', 'popup');
+            }else{
+                sessionStorage.setItem('closePopupLogin', 'popup');
+            }
+            $(this).parents('.popupad').hide();
+        });
+        $(".popupad_body").find("img").on("click",function(){
+            var srcstr = $(this).attr("data-src");
+            if(!srcstr){
+            } else {
+                window.open(srcstr,'_blank');
+            }
+        });
+
+    },
+    blurInput:function(){
+        $(".authCode").css("display","inline-block");
+    },
+    // get code
+    getCode: function () {
+        var _self = this;
+        common.ajax('member/code/get', {
+            width: 112,
+            height: 37
+        }, function (data) {
+            common.Cookie.set('clientId', data.result && data.result.clientId || '');
+            _self.verImgCode = data.result && 'data:image/png;base64,' + data.result.code || '';
+        });
+        _self.$nextTick(function () {
+            $('.icon-refresh').removeAttr("style");
+            setTimeout(function () {
+                $('.icon-refresh').css({
+                    cursor: 'pointer',
+                    transition: 'all 3s',
+                    transform: 'rotate(720deg)'
+                });
+            }, 200);
+        });
+    },
+
+    getIndexMessage: function () {   // 首页公告
+        var _self = this;
+        common.ajax('cms/client/bulletin/list', {}, function (data) {
+            var ms = data && data.result || {};
+            _self.messages = ms || [];
+            // 滚动
+            _self.$nextTick(function () {
+                $(".sys-notice").slide({
+                    mainCell: ".bd ul",
+                    autoPage: true,
+                    effect: "leftMarquee",
+                    autoPlay: true,
+                    vis: 1, interTime: 50
+                });
+            });
+        })
+    },
+    getSysMessage: function () {
+        var _self = this;
+        common.ajax('cms/client/index', {}, function (data) {
+           // alert(data);
+            var ad = data && data.result && data.result.ad || {};
+            _self.LBT = ad && ad.LBT || {};
+            common.Cookie.set('LBT', JSON.stringify(_self.LBT));
+          //  _self.messages = ad && ad.HYGG || [];
+          //  common.Cookie.set('messages', JSON.stringify(_self.messages));
+            // 滚动
+            _self.$nextTick(function () {
+                $(".picScroll-top").slide({
+                    titCell: ".hd ul",
+                    mainCell: ".bd ul",
+                    autoPage: true,
+                    effect: "top",
+                    autoPlay: true,
+                    vis: 1,
+                    trigger: "click",
+                    interTime: 5000
+                });
+                $(window).resize(function () {
+                    if (($(window).width() > 1680)) {
+                        $(".picList li").css("hight", "700px");
+                    } else {
+                        $(".picList li").css("hight", "505px");
+                    }
+                });
+
+            });
+        })
+    },
+
+    // 真人视讯
+    getLiveGame: function () {
+        var _self = this;
+        common.ajax('config/kd/recommend/game/list',
+            {
+                id: 1000,
+                count: 3,
+            }, function (data) {
+                _self.liveList = data && data.result && data.result.list || [];
+                common.Cookie.set('liveList', JSON.stringify(_self.liveList));
+            });
+    },
+    // 电子游戏
+    getComputerGame: function () {
+        var _self = this;
+        common.ajax('config/kd/hot/game/list',
+            {
+                id: 1001,
+                count: 15,
+            }, function (data) {
+                var list = data && data.result && data.result.list || [];
+                var arr = [];
+                _self.computersDock = list.length % 5 === 0 ? parseInt(list.length / 5, 10) : parseInt(list.length / 5, 10) + 1;
+                for (var i = 0; i < _self.computersDock; i++) {
+                    var sub_arr = [];
+                    var start = i * 5;
+                    var length = i == _self.computersDock - 1 ? list.length - i * 5 : 5;
+                    for (var j = 0; j < length; j++) {
+                        sub_arr.push(list[start + j]);
+                    }
+                    arr.push(sub_arr);
+                }
+                _self.computers = arr;
+                common.Cookie.set('computers', JSON.stringify(_self.computers));
+                common.Cookie.set('computersDock', _self.computersDock);
+                _self.$nextTick(function () {
+                    $('#carousel-generic').carousel();
+                });
+            }
+        )
+    },
+    // 进入游戏
+    enterGame: function (id) {
+        var _self = this;
+        if (_self.hasLogin === false) {
+            common.toast({content: "请先登录！！"});
+            return;
+        }
+        var win = common.openGame();
+        if(openGameSize<2){
+            win.document.write(loadStr) ;
+        }
+        var loop = setInterval(function() {
+            if(win .closed) {
+                openGameSize = 0 ;
+                clearInterval(loop);
+            }
+        }, 500);
+        common.ajax('config/kd/game/start',{id: id}, function (data) {
+            if(data.apistatus =='0'){
+                win.close();
+                common.toast({content: "网络较差，请稍后重试！"});
+            } else {
+                if (data && data.result) {
+                    var url = data.result.content;
+                    win = common.openGame(url);
+                }
+            }
+        }, 'post');
     }
   }
 }
@@ -246,7 +440,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+/*h1, h2 {
   font-weight: normal;
 }
 
@@ -262,5 +456,5 @@ li {
 
 a {
   color: #42b983;
-}
+}*/
 </style>
