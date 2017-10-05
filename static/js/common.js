@@ -872,12 +872,12 @@ window.common = {
     newTab: null,
     toast: function(msg) {
         console.log(msg)
-        // $message({
-        //     content: msg.content || msg,
-        //     time: 3,
-        //     hh: true,
-        //     hf: true
-        // });
+        $message({
+            content: msg.content || msg,
+            time: 3,
+            hh: true,
+            hf: true
+        });
     },
     toast_drawMoney: function(msg) {
       //  console.log(msg);

@@ -60,6 +60,29 @@ $(function(){
 			});
 		});
 	});
+
 });
+function showModal(setSource){
+  overlayOpacity = 0.7,
+    fadeTime = 300;
+  wdHeight = $(window).height();
+
+  $('body').append('<div id="mdOverlay"></div><div id="mdWindow"><div class="mdClose icon_sprite icon_close"></div><div class="modalContent">' + setSource + '</div></div>');
+
+  $('#mdOverlay,#mdWindow').css({display:'block',opacity:'0'});
+  $('#mdOverlay').css({height:wdHeight}).stop().animate({opacity:overlayOpacity},fadeTime);
+  $('#mdWindow').stop().animate({opacity:'1'},fadeTime);
+
+  $(window).on('resize',function(){
+    var adjHeight = $(window).height();
+    $('#mdOverlay').css({height:adjHeight});
+  });
+
+  $('#mdOverlay,.mdClose,.btn_modal').on('click',function(){
+    $('#mdWindow,#mdOverlay').stop().animate({opacity:'0'},fadeTime,function(){
+      $('#mdOverlay,#mdWindow').remove();
+    });
+  });
+}
 
 

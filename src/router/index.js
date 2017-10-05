@@ -18,8 +18,12 @@ import PersonalCallin from '@/components/person/PersonalCallin'
 import PersonalCallinEdit from '@/components/person/PersonalCallinEdit'
 import PersonalCallin1 from '@/components/person/PersonalCallin1'
 import PersonalDeposit from '@/components/person/PersonalDeposit'
+import PersonalDeposit0 from '@/components/person/PersonalDeposit0'
+import PersonalDeposit1 from '@/components/person/PersonalDeposit1'
+import PersonalDeposit2 from '@/components/person/PersonalDeposit2'
+import PersonalDeposit3 from '@/components/person/PersonalDeposit3'
 
-import PersonalDeposit11 from '@/components/person/PersonalDeposit11'
+// import PersonalDeposit11 from '@/components/person/PersonalDeposit11'
 import PersonalFunds from '@/components/person/PersonalFunds'
 import PersonalInfo from '@/components/person/PersonalInfo'
 import PersonalModifyPassword from '@/components/person/PersonalModifyPassword'
@@ -118,12 +122,29 @@ export default new Router({
       name: 'PersonalDeposit',
       component: PersonalDeposit
     },
+    {
+      path: '/personalDeposit0',
+      name: 'PersonalDeposit0',
+      component: PersonalDeposit0
+    },
 
     {
-      path: '/personalDeposit1_1',
+      path: '/personalDeposit1',
       name: 'PersonalDeposit11',
-      component: PersonalDeposit11
+      component: PersonalDeposit1
     },
+    {
+      path: '/personalDeposit2',
+      name: 'PersonalDeposit12',
+      component: PersonalDeposit2
+    },
+    {
+      path: '/personalDeposit3',
+      name: 'PersonalDeposit13',
+      component: PersonalDeposit3
+    },
+
+
     {
       path: '/personalFunds',
       name: 'PersonalFunds',
