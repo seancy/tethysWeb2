@@ -57,7 +57,7 @@
     <!-- </div> -->
     <bottomFooter></bottomFooter>
     <onlineService></onlineService>
-    <!-- <popupAd></popupAd> -->
+    <popupAd></popupAd>
 
   </div>
 
