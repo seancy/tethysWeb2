@@ -108,20 +108,6 @@
         </div>
     </div>
 
-    <!-- :src="photo_url+'/pic/'+item.img+'/0'" -->
-    <!-- src="static/images/casino_1.jpg" -->
-    <!-- <div class="index_block index_casino slide">
-        <div class="contain_width">
-            <div class="title"><img src="static/images/title_casino.png" alt="电子游戏 欢乐无穷"></div>
-            <div class="casino_slider">
-                <div class="item_casino" v-for="(item,index) in computers" @click="enterGame(item.id)" v-bind:class="{ 'active': index===1 }">
-                    <div class="img"><img :src="photo_url+'/pic/'+item.img+'/0'" alt=""></div>
-                    <div class="item item_mg">{{item.name}}<br />MACHINE SLOTS?</div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
     <div class="index_block index_games">
         <div class="contain_width">
             <div class="gamead_slider">
@@ -134,7 +120,7 @@
                 <li v-for="(item,index) in computers">
                     <img :src="photo_url+'/pic/'+item.img+'/0'" alt="">
                     <h3>{{item.name}}</h3>
-                    <a href="javascript:;" @click="enterGame(item.id)">进入游戏</a>
+                    <a href="javascript:;" @click="$parent.enterGame(item.id)">进入游戏</a>
                 </li>
             </ul>
         </div>
@@ -259,34 +245,34 @@ export default {
       });
     },
     // 进入游戏
-    enterGame: function (id) {
-        var _self = this;
-        if (_self.hasLogin === false) {
-            common.toast({content: "请先登录！！"});
-            return;
-        }
-        var win = common.openGame();
-        if(openGameSize<2){
-            win.document.write(loadStr) ;
-        }
-        var loop = setInterval(function() {
-            if(win .closed) {
-                openGameSize = 0 ;
-                clearInterval(loop);
-            }
-        }, 500);
-        common.ajax('config/kd/game/start',{id: id}, function (data) {
-            if(data.apistatus =='0'){
-                win.close();
-                common.toast({content: "网络较差，请稍后重试！"});
-            } else {
-                if (data && data.result) {
-                    var url = data.result.content;
-                    win = common.openGame(url);
-                }
-            }
-        }, 'post');
-    },
+    // enterGame: function (id) {
+    //     var _self = this;
+    //     if (_self.hasLogin === false) {
+    //         common.toast({content: "请先登录！！"});
+    //         return;
+    //     }
+    //     var win = common.openGame();
+    //     if(openGameSize<2){
+    //         win.document.write(loadStr) ;
+    //     }
+    //     var loop = setInterval(function() {
+    //         if(win .closed) {
+    //             openGameSize = 0 ;
+    //             clearInterval(loop);
+    //         }
+    //     }, 500);
+    //     common.ajax('config/kd/game/start',{id: id}, function (data) {
+    //         if(data.apistatus =='0'){
+    //             win.close();
+    //             common.toast({content: "网络较差，请稍后重试！"});
+    //         } else {
+    //             if (data && data.result) {
+    //                 var url = data.result.content;
+    //                 win = common.openGame(url);
+    //             }
+    //         }
+    //     }, 'post');
+    // },
     // 电子游戏
     getComputerGame: function () {
         var _self = this;

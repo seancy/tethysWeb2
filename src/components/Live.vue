@@ -29,10 +29,10 @@
                       <span>{{game.name}}</span>
                   </div>
                   <div class="btn">
-                      <a href="javascript:;" @click="enterGame(game.id)" v-if="game.id">进入游戏</a>
+                      <a href="javascript:;" @click="$parent.enterGame(game.id)" v-if="game.id">进入游戏</a>
                       <a href="javascript:;" v-else>进入游戏</a>
                       <div class="btn_list" v-if="game.list">
-                          <a href="javascript:;" v-for="gamedetail in game.list" @click="enterGame(gamedetail.id)">{{gamedetail.name}}</a>
+                          <a href="javascript:;" v-for="gamedetail in game.list" @click="$parent.enterGame(gamedetail.id)">{{gamedetail.name}}</a>
                           
                       </div>
                   </div>
@@ -297,43 +297,43 @@ export default {
             _self.id = categoryId;
             this.getGameAll(_self.table, _self.id);
         },
-        enterGame: function (id) {
-            var _self = this;
-            if (_self.hasLogin === false) {
-                _self.$nextTick(function () {
-                    common.$message({
-                        title: '登陆提示',
-                        content: '请先登录！！',
-                        hc: true,
-                        okcb: function () {
-                            _self.$router.push({path: '/'});
-                        }
-                    });
-                });
-                return;
-            }
-            var win = common.openGame();
-            if(openGameSize<2){
-                win.document.write(loadStr) ;
-            }
-            var loop = setInterval(function() {
-                if(win .closed) {
-                    openGameSize = 0 ;
-                    clearInterval(loop);
-                }
-            }, 500);
-            common.ajax('config/kd/game/start',{id: id}, function (data) {
-                if(data.apistatus =='0'){
-                    win.close();
-                    common.toast({content: "网络较差，请稍后重试！"});
-                }else {
-                    if (data && data.result && data.result.content) {
-                        var url = data.result.content;
-                        win = common.openGame(url);
-                    }
-                }
-            }, 'post');
-        }
+        // enterGame: function (id) {
+        //     var _self = this;
+        //     if (_self.hasLogin === false) {
+        //         _self.$nextTick(function () {
+        //             common.$message({
+        //                 title: '登陆提示',
+        //                 content: '请先登录！！',
+        //                 hc: true,
+        //                 okcb: function () {
+        //                     _self.$router.push({path: '/'});
+        //                 }
+        //             });
+        //         });
+        //         return;
+        //     }
+        //     var win = common.openGame();
+        //     if(openGameSize<2){
+        //         win.document.write(loadStr) ;
+        //     }
+        //     var loop = setInterval(function() {
+        //         if(win .closed) {
+        //             openGameSize = 0 ;
+        //             clearInterval(loop);
+        //         }
+        //     }, 500);
+        //     common.ajax('config/kd/game/start',{id: id}, function (data) {
+        //         if(data.apistatus =='0'){
+        //             win.close();
+        //             common.toast({content: "网络较差，请稍后重试！"});
+        //         }else {
+        //             if (data && data.result && data.result.content) {
+        //                 var url = data.result.content;
+        //                 win = common.openGame(url);
+        //             }
+        //         }
+        //     }, 'post');
+        // }
     }
 }
 </script>

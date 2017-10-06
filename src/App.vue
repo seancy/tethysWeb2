@@ -80,6 +80,52 @@ export default {
     BottomFooter,
     OnlineService,
     PopupAd
+  },
+  data:function() {
+      return {
+          hasLogin: false
+      }
+  },
+  created:function(){
+    var _self = this;
+    _self.hasLogin = common.ifLanded();
+  },
+  methods:{
+    // 进入游戏
+    enterGame: function(id) {
+        var _self = this;
+        if (_self.hasLogin === false) {
+            common.toast({
+                content: "请先登录！！"
+            });
+            return;
+        }
+        common.ajax('config/kd/game/start', {
+            id: id
+        }, function(data) {
+            if (data.apistatus == '0') {
+                common.toast({
+                    content: "网络较差，请稍后重试！"
+                });
+            } else {
+                var win = common.openGame();
+                if(openGameSize<2){
+                    win.document.write(loadStr) ;
+                }
+                var loop = setInterval(function() {
+                    if(win .closed) {
+                        openGameSize = 0 ;
+                        clearInterval(loop);
+                    }
+                }, 500);
+                if (data && data.result) {
+                    var url = data.result.content;
+                    // $('#iframeId').attr('src', url);
+                    win = common.openGame(url);
+                }
+            }
+        }, 'post');
+    }
   }
   // template: '<div><topHeader></topHeader>test info.</div>'
 }

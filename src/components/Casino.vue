@@ -41,15 +41,7 @@
           <div class="contain_width">
               <!--mg电子-->
               <ul class="page_casinoList" id="casino_mg">
-              <!-- <li v-for="(item, index) in games">
-                        <a href="javascript:;" @click="enterGame(item.id)" id="casino_a_entergame">
-                            <p class="img">
-                                <img v-lazy="photo_url+'/pic/'+[item.img]+'/0'" :alt="item.name" class="loading_gif"  />
-                            </p>
-                            <p class="h4">{{item.name}}</p>
-                        </a>
-                    </li> -->
-                  <li v-for="(item, index) in games" @click="enterGame(item.id)">
+                  <li v-for="(item, index) in games" @click="$parent.enterGame(item.id)">
                       <img v-lazy="photo_url+'/pic/'+[item.img]+'/0'" :alt="item.name">
                       <h3>{{item.name}}</h3>
                       <a href="javascript:;">进入游戏</a>
@@ -324,43 +316,45 @@ export default {
             this.getGameAll(_self.table, _self.id,_self.typeid);
         },
         // 进入游戏
-        enterGame: function (id) {
-            var _self = this;
-            if (_self.hasLogin === false) {
-                _self.$nextTick(function () {
-                    common.$message({
-                        title: '登陆提示',
-                        content: '请先登录！！',
-                        hc: true,
-                        okcb: function () {
-                            _self.$router.push({path: '/'});
-                        }
-                    });
-                });
-                return;
-            }
-            var win = common.openGame();
-            if(openGameSize<2){
-                win.document.write(loadStr) ;
-            }
-            var loop = setInterval(function() {
-                if(win .closed) {
-                    openGameSize = 0 ;
-                    clearInterval(loop);
-                }
-            }, 500);
-            common.ajax('config/kd/game/start',{id: id}, function (data) {
-                if(data.apistatus =='0'){
-                    win.close();
-                    common.toast({content: "网络较差，请稍后重试！"});
-                } else {
-                    if (data && data.result) {
-                        var url = data.result.content;
-                        win = common.openGame(url);
-                    }
-                }
-            }, 'post');
-        },
+        // enterGame: function (id) {
+        //     var _self = this;
+        //     if (_self.hasLogin === false) {
+        //         _self.$nextTick(function () {
+        //             common.$message({
+        //                 title: '登陆提示',
+        //                 content: '请先登录！！',
+        //                 hc: true,
+        //                 okcb: function () {
+        //                     _self.$router.push({path: '/'});
+        //                 }
+        //             });
+        //         });
+        //         return;
+        //     }
+        //     var win = common.openGame();
+        //     if(openGameSize<2){
+        //         win.document.write(loadStr) ;
+        //     }
+        //     var loop = setInterval(function() {
+        //         if(win .closed) {
+        //             openGameSize = 0 ;
+        //             clearInterval(loop);
+        //         }
+        //     }, 500);
+        //     // debugger;
+        //     common.ajax('config/kd/game/start',{id: id}, function (data) {
+        //         // debugger;
+        //         if(data.apistatus =='0'){
+        //             win.close();
+        //             common.toast({content: "网络较差，请稍后重试！"});
+        //         } else {
+        //             if (data && data.result) {
+        //                 var url = data.result.content;
+        //                 win = common.openGame(url);
+        //             }
+        //         }
+        //     }, 'post');
+        // },
         // 前一页
         prevPage: function () {
             var _self = this;
