@@ -619,7 +619,7 @@
         }
       },
       JqValidate: function () {
-        debugger
+//        debugger
         var _self = this;
         var param = {};
         let warnData = _self.registerConfig;
