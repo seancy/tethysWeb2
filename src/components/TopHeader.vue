@@ -3,7 +3,7 @@
       <div class="topbar">
           <div class="topleft">
               <span class="icon_clock"></span>
-              <span>07 September. 23:45 <small>美东时间</small></span>
+              <span>07 September. 23:45<small>美东时间</small></span>
           </div>
           <div class="topright">
               <span class="tel"><span class="icon_sprite icon_tel"></span>+63 945-456-456</span>
