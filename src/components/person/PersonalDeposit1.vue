@@ -165,7 +165,7 @@
                     <p>2. 请尽量选择同行存款，如跨行请进行加急，方便系统加快您的入款速度。</p>
                   </div>
                   <div class="form_submit">
-                    <a class="formBtn" href="index.html">回首页</a>
+                    <a class="formBtn submit btn-apply"  @click="closeWin" >回首页</a>
                   </div>
                 </div>
               </fieldset>
