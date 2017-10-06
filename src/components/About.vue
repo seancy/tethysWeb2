@@ -331,7 +331,6 @@
       $('.psn_content').eq(index).show().siblings().hide();
     })
   })
-  //  debugger
   export default {
     name: 'about',
     data() {
@@ -469,7 +468,6 @@
         var _self = this;
         _self.code = code;
         this.getData();
-        debugger
         if (code === 'IC05') {
           $(document).ready(function () {
             $("#join_tab li").on('click', function () {
