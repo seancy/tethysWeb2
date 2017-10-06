@@ -92,7 +92,7 @@
                         <li>
                           <span class="label">存入金额</span>
                           <span class="form"><input type="text" class="formInput"  v-model="saveObj.saveCount" id="money_range" @blur="getOfferAmount" @input.lazy="getOfferAmount"></span>
-                          <span class="ui_error">请输入正确金额！</span>
+                          <span class="ui_error">{{inputInfo.error}}</span>
                         </li>
                         <li>
                           <span class="label">预计存入时间</span>
