@@ -66,7 +66,7 @@
                                 </span>
               </div>
               <div class="psn_filter_btn">
-                <a  @click="searchData" id="searchbtn" class="formBtn">搜&nbsp;&nbsp;&nbsp;&nbsp;索</a>
+                <a  @click="searchData" id="searchbtn" class="formBtn" href="javascript:void (0)">搜&nbsp;&nbsp;&nbsp;&nbsp;索</a>
               </div>
 
               <div class="psn_list">

@@ -48,13 +48,15 @@
                      </li>
                      <li>
                        <span class="label">真实姓名<span class="color_red">※</span></span>
-                       <span class="form"><input v-model="bankInfo.realname" type="text" id="realName" @input="preCheck('realname')" class="formInput" placeholder="请输入您的真实姓名"></span>
+                       <span class="form">
+                         <input v-model="bankInfo.realname" type="text" id="realName" @input="preCheck('realname')" class="formInput" placeholder="请输入您的真实姓名"></span>
                        <span class="ui_error">{{errorMsg.realname_error}}</span>
                      </li>
                      <li>
                        <span class="label">开户行<span class="color_red">※</span></span>
-                       <span class="form"><input type="text" class="formInput" placeholder="请输入开户行" v-model="bankInfo.bankDeposit" @input="preCheck('bankDeposit')"></span>
-                       <span class="ui_error">{{errorMsg.bankDeposit_error}}</span>
+                       <span class="form">
+                         <input type="text" class="formInput" placeholder="请输入开户行" v-model="bankInfo.bankDeposit" @input="preCheck('bankDeposit')"></span>
+                       <span class="ui_error">{{errorMsg.realname_error}}</span>
                      </li>
                      <li>
                        <span class="label">银行卡号<span class="color_red">※</span></span>
@@ -82,7 +84,7 @@
          </div>
        </div>
        <!--信息已经完善显示-->
-       <div class="right_main" v-if="isFirst== false">
+       <div class="right_main" v-if="getMoneyDet">
          <div class="psn_wrap">
            <!--取款-->
            <div class="psn_content">
@@ -98,7 +100,7 @@
                      <li>
                        <span class="label">收款账号</span>
                        <span class="form">{{bankInfo.bank}}-{{bankInfo.bankDetail}}-{{bankInfo.bankCardNo}}</span>
-                       <a href="personal-callin_edit.html" class="edit">修改银行帐号</a>
+                       <a @click="changeCard()" class="edit">修改银行帐号</a>
                      </li>
                      <li>
                        <span class="label">钱包余额</span>
@@ -118,7 +120,7 @@
                  </dd>
                </dl>
                <div class="form_submit">
-                 <a class="formBtn " @click="preDraw" type="button" >申请取款</a>
+                 <a class="formBtn " href="javascript:void(0);" @click="preDraw" type="button" >申请取款</a>
                  <!--！仅供UI测试弹窗--><p><a class="modalBtn" href="#modalConform">打码量符合弹窗</a> <a class="modalBtn" href="#modalNoConform">打码量不符合弹窗</a></p><!--end ！仅供UI测试弹窗-->
                  <!--打码量符合讯息-->
                  <div id="modalConform" style="display:none;">
@@ -146,6 +148,62 @@
                      </div>
                    </div>
                  </div><!--end 打码量不符合讯息-->
+               </div>
+             </div>
+           </div><!--end 取款-->
+         </div>
+       </div>
+
+       <div class="right_main" v-if="changeBankCard">
+         <div class="psn_wrap">
+           <!--取款-->
+           <div class="psn_content">
+             <div class="deposit_wrap">
+               <dl class="psn_info">
+                 <dt><h3>修改取款银行账号</h3></dt>
+                 <dd>
+                   <ul class="style_item">
+                     <li>
+                       <span class="label">选择银行<span class="color_red">※</span></span>
+                       <span class="form formSelect_wrap">
+                         <select id="bankSelect" v-model="bankInfo.bankCode" class="formSelect" @change="preCheck('bankCode')">
+                          <option value="">请选择</option>
+                          <option v-for="(bank,index) in bankList" :value="bank.bankCode" :selected="{'selected' : bankInfo.bankCode === bank.bankCode}">{{bank.bankName}}
+                          </option>
+                        </select>
+                                                </span>
+                     </li>
+                     <li>
+                       <span class="label">真实姓名</span>
+                       <span class="form" v-model="bankInfo.realname">{{bankInfo.realname}}</span>
+                       <span class="ui_error"></span>
+                     </li>
+                     <li>
+                       <span class="label">开户行<span class="color_red">※</span></span>
+                       <span class="form">
+                         <input type="text" class="formInput" placeholder="请输入开户行" v-model="bankInfo.bankDeposit" @input="preCheck('bankDeposit')"></span>
+                       <span class="ui_error">{{errorMsg.realname_error}}</span>
+                     </li>
+                     <li>
+                       <span class="label">银行卡号<span class="color_red">※</span></span>
+                       <span class="form"><input  v-model="bankInfo.bankCardNo" type="text" class="formInput" placeholder="请输入银行卡号" @input="preCheck('bankCardNo')"></span>
+                       <span class="ui_error">{{errorMsg.bankCardNo_error}}</span>
+                     </li>
+                     <li>
+                       <span class="label">手机号码</span>
+                       <span class="form" v-model="bankInfo.telephone">{{bankInfo.telephone}}</span>
+                       <span class="ui_error"></span>
+                     </li>
+                   </ul>
+                 </dd>
+               </dl>
+               <div class="form_submit">
+                 <a class="formBtn modalBtn" href="#modalWaring1" type="submit" @click="bindBankInfo">确&nbsp;&nbsp;认</a>
+                 <!--提示讯息-->
+                 <div id="modalWaring1" style="display:none;">
+                   <div class="icon_warning"></div>
+                   <p class="warning_text">当前没有绑定取款银行卡，无法完成取款，<br />请绑定银行卡继续操作！</p>
+                 </div><!--end 提示讯息-->
                </div>
              </div>
            </div><!--end 取款-->
@@ -213,7 +271,9 @@ export default {
       callin_moneyRange: '',
       maxMoney: '',
       minMoney: '',
-      memberInfo: {}
+      memberInfo: {},
+      getMoneyDet:'',
+      changeBankCard:''
     }
   },
   filters: {
@@ -406,6 +466,8 @@ export default {
         _self.bankInfo.realname = _self.bankInfo.realname;
         if (_self.bankInfo.tempCode == "" || _self.bankInfo.realname == "" || _self.bankInfo.bankDeposit == "" || _self.bankInfo.bankCardNo == "" || _self.bankInfo.telephone == "") {
           _self.isFirst = true;
+          _self.getMoneyDet = false;
+          _self.changeBankCard =false;
 //          common.toast({
 //            content: '<div class="icon_warning"></div>\n' +
 //            '            <p class="warning_text">当前没有绑定取款银行卡，无法完成取款，<br />请绑定银行卡继续操作！</p>！'
@@ -416,8 +478,11 @@ export default {
          showModal(source);
         } else {
           _self.isFirst = false;
+          _self.getMoneyDet = true;
+          _self.changeBankCard =false;
         }
         _self.bankInfo.bank = _self.bankInfo.bank;
+
 
       }, 'get');
     },
@@ -428,6 +493,16 @@ export default {
         _self.bankList = data && data.result || [];
         _self.bankInfo.bankCode = _self.tempCode;
       }, 'post');
+    },
+    //修改银行卡号
+    changeCard:function(){
+      var _self=this;
+      _self.isFirst = false;
+      _self.getMoneyDet = false;
+      _self.changeBankCard =true;
+      _self.bankInfo.bankDeposit="";
+      _self.bankInfo.bankCardNo=""
+
     },
     // 绑定银行卡信息
     bindBankInfo: function() {

@@ -26,7 +26,7 @@
         <div class="right_main">
           <div class="psn_wrap">
             <!--在线支付-->
-            <div class="psn_content">
+            <div class="psn_content" v-show="showContent">
               <div class="deposit_wrap">
                 <dl class="psn_info">
                   <dt><h3>在线支付信息</h3></dt>
@@ -34,24 +34,45 @@
                     <ul class="style_item">
                       <li>
                         <span class="label">会员账号</span>
-                        <span class="form">vivien_text</span>
+                        <span class="form">{{info.username}}</span>
                       </li>
                       <li>
                         <span class="label">存入金额</span>
-                        <span class="form"><input type="text" class="formInput" placeholder="范围1~10000"></span>
+                        <span class="form">
+                          <input type="text" class="formInput" v-model="saveInfo.saveCount" id="deposit2_value" disabled="disabled" @blur="getOfferAmount" @input="getOfferAmount" />
+                        </span>
                         <span class="ui_error">请输入正确金额！</span>
                       </li>
                     </ul>
-                    <div class="deposit_msg_plus">当前享受优惠：10.00</div>
+                    <!--<div class="deposit_msg_plus">当前享受优惠：10.00</div>-->
                   </dd>
                 </dl>
                 <div class="form_submit">
-                  <a class="formBtn" href="personal-deposit3-2.html">提交申请</a>
+                  <a class="formBtn btn-apply next-step"  @click="nextStep" >提交申请</a>
+                </div>
+              </div>
+            </div><!--end 在线支付-->
+            <div class="psn_content" v-show="!showContent">
+              <div class="deposit_wrap">
+                <dl class="psn_info">
+                  <dt><h3>选择支付银行</h3></dt>
+                  <dd>
+                    <div class="bank_select ">
+                      <label v-for="(bank,index) in bankList" :for="'bank_'+[index]">
+                        <input type="radio" name="bankgroup" :value="bank.bankCode" :id="'bank_'+[index]" v-model="saveInfo.bankCode">
+                        <img :src="photo_url+'/pic/'+[bank.bankURL]+'/0'">{{bank.bankName}}</label>
+
+                    </div>
+                  </dd>
+                </dl>
+                <div class="form_submit">
+                  <a class="formBtn btn-apply submit-apply" @click="submitApply">确&nbsp;&nbsp;认</a>
                 </div>
               </div>
             </div><!--end 在线支付-->
           </div>
         </div>
+
         <!--end 右侧内容-->
       </div>
     </div>
@@ -60,7 +81,7 @@
 
 <script>
   export default {
-    name: ' PersonalDeposit2',
+    name: 'PersonalDeposit2',
     data: function () {
       return {
         info: {
@@ -86,7 +107,8 @@
         deposit2_value:'',
         memberInfo: {},
         onlineMinAmount:'',
-        onlineMaxAmount:''
+        onlineMaxAmount:'',
+        showContent:true,
       }
     },
     created: function () {
@@ -176,7 +198,7 @@
             _self.bankList = bank_result || [];
             // 选中第一个
             _self.$nextTick(function () {
-              $('.bank-select').find('input[type="radio"]').eq(0).click();
+              $('.bank_select').find('input[type="radio"]').eq(0).click();
             });
           }, 'post');
       },
@@ -213,31 +235,32 @@
         }
         _self.$nextTick(function () {
           var ctx = $('.btn-apply.next-step');
-          _self.goNext(ctx);
+          _self.showContent = false;
+//          _self.goNext(ctx);
         });
       },
       // 下一步
-      goNext: function (ctx) {
-        var _self = this;
-        var current_fs = $(ctx).parent();
-        var next_fs = current_fs.next();
-        var left, opacity, scale;
-        next_fs.show();
-        current_fs.animate({opacity: 0}, {
-          step: function (now, mx) {
-            scale = 1 - (1 - now) * 0.2;
-            left = (now * 50) + "%";
-            opacity = 1 - now;
-            current_fs.css({'transform': 'scale(' + scale + ')'});
-            next_fs.css({'left': left, 'opacity': opacity});
-          },
-          duration: 800,
-          complete: function () {
-            current_fs.hide();
-          },
-          easing: 'easeInOutBack'
-        });
-      },
+//      goNext: function (ctx) {
+//        var _self = this;
+//        var current_fs = $(ctx).parent();
+//        var next_fs = current_fs.next();
+////        var left, opacity, scale;
+////        next_fs.show();
+////        current_fs.animate({opacity: 0}, {
+////          step: function (now, mx) {
+////            scale = 1 - (1 - now) * 0.2;
+////            left = (now * 50) + "%";
+////            opacity = 1 - now;
+////            current_fs.css({'transform': 'scale(' + scale + ')'});
+////            next_fs.css({'left': left, 'opacity': opacity});
+////          },
+////          duration: 800,
+////          complete: function () {
+////            current_fs.hide();
+////          },
+////          easing: 'easeInOutBack'
+////        });
+//      },
       // 获取优惠
       getOfferAmount: function () {
         var _self = this;
@@ -269,6 +292,7 @@
       submitApply: function () {
         var _self = this;
         var para = $.extend({}, _self.saveInfo);
+        console.log(para);
         if (!para.saveCount || para.saveCount === '' ||!(common.positiveNum(para.saveCount))) {
           // common.toast({content: '请输入正确的存款金额!', time: 3});
           _self.inputInfo.error = '请输入正确的存款金额!';

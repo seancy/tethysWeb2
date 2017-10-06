@@ -23,8 +23,8 @@
                 <a href="javascript:;" class="icon_sprite icon_refresh" @click="topHeader.getCode"></a>
             </li>
             <li class="btn">
-                <a class="btn_login" href="javascript:;" :class="'btn-login '+(isLoging?'link_disable':'')" @click="login">会员登录</a>
-                <a class="btn_reg" href="javascript:;">注册会员</a>
+                <a class="btn_login" href="javascript:;" :class="'btn-login '+(isLoging?'link_disable':'')" @click="topHeader.login">会员登录</a>
+                <a class="btn_reg" href="/signUp">注册会员</a>
             </li>
         </ul><!--end 登录（首页）-->
     </div>
@@ -44,7 +44,7 @@
     <div class="index_block index_product">
         <div class="contain_width">
             <div class="product_list">
-                <a href="javascript:;">
+                <a href="/casino">
                     <div class="title"><img src="static/images/title_pd_casino.png" alt="电子游艺"></div>
                     <div class="img"><img src="static/images/product_1.jpg" alt=""></div>
                     <div class="text">
@@ -52,7 +52,7 @@
                         <p>亿万彩池爆发中 欢喜连连</p>
                     </div>
                 </a>
-                <a href="javascript:;">
+                <a href="/live">
                     <div class="title"><img src="static/images/title_pd_live.png" alt="真人视讯"></div>
                     <div class="img"><img src="static/images/product_2.jpg" alt=""></div>
                     <div class="text">
@@ -60,7 +60,7 @@
                         <p>全球顶尖最佳视讯平台</p>
                     </div>
                 </a>
-                <a href="javascript:;">
+                <a href="/sports">
                     <div class="title"><img src="static/images/title_pd_sport.png" alt="体育赛事"></div>
                     <div class="img"><img src="static/images/product_3.jpg" alt=""></div>
                     <div class="text">
@@ -68,7 +68,7 @@
                         <p>每周精选千场热门赛事</p>
                     </div>
                 </a>
-                <a href="javascript:;">
+                <a href="/lottery">
                     <div class="title"><img src="static/images/title_pd_lottery.png" alt="彩票游戏"></div>
                     <div class="img"><img src="static/images/product_4.jpg" alt=""></div>
                     <div class="text">
@@ -160,7 +160,6 @@ export default {
     var _this = this;
     _this.hasLogin = common.ifLanded();
     this.topHeader = this.$parent.$children[0];
-    // debugger;
   },
   mounted: function () {
       this.photo_url = common.photo_url;
@@ -225,9 +224,8 @@ export default {
 
   },
   methods: {
-    login:function(){
-      // this.topHeader.loginParam = this.loginParam;
-      this.topHeader.login();
+    locationGo:function(url){
+      window.location = url;
     },
     useAnimation:function(){
       $('.casino_slider').slick({
@@ -244,35 +242,6 @@ export default {
           autoplaySpeed: 3000,
       });
     },
-    // 进入游戏
-    // enterGame: function (id) {
-    //     var _self = this;
-    //     if (_self.hasLogin === false) {
-    //         common.toast({content: "请先登录！！"});
-    //         return;
-    //     }
-    //     var win = common.openGame();
-    //     if(openGameSize<2){
-    //         win.document.write(loadStr) ;
-    //     }
-    //     var loop = setInterval(function() {
-    //         if(win .closed) {
-    //             openGameSize = 0 ;
-    //             clearInterval(loop);
-    //         }
-    //     }, 500);
-    //     common.ajax('config/kd/game/start',{id: id}, function (data) {
-    //         if(data.apistatus =='0'){
-    //             win.close();
-    //             common.toast({content: "网络较差，请稍后重试！"});
-    //         } else {
-    //             if (data && data.result) {
-    //                 var url = data.result.content;
-    //                 win = common.openGame(url);
-    //             }
-    //         }
-    //     }, 'post');
-    // },
     // 电子游戏
     getComputerGame: function () {
         var _self = this;
@@ -343,9 +312,6 @@ export default {
             });
         })
     },
-
-
-
     getPopUPInfo:function(){
         var _self = this;
         var varg = null;

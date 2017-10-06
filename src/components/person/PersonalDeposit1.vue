@@ -27,14 +27,14 @@
           <div class="psn_wrap">
             <!--银行转帐-->
             <div class="psn_content">
-              <div class="deposit_step">
-                <ul>
+              <div class="deposit_step" id="msform">
+                <ul id="progressbar">
                   <li class="active">选择银行</li>
                   <li>填写转帐信息</li>
                   <li>信息提交完成</li>
                 </ul>
               </div>
-              <fieldset>
+              <fieldset v-show="showFieldset">
                 <div class="deposit_wrap">
                   <dl class="psn_info">
                     <dt><h3>选择支付银行</h3></dt>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="clear"></div>
               </fieldset>
-              <fieldset>
+              <fieldset v-show="showFieldset1">
                 <div class="deposit_wrap">
                   <dl class="psn_info">
                     <dt><h3>收款银行账号</h3></dt>
@@ -92,7 +92,7 @@
                         <li>
                           <span class="label">存入金额</span>
                           <span class="form"><input type="text" class="formInput"  v-model="saveObj.saveCount" id="money_range" @blur="getOfferAmount" @input.lazy="getOfferAmount"></span>
-                          <span class="ui_error">请输入正确金额！</span>
+                          <span class="ui_error">{{inputInfo.error}}</span>
                         </li>
                         <li>
                           <span class="label">预计存入时间</span>
@@ -125,7 +125,7 @@
                 </div>
                 <div class="clear"></div>
               </fieldset>
-              <fieldset>
+              <fieldset v-show="showFieldset2">
                 <div class="deposit_wrap">
                   <div class="msg_success"><span class="icon_sprite icon_success"></span>您的存款申请已成功提交！</div>
                   <dl class="psn_info">
@@ -165,7 +165,7 @@
                     <p>2. 请尽量选择同行存款，如跨行请进行加急，方便系统加快您的入款速度。</p>
                   </div>
                   <div class="form_submit">
-                    <a class="formBtn" href="index.html">回首页</a>
+                    <a class="formBtn submit btn-apply"  @click="closeWin" >回首页</a>
                   </div>
                 </div>
               </fieldset>
@@ -179,6 +179,7 @@
 </template>
 
 <script>
+
   export default {
     name: 'PersonalDeposit1',
     data: function() {
@@ -226,6 +227,9 @@
         memberInfo: {},
         choose_bank_content: '',
         success_bank_content: '',
+        showFieldset:true,
+        showFieldset1:false,
+        showFieldset2:false
       }
     },
     created: function() {
@@ -424,38 +428,19 @@
         }, 'post');
         _self.$nextTick(function() {
           var ctx = $('.btn-apply.next-step');
+          _self.showFieldset=false;
+          _self.showFieldset1=true;
+          _self.showFieldset2=false;
           _self.goNext(ctx);
-          ctx.parents("#msform").find(".first-step").addClass("complete");
         });
       },
-      // 下一步
+      // 下一步tive
       goNext: function(ctx) {
         var current_fs = $(ctx).parent();
         var next_fs = current_fs.next();
         var left, opacity, scale;
-        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-        next_fs.show();
-        current_fs.animate({
-          opacity: 0
-        }, {
-          step: function(now, mx) {
-            scale = 1 - (1 - now) * 0.2;
-            left = (now * 50) + "%";
-            opacity = 1 - now;
-            current_fs.css({
-              'transform': 'scale(' + scale + ')'
-            });
-            next_fs.css({
-              'left': left,
-              'opacity': opacity
-            });
-          },
-          duration: 800,
-          complete: function() {
-            current_fs.hide();
-          },
-          easing: 'easeInOutBack'
-        });
+        $("#progressbar li").eq($("fieldset").index(next_fs) -1).addClass("active");
+
       },
       // 关闭窗口
       closeWin: function() {
@@ -661,7 +646,10 @@
           _self.$nextTick(function() {
             var ctx = $('.btn-apply.submit-apply');
             _self.goNext(ctx);
-            ctx.parents("#msform").find(".sec-step").addClass("complete");
+            _self.showFieldset=false;
+            _self.showFieldset1=false;
+            _self.showFieldset2=true;
+//            ctx.parents("#msform").find(".sec-step").addClass("complete");
           });
         }, 'post', function(data) {
           if (data.apistatus == '0' && data.errorCode == '1000020') {

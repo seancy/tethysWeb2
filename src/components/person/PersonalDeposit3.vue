@@ -26,7 +26,7 @@
         <div class="right_main">
           <div class="psn_wrap">
             <!--在线支付-->
-            <div class="psn_content">
+            <div class="psn_content" v-if="hideFrame">
               <div class="deposit_wrap">
                 <dl class="psn_info">
                   <dt><h3>在线支付信息</h3></dt>
@@ -34,29 +34,37 @@
                     <ul class="style_item">
                       <li>
                         <span class="label">会员账号</span>
-                        <span class="form">vivien_text</span>
+                        <span class="form">{{info.username}}</span>
                       </li>
                       <li>
-                        <span class="label">会员账号</span>
+                        <span class="label">支付渠道</span>
                         <span class="form">
-                                                    <label for="pay_zfb"><input type="radio" id="pay_zfb" name="pay_wallet" checked><span class="icon_sprite icon_wechat"></span>微信支付</label>
-                                                    <label for="pay_wx"><input type="radio" id="pay_wx" name="pay_wallet"><span class="icon_sprite icon_zfb"></span>支付宝支付</label>
-                                                </span>
+                          <template v-for="(bank,index) in bankList">
+                          <label :for=" 'pay_' + [index]">
+                            <input type="radio" name="paygroup" :value="bank.bankCode" :id="'pay_' + [index]" v-model="saveInfo.bankCode" :title="bank.bankName">
+                            <span :class="'icon_sprite icon_'+[index]"></span>{{bank.bankName}}
+                          </label>
+                        </template>
+                        </span>
                       </li>
                       <li>
                         <span class="label">存入金额<span class="color_red">※</span></span>
-                        <span class="form"><input type="text" class="formInput" placeholder="范围1~10000"></span>
-                        <span class="ui_error">请输入正确金额！</span>
+                        <span class="form"><input  v-model="saveInfo.saveCount"  type="text" class="formInput" id="deposit3_value" disabled="disabled" @blur="getOfferAmount" @input.lazy="getOfferAmount"/></span>
+                        <span class="ui_error">{{inputInfo.error}}</span>
                       </li>
                     </ul>
-                    <div class="deposit_msg_plus">当前享受优惠：10.00</div>
+                    <!--<div class="deposit_msg_plus">当前享受优惠：10.00</div>-->
                   </dd>
                 </dl>
                 <div class="form_submit">
-                  <a class="formBtn" href="javascript:;">确&nbsp;&nbsp;认</a>
+                  <a class="formBtn btn-apply" @click="submitApply">确&nbsp;&nbsp;认</a>
                 </div>
               </div>
             </div><!--end 在线支付-->
+            <div class="psn_content" v-else>
+              <iframe src="" id="iframe_pay" width="100%" height="100%" frameborder="0"
+                      scrolling="auto" style="min-height: 567px;"></iframe>
+            </div>
           </div>
         </div>
         <!--end 右侧内容-->

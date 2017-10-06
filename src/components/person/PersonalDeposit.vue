@@ -44,7 +44,7 @@
                   </div>
                 </div>
                 <div class="form_submit">
-                  <a class="formBtn" v-on:click="judge(current_content.type)">前往转帐</a>
+                  <a class="formBtn" href="javascript:void(0);" v-on:click="judge(current_content.type)">前往转帐</a>
                 </div>
               </div>
             </div><!--end 钱包秒充（3秒到账）-->
