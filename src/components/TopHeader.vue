@@ -60,7 +60,7 @@
               <span>{{userName}}</span>
               <a href="personal-msg.html" class="icon_sprite icon_mail"><small>4</small></a>
           </span>
-          <span>¥ {{memberInfo.balance | balanceNo}}<a href="javascript:;" class="icon_sprite icon_refresh" @click="getAccountInfo()"></a></span>
+          <span>¥ <span id="mynew_balance">{{memberInfo.balance | balanceNo}}</span><a href="javascript:;" class="icon_sprite icon_refresh" @click="getAccountInfo()"></a></span>
           <span><a href="/personalInfo">个人中心</a></span>
           <span><a href="javascript:;" v-on:click.prevent="deposit_judge()" click="de">存款</a></span>
           <span><a href="javascript:;" v-on:click.prevent="draw_judge()">取款</a></span>
