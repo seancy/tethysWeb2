@@ -23,7 +23,7 @@
         </div>
         <!--end 左侧选单-->
         <!--右侧内容-->
-        <div class="right_main">
+        <div class="right_main step1">
           <div class="psn_wrap">
             <!--钱包秒充（3秒到账）-->
             <div class="psn_content">
@@ -34,6 +34,7 @@
                   <li>提交信息</li>
                 </ul>
               </div>
+              <!--第一步-->
               <div class="deposit_wrap">
                 <dl class="psn_info">
                   <dt><h3>钱包便捷支付信息</h3></dt>
@@ -42,69 +43,190 @@
                       <span class="label">选择支付方式：</span>
                       <template v-for="(bank,index) in bankList">
                         <label :for=" 'pay_' + [index]">
-                          <input :title="bank.bankName" type="radio" :id=" 'pay_' + [index]" name="pay_wallet" :value="bank.bankType" :account="bank.bankAccount" :username="bank.bankUserName"  :bankcode="bank.bankCode">
+                          <input @click="radioChoosed" type="radio" name="pay_wallet" :value="bank.bankType" :id="'pay_' + [index]"
+                                 :title="bank.bankName" :account="bank.bankAccount"  :bankcode="bank.bankCode" class="radio_input">
                           <span :class="'icon_sprite icon_'+[index]"></span>{{bank.bankName}}
                         </label>
                       </template>
-                      <label for="pay_zfb">
-                        <input type="radio" id="pay_zfb" name="pay_wallet" checked @click="radioChoosed">
-                        <span class="icon_sprite icon_wx"></span>微信支付
-                      </label>
-                      <label for="pay_wx">
-                        <input type="radio" id="pay_wx" name="pay_wallet">
-                        <span class="icon_sprite icon_zfb"></span>支付宝支付
-                      </label>
+
                     </div>
                     <!--微信支付-->
-                    <div class="wallet_content">
-                      <template v-for="(bank ,index) in BankList">
-                        <div class="qrcode">
-                          <div class="img"><img :src="[photo_url+'/pic/'+bank.qrCode+'/0']" /></div>
-                          <p>{{bank.bankUserName}}</p>
-                          <p>微信账号 <br/> {{bank.bankAccount}}</p>
-                        </div>
-                      </template>
+                    <div class="wallet_content" >
                       <div class="qrcode">
-                        <div class="img"><img src="../../../static/images/qrcode.gif"></div>
-                        <p>baliren01</p>
-                        <p>微信账号<br />12345678</p>
+                        <template v-for="(bank,index) in bankList">
+                          <div class="img" :data-img=" 'qrcode_' + [index]">
+                            <img :src="[photo_url+'/pic/'+bank.qrCode+'/0']" class="pay_img">
+                            <p>{{bank.bankUserName}}</p>
+                            <p>{{bank.bankName}}<br>{{bank.bankUserName}}</p>
+                          </div>
+                        </template>
                       </div>
-                      <div class="info">
+                      <div class="info weixin"  v-if="(weixin_content==''?false:true)">
                         <div class="ani_pic"></div>
-                        <p>为了保证转账精准快速，扫码进行支付的同时请在留言中输入您在本平台的<span class="color_red">会员账号</span>。</p>
+                        <p v-html="weixin_content"></p>
+                        <div class="tip">支付完成，点击下一步<br />填写转账信息</div>
+                      </div>
+                      <div class="info zfb"  v-if="(taobau_content==''?false:true)">
+                        <div class="pic"><img src="../../../static/images/zfb.png"></div>
+                        <span v-html="taobau_content"></span>
                         <div class="tip">支付完成，点击下一步<br />填写转账信息</div>
                       </div>
                     </div><!--end 微信支付-->
                     <!--支付宝支付-->
-                    <div class="wallet_content" style="display:block;">
-                      <div class="qrcode">
-                        <div class="img"><img src="../../../static/images/qrcode.gif"></div>
-                        <p>baliren01</p>
-                        <p>支付宝账号<br />12345678</p>
-                      </div>
-                      <div class="info">
-                        <div class="pic"><img src="../../../static/images/zfb.png"></div>
-                        <p>选择官方支付渠道，全面支持微信、支付宝扫码支付</p>
-                        <p>扫码官方支付二维码，核对官方微信、支付宝名称，完成转账</p>
-                        <div class="tip">支付完成，点击下一步<br />填写转账信息</div>
-                      </div>
-                    </div><!--end 支付宝支付-->
+
                   </dd>
                 </dl>
                 <div class="form_submit">
-                  <a class="formBtn" href="personal-deposit1-2.html">下一步</a>
+                  <a class="formBtn next btn-apply next-step" @click="nextStep">下一步</a>
+                </div>
+              </div>
+
+
+            </div><!--end 钱包秒充（3秒到账）-->
+          </div>
+        </div>
+        <!--end 右侧内容-->
+        <div class="right_main step2">
+          <div class="psn_wrap">
+            <!--钱包秒充（3秒到账）-->
+            <div class="psn_content">
+              <div class="deposit_step">
+                <ul>
+                  <li class="active">选择支付方式并转账</li>
+                  <li class="active">填写转帐信息</li>
+                  <li>提交信息</li>
+                </ul>
+              </div>
+              <div class="deposit_wrap">
+                <dl class="psn_info">
+                  <dt><h3>收款账号</h3></dt>
+                  <dd>
+                    <template v-for="(bank,index) in bankList">
+                      <ul :class=" 'style_item accountName_' + [index]">
+                        <li>
+                          <span class="label">账号名称</span>
+                          <span class="form">{{bank.bankUserName}}</span>
+                        </li>
+                        <li>
+                          <span class="label">账号</span>
+                          <span class="form">{{bank.bankAccount}}</span>
+                        </li>
+                      </ul>
+                    </template>
+
+                  </dd>
+                  <dt><h3>您的转账信息</h3></dt>
+                  <dd>
+                    <ul class="style_item">
+                      <li>
+                        <span class="label">存款方式</span>
+                        <span class="form">
+                         <template v-for="(bank, index) in bankList">
+                          <span :class=" 'checkAccount_' + [index]" >{{bank.bankName}}</span>
+                        </template>
+                        </span>
+                      </li>
+                      <li>
+                        <span class="label">存入金额</span>
+                        <span class="form">
+                          <input type="text" class="formInput" placeholder="￥1~100,000" @blur="getOfferAmount" v-model="saveObj.saveCount" @input.lazy="preCheck('saveCount')" id="money_range"></span>
+                        <span class="ui_error">{{inputInfo.error}}</span>
+                      </li>
+                      <li>
+                        <span class="label">存入时间</span>
+                        <span class="form"><input type="text" class="formInput Wdate" readonly placeholder="日期" onFocus="WdatePicker({isShowToday:false,dateFmt:'yyyy/MM/dd HH:mm:ss',maxDate:'%y-%M-%d {%H-12}'})"></span>
+                      </li>
+                      <li>
+                        <span class="label">会员账号</span>
+                        <span class="form">{{info.username}}</span>
+                      </li>
+                      <li>
+                        <span class="label weixin_class">微信账号</span>
+                        <span class="label zhifubao_class">支付宝账号</span>
+                        <span class="form">
+                          <input type="text" class="formInput" id="wx_or_zfbinput" placeholder="请输入您的支付账号名称" @input.lazy="preCheck('userName')" v-model="saveObj.userName"></span>
+                        <span class="ui_error">{{inputInfo.userNameError}}</span>
+                      </li>
+                    </ul>
+                  </dd>
+                </dl>
+                <div class="deposit_msg">
+                  <h3>特别说明</h3>
+                  <p>支付完成后，请核对微信支付凭证。</p>
+                  <p>准确填写存入金额、存入时间，并输入您的微信账号，完成上述信息的录入。</p>
+                </div>
+                <div class="form_submit">
+                  <a class="formBtn next btn-apply submit-apply" id="subApplyBtn" @click="submitApply">提交申请</a>
                 </div>
               </div>
             </div><!--end 钱包秒充（3秒到账）-->
           </div>
         </div>
-        <!--end 右侧内容-->
+
+        <div class="right_main step3" >
+          <div class="psn_wrap">
+            <!--钱包秒充（3秒到账）-->
+            <div class="psn_content">
+              <div class="deposit_step">
+                <ul>
+                  <li class="active">选择支付方式并转账</li>
+                  <li class="active">填写转帐信息</li>
+                  <li class="active">提交信息</li>
+                </ul>
+              </div>
+              <div class="deposit_wrap">
+                <div class="msg_success"><span class="icon_sprite icon_success"></span>提交成功！</div>
+                <dl class="psn_info">
+                  <dd>
+                    <ul class="style_item">
+                      <li>
+                        <span class="label">订单编号</span>
+                        <span class="form">{{ savedInfo.BillId }}</span>
+                      </li>
+                      <li>
+                        <span class="label">存款方式</span>
+                        <span class="form">{{ savedInfo.SaveMethodName }}</span>
+                      </li>
+                      <li>
+                        <span class="label weixin_class">微信账号</span>
+                        <span class="label zhifubao_class">支付宝账号 </span>
+                        <span class="form">{{ savedInfo.BankHolder }}</span>
+                      </li>
+                      <li>
+                        <span class="label">存入金额</span>
+                        <span class="form">{{ savedInfo.Amount / 100 }}</span>
+                      </li>
+                      <li>
+                        <span class="label">存入时间</span>
+                        <span class="form">{{formatTime(new Date(applyTime),'yyyy/MM/dd HH:mm:ss') }}</span>
+                      </li>
+                      <li>
+                        <span class="label">会员账号</span>
+                        <span class="form">{{info.username}}</span>
+                      </li>
+                    </ul>
+                  </dd>
+                </dl>
+                <div class="form_submit">
+                  <a class="formBtn submit btn-apply"  @click="closeWin" >回首页</a>
+                </div>
+              </div>
+            </div><!--end 钱包秒充（3秒到账）-->
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </template>
 
+
 <script>
+  $(function(){
+    $(".step1").show();
+    $(".step2").hide();
+    $(".step3").hide();
+  })
   export default {
     name: 'PersonalDeposit',
     data: function() {
@@ -267,15 +389,14 @@
       radioChoosed: function(aa) {
         var _self = this;
         if (aa.target.id == "pay_0") {
-          $("#radioimg_deposit0 .pay_img:nth-child(1), .account_top .info:nth-child(1), .checked_account .info-list:nth-child(1), .checked_account_all .check_account:nth-child(1), .wx_intro").show();
-          $("#radioimg_deposit0 .pay_img:nth-child(2), .account_top .info:nth-child(2), .checked_account .info-list:nth-child(2), .checked_account_all .check_account:nth-child(2), .zfb_intro").hide();
-          $(".weixinzhanghao_class").show();
-          $(".zhifubaozhanghao_class").hide();
+          $("[data-img='qrcode_1'], .checkAccount_1,.info.zfb,.accountName_1").hide();
+          $("[data-img='qrcode_0'],.checkAccount_0,.info.weixin,.accountName_0").show();
+
+
+
         } else if (aa.target.id == "pay_1") {
-          $("#radioimg_deposit0 .pay_img:nth-child(2), .account_top .info:nth-child(2),  .checked_account .info-list:nth-child(2), .checked_account_all .check_account:nth-child(2), .zfb_intro").show();
-          $("#radioimg_deposit0 .pay_img:nth-child(1), .account_top .info:nth-child(1),  .checked_account .info-list:nth-child(1), .checked_account_all .check_account:nth-child(1), .wx_intro").hide();
-          $(".weixinzhanghao_class").hide();
-          $(".zhifubaozhanghao_class").show();
+          $("[data-img='qrcode_1'], .checkAccount_1,.info.zfb,.accountName_1").show();
+          $("[data-img='qrcode_0'],.checkAccount_0,.info.weixin,.accountName_0").hide();
         }
 
       },
@@ -367,9 +488,12 @@
       nextStep: function() {
         var _self = this;
         _self.$nextTick(function() {
-          var ctx = $('.btn-apply.next-step');
-          _self.goNext(ctx);
-          ctx.parents("#msform").find(".first-step").addClass("complete");
+//          var ctx = $('.btn-apply.next-step');
+//          _self.goNext(ctx);
+//          ctx.parents("#msform").find(".first-step").addClass("complete");
+          $(".step1").hide();
+          $(".step2").show();
+          $(".step3").hide();
         });
         var save_method = $('.radio_input:checked').val();
         if (save_method == 3) {
@@ -383,34 +507,34 @@
         }
       },
       // 下一步
-      goNext: function(ctx) {
-        var current_fs = $(ctx).parent();
-        var next_fs = current_fs.next();
-        var left, opacity, scale;
-        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-        next_fs.show();
-        current_fs.animate({
-          opacity: 0
-        }, {
-          step: function(now, mx) {
-            scale = 1 - (1 - now) * 0.2;
-            left = (now * 50) + "%";
-            opacity = 1 - now;
-            current_fs.css({
-              'transform': 'scale(' + scale + ')'
-            });
-            next_fs.css({
-              'left': left,
-              'opacity': opacity
-            });
-          },
-          duration: 800,
-          complete: function() {
-            current_fs.hide();
-          },
-          easing: 'easeInOutBack'
-        });
-      },
+//      goNext: function(ctx) {
+//        var current_fs = $(ctx).parent();
+//        var next_fs = current_fs.next();
+//        var left, opacity, scale;
+//        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+//        next_fs.show();
+//        current_fs.animate({
+//          opacity: 0
+//        }, {
+//          step: function(now, mx) {
+//            scale = 1 - (1 - now) * 0.2;
+//            left = (now * 50) + "%";
+//            opacity = 1 - now;
+//            current_fs.css({
+//              'transform': 'scale(' + scale + ')'
+//            });
+//            next_fs.css({
+//              'left': left,
+//              'opacity': opacity
+//            });
+//          },
+//          duration: 800,
+//          complete: function() {
+//            current_fs.hide();
+//          },
+//          easing: 'easeInOutBack'
+//        });
+//      },
       // 关闭窗口
       closeWin: function() {
         window.location.href = "http://" + window.location.host;
@@ -462,9 +586,9 @@
         var username = $('.radio_input:checked').attr('username');
         var bankcode = $('.radio_input:checked').attr('bankcode');
 
-        var balance = $('#mynew_balance').html().replace(/\,/ig, '');
+        var balance = $('.balance').html().replace(/\,/ig, '');
         balance = Math.round(balance * 100);
-        // console.log(account);
+
         var para = {
           saveCount: _self.saveObj.saveCount * 100,
           applyTime: new Date($('.Wdate').val()).getTime(),
@@ -556,9 +680,13 @@
         common.ajax('tethys-user/user/account/saveApply/applyView', para, function(data) {
           _self.savedInfo = data && data.result || {};
           _self.$nextTick(function() {
-            var ctx = $('.btn-apply.submit-apply');
-            _self.goNext(ctx);
-            ctx.parents("#msform").find(".sec-step").addClass("complete");
+//            var ctx = $('.btn-apply.submit-apply');
+//            _self.goNext(ctx);
+//            ctx.parents("#msform").find(".sec-step").addClass("complete");
+            $(".step1").hide();
+            $(".step2").hide();
+            $(".step3").show();
+
           });
         }, 'get', function(data) {
           if (data.apistatus == '0' && data.errorCode == '1000020') {
