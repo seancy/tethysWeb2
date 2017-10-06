@@ -3,21 +3,22 @@
       <div class="topbar">
           <div class="topleft">
               <span class="icon_clock"></span>
-              <span>07 September. 23:45<small>美东时间</small></span>
+              <span><!-- 07 September. 23:45 -->{{times}}<small>美东时间</small></span>
           </div>
           <div class="topright">
-              <span class="tel"><span class="icon_sprite icon_tel"></span>+63 945-456-456</span>
+              <!-- <span class="tel"><span class="icon_sprite icon_tel"></span>+63 945-456-456</span>
               <a class="signup" href="sign-up.html"><span class="icon_sprite icon_account"></span>免费开户</a>
-              <a class="help" href="help.html"><span class="icon_sprite icon_info"></span>新手指南</a>
+              <a class="help" href="help.html"><span class="icon_sprite icon_info"></span>新手指南</a> 此处在后台配置 Webb提 -->
               <span class="info">
-                  <a class="link blue-green" href="javascript:;">糖果派对1-2</a>
-                  <a class="link blue" href="javascript:;">MG老虎机</a>
+                  <a class="link blue-green" v-for="template in customtemplate" :href="template.pcUrl" :class="customclass[template.id]" >{{template.title}}</a>
+
+                  <!-- <a class="link blue" href="javascript:;">MG老虎机</a>
                   <a class="link green" href="javascript:;">PT角子机</a>
                   <a class="link yellow-green" href="javascript:;">MW千炮捕鱼</a>
                   <a class="link yellow" href="javascript:;">时时彩</a>
                   <a class="link red" href="javascript:;">连环夺宝</a>
                   <span>BC彩票天天返水1.2%</span>
-                  <span>MG返水1.2%</span>
+                  <span>MG返水1.2%</span> -->
               </span>
           </div>
       </div>
@@ -86,7 +87,7 @@
           </span>
           <span class="btn">
               <a class="btn_login" href="javascript:;" @click="login" :class="'btn-login '+(isLoging?'link_disable':'')">会员登录</a>
-              <a class="btn_reg" href="javascript:;">注册会员</a>
+              <a class="btn_reg" href="/signUp">注册会员</a>
           </span>
       </div><!--end 登录列-->
   </div>
@@ -107,6 +108,7 @@ export default {
       footer: [],
       navBar: [],
       customtemplate:[],
+      customclass:{'1':'blue','2':'green','3':'yellow','4':'red','5':'blue-green','6':'blue','7':'green','8':'yellow','9':'red','10':'blue-green'} ,
       memberInfo: {},
       times: '',
       photo_url: '',
@@ -117,9 +119,9 @@ export default {
       rightLink:'',
       userId:'',
       loginParam: {
-        username: 'vct033',
-        password: '123456',
-        code: '1'
+        username: '',
+        password: '',
+        code: ''
       },
       verImgCode:'',
       isLoging: false
@@ -169,6 +171,7 @@ export default {
         that.getCode();
     }
     this.getNavData();
+    this.customTemplate();
   },
   filters: {
       balanceNo: function(value) {
@@ -179,9 +182,26 @@ export default {
       }
   },
   methods: {
-    isActive:function(e){
-      // debugger;
-      //return window.location.pathname.split('?')[0];
+    customTemplate: function () {
+        var _self = this;
+        common.ajax('cms/client/customtemplate/list', {}, function (data) {
+            var tem = data && data.result || {};
+
+            for(var i=0;i<tem.length;i++){ // 为了闪动效果
+                tem[i].id = (i+1) ;
+            }
+            _self.customtemplate = tem || [];
+            // 滚动
+            _self.$nextTick(function () {
+                $(".sys-notice").slide({
+                    mainCell: ".bd ul",
+                    autoPage: true,
+                    effect: "leftMarquee",
+                    autoPlay: true,
+                    vis: 1, interTime: 50
+                });
+            });
+        })
     },
     getNavData: function() {
         var _self = this;

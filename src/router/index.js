@@ -177,7 +177,7 @@ export default new Router({
       component: Promo
     },
     {
-      path: '/sign-up',
+      path: '/signUp',
       name: 'SignUp',
       component: SignUp
     },

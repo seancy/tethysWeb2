@@ -33,8 +33,8 @@
 
           <div class="contain_width">
               <div class="casino_tag" id="casino_tag">
-                <a href="javascript:;" class="active" data-id="-1" @click="changeGame('-1')">全部游戏</a>
-                <a href="javascript:;" v-for="list in gamestype" :data-id="list.id" @click="changeGame(list.id)">{{list.name}}</a>
+                <a href="javascript:;" class="active" data-id="-1" @click="changeGame('-1', $event)">全部游戏</a>
+                <a href="javascript:;" v-for="list in gamestype" :data-id="list.id" @click="changeGame(list.id, $event)">{{list.name}}</a>
               </div>
           </div>
 
@@ -155,20 +155,8 @@ export default {
                 var result = data && data.result || {};
                 _self.gamestype = result && result.list || {};
                 _self.$nextTick(function () {
-                    if(!$('.casino_tag a:nth-child(1)').hasClass('active')){
-                        $('.casino_tag a:nth-child(1)').addClass('active').siblings('li').removeClass('active') ;
-                    }
-                    $(".casino_tag").each(function () {
-                        $(this).find('a').each(function () {
-                            $(this).click(function () {
-                                $(this).addClass('active').siblings().removeClass('active') ;
-                                // var tx = $(this).find('a').text() ;
-                                // $('.dropdown_icon').html(tx+'<i class="icon caret down"></i>') ;
-                            });
-                        });
-                    });
+                    $('.casino_tag a').removeClass('active').eq(0).addClass('active')
                 });
-
             });
 
         },
@@ -177,10 +165,13 @@ export default {
             $('.ele_game').toggle();
         },
         // 游戏种类选择
-        changeGame :function (typeid) {
+        changeGame :function (typeid, e) {
             var _self = this;
             _self.typeid = typeid ;
             $('.search button').trigger('click') ;
+            var $src = $(e.currentTarget);
+            $src.siblings().removeClass('active');
+            $src.addClass('active')
         },
         getCode: function () {
             var _self = this;
@@ -315,46 +306,6 @@ export default {
             _self.typeid = typeid;
             this.getGameAll(_self.table, _self.id,_self.typeid);
         },
-        // 进入游戏
-        // enterGame: function (id) {
-        //     var _self = this;
-        //     if (_self.hasLogin === false) {
-        //         _self.$nextTick(function () {
-        //             common.$message({
-        //                 title: '登陆提示',
-        //                 content: '请先登录！！',
-        //                 hc: true,
-        //                 okcb: function () {
-        //                     _self.$router.push({path: '/'});
-        //                 }
-        //             });
-        //         });
-        //         return;
-        //     }
-        //     var win = common.openGame();
-        //     if(openGameSize<2){
-        //         win.document.write(loadStr) ;
-        //     }
-        //     var loop = setInterval(function() {
-        //         if(win .closed) {
-        //             openGameSize = 0 ;
-        //             clearInterval(loop);
-        //         }
-        //     }, 500);
-        //     // debugger;
-        //     common.ajax('config/kd/game/start',{id: id}, function (data) {
-        //         // debugger;
-        //         if(data.apistatus =='0'){
-        //             win.close();
-        //             common.toast({content: "网络较差，请稍后重试！"});
-        //         } else {
-        //             if (data && data.result) {
-        //                 var url = data.result.content;
-        //                 win = common.openGame(url);
-        //             }
-        //         }
-        //     }, 'post');
-        // },
         // 前一页
         prevPage: function () {
             var _self = this;
