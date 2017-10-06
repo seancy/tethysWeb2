@@ -120,7 +120,7 @@
                  </dd>
                </dl>
                <div class="form_submit">
-                 <a class="formBtn " @click="preDraw" type="button" >申请取款</a>
+                 <a class="formBtn " href="javascript:void(0);" @click="preDraw" type="button" >申请取款</a>
                  <!--！仅供UI测试弹窗--><p><a class="modalBtn" href="#modalConform">打码量符合弹窗</a> <a class="modalBtn" href="#modalNoConform">打码量不符合弹窗</a></p><!--end ！仅供UI测试弹窗-->
                  <!--打码量符合讯息-->
                  <div id="modalConform" style="display:none;">
