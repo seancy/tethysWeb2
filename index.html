@@ -13,42 +13,9 @@
     <script src="static/js/common.js?version=1"></script>
     <script type="text/javascript" src="./static/vendor/bootstrap.js"></script>
     <script type="text/javascript" src="static/vendor/slick/slick.min.js"></script>
-
-    <!-- <script type="text/javascript" src="static/js/ui.js"></script> -->
-
     <script type="text/javascript" src="static/js/ui.js"></script>
     <script type =text/javascript src="./static/vendor/My97DatePicker/WdatePicker.js"></script>
-
-
-
     <script type="text/javascript">
-      $(function(){
-      // 公告轮播
-
-          if($('.notice_box li').length > 1){
-              function run() {
-                  $('.notice_box ul').animate({top:-40},500,function(){
-                      $(this).css({top:0}).children('li').eq(0).remove().appendTo('.notice_box ul');
-                  })
-              }
-
-              var TT = setInterval(run,3000)
-
-              $(".notice_box").on('mouseenter',function(e){
-                  clearInterval(TT);
-                  $(this).removeClass('hidden');
-              }).on('mouseleave',function(e){
-                  var position = Math.round($(this).scrollTop() / 40);
-                  $(this).scrollTop(0).addClass('hidden');
-                  $('.notice_box ul').children('li').slice( 0, position ).appendTo('.notice_box ul');
-                  TT = setInterval(run,3000);
-              })
-
-              $('.notice_box').scrollTop(0).addClass('hidden');
-          }
-
-      })
-
       // 滚动动画
       $(function(){
           $(window).on('scroll', function(){
@@ -68,38 +35,6 @@
                   'top': basePos * 0.05
               });
           }).scroll();
-      })
-
-      // 广告轮播图 (需载入slick.min.js)
-      $(function(){
-          // $('.ad_slider').slick({
-          //     arrows: false,
-          //     dots: true,
-          //     infinite: true,
-          //     autoplay: true,
-          //     autoplaySpeed: 3000,
-          // });
-      })
-
-      // 真人视讯项目轮播 (需载入slick.min.js)
-      $(function(){
-          // $('.casino_slider').slick({
-          //     arrows: true,
-          //     slidesToShow: 4,
-          //     slidesToScroll: 1,
-          //     infinite: false,
-          // });
-      })
-
-      // 游戏项目轮播 (需载入slick.min.js)
-      $(function(){
-          // $('.gamead_slider').slick({
-          //     arrows: false,
-          //     dots: true,
-          //     infinite: true,
-          //     autoplay: true,
-          //     autoplaySpeed: 3000,
-          // });
       })
 
       // 关闭弹窗

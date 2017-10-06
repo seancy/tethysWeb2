@@ -12,18 +12,18 @@
         <ul class="login_box" v-if="!hasLogin">
             <p class="title">会员登录<span>LOGIN</span></p>
             <li class="account">
-                <input placeholder="请输入账号" type="text" v-model="loginParam.username" @keyup.enter="logIn()">
+                <input placeholder="请输入账号" type="text" v-model="topHeader.loginParam.username" @keyup.enter="login()">
             </li>
             <li class="password">
-                <input placeholder="请输入密码" type="password" v-model="loginParam.password" @keyup.enter="logIn()"/>
+                <input placeholder="请输入密码" type="password" v-model="topHeader.loginParam.password" @keyup.enter="login()"/>
             </li>
             <li class="code">
-                <input placeholder="输入验证码" type="text" v-model="loginParam.code">
-                <img src="static/images/verification-code.jpg"  alt=""/><a class="icon_refresh" href="javascript:;"></a>
-                <a href="javascript:;" class="icon_sprite icon_refresh"></a>
+                <input placeholder="输入验证码" type="text" v-model="topHeader.loginParam.code">
+                <img v-show="topHeader.verImgCode!==''" v-lazy="topHeader.verImgCode" @click="topHeader.getCode" style="width:80px"/>
+                <a href="javascript:;" class="icon_sprite icon_refresh" @click="topHeader.getCode"></a>
             </li>
             <li class="btn">
-                <a class="btn_login" href="javascript:;" :class="'btn-login '+(isLoging?'link_disable':'')">会员登录</a>
+                <a class="btn_login" href="javascript:;" :class="'btn-login '+(isLoging?'link_disable':'')" @click="login">会员登录</a>
                 <a class="btn_reg" href="javascript:;">注册会员</a>
             </li>
         </ul><!--end 登录（首页）-->
@@ -149,10 +149,12 @@ export default {
     return {
       // formatTime: common.formatTime,
       hasLogin: false,
-      loginParam: {
-          username: '',
-          password: ''
-      },
+      topHeader: null,
+      // loginParam: {
+      //     username: '',
+      //     password: '', 
+      //     code:''
+      // },
       // memberInfo: {},
       messages: [],
       LBT: {},
@@ -171,6 +173,8 @@ export default {
   created:function(){
     var _this = this;
     _this.hasLogin = common.ifLanded();
+    this.topHeader = this.$parent.$children[0];
+    // debugger;
   },
   mounted: function () {
       this.photo_url = common.photo_url;
@@ -235,6 +239,10 @@ export default {
 
   },
   methods: {
+    login:function(){
+      // this.topHeader.loginParam = this.loginParam;
+      this.topHeader.login();
+    },
     useAnimation:function(){
       $('.casino_slider').slick({
           arrows: true,
