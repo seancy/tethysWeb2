@@ -48,51 +48,7 @@
                 </div>
               </div>
             </div><!--end 钱包秒充（3秒到账）-->
-            <!--银行转帐(推荐)-->
-            <div class="psn_content " style="display:none">
-              <div class="deposit_content">
-                <div class="deposit_info">
-                  <div class="img"><img src="../../../static/images/deposit_bank.jpg" alt=""></div>
-                  <div class="text">
-                    <p>※什么是银行转账？</p>
-                    <p>通过网银转账、ATM/柜台存入、手机网银转账等方式汇款。</p>
-                    <p>收款帐户不定期更新，请在每次存款前，点击“银行卡转账”页面查询最新收款帐号。</p>
-                    <p>※※※若存款到过期的账户导致财务无法查收，会员请自行承担损失。望珍惜！※※※</p>
-                  </div>
-                </div>
-                <div class="form_submit">
-                  <a class="formBtn" href="personal-deposit2-1.html">前往转帐</a>
-                </div>
-              </div>
-            </div><!--end 银行转帐(推荐)-->
-            <!--在线支付(立即到帐)-->
-            <div class="psn_content" style="display:none">
-              <div class="deposit_content">
-                <div class="deposit_info">
-                  <div class="img"><img src="../../../static/images/deposit_online.jpg" alt=""></div>
-                  <div class="text">
-                    <p>※ 跨行汇款或存款金额低于1000000元建议使用在线支付，无需手续费，支付完成，立即火速到账。</p>
-                  </div>
-                </div>
-                <div class="form_submit">
-                  <a class="formBtn" href="personal-deposit3-1.html">前往转帐</a>
-                </div>
-              </div>
-            </div><!--end 在线支付(立即到帐)-->
-            <!--扫码支付(立即到帐)-->
-            <div class="psn_content" style="display:none">
-              <div class="deposit_content">
-                <div class="deposit_info">
-                  <div class="img"><img src="../../../static/images/deposit_code.jpg" alt=""></div>
-                  <div class="text">
-                    <p>※温馨提示：支持微信、支付宝、QQ扫码支付，建议小额支付、大额支付可选择其它支付方式或分多次支付 ※支付成功后，请等待几秒钟，提示「支付成功」按确认键后再关闭支付窗口，款项会即时入账。</p>
-                  </div>
-                </div>
-                <div class="form_submit">
-                  <a class="formBtn" href="personal-deposit4-1.html">前往转帐</a>
-                </div>
-              </div>
-            </div><!--end 扫码支付(立即到帐)-->
+
           </div>
         </div>
         <!--end 右侧内容-->
@@ -104,7 +60,7 @@
 <script>
 
   export default {
-    name: 'Deposit',
+    name: 'PersonalDeposit',
     data: function() {
       return {
         info: {
@@ -141,7 +97,7 @@
             "subname": "（推荐）",
             "class": "icon-bank bank1",
             "img": "static/images/deposit_bank.jpg",
-            "contentclass": "deposit-intro msg_bubble d_one",
+            "contentclass": "",
             "content": ""
           },
           "102": {
@@ -152,7 +108,7 @@
             "subname": "（立即到账）",
             "class": "icon-bank bank2",
             "img": "static/images/deposit_online.jpg",
-            "contentclass": "deposit-intro msg_bubble",
+            "contentclass": "msg_bubble",
             "content": ""
           },
           "103": {
@@ -163,7 +119,7 @@
             "subname": "（立即到账）",
             "class": "icon-bank bank3",
             "img": "static/images/deposit_code.jpg",
-            "contentclass": "deposit-intro msg_bubble",
+            "contentclass": " msg_bubble",
             "content": ""
           }
         },
@@ -211,9 +167,9 @@
                 }
               }
               _self.current_content = _self.temp_tab_list[data.result.list[0].type];
-              console.log(_self.temp_tab_list);
+//              console.log(_self.temp_tab_list);
               _self.changeTab(_self.current_tab);
-              console.log(_self.current_content);
+              console.log(_self.d_list);
             }
 
           }
@@ -378,4 +334,9 @@
 #deposit_tab li.active a{
 color:#d8a44e;
 }
+.deposit_info   .text>ul>li>p span{
+    font-size:12px !important;
+    color:#000 !important;
+
+  }
 </style>

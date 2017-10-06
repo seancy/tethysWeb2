@@ -34,43 +34,141 @@
                   <li>信息提交完成</li>
                 </ul>
               </div>
-              <div class="deposit_wrap">
-                <dl class="psn_info">
-                  <dt><h3>选择支付银行</h3></dt>
-                  <dd>
-                    <div class="bank_select">
-                      <label for="bank_0"><input type="radio" id="bank_0" name="bankgroup" value="ICBC" checked><img src="../../../static/images/bank/ICBC.png">工商银行</label>
-                      <label for="bank_1"><input type="radio" id="bank_1" name="bankgroup" value="ABC"><img src="../../../static/images/bank/ABC.png">农业银行</label>
-                      <label for="bank_2"><input type="radio" id="bank_2" name="bankgroup" value="CCB"><img src="../../../static/images/bank/CCB.png">建设银行</label>
-                      <label for="bank_3"><input type="radio" id="bank_3" name="bankgroup" value="BCOM"><img src="../../../static/images/bank/BCOM.png">交通银行</label>
-                      <label for="bank_4"><input type="radio" id="bank_4" name="bankgroup" value="BOC"><img src="../../../static/images/bank/BOC.png">中国银行</label>
-                      <label for="bank_5"><input type="radio" id="bank_5" name="bankgroup" value="CMB"><img src="../../../static/images/bank/CMB.png">招商银行</label>
-                      <label for="bank_6"><input type="radio" id="bank_6" name="bankgroup" value="CMBC"><img src="../../../static/images/bank/CMBC.png">民生银行</label>
-                      <label for="bank_7"><input type="radio" id="bank_7" name="bankgroup" value="CEBB"><img src="../../../static/images/bank/CEBB.png">光大银行</label>
-                      <label for="bank_8"><input type="radio" id="bank_8" name="bankgroup" value="BOB"><img src="../../../static/images/bank/BOB.png">北京银行</label>
-                      <label for="bank_9"><input type="radio" id="bank_9" name="bankgroup" value="SHB"><img src="../../../static/images/bank/SHB.png">上海银行</label>
-                      <label for="bank_10"><input type="radio" id="bank_10" name="bankgroup" value="NBB"><img src="../../../static/images/bank/NBB.png">宁波银行</label>
-                      <label for="bank_11"><input type="radio" id="bank_11" name="bankgroup" value="HXB"><img src="../../../static/images/bank/HXB.png">华夏银行</label>
-                      <label for="bank_12"><input type="radio" id="bank_12" name="bankgroup" value="CIB"><img src="../../../static/images/bank/CIB.png">兴业银行</label>
-                      <label for="bank_13"><input type="radio" id="bank_13" name="bankgroup" value="PSBC"><img src="../../../static/images/bank/PSBC.png">中国邮政银行</label>
-                      <label for="bank_14"><input type="radio" id="bank_14" name="bankgroup" value="SPABNK"><img src="../../../static/images/bank/SPABNK.png">平安银行</label>
-                      <label for="bank_15"><input type="radio" id="bank_15" name="bankgroup" value="SPDB"><img src="../../../static/images/bank/SPDB.png">浦发银行</label>
-                      <label for="bank_16"><input type="radio" id="bank_16" name="bankgroup" value="ECITIC"><img src="../../../static/images/bank/ECITIC.png">中信银行</label>
-                      <label for="bank_17"><input type="radio" id="bank_17" name="bankgroup" value="HZB"><img src="../../../static/images/bank/HZB.png">杭州银行</label>
-                      <label for="bank_18"><input type="radio" id="bank_18" name="bankgroup" value="GDB"><img src="../../../static/images/bank/GDB.png">广发银行</label>
-                      <label for="bank_19"><input type="radio" id="bank_19" name="bankgroup" value="QQ_SCAN"><img src="../../../static/images/bank/QQ_SCAN.png">QQ</label>
-                    </div>
-                  </dd>
-                </dl>
-                <div class="deposit_msg">
-                  <h3>特别说明</h3>
-                  <p>1. 每次存款前，请先至本页面查看最新的收款账户。请勿自行存款至旧账户，若存款至旧账户，本公司将无法查收，恕不负责。</p>
-                  <p>2. 请尽量选择同行存款，如跨行请进行加急，方便系统加快您的入款速度。</p>
+              <fieldset>
+                <div class="deposit_wrap">
+                  <dl class="psn_info">
+                    <dt><h3>选择支付银行</h3></dt>
+                    <dd>
+                      <div class="bank_select" >
+                        <label  v-for="(bank, index) in allBankList" :for="'bank_'+[index]">
+                          <input type="radio" name="bankgroup" :value="bank.bankCode" :id="'bank_'+[index]" v-model="selBankCode">
+                          <img :src="photo_url+'/pic/'+[bank.bankURL]+'/0'" /> {{bank.bankName}}
+                        </label>
+
+                      </div>
+                    </dd>
+                  </dl>
+                  <div class="deposit_msg" >
+                    <h3>特别说明</h3>
+                    <p>1. 每次存款前，请先至本页面查看最新的收款账户。请勿自行存款至旧账户，若存款至旧账户，本公司将无法查收，恕不负责。</p>
+                    <p>2. 请尽量选择同行存款，如跨行请进行加急，方便系统加快您的入款速度。</p>
+                  </div>
+                  <div class="form_submit">
+                    <a class="formBtn next-step" @click="nextStep" >下一步</a>
+                  </div>
                 </div>
-                <div class="form_submit">
-                  <a class="formBtn" href="personal-deposit2-2.html">下一步</a>
+                <div class="clear"></div>
+              </fieldset>
+              <fieldset>
+                <div class="deposit_wrap">
+                  <dl class="psn_info">
+                    <dt><h3>收款银行账号</h3></dt>
+                    <dd>
+                      <ul class="style_item">
+                        <li>
+                          <span class="label">银行名称</span>
+                          <span class="form">{{selBank.bankName}}</span>
+                        </li>
+                        <li>
+                          <span class="label">收款人</span>
+                          <span class="form">{{selBank.bankUserName}}</span>
+                          <span class="copy copy_txt" :data-clipboard-text="selBank.bankUserName"><span class="icon_sprite icon_copy" ></span>点击复制</span>
+                        </li>
+                        <li>
+                          <span class="label">开户行</span>
+                          <span class="form"> {{selBank.bankAddress}}</span>
+                          <span class="copy copy_txt" :data-clipboard-text="selBank.bankAddress"><span class="icon_sprite icon_copy" ></span>点击复制</span>
+                        </li>
+                        <li>
+                          <span class="label">账号</span>
+                          <span class="form">{{selBank.bankAccount}}</span>
+                          <span class="copy copy_txt" :data-clipboard-text="selBank.bankAccount"><span class="icon_sprite icon_copy"></span>点击复制</span>
+                        </li>
+                      </ul>
+                    </dd>
+                    <dt><h3>您的转账信息</h3></dt>
+                    <dd>
+                      <ul class="style_item">
+                        <li>
+                          <span class="label">存入金额</span>
+                          <span class="form"><input type="text" class="formInput"  v-model="saveObj.saveCount" id="money_range" @blur="getOfferAmount" @input.lazy="getOfferAmount"></span>
+                          <span class="ui_error">请输入正确金额！</span>
+                        </li>
+                        <li>
+                          <span class="label">预计存入时间</span>
+                          <span class="form"><input type="text" class="formInput Wdate" readonly placeholder="日期" onFocus="WdatePicker({isShowToday:false,dateFmt:'yyyy/MM/dd HH:mm:ss',maxDate:'%y-%M-%d {%H-12}'})"></span>
+                        </li>
+                        <li>
+                          <span class="label">存款人姓名</span>
+                          <span class="form"><input  v-model="saveObj.userName" type="text" class="formInput" placeholder=""  @blur="getUserName" @input.lazy="getUserName" /></span>
+                        </li>
+                        <li>
+                          <span class="label">存款方式</span>
+                          <span class="form save-way" >
+                            <label v-for="(way, key) in saveWays"  :for="'save_'+[key]">
+                              <input type="radio" :id="'save_'+[key]" name="savegroup" :value="'save_'+[key]" v-model="selWay">{{way}}
+                            </label>
+                          </span>
+                        </li>
+                        <li class="subbranch" v-if="['save_4','save_5','save_6'].indexOf(selWay) > -1">
+                          <span class="label">ATM所属分行</span>
+                          <input v-model="saveObj.pro" type="text" class="formInput" /> &nbsp;省&nbsp;
+                          <input v-model="saveObj.city" type="text" class="formInput" /> &nbsp;市(县)&nbsp;
+                          <input v-model="saveObj.town" type="text" class="formInput" />
+                        </li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <div class="form_submit">
+                    <input class="formBtn btn-apply submit-apply" type="button" id="subApplyBtn" @click="submitApply" value="提交申请">
+                  </div>
                 </div>
-              </div>
+                <div class="clear"></div>
+              </fieldset>
+              <fieldset>
+                <div class="deposit_wrap">
+                  <div class="msg_success"><span class="icon_sprite icon_success"></span>您的存款申请已成功提交！</div>
+                  <dl class="psn_info">
+                    <dt><h3>收款银行账号</h3></dt>
+                    <dd>
+                      <ul class="style_item">
+                        <li>
+                          <span class="label">订单编号</span>
+                          <span class="form">{{ savedInfo.BillId }}</span>
+                        </li>
+                        <li>
+                          <span class="label">存入银行</span>
+                          <span class="form">{{selBank.bankName}}</span>
+                        </li>
+                        <li>
+                          <span class="label">存款方式</span>
+                          <span class="form">{{ savedInfo.SaveMethodName }}</span>
+                        </li>
+                        <li>
+                          <span class="label">存款人姓名</span>
+                          <span class="form">{{ savedInfo.BankHolder }}</span>
+                        </li>
+                        <li>
+                          <span class="label">存入金额</span>
+                          <span class="form">{{ savedInfo.Amount / 100 }}</span>
+                        </li>
+                        <li>
+                          <span class="label">存入时间</span>
+                          <span class="form">{{formatTime(new Date(applyTime),'yyyy/MM/dd HH:mm:ss') }}</span>
+                        </li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <div class="deposit_msg">
+                    <h3>特别说明</h3>
+                    <p>1. 每次存款前，请先至本页面查看最新的收款账户。请勿自行存款至旧账户，若存款至旧账户，本公司将无法查收，恕不负责。</p>
+                    <p>2. 请尽量选择同行存款，如跨行请进行加急，方便系统加快您的入款速度。</p>
+                  </div>
+                  <div class="form_submit">
+                    <a class="formBtn" href="index.html">回首页</a>
+                  </div>
+                </div>
+              </fieldset>
             </div><!--end 银行转帐-->
           </div>
         </div>
@@ -82,7 +180,7 @@
 
 <script>
   export default {
-    name: 'Deposit',
+    name: 'PersonalDeposit1',
     data: function() {
       return {
         formatTime: common.formatTime,
@@ -200,7 +298,7 @@
         common.ajax('tethys-user/user/menu/level/auth', {}, function(data) {
           if (data && data.apistatus == 1) {
             if (data && data.result == 0) { // 1锁定 0 非锁定
-              location.href = "deposit";
+              location.href = "personalDeposit";
             } else {
               common.toast({
                 content: '当前无法操作，请联系客服',
@@ -214,7 +312,7 @@
         common.ajax('tethys-user/user/menu/level/auth', {}, function(data) {
           if (data && data.apistatus == 1) {
             if (data && data.result == 0) { // 1锁定 0 非锁定
-              location.href = "callin";
+              location.href = "personalCallin";
             } else {
               common.toast({
                 content: '当前无法操作，请联系客服',
@@ -273,7 +371,7 @@
           _self.allBankList = bank_result || [];
           // 选中第一个
           _self.$nextTick(function() {
-            $('.bank-select').find('input[type="radio"]')[0].click();
+            $('.bank_select').find('input[type="radio"]')[0].click();
           });
         }, 'post');
       },
@@ -589,5 +687,15 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+  fieldset {
+    min-width: 0 ;
+    padding: 0;
+    margin: 0 ;
+    border: 0 ;
+  }
+  .subbranch input{
+    width:135px;
+  }
 
 </style>

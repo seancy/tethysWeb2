@@ -60,7 +60,7 @@
 
 <script>
   export default {
-    name: 'Deposit',
+    name: ' PersonalDeposit2',
     data: function () {
       return {
         info: {
@@ -124,7 +124,7 @@
         common.ajax('tethys-user/user/menu/level/auth', {}, function(data) {
           if (data && data.apistatus == 1) {
             if (data && data.result == 0) { // 1锁定 0 非锁定
-              location.href = "deposit";
+              location.href = "personalDeposit";
             } else {
               common.toast({
                 content: '当前无法操作，请联系客服',
@@ -138,7 +138,7 @@
         common.ajax('tethys-user/user/menu/level/auth', {}, function(data) {
           if (data && data.apistatus == 1) {
             if (data && data.result == 0) { // 1锁定 0 非锁定
-              location.href = "callin";
+              location.href = "personalCallin";
             } else {
               common.toast({
                 content: '当前无法操作，请联系客服',

@@ -103,6 +103,7 @@ a.formBtn:hover, .formBtn:hover { color: #fff; background: #fe9500; background: 
 .icon_sprite.icon_item { background-position: -216px 0px; }
 
 .icon_sprite.icon_wechat { background-position: 0px -24px; }
+.icon_sprite.icon_wx { background-position: 0px -24px; }
 
 .icon_sprite.icon_zfb { background-position: -24px -24px; }
 

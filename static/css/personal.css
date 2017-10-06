@@ -213,7 +213,7 @@
 --------------------------------------------------- */
 #personal-deposit .personal_title { background-image: url(img/subtitle_deposit.png); }
 
-#personal-deposit .psn_content:nth-of-type(1) .deposit_info .text { position: absolute; bottom: 10px; left: 285px; width: 335px; border-bottom: none; }
+#personal-deposit .psn_content:nth-of-type(1) .deposit_info .deposit-intro { position: absolute; bottom: -18px; left: 285px; width: 335px; border-bottom: none; }
 
 #deposit_tab li { width: 194.5px; }
 

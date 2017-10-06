@@ -40,11 +40,30 @@
                   <dd>
                     <div class="wallet_select">
                       <span class="label">选择支付方式：</span>
-                      <label for="pay_zfb"><input type="radio" id="pay_zfb" name="pay_wallet" checked><span class="icon_sprite icon_wechat"></span>微信支付</label>
-                      <label for="pay_wx"><input type="radio" id="pay_wx" name="pay_wallet"><span class="icon_sprite icon_zfb"></span>支付宝支付</label>
+                      <template v-for="(bank,index) in bankList">
+                        <label :for=" 'pay_' + [index]">
+                          <input :title="bank.bankName" type="radio" :id=" 'pay_' + [index]" name="pay_wallet" :value="bank.bankType" :account="bank.bankAccount" :username="bank.bankUserName"  :bankcode="bank.bankCode">
+                          <span :class="'icon_sprite icon_'+[index]"></span>{{bank.bankName}}
+                        </label>
+                      </template>
+                      <label for="pay_zfb">
+                        <input type="radio" id="pay_zfb" name="pay_wallet" checked @click="radioChoosed">
+                        <span class="icon_sprite icon_wx"></span>微信支付
+                      </label>
+                      <label for="pay_wx">
+                        <input type="radio" id="pay_wx" name="pay_wallet">
+                        <span class="icon_sprite icon_zfb"></span>支付宝支付
+                      </label>
                     </div>
                     <!--微信支付-->
                     <div class="wallet_content">
+                      <template v-for="(bank ,index) in BankList">
+                        <div class="qrcode">
+                          <div class="img"><img :src="[photo_url+'/pic/'+bank.qrCode+'/0']" /></div>
+                          <p>{{bank.bankUserName}}</p>
+                          <p>微信账号 <br/> {{bank.bankAccount}}</p>
+                        </div>
+                      </template>
                       <div class="qrcode">
                         <div class="img"><img src="../../../static/images/qrcode.gif"></div>
                         <p>baliren01</p>
@@ -57,7 +76,7 @@
                       </div>
                     </div><!--end 微信支付-->
                     <!--支付宝支付-->
-                    <div class="wallet_content" style="display:none;">
+                    <div class="wallet_content" style="display:block;">
                       <div class="qrcode">
                         <div class="img"><img src="../../../static/images/qrcode.gif"></div>
                         <p>baliren01</p>
@@ -87,7 +106,7 @@
 
 <script>
   export default {
-    name: 'Deposit',
+    name: 'PersonalDeposit',
     data: function() {
       return {
         formatTime: common.formatTime,
@@ -213,7 +232,7 @@
         common.ajax('tethys-user/user/menu/level/auth', {}, function(data) {
           if (data && data.apistatus == 1) {
             if (data && data.result == 0) { // 1锁定 0 非锁定
-              location.href = "deposit";
+              location.href = "personalDeposit";
             } else {
               common.toast({
                 content: '当前无法操作，请联系客服',
@@ -231,7 +250,7 @@
         common.ajax('tethys-user/user/menu/level/auth', {}, function(data) {
           if (data && data.apistatus == 1) {
             if (data && data.result == 0) { // 1锁定 0 非锁定
-              location.href = "callin";
+              location.href = "personalCallin";
             } else {
               common.toast({
                 content: '当前无法操作，请联系客服',
@@ -263,6 +282,7 @@
       getBankList: function() {
         var _self = this;
         common.ajax('tethys-user/user/account/walletSave/bankList', {}, function(data) {
+          console.log(data);
           var bank_result = data && data.result && data.result.list || [];
           var bankListResult = bank_result || [];
           bankListResult[0].bankURL = "static/images/wx_logo.jpg";
@@ -284,6 +304,7 @@
                   // $('#deposit0_paymethod').find('input[type="radio"]')[0]&&$('#deposit0_paymethod').find('input[type="radio"]')[0].click();
               },300);
           });*/
+          console.log(_self.bankList);
         }, 'post');
       },
       getmoney_range: function() {
