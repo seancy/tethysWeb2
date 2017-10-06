@@ -81,7 +81,7 @@
 
 <script>
   export default {
-    name: ' PersonalDeposit2',
+    name: 'PersonalDeposit2',
     data: function () {
       return {
         info: {
