@@ -13,7 +13,7 @@
                         <div class="title">
                             <div class="title_img"></div>
                             <div class="btn_enter">
-                                <a class="gameopen_parent" href="javascript:;" @click="enterGame(item.id)">进入游戏</a>
+                                <a class="gameopen_parent" href="javascript:;" @click="$parent.enterGame(item.id)">进入游戏</a>
                             </div>
                         </div>
                     </div>
@@ -50,17 +50,8 @@ export default {
   name: 'sports',
   data: function() {
         return {
-            loginParam: {
-                username: '',
-                password: '',
-                code: ''
-            },
-            verImgCode: '',
             hasLogin: false,
-            url: {},
             computers: [],
-            computersDock: 0,
-            isLoging: false,
             game_sub_image:{"824":"sport_bb","1257":"sport_ug"}
         }
     },
@@ -69,21 +60,7 @@ export default {
         _self.topBar = common.Cookie.get('topBar') && JSON.parse(common.Cookie.get('topBar')) || [];
         _self.hasLogin = common.ifLanded();
         _self.photo_url = common.photo_url;
-
-        if (_self.hasLogin === true) {
-            _self.memberInfo = common.Cookie.get('memberInfo') && JSON.parse(common.Cookie.get('memberInfo')) || {};
-        } else {
-            // $(document).on("keydown",function(e){
-            //     if(e.keyCode==13) {
-            //         _self.logIn();
-            //     }
-            // });
-            // this.getCode();
-        }
         _self.loadSports(1002);
-        //  _self.computersDock = common.Cookie.get('computersDock') || 0;
-        //  _self.computers = common.Cookie.get('computers') && JSON.parse(common.Cookie.get('computers')) || [];
-
 
     },
     methods: {
@@ -101,68 +78,44 @@ export default {
                     if (data && data.result && data.result.game && data.result.game.list) {
                         _self.computers = data.result.game.list;
                     }
-                    // if (data && data.result) {
-                    //   /*  var url = data.result.url;
-                    //    $('#iframeId').attr('src',url);*/
-                    //     var resUrl = data && data.result || {};
-                    //     _self.url = resUrl ;
-                    //    // common.Cookie.set('url', JSON.stringify(_self.url));
-                    //     var list = data && data.result && data.result.apiList || [];
-                    //     var arr = [];
-                    //     _self.computersDock = list.length % 2 === 0 ? parseInt(list.length / 2, 10) : parseInt(list.length / 2, 10) + 1;
-                    //     for (var i = 0; i < _self.computersDock; i++) {
-                    //         var sub_arr = [];
-                    //         var start = i * 2;
-                    //         var length = i == _self.computersDock - 1 ? list.length - i * 2 : 2;
-                    //         for (var j = 0; j < length; j++) {
-                    //             sub_arr.push(list[start + j]);
-                    //         }
-                    //         arr.push(sub_arr);
-                    //     }
-                    //     _self.computers = arr;
-                    //   //  common.Cookie.set('computers', JSON.stringify(_self.computers));
-                    //   //  common.Cookie.set('computersDock', _self.computersDock);
-                    //
-                    //
-                    // }
                 }
             });
-        },
-        // 进入游戏
-        enterGame: function(id) {
-            var _self = this;
-            if (_self.hasLogin === false) {
-                common.toast({
-                    content: "请先登录！！"
-                });
-                return;
-            }
-            common.ajax('config/kd/game/start', {
-                id: id
-            }, function(data) {
-                if (data.apistatus == '0') {
-                    common.toast({
-                        content: "网络较差，请稍后重试！"
-                    });
-                } else {
-                    var win = common.openGame();
-                    if(openGameSize<2){
-                        win.document.write(loadStr) ;
-                    }
-                    var loop = setInterval(function() {
-                        if(win .closed) {
-                            openGameSize = 0 ;
-                            clearInterval(loop);
-                        }
-                    }, 500);
-                    if (data && data.result) {
-                        var url = data.result.content;
-                        // $('#iframeId').attr('src', url);
-                        win = common.openGame(url);
-                    }
-                }
-            }, 'post');
         }
+        // // 进入游戏
+        // enterGame: function(id) {
+        //     var _self = this;
+        //     if (_self.hasLogin === false) {
+        //         common.toast({
+        //             content: "请先登录！！"
+        //         });
+        //         return;
+        //     }
+        //     common.ajax('config/kd/game/start', {
+        //         id: id
+        //     }, function(data) {
+        //         if (data.apistatus == '0') {
+        //             common.toast({
+        //                 content: "网络较差，请稍后重试！"
+        //             });
+        //         } else {
+        //             var win = common.openGame();
+        //             if(openGameSize<2){
+        //                 win.document.write(loadStr) ;
+        //             }
+        //             var loop = setInterval(function() {
+        //                 if(win .closed) {
+        //                     openGameSize = 0 ;
+        //                     clearInterval(loop);
+        //                 }
+        //             }, 500);
+        //             if (data && data.result) {
+        //                 var url = data.result.content;
+        //                 // $('#iframeId').attr('src', url);
+        //                 win = common.openGame(url);
+        //             }
+        //         }
+        //     }, 'post');
+        // }
 
     }
 }

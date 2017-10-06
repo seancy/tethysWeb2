@@ -44,7 +44,7 @@
                 </div>
                 <div class="footer_menu">
                     <ul>
-                        <li><a href="about.html">关于我们</a></li>
+                        <li><a href="/About">关于我们</a></li>
                         <li><a href="policy.html">隐私政策</a></li>
                         <li><a href="duty.html">责任博彩</a></li>
                         <li><a href="disclaimer.html">免责声明</a></li>

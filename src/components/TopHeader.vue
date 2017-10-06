@@ -71,27 +71,24 @@
       <!--登录列-->
       <div class="account_bar" v-if="hasLogin===false && this.$route.name != 'Index'">
           <span class="account">
-              <input placeholder="请输入会员账号" type="text" v-model="loginParam.username" @keyup.enter="logIn()">
+              <input placeholder="请输入会员账号" type="text" v-model="loginParam.username" @keyup.enter="login()">
           </span>
           <span class="password">
-              <input placeholder="请输入密码" type="password" v-model="loginParam.password" @keyup.enter="logIn()">
+              <input placeholder="请输入密码" type="password" v-model="loginParam.password" @keyup.enter="login()">
           </span>
           <span class="code">
               <!-- <img v-show="verImgCode!==''" v-lazy="verImgCode" @click="getCode" style="cursor: pointer;"/>
               <a class="icon-refresh" @click="getCode" style="cursor: pointer;"></a>
               <em class="line"></em> -->
               <input placeholder="请输入验证码" type="text" v-model="loginParam.code">
-              <img v-show="verImgCode!==''" v-lazy="verImgCode" @click="getCode" style="cursor: pointer;"alt="">
+              <img v-show="verImgCode!==''" v-lazy="verImgCode" @click="getCode" style="cursor: pointer;">
               <a href="javascript:;" class="icon_sprite icon_refresh" @click="getCode"></a>
           </span>
           <span class="btn">
-              <a class="btn_login" href="javascript:;" @click="logIn" :class="'btn-login '+(isLoging?'link_disable':'')">会员登录</a>
+              <a class="btn_login" href="javascript:;" @click="login" :class="'btn-login '+(isLoging?'link_disable':'')">会员登录</a>
               <a class="btn_reg" href="javascript:;">注册会员</a>
           </span>
       </div><!--end 登录列-->
-
-
-
   </div>
 </template>
 
@@ -166,7 +163,7 @@ export default {
     else {
    /*     $(document).on("keydown",function(e){
             if(e.keyCode==13) {
-                that.logIn();
+                that.login();
             }
         });*/
         that.getCode();
@@ -258,7 +255,7 @@ export default {
         };
         timeDate();
     },
-    logIn: function () {
+    login: function () {
       var _self = this
       var username = _self.loginParam.username
       var password = _self.loginParam.password
