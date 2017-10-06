@@ -1,18 +1,19 @@
 <template>
     <div>
         <!--浮动广告-->
-        <div class="online-service left">
-            <img src="static/images/banner/banner_float-left_v1_01.gif" alt="">
-            <img src="static/images/banner/banner_float-left_v1_02.gif" alt="">
-            <img src="static/images/banner/banner_float-left_v1_03.gif" alt="">
-            <img src="static/images/banner/banner_float-left_v1_04.gif" alt="">
+        <div class="online-service left" v-if="!/HH/.test(pagename) && floatImage && floatImage.leftFirstUrl">
+            <template v-for="(left,index) in leftURL">
+                <span class="online-img" v-if="left.url==''"><img v-lazy="photo_url+'/pic/'+left.img+'/0'" /> </span>
+                <a :href="left.url" target="_blank" v-else><img v-lazy="photo_url+'/pic/'+left.img+'/0'" /></a>
+            </template>
+            
             <div class="close"></div>
         </div>
-        <div class="online-service right">
-            <img src="static/images/banner/banner_float-right_v1_01.gif" alt="">
-            <img src="static/images/banner/banner_float-right_v1_02.gif" alt="">
-            <img src="static/images/banner/banner_float-right_v1_03.gif" alt="">
-            <img src="static/images/banner/banner_float-right_v1_04.gif" alt="">
+        <div class="online-service right" v-if="!/HH/.test(pagename) && floatImage && floatImage.rightFirstUrl">
+            <template v-for="(right,index) in rightURL">
+                <span class="online-img" v-if="right.url==''"> <img v-lazy="photo_url+'/pic/'+right.img+'/0'" alt=""/> </span>
+                       <a :href="right.url" target="_blank"  v-else> <img v-lazy="photo_url+'/pic/'+right.img+'/0'" alt=""/> </a>
+            </template>
             <div class="close"></div>
         </div>
         <!--end 浮动广告-->
@@ -24,9 +25,18 @@ export default {
   name: 'onlineService',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+        floatImage:null,
+        pagename: '',
+        photo_url: '',
+        leftURL: [],
+        rightURL: [],
+        msg: 'Welcome to Your Vue.js App'
     }
   }, 
+  created:function(){
+    this.photo_url = common.photo_url;
+    this.pagename = this.$route.name || '';
+  },
   mounted:function(){
     $('.online-service.left .close').on('click',function(){
         $(this).parent().stop().animate({left:'-130px'});
@@ -34,6 +44,74 @@ export default {
     $('.online-service.right .close').on('click',function(){
         $(this).parent().stop().animate({right:'-130px'});
     })
+    this.getFloatImage();
+  }, 
+  methods:{
+    getFloatImage: function() {
+        var _self = this;
+        common.ajax('cms/client/index', {}, function(data) {
+          //  _self.leftURL = data && data.result && data.result.ad && data.result.ad.FDT && data.result.ad.FDT.leftUrl;
+            var result = data && data.result && data.result.ad && data.result.ad.FDT || {} ;
+            _self.floatImage = result;
+            if(result.leftFirstUrl){
+                // $('.online-service_left').show() ;
+                var leftimg_1 = result.leftFirstUrl ;
+                var lefturl_1 =result.leftFirstLink  ;
+                var leftimg_2 = result.leftSecUrl ;
+                var lefturl_2 =result.leftSecLink  ;
+                var leftimg_3 = result.leftThirdUrl ;
+                var lefturl_3 =result.leftThirdLink  ;
+                var leftimg_4 = result.leftForthUrl ;
+                var lefturl_4 =result.leftForthLink  ;
+                _self.leftURL.push({
+                    "img": leftimg_1 ,
+                    "url": lefturl_1 ,
+                }) ;
+                _self.leftURL.push({
+                    "img": leftimg_2 ,
+                    "url": lefturl_2 ,
+                }) ;
+                _self.leftURL.push({
+                    "img": leftimg_3 ,
+                    "url": lefturl_3 ,
+                }) ;
+                _self.leftURL.push({
+                    "img": leftimg_4 ,
+                    "url": lefturl_4 ,
+                }) ;
+
+            }
+          if(result.rightFirstUrl){
+              // $('.online-service').show() ;
+              var rightimg_1 = result.rightFirstUrl ;
+              var righturl_1 =result.rightFirstLink  ;
+              var rightimg_2 = result.rightSecUrl ;
+              var righturl_2 =result.rightSecLink  ;
+              var rightimg_3 = result.rightThirdUrl ;
+              var righturl_3 =result.rightThirdLink  ;
+              var rightimg_4 = result.rightForthUrl ;
+              var righturl_4 =result.rightForthLink  ;
+              _self.rightURL.push({
+                  "img": rightimg_1 ,
+                  "url": righturl_1 ,
+              }) ;
+              _self.rightURL.push({
+                  "img": rightimg_2 ,
+                  "url": righturl_2 ,
+              }) ;
+              _self.rightURL.push({
+                  "img": rightimg_3 ,
+                  "url": righturl_3 ,
+              }) ;
+              _self.rightURL.push({
+                  "img": rightimg_4 ,
+                  "url": righturl_4 ,
+              }) ;
+
+          }
+
+        });
+    },
   }
 }
 </script>

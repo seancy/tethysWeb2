@@ -160,7 +160,6 @@ export default {
     var _this = this;
     _this.hasLogin = common.ifLanded();
     this.topHeader = this.$parent.$children[0];
-    // debugger;
   },
   mounted: function () {
       this.photo_url = common.photo_url;

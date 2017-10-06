@@ -192,15 +192,15 @@ export default {
             }
             _self.customtemplate = tem || [];
             // 滚动
-            _self.$nextTick(function () {
-                $(".sys-notice").slide({
-                    mainCell: ".bd ul",
-                    autoPage: true,
-                    effect: "leftMarquee",
-                    autoPlay: true,
-                    vis: 1, interTime: 50
-                });
-            });
+            // _self.$nextTick(function () {
+            //     $(".sys-notice").slide({
+            //         mainCell: ".bd ul",
+            //         autoPage: true,
+            //         effect: "leftMarquee",
+            //         autoPlay: true,
+            //         vis: 1, interTime: 50
+            //     });
+            // });
         })
     },
     getNavData: function() {
