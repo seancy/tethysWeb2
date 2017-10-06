@@ -18,27 +18,5 @@
     <script type="text/javascript" src="static/vendor/slick/slick.min.js"></script>
     <script type="text/javascript" src="static/js/ui.js"></script>
     <script type =text/javascript src="./static/vendor/My97DatePicker/WdatePicker.js"></script>
-    <script type="text/javascript">
-      // 滚动动画
-      $(function(){
-          $(window).on('scroll', function(){
-              var scrollTop = $(window).scrollTop();
-              var basePos = -scrollTop+360;
-
-              $('.product_list a').eq(0).css({
-                  'top': basePos * -0.05
-              });
-              $('.product_list a').eq(1).css({
-                  'top': basePos * 0.1
-              });
-              $('.product_list a').eq(2).css({
-                  'top': basePos * -0.05
-              });
-              $('.product_list a').eq(3).css({
-                  'top': basePos * 0.05
-              });
-          }).scroll();
-      })
-    </script>
   </body>
 </html>

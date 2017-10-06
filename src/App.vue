@@ -90,6 +90,25 @@ export default {
     var _self = this;
     _self.hasLogin = common.ifLanded();
   },
+  mounted:function(){
+    $(window).on('scroll', function(){
+        var scrollTop = $(window).scrollTop();
+        var basePos = -scrollTop+360;
+
+        $('.product_list a').eq(0).css({
+            'top': basePos * -0.05
+        });
+        $('.product_list a').eq(1).css({
+            'top': basePos * 0.1
+        });
+        $('.product_list a').eq(2).css({
+            'top': basePos * -0.05
+        });
+        $('.product_list a').eq(3).css({
+            'top': basePos * 0.05
+        });
+    }).scroll();
+  },
   methods:{
     // 进入游戏
     enterGame: function(id) {
