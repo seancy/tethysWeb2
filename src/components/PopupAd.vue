@@ -1,23 +1,4 @@
 <template>
-<!-- 首頁彈窗-->
-<!--         <div class="popupad" style="display: none;">
-            <div class="popupad_box">
-                <div class="popupad_header">
-                    <p>{{adv_title}}</p>
-                    <a href="javascript:;" class="popupad_close"></a>
-                </div>
-                <div class="popupad_body">
-                    <img v-lazy="adv_picurl"  v-bind:data-src="linkUrl"/>
-                </div>
-                <div class="popupad_footer">
-                </div>
-            </div>
-            <div class="popupad_overlay"></div>
-        </div>
- -->
-
-
-
     <div class="popupad" v-if="!closed">
         <div class="popupad_window">
             <a class="popupad_close" href="javascript:;"><span class="icon_sprite icon_close2"></span></a>
@@ -31,14 +12,14 @@
 <script>
 export default {
   name: 'popupupAd',
-  data () {
+  data: function () {
     return {
       hasLogin: false,
       photo_url:'',
       adv_title:'',
       adv_picurl:'',
       linkUrl:'',
-      closed:0,
+      closed:false,
       msg: 'Welcome to Your Vue.js App'
     }
   }, 
