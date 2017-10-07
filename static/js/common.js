@@ -1125,18 +1125,18 @@ window.common = {
              var flag = $(el).parent('div').parent('div').children('label').find('em').length;
              var val = el && el.value || '';
              if(val == '' && flag ==0){
-                 $(el).removeClass('backgroundErr').parent('div').next().html('').removeClass('red');
+                 $(el).removeClass('backgroundErr').parent().next().html('').removeClass('red');
                  return ;
              }
              if(val =='' || val ==' ' || val.length ==0 && flag ==1){
-                 $(el).addClass("backgroundErr").parent('div').next().html('用户名不能为空').addClass("red");
+                 $(el).addClass("backgroundErr").parent().next().html('用户名不能为空').addClass("red");
                  return ;
              }
              if(!common.positiveEngNum(val) ||val.length<4 || val.length>15){
-                 $(el).addClass("backgroundErr").parent('div').next().html('请输入4-15位英文与数字').addClass("red");
+                 $(el).addClass("backgroundErr").parent().next().html('请输入4-15位英文与数字').addClass("red");
                  return ;
              }
-             $(el).removeClass('backgroundErr').parent('div').next().html('<span class="icon_ok"></span>').removeClass('red');
+             $(el).removeClass('backgroundErr').parent().next().html('<span class="icon_ok"></span>').removeClass('red');
 
         });
         $('#password').on('input focusout', function (evt) { //密码验证
@@ -1151,125 +1151,125 @@ window.common = {
                 tempPw = $('#confirmPassword');
             }
             if(val == '' && flag ==0){
-                $(el).removeClass('backgroundErr').parent('div').next().html('').removeClass('red');
+                $(el).removeClass('backgroundErr').parent().next().html('').removeClass('red');
                 return ;
             }
             if(tempPw !== '' && tempPw.val() === val && tempPw.val().length>0){
-                tempPw.removeClass('backgroundErr').parent('div').next().html('<span class="icon_ok"></span>').removeClass('red');
+                tempPw.removeClass('backgroundErr').parent().next().html('<span class="icon_ok"></span>').removeClass('red');
             }
             else if(tempPw !== '' && tempPw.val().length == 0){
                 if(tempPw.hasClass('backgroundErr')){
-                    tempPw.addClass("backgroundErr").parent('div').next().html('该项不能为空').addClass("red");
+                    tempPw.addClass("backgroundErr").parent().next().html('该项不能为空').addClass("red");
                 }
                 else {
-                    tempPw.parent('div').next().html('').removeClass('red');
+                    tempPw.parent().next().html('').removeClass('red');
                 }
             }
             else if(val.length !== 0){
                 tempPw.addClass('backgroundErr').parent('div').next().html('确认密码错误，请重新输入').addClass('red');
             }
             if(val =='' || val ==' ' || val.length ==0 && flag ==1){
-                $(el).addClass("backgroundErr").parent('div').next().html('该项不能为空').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('该项不能为空').addClass("red");
                 return ;
             }
             if(val == $('#username').val()){
-                $(el).addClass("backgroundErr").parent('div').next().html('与用户名重复').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('与用户名重复').addClass("red");
                 return ;
             }
             if(!common.positiveEngNum(val) ||val.length<6 || val.length>20){
-                $(el).addClass("backgroundErr").parent('div').next().html('请输入6-20位英文与数字').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('请输入6-20位英文与数字').addClass("red");
                 return ;
             }
             var strength = val.length <= 9 ? '低' : val.length >= 13 ? '高' : '中';
-            $(el).removeClass('backgroundErr').parent('div').next().html('<span class="icon_ok"></span>  密码强度：' + strength).removeClass('red');
+            $(el).removeClass('backgroundErr').parent().next().html('<span class="icon_ok"></span>  密码强度：' + strength).removeClass('red');
         });
 
         $('#retryPasswd,#confirmPassword').on('input focusout', function (evt) { // 确认登录密码
             var el = evt.target;
-            var flag = $(el).parent('div').parent('div').children('label').find('em').length;
+            var flag = $(el).parent('div').parent().children('label').find('em').length;
             var val = el && el.value || '';
             if(val == '' && flag ==0){
-                $(el).removeClass('backgroundErr').parent('div').next().html('').removeClass('red');
+                $(el).removeClass('backgroundErr').parent().next().html('').removeClass('red');
                 return ;
             }
             if(val =='' || val ==' ' || val.length ==0 && flag ==1){
-                $(el).addClass("backgroundErr").parent('div').next().html('该项不能为空').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('该项不能为空').addClass("red");
                 return ;
             }
             if(val != $('#password').val()){
-                $(el).addClass("backgroundErr").parent('div').next().html('确认密码错误，请重新输入').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('确认密码错误，请重新输入').addClass("red");
                 return ;
             }
-            $(el).removeClass('backgroundErr').parent('div').next().html('<span class="icon_ok"></span>').removeClass('red');
+            $(el).removeClass('backgroundErr').parent().next().html('<span class="icon_ok"></span>').removeClass('red');
         });
         $('#paymentPassword').on('input focusout', function (evt) { // 支付密码
             var el = evt.target;
-            var flag = $(el).parent('div').parent('div').children('label').find('em').length;
+            var flag = $(el).parent('div').parent().children('label').find('em').length;
             var val = el && el.value || '';
             if(val == '' && flag ==0){
-                $(el).removeClass('backgroundErr').parent('div').next().html('').removeClass('red');
+                $(el).removeClass('backgroundErr').parent().next().html('').removeClass('red');
                 return ;
             }
             if(val =='' || val ==' ' || val.length ==0 && flag ==1){
-                $(el).addClass("backgroundErr").parent('div').next().html('该项不能为空').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('该项不能为空').addClass("red");
                 return ;
             }
             if(!common.checkNumber(val) ||val.length<4 || val.length>4){
-                $(el).addClass("backgroundErr").parent('div').next().html('请输入四位数字').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('请输入四位数字').addClass("red");
                 return ;
             }
-            $(el).removeClass('backgroundErr').parent('div').next().html('<span class="icon_ok"></span>').removeClass('red');
+            $(el).removeClass('backgroundErr').parent().next().html('<span class="icon_ok"></span>').removeClass('red');
         });
         $('#realname').on('input focusout', function (evt) { // 真实姓名验证
             var el = evt.target;
-            var flag = $(el).parent('div').parent('div').children('label').find('em').length;
+            var flag = $(el).parent('div').parent().children('label').find('em').length;
             var val = el && el.value || '';
             if(val == '' && flag ==0){
-                $(el).removeClass('backgroundErr').parent('div').next().html('').removeClass('red');
+                $(el).removeClass('backgroundErr').parent().next().html('').removeClass('red');
                 return ;
             }
             if(val =='' || val ==' ' || val.length ==0 && flag ==1){
-                $(el).addClass("backgroundErr").parent('div').next().html('该项不能为空').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('该项不能为空').addClass("red");
                 return ;
             }
             if(!common.trueName(val)){
-                $(el).parent('div').next().html('必须与银行帐户名称相同，否则不能出款！').addClass("red");;
+                $(el).parent().next().html('必须与银行帐户名称相同，否则不能出款！').addClass("red");;
                 return ;
             }
             if(val.length<2){
-                $(el).parent('div').next().html('请至少输入2个字').addClass("red");
+                $(el).parent().next().html('请至少输入2个字').addClass("red");
                 return ;
             }
             if(val.length>5){
-                $(el).parent('div').next().html('请最多输入5个字').addClass("red");
+                $(el).parent().next().html('请最多输入5个字').addClass("red");
                 return ;
             }
-            $(el).removeClass('backgroundErr').parent('div').next().html('<span class="icon_ok"></span>').removeClass('red');
+            $(el).removeClass('backgroundErr').parent().next().html('<span class="icon_ok"></span>').removeClass('red');
         });
         $('#bankCardNo').on('input focusout', function (evt) { // 银行卡号验证
             var el = evt.target;
-            var flag = $(el).parent('div').parent('div').children('label').find('em').length;
+            var flag = $(el).parent().parent().children('label').find('em').length;
             var val = el && el.value || '';
             if(val == '' && flag ==0){
-                $(el).removeClass('backgroundErr').parent('div').next().html('').removeClass('red');
+                $(el).removeClass('backgroundErr').parent().next().html('').removeClass('red');
                 return ;
             }
             if(val =='' || val ==' ' || val.length ==0 && flag ==1){
-                $(el).addClass("backgroundErr").parent('div').next().html('该项不能为空').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('该项不能为空').addClass("red");
                 return ;
             }
             if(!common.positiveNum(val) || val.length<15 || val.length>20){
-                $(el).addClass("backgroundErr").parent('div').next().html('请输入15-20位银行账号').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('请输入15-20位银行账号').addClass("red");
                 return ;
             }
-            $(el).removeClass('backgroundErr').parent('div').next().html('<span class="icon_ok"></span>').removeClass('red');
+            $(el).removeClass('backgroundErr').parent().next().html('<span class="icon_ok"></span>').removeClass('red');
         });
         $('#bankDeposit').on('input focusout', function (evt) { // 开户行地址验证
             var el = evt.target;
-            var flag = $(el).parent('div').parent('div').children('label').find('em').length;
+            var flag = $(el).parent('div').parent().children('label').find('em').length;
             var val = el && el.value || '';
             if(val == '' && flag ==0){
-                $(el).removeClass('backgroundErr').parent('div').next().html('').removeClass('red');
+                $(el).removeClass('backgroundErr').parent().next().html('').removeClass('red');
                 return ;
             }
             if(val =='' || val ==' ' || val.length ==0 && flag ==1){
@@ -1280,40 +1280,40 @@ window.common = {
                 $(el).addClass("backgroundErr").parent('div').next().html('请输入开户行地址').addClass("red");
                 return ;
             }*/
-            $(el).removeClass('backgroundErr').parent('div').next().html('<span class="icon_ok"></span>').removeClass('red');
+            $(el).removeClass('backgroundErr').parent().next().html('<span class="icon_ok"></span>').removeClass('red');
         });
         $('#telephone').on('input focusout', function (evt) { // 手机号码验证
             var el = evt.target;
-            var flag = $(el).parent('div').parent('div').children('label').find('em').length;
+            var flag = $(el).parent('div').parent().children('label').find('em').length;
             var val = el && el.value || '';
             if(val == '' && flag ==0){
-                $(el).removeClass('backgroundErr').parent('div').next().html('').removeClass('red');
+                $(el).removeClass('backgroundErr').parent().next().html('').removeClass('red');
                 return ;
             }
             if(val =='' || val ==' ' || val.length ==0 && flag ==1){
-                $(el).addClass("backgroundErr").parent('div').next().html('该项不能为空').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('该项不能为空').addClass("red");
                 return ;
             }
             if(!common.phoneNum(val) || val.length<11 || val.length>11){
-                $(el).addClass("backgroundErr").parent('div').next().html('请输入您的手机号').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('请输入您的手机号').addClass("red");
                 return ;
             }
-            $(el).removeClass('backgroundErr').parent('div').next().html('<span class="icon_ok"></span>').removeClass('red');
+            $(el).removeClass('backgroundErr').parent().next().html('<span class="icon_ok"></span>').removeClass('red');
         });
         $('#email').on('input focusout', function (evt) { // 邮箱验证
             var el = evt.target;
-            var flag = $(el).parent('div').parent('div').children('label').find('em').length;
+            var flag = $(el).parent().parent().children('label').find('em').length;
             var val = el && el.value || '';
             if(val == '' && flag ==0){
-                $(el).removeClass('backgroundErr').parent('div').next().html('').removeClass('red');
+                $(el).removeClass('backgroundErr').parent().next().html('').removeClass('red');
                 return ;
             }
             if(val =='' || val ==' ' || val.length ==0 && flag ==1){
-                $(el).addClass("backgroundErr").parent('div').next().html('该项不能为空').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('该项不能为空').addClass("red");
                 return ;
             }
             if(!common.checkEmail(val) ){
-                $(el).addClass("backgroundErr").parent('div').next().html('请输入您的邮箱').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('请输入您的邮箱').addClass("red");
                 return ;
             }
             $(el).removeClass('backgroundErr').parent('div').next().html('<span class="icon_ok"></span>').removeClass('red');
@@ -1321,39 +1321,39 @@ window.common = {
 
         $('#weixin').on('input focusout', function (evt) { // 微信号码验证
             var el = evt.target;
-            var flag = $(el).parent('div').parent('div').children('label').find('em').length;
+            var flag = $(el).parent('div').parent().children('label').find('em').length;
             var val = el && el.value || '';
             if(val == '' && flag ==0){
                 $(el).removeClass('backgroundErr').parent('div').next().html('').removeClass('red');
                 return ;
             }
             if(val =='' || val ==' ' || val.length ==0 && flag ==1){
-                $(el).addClass("backgroundErr").parent('div').next().html('该项不能为空').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('该项不能为空').addClass("red");
                 return ;
             }
             if(!common.checkWechat(val) ){
-                $(el).addClass("backgroundErr").parent('div').next().html('请输入您的微信帐号').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('请输入您的微信帐号').addClass("red");
                 return ;
             }
-            $(el).removeClass('backgroundErr').parent('div').next().html('<span class="icon_ok"></span>').removeClass('red');
+            $(el).removeClass('backgroundErr').parent().next().html('<span class="icon_ok"></span>').removeClass('red');
         });
         $('#qq').on('input focusout', function (evt) { // qq号码验证
             var el = evt.target;
-            var flag = $(el).parent('div').parent('div').children('label').find('em').length;
+            var flag = $(el).parent('div').parent().children('label').find('em').length;
             var val = el && el.value || '';
             if(val == '' && flag ==0){
-                $(el).removeClass('backgroundErr').parent('div').next().html('').removeClass('red');
+                $(el).removeClass('backgroundErr').parent().next().html('').removeClass('red');
                 return ;
             }
             if(val =='' || val ==' ' || val.length ==0 && flag ==1){
-                $(el).addClass("backgroundErr").parent('div').next().html('该项不能为空').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('该项不能为空').addClass("red");
                 return ;
             }
             if(!common.checkqq(val) ){
-                $(el).addClass("backgroundErr").parent('div').next().html('请输入您的QQ帐号').addClass("red");
+                $(el).addClass("backgroundErr").parent().next().html('请输入您的QQ帐号').addClass("red");
                 return ;
             }
-            $(el).removeClass('backgroundErr').parent('div').next().html('<span class="icon_ok"></span>').removeClass('red');
+            $(el).removeClass('backgroundErr').parent().next().html('<span class="icon_ok"></span>').removeClass('red');
         });
         $('#code').on('input focusout', function (evt) { // 验证码
             var el = evt.target;
