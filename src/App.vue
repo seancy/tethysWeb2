@@ -111,53 +111,43 @@ export default {
   },
   methods:{
     // 进入游戏
-    enterGame: function(id) {
+    enterGame: function (id) {
         var _self = this;
         if (_self.hasLogin === false) {
-            common.toast({
-                content: "请先登录！！"
+            _self.$nextTick(function () {
+                common.$message({
+                    title: '登陆提示',
+                    content: '请先登录！！',
+                    hc: true,
+                    okcb: function () {
+                        _self.$router.push({path: '/'});
+                    }
+                });
             });
             return;
         }
-        common.ajax('config/kd/game/start', {
-            id: id
-        }, function(data) {
-            if (data.apistatus == '0') {
-                common.toast({
-                    content: "网络较差，请稍后重试！"
-                });
-            } else {
-                var win = common.openGame();
-                if(openGameSize<2){
-                    win.document.write(loadStr) ;
-                }
-                var loop = setInterval(function() {
-                    if(win .closed) {
-                        openGameSize = 0 ;
-                        clearInterval(loop);
-                    }
-                }, 500);
-                if (data && data.result) {
+        var win = common.openGame();
+        if(openGameSize<2){
+            win.document.write(loadStr) ;
+        }
+        var loop = setInterval(function() {
+            if(win .closed) {
+                openGameSize = 0 ;
+                clearInterval(loop);
+            }
+        }, 500);
+        common.ajax('config/kd/game/start',{id: id}, function (data) {
+            if(data.apistatus =='0'){
+                win.close();
+                common.toast({content: "网络较差，请稍后重试！"});
+            }else {
+                if (data && data.result && data.result.content) {
                     var url = data.result.content;
-                    // $('#iframeId').attr('src', url);
                     win = common.openGame(url);
                 }
             }
         }, 'post');
     }
   }
-  // template: '<div><topHeader></topHeader>test info.</div>'
 }
 </script>
-
-<style>
-/*#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}*/
-
-</style>
