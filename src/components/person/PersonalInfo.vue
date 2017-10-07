@@ -232,6 +232,10 @@
       //获取个人信息
       getPersonalInfo: function(){
         var _self= this;
+        $('.icon_refresh_money').addClass('rotate');
+        setTimeout(function () {
+          $('.icon_refresh_money').removeClass('rotate');
+        }, 500);
         common.ajax('member/refresh',{},function(data){
           _self.memberInfo = $.extend({},data && data.result || {});
           _self.memberInfo.balance = data&&data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,');

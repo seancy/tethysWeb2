@@ -82,9 +82,12 @@ a.formBtn:hover, .formBtn:hover { color: #fff; background: #fe9500; background: 
 
 .icon_sprite.icon_info { background-position: -72px 0px; }
 
-.icon_sprite.icon_refresh { background-position: -96px 0px; }
+.icon_sprite.icon_refresh { background-position: -96px 0px;transition: All 0.5s ease-in-out; }
+.rotate{transform: rotate(360deg);}
+/*.icon_sprite.icon_refresh1{ background: url("img/refresh1.png") no-repeat;background-size:24px 24px;}*/
 
-.icon_sprite.icon_refresh_money { background-position: -192px 0px; }
+
+.icon_sprite.icon_refresh_money { background-position: -192px 0px; transition: All 0.5s ease-in; }
 
 .icon_sprite.icon_mail { background-position: -120px 0px; }
 
