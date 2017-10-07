@@ -195,7 +195,7 @@
                 <p>2. 准确填写存入金额、存入时间，并输入您的微信账号，完成上述信息的录入。</p>
               </div>
               <div class="form_submit">
-                <a class="formBtn modalBtn" @click="JqValidate" href="#modalSuccess">立即注册</a>
+                <a class="formBtn modalBtn" @click="JqValidate" >立即注册</a> <!-- href="#modalSuccess" -->
                 <!--注册成功讯息-->
                 <div id="modalSuccess" data-height="215" style="display:none;">
                   <div class="modalIcon"><span class="icon_sprite icon_success_big"></span></div>
@@ -619,7 +619,7 @@
         }
       },
       JqValidate: function () {
-//        debugger
+        debugger
         var _self = this;
         var param = {};
         let warnData = _self.registerConfig;

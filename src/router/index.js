@@ -26,7 +26,6 @@ import PersonalDeposit3 from '@/components/person/PersonalDeposit3'
 // import PersonalDeposit11 from '@/components/person/PersonalDeposit11'
 import PersonalFunds from '@/components/person/PersonalFunds'
 import PersonalInfo from '@/components/person/PersonalInfo'
-import PersonalModifyPassword from '@/components/person/PersonalModifyPassword'
 
 import PersonalMsg from '@/components/person/PersonalMsg'
 import Policy from '@/components/Policy'
@@ -34,12 +33,18 @@ import Promo from '@/components/Promo'
 import SignUp from '@/components/SignUp'
 
 import Sports from '@/components/Sports'
+const PersonalModifyPassword = () => import('@/components/person/PersonalModifyPassword')
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
   routes: [
+    {
+      path: '/personalModifyPassword',
+      name: 'PersonalModifyPassword',
+      component: PersonalModifyPassword
+    },
     {
       path: '/',
       name: 'Index',
@@ -154,11 +159,6 @@ export default new Router({
       path: '/personalInfo',
       name: 'PersonalInfo',
       component: PersonalInfo
-    },
-    {
-      path: '/personalModifyPassword',
-      name: 'PersonalModifyPassword',
-      component: PersonalModifyPassword
     },
 
     {

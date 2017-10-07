@@ -12,13 +12,13 @@
         <ul class="login_box" v-if="!hasLogin">
             <p class="title">会员登录<span>LOGIN</span></p>
             <li class="account">
-                <input placeholder="请输入账号" type="text" v-model="topHeader.loginParam.username" @keyup.enter="login()">
+                <input placeholder="请输入账号" type="text" v-model="topHeader.loginParam.username" @keyup.enter="topHeader.login">
             </li>
             <li class="password">
-                <input placeholder="请输入密码" type="password" v-model="topHeader.loginParam.password" @keyup.enter="login()"/>
+                <input placeholder="请输入密码" type="password" v-model="topHeader.loginParam.password" @keyup.enter="topHeader.login"/>
             </li>
             <li class="code">
-                <input placeholder="输入验证码" type="text" v-model="topHeader.loginParam.code">
+                <input placeholder="输入验证码" type="text" v-model="topHeader.loginParam.code" @keyup.enter="topHeader.login">
                 <img v-show="topHeader.verImgCode!==''" v-lazy="topHeader.verImgCode" @click="topHeader.getCode" style="width:80px"/>
                 <a href="javascript:;" class="icon_sprite icon_refresh" @click="topHeader.getCode"></a>
             </li>
@@ -99,10 +99,6 @@
                 <div class="item_casino">
                     <div class="img"><img src="static/images/casino_4.jpg" alt=""></div>
                     <div class="item item_gns">电子游艺<br />MACHINE SLOTS</div>
-                </div>
-                <div class="item_casino">
-                    <div class="img"><img src="static/images/casino_1.jpg" alt=""></div>
-                    <div class="item item_mg">电子游艺<br />MACHINE SLOTS</div>
                 </div>
             </div>
         </div>
