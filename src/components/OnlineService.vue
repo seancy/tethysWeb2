@@ -2,19 +2,22 @@
     <div>
         <!--浮动广告-->
         <div class="online-service left" v-if="!/HH/.test(pagename) && floatImage && floatImage.leftFirstUrl">
-            <template v-for="(left,index) in leftURL">
-                <span class="online-img" v-if="left.url==''"><img v-lazy="photo_url+'/pic/'+left.img+'/0'" /> </span>
-                <a :href="left.url" target="_blank" v-else><img v-lazy="photo_url+'/pic/'+left.img+'/0'" /></a>
-            </template>
-            
-            <div class="close"></div>
+            <div class="height-service">
+                <template v-for="(left,index) in leftURL">
+                    <span class="online-img" v-if="left.url==''"><img v-lazy="photo_url+'/pic/'+left.img+'/0'" /> </span>
+                    <a :href="left.url" target="_blank" v-else><img v-lazy="photo_url+'/pic/'+left.img+'/0'" /></a>
+                </template>
+            </div>
+            <div class="close" @click="closeFloat('left')"></div>
         </div>
         <div class="online-service right" v-if="!/HH/.test(pagename) && floatImage && floatImage.rightFirstUrl">
-            <template v-for="(right,index) in rightURL">
-                <span class="online-img" v-if="right.url==''"> <img v-lazy="photo_url+'/pic/'+right.img+'/0'" alt=""/> </span>
-                       <a :href="right.url" target="_blank"  v-else> <img v-lazy="photo_url+'/pic/'+right.img+'/0'" alt=""/> </a>
-            </template>
-            <div class="close"></div>
+            <div class="height-service">
+                <template v-for="(right,index) in rightURL">
+                    <span class="online-img" v-if="right.url==''"> <img v-lazy="photo_url+'/pic/'+right.img+'/0'" alt=""/> </span>
+                           <a :href="right.url" target="_blank"  v-else> <img v-lazy="photo_url+'/pic/'+right.img+'/0'" alt=""/> </a>
+                </template>
+            </div>
+            <div class="close" @click="closeFloat('right')"></div>
         </div>
         <!--end 浮动广告-->
     </div>
@@ -23,14 +26,13 @@
 <script>
 export default {
   name: 'onlineService',
-  data () {
+  data: function() {
     return {
         floatImage:null,
         pagename: '',
         photo_url: '',
         leftURL: [],
         rightURL: [],
-        msg: 'Welcome to Your Vue.js App'
     }
   }, 
   created:function(){
@@ -38,15 +40,17 @@ export default {
     this.pagename = this.$route.name || '';
   },
   mounted:function(){
-    $('.online-service.left .close').on('click',function(){
-        $(this).parent().stop().animate({left:'-130px'});
-    })
-    $('.online-service.right .close').on('click',function(){
-        $(this).parent().stop().animate({right:'-130px'});
-    })
     this.getFloatImage();
   }, 
   methods:{
+      // 关闭浮动图
+      closeFloat:function (el) {
+          if(el =='left'){
+            $('.online-service.left').animate({left:'-130px'});
+          }else{
+              $('.online-service.right').animate({right:'-130px'});
+          }
+      },
     getFloatImage: function() {
         var _self = this;
         common.ajax('cms/client/index', {}, function(data) {
@@ -115,3 +119,6 @@ export default {
   }
 }
 </script>
+<style scoped>
+    .height-service{  max-height: 370px; overflow-y: hidden;}
+</style>

@@ -108,6 +108,8 @@ export default {
             'top': basePos * 0.05
         });
     }).scroll();
+
+
   },
   methods:{
     // 进入游戏
