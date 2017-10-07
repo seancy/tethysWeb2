@@ -16,7 +16,7 @@
           <ul class="psn_menu">
             <li><a href="personalInfo" class="active"><span class="icon_sprite icon_psn_info"></span>个人中心</a></li>
             <li><a v-on:click="deposit_judge();" href="javascript:void(0);"><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
-            <li><a v-on:click="draw_judge()" href="javascript:void(0);"><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
+            <li><a v-on:click="draw_judge()" ><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
             <li><a href="personalBettin"><span class="icon_sprite icon_psn_bettin"></span>投注记录</a></li>
             <li><a href="personalFunds"><span class="icon_sprite icon_psn_funds"></span>资金纪录</a></li>
           </ul>
@@ -32,7 +32,7 @@
                   <h3 class="btn_gdGold" @click="changeTab('account')" id="login_password">修改登录密码</h3>
                   <h3  id="play_password"   href="javascript:;" @click="changeTab('play')">修改支付密码</h3>
                 </dt>
-                <div>
+                <div v-show="showDetail == true">
                   <dd >
                     <ul class="style_item">
                       <li>
@@ -51,7 +51,7 @@
                     <a class="formBtn"  @click="editData('account')" href="javascript:;">提交申请</a>
                   </div>
                 </div>
-                <div class="showDetail">
+                <div v-show="showDetail == false">
                   <dd >
                     <ul class="style_item">
                       <li>
@@ -99,14 +99,7 @@
       $("#card_name5").val("");
       $('dl>div:eq('+$(this).index()+')').show().siblings('div').hide();
     })
-    if(getParam()=="account"){
-      $("#login_password").addClass('btn_gdGold').click();
-      $("#play_password").removeClass('btn_gdGold');
-    }
-    if(getParam()=="play"){
-      $("#play_password").addClass('btn_gdGold').click();
-      $("#login_password").removeClass('btn_gdGold');
-    }
+
   })
   var md5 = require('../../../static/vendor/md5.js');
   export default {
@@ -123,7 +116,8 @@
           newPass: '',
           newPass2: ''
         },
-        memberInfo:{}
+        memberInfo:{},
+        showDetail:''
       }
     },
     filters: {
@@ -135,6 +129,9 @@
       var _self = this;
       document.title = '个人中心-修改密码';
       _self.editType = common.getQueryString('type');
+      console.log(_self.editType);
+
+
       if (common.ifLanded()) {
         _self.info = common.Cookie.get('memberInfo') && JSON.parse(common.Cookie.get('memberInfo')) || {};
         _self.info.username = common.Cookie.get('userName') || '';
@@ -154,6 +151,20 @@
         });
       }
 
+    },
+    mounted: function() {
+      var _self = this;
+      _self.$nextTick(function() {
+        if(_self.editType == 'account'){
+          $("#login_password").addClass('btn_gdGold');
+          $("#play_password").removeClass('btn_gdGold');
+          _self.showDetail = true;
+        }else{
+          $("#play_password").addClass('btn_gdGold');
+          $("#login_password").removeClass('btn_gdGold');
+          _self.showDetail = false;
+        }
+      })
     },
     methods: {
       deposit_judge:function(){
@@ -305,6 +316,17 @@
 
         var _self = this;
         _self.editType = tab;
+        if(tab=="account"){
+          $("#login_password").addClass('btn_gdGold');
+          $("#play_password").removeClass('btn_gdGold');
+          _self.showDetail = true;
+        }
+        if(tab=="play"){
+          $("#play_password").addClass('btn_gdGold');
+          $("#login_password").removeClass('btn_gdGold');
+          _self.showDetail = false;
+        }
+
       },
     }
   }
