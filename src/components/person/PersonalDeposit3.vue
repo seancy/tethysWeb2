@@ -15,8 +15,8 @@
           </div>
           <ul class="psn_menu">
             <li><a href="personalInfo" ><span class="icon_sprite icon_psn_info"></span>个人中心</a></li>
-            <li><a v-on:click="deposit_judge();" class="active"><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
-            <li><a v-on:click="draw_judge()"><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
+            <li><a v-on:click="deposit_judge();" href="javascript:void(0);" class="active"><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
+            <li><a v-on:click="draw_judge()" href="javascript:void(0);"><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
             <li><a href="personalBettin"><span class="icon_sprite icon_psn_bettin"></span>投注记录</a></li>
             <li><a href="personalFunds"><span class="icon_sprite icon_psn_funds"></span>资金纪录</a></li>
           </ul>
@@ -57,7 +57,7 @@
                   </dd>
                 </dl>
                 <div class="form_submit">
-                  <a class="formBtn btn-apply" @click="submitApply">确&nbsp;&nbsp;认</a>
+                  <a class="formBtn btn-apply" @click="submitApply" href="javascript:;">确&nbsp;&nbsp;认</a>
                 </div>
               </div>
             </div><!--end 在线支付-->

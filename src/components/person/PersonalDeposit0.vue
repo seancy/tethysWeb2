@@ -15,8 +15,8 @@
           </div>
           <ul class="psn_menu">
             <li><a href="personalInfo" ><span class="icon_sprite icon_psn_info"></span>个人中心</a></li>
-            <li><a v-on:click="deposit_judge();" class="active"><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
-            <li><a v-on:click="draw_judge()"><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
+            <li><a v-on:click="deposit_judge();" class="active" href="javascript:void(0);"><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
+            <li><a v-on:click="draw_judge()" href="javascript:void(0);"><span class="icon_sprite icon_psn_callin" ></span>取款</a></li>
             <li><a href="personalBettin"><span class="icon_sprite icon_psn_bettin"></span>投注记录</a></li>
             <li><a href="personalFunds"><span class="icon_sprite icon_psn_funds"></span>资金纪录</a></li>
           </ul>
@@ -77,7 +77,7 @@
                   </dd>
                 </dl>
                 <div class="form_submit">
-                  <a class="formBtn next btn-apply next-step" @click="nextStep">下一步</a>
+                  <a class="formBtn next btn-apply next-step" href="javascript:;" @click="nextStep">下一步</a>
                 </div>
               </div>
 
@@ -156,7 +156,7 @@
                   <p>准确填写存入金额、存入时间，并输入您的微信账号，完成上述信息的录入。</p>
                 </div>
                 <div class="form_submit">
-                  <a class="formBtn next btn-apply submit-apply" id="subApplyBtn" @click="submitApply">提交申请</a>
+                  <a class="formBtn next btn-apply submit-apply" href="javascript:;" id="subApplyBtn" @click="submitApply">提交申请</a>
                 </div>
               </div>
             </div><!--end 钱包秒充（3秒到账）-->
@@ -208,7 +208,7 @@
                   </dd>
                 </dl>
                 <div class="form_submit">
-                  <a class="formBtn submit btn-apply"  @click="closeWin" >回首页</a>
+                  <a class="formBtn submit btn-apply" href="javascript:;"  @click="closeWin" >回首页</a>
                 </div>
               </div>
             </div><!--end 钱包秒充（3秒到账）-->
@@ -224,8 +224,7 @@
 <script>
   $(function(){
     $(".step1").show();
-    $(".step2").hide();
-    $(".step3").hide();
+    $(".step2,.step3").hide();
   })
   export default {
     name: 'PersonalDeposit',
@@ -406,8 +405,8 @@
           console.log(data);
           var bank_result = data && data.result && data.result.list || [];
           var bankListResult = bank_result || [];
-          bankListResult[0].bankURL = "static/images/wx_logo.jpg";
-          bankListResult[1].bankURL = "static/images/zfb_logo.jpg";
+//          bankListResult[0].bankURL = "static/images/wx_logo.jpg";
+//          bankListResult[1].bankURL = "static/images/zfb_logo.jpg";
           _self.bankList = bankListResult;
           // console.log(_self.bankList);
           setTimeout(function() {

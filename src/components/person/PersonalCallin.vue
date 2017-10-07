@@ -15,8 +15,8 @@
          </div>
          <ul class="psn_menu">
            <li><a href="personalInfo" ><span class="icon_sprite icon_psn_info"></span>个人中心</a></li>
-           <li><a v-on:click="deposit_judge();" ><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
-           <li><a v-on:click="draw_judge()" class="active"><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
+           <li><a v-on:click="deposit_judge();" href="javascript:void(0);"><span class="icon_sprite icon_psn_deposit"></span>存款</a></li>
+           <li><a v-on:click="draw_judge()" class="active" href="javascript:void(0);"><span class="icon_sprite icon_psn_callin"></span>取款</a></li>
            <li><a href="personalBettin"><span class="icon_sprite icon_psn_bettin"></span>投注记录</a></li>
            <li><a href="personalFunds"><span class="icon_sprite icon_psn_funds"></span>资金纪录</a></li>
          </ul>
@@ -708,10 +708,11 @@ export default {
 //                _self.confirmDraw();
 //              }
 //            });
-            var source='<div class="callin_popup"><div class="icon_noconform"></div><h3>警告</h3><p>当前取款申请不符合出款要求，须扣除<span class="color_red" >'+_self.preDrawInfo.needPayAmount+'</span>元</p><p><span class="callin_money">最终可取款：¥ '+_self.preDrawInfo.realWithDrawAmount+'</span></p><div class="modal_btn"><a class="formBtn btn_modal" href="javascript:;">取&nbsp;&nbsp;消</a><a class="formBtn btn_modal" v-on:click="'+_self.confirmDraw()+'">确&nbsp;&nbsp;认</a></div>'
-
-
+            var source='<div class="callin_popup"><div class="icon_noconform"></div><h3>警告</h3><p>当前取款申请不符合出款要求，须扣除<span class="color_red" >'+_self.preDrawInfo.needPayAmount+'</span>元</p><p><span class="callin_money">最终可取款：¥ '+_self.preDrawInfo.realWithDrawAmount+'</span></p><div class="modal_btn"><a class="formBtn btn_modal" href="javascript:;">取&nbsp;&nbsp;消</a><a class="formBtn btn_modal" id="confirm">确&nbsp;&nbsp;认</a></div>';
             showModal(source);
+            $('body').on('click','#confirm',function(){
+              _self.confirmDraw();
+            })
           } else {
 //            common.$message({
 //              content: '<p>当前取款申请符合出款要求<p/><p><input readonly type="text" class="form-control" placeholder="本次取款：¥' + _self.preDrawInfo.realWithDrawAmount / 100 + '"/></p>',
@@ -719,9 +720,11 @@ export default {
 //                _self.confirmDraw();
 //              }
 //            });
-            var source='<div class="callin_popup"><div class="icon_noconform"></div><h3>取款确认</h3><p>当前取款申请符合出款要求</p><p><span class="callin_money">本次取款：¥ '+_self.preDrawInfo.realWithDrawAmount+'</span></p><div class="modal_btn"><a class="formBtn btn_modal" href="javascript:;">取&nbsp;&nbsp;消</a><a class="formBtn btn_modal" v-on:click="'+_self.confirmDraw()+'">确&nbsp;&nbsp;认</a></div>'
+            var source='<div class="callin_popup"><div class="icon_noconform"></div><h3>取款确认</h3><p>当前取款申请符合出款要求</p><p><span class="callin_money">本次取款：¥ '+_self.preDrawInfo.realWithDrawAmount+'</span></p><div class="modal_btn"><a class="formBtn btn_modal" href="javascript:;">取&nbsp;&nbsp;消</a><a class="formBtn btn_modal" id="confirm">确&nbsp;&nbsp;认</a></div>'
             showModal(source);
-//            $('.modalBtn')[0].click();
+            $('body').on('click','#confirm',function(){
+              _self.confirmDraw();
+            })
           }
         }, 'post',
         function(data) {
