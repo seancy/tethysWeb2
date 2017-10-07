@@ -120,6 +120,12 @@
 
 .index_casino .casino_slider .item_casino .item.item_gns { background-image: url(img/item_gns.png); }
 
+.index_casino .casino_slider .item_casino .item.item_ag { background-image: url(img/item_ag.png); }
+
+.index_casino .casino_slider .item_casino .item.item_bbin { background-image: url(img/item_bbin.png); }
+
+.index_casino .casino_slider .item_casino .item.item_pt { background-image: url(img/item_pt.png); }
+
 .index_casino .casino_slider .item_casino:hover { color: #fff; background-image: url(img/bg_gdr_gold.jpg); background-position: 50% 50%; background-size: 300% 100%; -webkit-animation-name: borderGold; animation-name: borderGold; -webkit-animation-duration: 1s; animation-duration: 1s; -webkit-animation-iteration-count: infinite; animation-iteration-count: infinite; }
 
 .index_casino .casino_slider .slick-arrow.slick-next { right: -30px !important; }

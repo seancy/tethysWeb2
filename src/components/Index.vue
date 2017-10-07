@@ -90,15 +90,15 @@
                 </div>
                 <div class="item_casino">
                     <div class="img"><img src="static/images/casino_2.jpg" alt=""></div>
-                    <div class="item item_gpi">电子游艺<br />MACHINE SLOTS</div>
+                    <div class="item item_bbin">电子游艺<br />MACHINE SLOTS</div>
                 </div>
                 <div class="item_casino">
                     <div class="img"><img src="static/images/casino_3.jpg" alt=""></div>
-                    <div class="item item_mw">电子游艺<br />MACHINE SLOTS</div>
+                    <div class="item item_ag">电子游艺<br />MACHINE SLOTS</div>
                 </div>
                 <div class="item_casino">
                     <div class="img"><img src="static/images/casino_4.jpg" alt=""></div>
-                    <div class="item item_gns">电子游艺<br />MACHINE SLOTS</div>
+                    <div class="item item_pt">电子游艺<br />MACHINE SLOTS</div>
                 </div>
             </div>
         </div>
@@ -324,8 +324,8 @@ export default {
         });
     },
 
-    
-    
+
+
 
     // 真人视讯
     getLiveGame: function () {
@@ -339,7 +339,7 @@ export default {
                 common.Cookie.set('liveList', JSON.stringify(_self.liveList));
             });
     },
-    
+
   }
 }
 </script>
