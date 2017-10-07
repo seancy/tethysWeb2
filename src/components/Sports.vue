@@ -4,20 +4,23 @@
       <div class="contain_width">
         <h2 class="page_title"></h2>
         <!--品牌选单-->
-        <div class="pagemenu_slider">
-          <div class="item_pagemenu" >
-            <a href="javascript:;" @click="enterGame(computers[0].id)" class="active">
-              <div class="img"><span style="background-image: url(../../static/images/brand/bbin.png)"></span></div>
-              <h3>{{computers[0].name}}</h3>
+        <div class="pagemenu_slider" >
+          <div class="item_pagemenu" v-for="list in computers">
+            <a href="javascript:;" @click="enterGame(list.id)" >
+              <div class="img">
+               <!-- <span style="background-image: url(../../static/images/brand/bbin.png)"></span>-->
+                <span  :style="{backgroundImage: 'url('+[photo_url+'/pic/'+list.img+'/0']+')'}" ></span>
+              </div>
+              <h3>{{game_name[list.id]}}</h3>
             </a>
           </div>
-          <div class="item_pagemenu">
+       <!--   <div class="item_pagemenu">
             <a href="javascript:;"  @click="enterGame(computers[1].id)">
               <div class="img"><span style="background-image: url(../../static/images/brand/ug.png)"></span></div>
               <h3>{{computers[1].name}}</h3>
             </a>
-          </div>
-        </div><!--end 品牌选单-->
+          </div>-->
+        </div>
 
       </div>
 
@@ -37,7 +40,8 @@ export default {
             hasLogin: false,
             computers: [],
             gameLists:[],
-            game_sub_image:{"824":"sport_bb","1257":"sport_ug"}
+            game_sub_image:{"824":"sport_bb","1257":"sport_ug"},
+            game_name:{"824":"BB体育","1257":"UG体育"} ,
         }
     },
     created: function() {
@@ -67,41 +71,44 @@ export default {
                 }
             });
         },
-        // // 进入游戏
-         enterGame: function(id) {
-             var _self = this;
-             if (_self.hasLogin === false) {
-                 common.toast({
-                     content: "请先登录！！"
-                 });
-                 return;
-             }
-             common.ajax('config/kd/game/start', {
-                 id: id
-             }, function(data) {
-                 if (data.apistatus == '0') {
-                     common.toast({
-                         content: "网络较差，请稍后重试！"
-                     });
-                 } else {
-                     var win = common.openGame();
-                     if(openGameSize<2){
-                         win.document.write(loadStr) ;
-                     }
-                     var loop = setInterval(function() {
-                         if(win .closed) {
-                             openGameSize = 0 ;
-                             clearInterval(loop);
-                         }
-                     }, 500);
-                     if (data && data.result) {
-                         var url = data.result.content;
-                         // $('#iframeId').attr('src', url);
-                         win = common.openGame(url);
-                     }
-                 }
-             }, 'post');
-         }
+        // 进入游戏
+        enterGame: function (id) {
+            var _self = this;
+            if (_self.hasLogin === false) {
+                _self.$nextTick(function () {
+                    common.$message({
+                        title: '登陆提示',
+                        content: '请先登录！！',
+                        hc: true,
+                        okcb: function () {
+                            _self.$router.push({path: '/'});
+                        }
+                    });
+                });
+                return;
+            }
+            var win = common.openGame();
+            if(openGameSize<2){
+                win.document.write(loadStr) ;
+            }
+            var loop = setInterval(function() {
+                if(win .closed) {
+                    openGameSize = 0 ;
+                    clearInterval(loop);
+                }
+            }, 500);
+            common.ajax('config/kd/game/start',{id: id}, function (data) {
+                if(data.apistatus =='0'){
+                    win.close();
+                    common.toast({content: "网络较差，请稍后重试！"});
+                } else {
+                    if (data && data.result) {
+                        var url = data.result.content;
+                        win = common.openGame(url);
+                    }
+                }
+            }, 'post');
+        },
 
     }
 }
