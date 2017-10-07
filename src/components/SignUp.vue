@@ -51,7 +51,7 @@
                       <div v-else="conf.fieldCode && conf.fieldCode=='bank'">
                         <span class="label">银行名称<span class="color_red" v-if="conf.isRequired === 1">※</span></span>
                         <span class="form formSelect_wrap">
-                            <select name="bank" id="bankSelect" v-model="bankInfo.bankCode" class="formSelect"
+                            <select :data-required="conf.isRequired" name="bank" id="bankSelect" v-model="bankInfo.bankCode" class="formSelect"
                                     @change="handleEnter('bankSelect')">
                               <option value="">请选择银行</option>
                               <option v-for="(bank,index) in bankList" :value="bank.bankCode">
@@ -83,11 +83,12 @@
                       <img :src="verImgCode" @click="getCode" alt="" style="height: 100%">
                       <a href="javascript:;" class="icon_sprite icon_refresh" @click="getCode"></a>
                       </span>
-                      <span class="ui_error"><span class="icon_sprite icon_ok"></span></span>
+                      <span class="ui_error"><!--<span class="icon_sprite icon_ok"></span>--></span>
+
                     </li>
                   </ul>
                   <div class="sing-up_msg_plus">
-                    <input type="checkbox" checked id="agree" name="agree"/>
+                    <input type="checkbox" checked id="agree" name="agree" v-model="allowChecked"/>
                     <label for="agree">我已届满合法博彩年龄，且已阅读并同意</label><a href="javascript:;" @click="changeDuty();">开户协议</a>
                   </div>
                 </dd>
@@ -134,6 +135,7 @@
     data: function () {
       return {
         verImgCode: '',
+        allowChecked: true,
         menu: [],
         registerInfo: {
           "top": {
@@ -205,7 +207,7 @@
       getBankList: function () {
         var _self = this
         common.ajax('tethys-user/user/account/bankList', {}, function (data) {
-//          debugger
+
           _self.bankList = data && data.result || []
         }, 'post')
       },
@@ -250,7 +252,8 @@
               if (data.result.content != null) {
                 ct = data.result.content
               }
-              debugger
+
+
               common.$message({
                 title: '开户协议',
                 content: ct,
@@ -402,7 +405,7 @@
                 $(el).addClass("error").parent().next().html('该项不能为空').addClass("red");
               }
             } else if (!common.trueName(val)) {
-              $(el).addClass("error").parent().next().html('必须与银行帐户名称相同，否则不能出款！');
+             // $(el).addClass("error").parent().next().html('必须与银行帐户名称相同，否则不能出款！');
             } else if (val.length < 2) {
               $(el).addClass("error").parent().next().html('请至少输入2个字').addClass("red");
             } else if (val.length > 5) {
@@ -509,14 +512,16 @@
             val = el && el[0].value || '';
             if (val == '' || val == ' ' || val.length == 0) {
               if (isRequired == 0) {
-                $(el).removeClass('error').parent().next().next().html('').removeClass('red');
+                $(el).removeClass('error').parent().next().html('').removeClass('red');
               } else {
-                $(el).addClass('error').parent().next().next().html('请输入验证码').addClass("red").css("padding-left", "10px");
+
+                $(el).addClass('error').parent().next().html('请输入验证码').addClass("red") ;
               }
             } else if (flag) {
-              $(el).addClass('error').parent().next().next().html('验证码错误').addClass('red').css("padding-left", "10px");
+
+              $(el).addClass('error').parent().next().html('验证码错误').addClass('red');
             } else {
-              $(el).removeClass('error').parent().next().next().html('').removeClass('red');
+              $(el).removeClass('error').parent().next().html('').removeClass('red');
             }
             break;
           default:
@@ -524,7 +529,7 @@
         }
       },
       JqValidate: function () {
-        debugger
+
         var _self = this;
         var param = {};
         let warnData = _self.registerConfig;
@@ -533,18 +538,15 @@
           _self.checkReg(warnData[i].fieldCode, false, (warnData[i].isRequired || 0))
         }
         _self.checkReg('code');
-        // if($('#bankSelect').length){
-        //     _self.checkReg('bankSelect', false, 1);
-        // }
+
         setTimeout(function () {
           let warnDataa = $('.mem_reg_sm.red').parent();
           if (warnDataa.length > 0) {
             $('#' + warnDataa[0].childNodes[2].childNodes[0].id).focus();
           }
-        }, 50)
-        return $("#form_sign").validate({
-          submitHandler: function () {
-            debugger
+        }, 50) ;
+      /*  return $("#form_sign").validate({
+          submitHandler: function () {*/
             var ipts = $('#form_sign').find('input[type!="hidden"]');
             for (var i = 0; i < ipts.length; i++) {
               if ('agree' != ipts[i].name) {
@@ -557,10 +559,22 @@
                 content: '登录密码和确认登录密码不一致!',
                 time: 3
               });
-              return;
+              return false;
             }
+          if (!_self.allowChecked) {
+              common.toast({
+                  content: '请同意开户协定并勾选!',
+                  time: 3
+              });
+              return false;
+          }
             var bankName = $("#bankSelect").find("option:selected") && $("#bankSelect").find("option:selected").text();
-            param.bank = $.trim(bankName);
+          if(bankName =='请选择银行'){
+              param.bank = ''; //银行名称
+          }else{
+              param.bank = $.trim(bankName); //银行名称
+          }
+
             param.bankCode = _self.bankInfo.bankCode;
             param.coin = _self.sign.coin || '';
             if (typeof(nvitationCode) == 'object') {
@@ -568,7 +582,7 @@
             } else {
               param.proCode = invitationCode;
             }
-            var mem_flage = $('.mem_reg_sm ').hasClass('red');
+            var mem_flage = $('.ui_error').hasClass('red');
             if (!mem_flage) {
               let el = $('#username');
               let val = el && el[0].value;
@@ -577,7 +591,7 @@
               }, function (data) {
                 if (data && data.result) {
                   if (data.apistatus === 1) {
-                    el.removeClass("error").parent('div').siblings("div").html("").removeClass("red");
+                    el.removeClass("error").parent().siblings().html("").removeClass("red");
                     common.ajax('member/register', param, function (data) {
                       if (data && data.result && data.result.token) {
                         common.Cookie.set('token', data.result.token);
@@ -630,11 +644,11 @@
 
             }
 
-          },
+      /*    },
           debug: true,
           rules: _self.rules,
           messages: common.regConfig.messages
-        });
+        });*/
       }
     }
   }
