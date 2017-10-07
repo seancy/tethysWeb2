@@ -33,6 +33,7 @@ import Promo from '@/components/Promo'
 import SignUp from '@/components/SignUp'
 
 import Sports from '@/components/Sports'
+
 const PersonalModifyPassword = () => import('@/components/person/PersonalModifyPassword')
 
 Vue.use(Router)

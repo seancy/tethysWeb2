@@ -253,7 +253,6 @@
     </div>
   </div>
 </template>
-
 <script>
 
   var md5 = require('../../static/vendor/md5.js');
