@@ -21,7 +21,7 @@
         <div class="psn_wrap">
           <!--会员注册-->
           <div class="psn_content">
-            <form id="apply_form">
+            <form id="form_sign">
               <dl class="psn_info">
                 <dt><h3>欢迎注册澳门金沙赌场</h3></dt>
                 <dd>
@@ -31,27 +31,26 @@
                     <!--<li>24小时提款0审核0冻结0手续费不限提款次数，存取款0-5分钟火速到账！</li>-->
                     <!--<li>1元即可存取款，全面支持<span class="color_orange">支付宝、微信、手机银行转账、信用卡、银联在线支付</span>全程担保！</li>-->
                   </ul>
-                  <form id="form_sign">
-                    <ul class="style_item">
-                      <li v-for="conf in registerConfig">
-                        <div v-if="conf.fieldCode && conf.fieldCode!=='bank'">
+                  <ul class="style_item">
+                    <li v-for="conf in registerConfig">
+                      <div v-if="conf.fieldCode && conf.fieldCode!=='bank'">
                           <span class="label">{{conf.fieldName}}<span class="color_red"
                                                                       v-if="conf.isRequired === 1">※</span></span>
-                          <span class="form" v-if="conf.fieldCode == 'username'">
+                        <span class="form" v-if="conf.fieldCode == 'username'">
                             <input autocomplete="off" class="formInput"
                                    :placeholder="placeholders[conf.fieldCode]" :type="types[conf.fieldCode]"
                                    :id="conf.fieldCode" :name="conf.fieldCode" v-on:blur="verify_agentName">
                           </span>
-                          <span class="form" v-else>
+                        <span class="form" v-else>
                             <input autocomplete="off" class="formInput"
                                    :placeholder="placeholders[conf.fieldCode]" :type="types[conf.fieldCode]"
                                    :id="conf.fieldCode" :name="conf.fieldCode">
                           </span>
-                          <span class="ui_error">{{extInfo[conf.fieldCode] || ''}}</span>
-                        </div>
-                        <div v-else="conf.fieldCode && conf.fieldCode=='bank'">
-                          <span class="label">银行名称<span class="color_red" v-if="conf.isRequired === 1">※</span></span>
-                          <span class="form formSelect_wrap">
+                        <span class="ui_error">{{extInfo[conf.fieldCode] || ''}}</span>
+                      </div>
+                      <div v-else="conf.fieldCode && conf.fieldCode=='bank'">
+                        <span class="label">银行名称<span class="color_red" v-if="conf.isRequired === 1">※</span></span>
+                        <span class="form formSelect_wrap">
                             <select name="bank" id="bankSelect" v-model="bankInfo.bankCode" class="formSelect"
                                     @change="handleEnter('bankSelect')">
                               <option value="">请选择银行</option>
@@ -60,131 +59,35 @@
                               </option>
                             </select>
                         </span>
-                          <span class="ui_error">
+                        <span class="ui_error">
 
                         </span>
-                        </div>
-                      </li>
-                      <li>
-                        <span class="label">币种<span class="color_red">※</span></span>
-                        <span class="form formSelect_wrap">
+                      </div>
+                    </li>
+                    <li>
+                      <span class="label">币种<span class="color_red">※</span></span>
+                      <span class="form formSelect_wrap">
                              <select class="formSelect" id="coin" name="coin" v-model="sign.coin">
                                         <option value="CNY">人民币CNY</option>
                               </select>
                         </span>
-                        <span class="ui_error">
+                      <span class="ui_error">
 
                         </span>
-                      </li>
-                      <li>
-                        <span class="label">验证码<span class="color_red">※</span></span>
-                        <span class="form">
+                    </li>
+                    <li>
+                      <span class="label">验证码<span class="color_red">※</span></span>
+                      <span class="form">
                       <input type="text" class="formInput" id="code" name="code"
                              placeholder="请输入验证码" style="width:96px; " @keypress="handleEnter('code')">
                       <img :src="verImgCode" @click="getCode" alt="" style="height: 100%">
                       <a href="javascript:;" class="icon_sprite icon_refresh" @click="getCode"></a>
                       </span>
-                        <span class="ui_error"><span class="icon_sprite icon_ok"></span></span>
-                      </li>
-                      <!--<li>-->
-                      <!--<span class="label">登录密码<span class="color_red">※</span></span>-->
-                      <!--<span class="form"><input type="text" class="formInput error" id="password" name="password"-->
-                      <!--placeholder="请输入6-20位英文与数字组合"></span>-->
-                      <!--<span class="ui_error">请输入6-20位英文与数字</span>-->
-                      <!--</li>-->
-                      <!--<li>-->
-                      <!--<span class="label">确认密码<span class="color_red">※</span></span>-->
-                      <!--<span class="form"><input type="text" class="formInput" id="confirmPassword"-->
-                      <!--name="confirmPassword" placeholder="请再次输入登录密码"></span>-->
-                      <!--<span class="ui_error"><span class="icon_sprite icon_ok"></span></span>-->
-                      <!--</li>-->
-                      <!--<li>-->
-                      <!--<span class="label">真实姓名<span class="color_red">※</span></span>-->
-                      <!--<span class="form"><input type="text" class="formInput" id="realname" name="realname"-->
-                      <!--placeholder="请输入您的真实姓名"></span>-->
-                      <!--<span class="ui_error orange">必须与银行帐户名称相同，否则不能出款！</span>-->
-                      <!--</li>-->
-                      <!--<li>-->
-                      <!--<span class="label">银行卡号<span class="color_red">※</span></span>-->
-                      <!--<span class="form"><input type="text" class="formInput" id="bankCardNo" name="bankCardNo"-->
-                      <!--placeholder="请输入您的银行卡号"></span>-->
-                      <!--<span class="ui_error"><span class="icon_sprite icon_ok"></span></span>-->
-                      <!--</li>-->
-                      <!--<li>-->
-                      <!--<span class="label">银行名称<span class="color_red">※</span></span>-->
-                      <!--<span class="form formSelect_wrap">-->
-                      <!--<select id="bankSelect" class="formSelect" name="bank">-->
-                      <!--<option value="">请选择</option>-->
-                      <!--<option value="ICBC">工商银行</option>-->
-                      <!--<option value="ABC">农业银行</option>-->
-                      <!--<option value="CCB">建设银行</option>-->
-                      <!--<option value="BCOM">交通银行</option>-->
-                      <!--<option value="BOC">中国银行</option>-->
-                      <!--<option value="CMB">招商银行</option>-->
-                      <!--<option value="CMBC">民生银行</option>-->
-                      <!--<option value="CEBB">光大银行</option>-->
-                      <!--<option value="BOB">北京银行</option>-->
-                      <!--<option value="SHB">上海银行</option>-->
-                      <!--<option value="NBB">宁波银行</option>-->
-                      <!--<option value="HXB">华夏银行</option>-->
-                      <!--<option value="CIB">兴业银行</option>-->
-                      <!--<option value="PSBC">中国邮政银行</option>-->
-                      <!--<option value="SPABNK">平安银行</option>-->
-                      <!--<option value="SPDB">浦发银行</option>-->
-                      <!--<option value="ECITIC">中信银行</option>-->
-                      <!--<option value="HZB">杭州银行</option>-->
-                      <!--<option value="GDB">广发银行</option>-->
-                      <!--<option value="QQ_SCAN">QQ</option>-->
-                      <!--</select>-->
-                      <!--</span>-->
-                      <!--<span class="ui_error">-->
-
-                      <!--</span>-->
-                      <!--</li>-->
-                      <!--<li>-->
-                      <!--<span class="label">开户行<span class="color_red">※</span></span>-->
-                      <!--<span class="form"><input type="text" class="formInput" id="bankDeposit" name="bankDeposit"-->
-                      <!--placeholder="请输入开户行地址"></span>-->
-                      <!--<span class="ui_error"><span class="icon_sprite icon_ok"></span></span>-->
-                      <!--</li>-->
-                      <!--<li>-->
-                      <!--<span class="label">手机号<span class="color_red">※</span></span>-->
-                      <!--<span class="form"><input type="text" class="formInput" id="telephone" name="telephone"-->
-                      <!--placeholder="请输入您的手机号"></span>-->
-                      <!--<span class="ui_error"><span class="icon_sprite icon_ok"></span></span>-->
-                      <!--</li>-->
-                      <!--<li>-->
-                      <!--<span class="label">电子邮箱</span>-->
-                      <!--<span class="form"><input type="text" class="formInput" id="email" name="email"-->
-                      <!--placeholder="请输入您的邮箱"></span>-->
-                      <!--<span class="ui_error"><span class="icon_sprite icon_ok"></span></span>-->
-                      <!--</li>-->
-                      <!--<li>-->
-                      <!--<span class="label">微信</span>-->
-                      <!--<span class="form"><input type="text" class="formInput" id="weixin" name="weixin"-->
-                      <!--placeholder="请输入您的微信账号"></span>-->
-                      <!--<span class="ui_error"><span class="icon_sprite icon_ok"></span></span>-->
-                      <!--</li>-->
-                      <!--<li>-->
-                      <!--<span class="label">QQ</span>-->
-                      <!--<span class="form"><input type="text" class="formInput" id="qq" name="qq"-->
-                      <!--placeholder="请输入您的QQ账号"></span>-->
-                      <!--<span class="ui_error"><span class="icon_sprite icon_ok"></span></span>-->
-                      <!--</li>-->
-                      <!--<li>-->
-                      <!--<span class="label">验证码<span class="color_red">※</span></span>-->
-                      <!--<span class="form">-->
-                      <!--<input type="text" class="formInput" id="code" name="code"-->
-                      <!--placeholder="请输入验证码" style="width:96px; ">-->
-                      <!--<img src="../../static/images/verification-code.jpg" alt="">-->
-                      <!--<a href="javascript:;" class="icon_sprite icon_refresh"></a>-->
-                      <!--</span>-->
-                      <!--<span class="ui_error"><span class="icon_sprite icon_ok"></span></span>-->
-                      <!--</li>-->
-                    </ul>
-                  </form>
+                      <span class="ui_error"><span class="icon_sprite icon_ok"></span></span>
+                    </li>
+                  </ul>
                   <div class="sing-up_msg_plus">
-                    <input type="checkbox" checked="checked" id="agree" name="agree">
+                    <input type="checkbox" checked id="agree" name="agree"/>
                     <label for="agree">我已届满合法博彩年龄，且已阅读并同意</label><a href="javascript:;" @click="changeDuty();">开户协议</a>
                   </div>
                 </dd>
@@ -195,7 +98,7 @@
                 <p>2. 准确填写存入金额、存入时间，并输入您的微信账号，完成上述信息的录入。</p>
               </div>
               <div class="form_submit">
-                <a class="formBtn modalBtn" @click="JqValidate" >立即注册</a> <!-- href="#modalSuccess" -->
+                <a class="formBtn modalBtn" @click="JqValidate">立即注册</a> <!-- href="#modalSuccess" -->
                 <!--注册成功讯息-->
                 <div id="modalSuccess" data-height="215" style="display:none;">
                   <div class="modalIcon"><span class="icon_sprite icon_success_big"></span></div>
@@ -360,7 +263,9 @@
                   $("#agree").prop("checked", false)
                 },
                 style: {
-                  'max-width': '600px'
+                  'max-width': '600px',
+                  'overflow-y': 'auto',
+                  'height': '600px'
                 }
               })
             }
@@ -639,6 +544,7 @@
         }, 50)
         return $("#form_sign").validate({
           submitHandler: function () {
+            debugger
             var ipts = $('#form_sign').find('input[type!="hidden"]');
             for (var i = 0; i < ipts.length; i++) {
               if ('agree' != ipts[i].name) {
