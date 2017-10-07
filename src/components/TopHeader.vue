@@ -32,7 +32,7 @@
                   </li>
                   <!-- class="hot" -->
                   <li v-for="nav in navBar" v-if="nav.id >= 1000" :id="'nav_' + [nav.enName.toLowerCase()]" :class="{active: urlPath === nav.enName.toLowerCase()}">
-                      <a class="link" @click="judge_towhere([nav.enName.toLowerCase()])"><h2>{{nav.name}}</h2><small>{{nav.enName}}</small></a>
+                      <a  class="link" @click="judge_towhere([nav.enName.toLowerCase()])"><h2>{{nav.name}}</h2><small>{{nav.enName}}</small></a>
                       <ul class="submenu" v-if="nav.isDrop === 1 && nav.list && nav.list.length > 0">
                           <li v-for="sub in nav.list">
                               <a @click="indexToGmae([nav.enName.toLowerCase()],sub.id)">
@@ -429,6 +429,10 @@ export default {
         $(".lone").click();
         $(".sone").removeClass("icon-refreshhover");
         $(".sone").addClass("icon-refreshmyword");
+        $('.icon_sprite.icon_refresh').addClass('rotate');
+      setTimeout(function () {
+        $('.icon_sprite.icon_refresh').removeClass('rotate');
+      }, 500);
         common.ajax('member/refresh', {}, function(data) {
             setTimeout(function() {
                 $(".sone").removeClass("icon-refreshmyword");
@@ -468,3 +472,8 @@ export default {
   
 }
 </script>
+<style>
+  a{
+    cursor: pointer!important;
+  }
+</style>

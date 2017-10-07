@@ -230,9 +230,10 @@
       // 个人信息
       getPersonalInfo: function () {
         var _self = this;
-        $(".sone").click();
-        $(".lone").removeClass("icon-refreshhover_lone");
-        $(".lone").addClass("icon-refreshmyword_info");
+        $('.icon_refresh_money').addClass('rotate');
+        setTimeout(function () {
+          $('.icon_refresh_money').removeClass('rotate');
+        }, 500);
         common.ajax('member/refresh',{}, function (data) {
           setTimeout(function(){
             $(".lone").removeClass("icon-refreshmyword_info");

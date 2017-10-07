@@ -22,7 +22,7 @@
                   <div class="search">
                       <h2>MG电子</h2>
                       <input class="search_input" placeholder="请输入游戏名称" v-model="name" @keyup.enter="searchData(id, name, 'category', typeid); ">
-                      <button @click="searchData(id, name, 'category', typeid); ">搜索</button>
+                      <button @click="searchData(id, name, 'category', typeid); " style="cursor: pointer;">搜索</button>
                   </div>
                   <div class="list_mode">
                       <a href="javascript:;" class="btn_block active" id="mode_block"></a>

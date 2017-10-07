@@ -136,7 +136,8 @@
 
 .index_games .games li { float: left; width: 23%; height: 166px; text-align: center; position: relative; background: url(img/bg_games_border.png) no-repeat 0px 0px; background-size: 100% auto; overflow: hidden; margin-bottom: 11px; margin-left: 2%; }
 
-.index_games .games li img { height: 140px; width: 100%; }
+/*.index_games .games li img { height: 140px; width: 100%; }*/
+.index_games .games li img {  width: 100%;position: relative;top: 21px; }
 
 .index_games .games li h3 { position: absolute; bottom: 2px; left: 0px; right: 0px; text-align: center; font-size: 15px; }
 
