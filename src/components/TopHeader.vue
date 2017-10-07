@@ -372,6 +372,8 @@ export default {
         } else if(ab=="sports"){
             location.href = "sports";
             // location.href = "casino?id="+id;
+        }else if(ab=="lottery"){
+            location.href = "lottery";
         }
     },
     deposit_judge:function(){
