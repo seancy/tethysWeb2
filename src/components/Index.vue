@@ -106,10 +106,10 @@
 
     <div class="index_block index_games">
         <div class="contain_width">
-            <div class="gamead_slider">
+            <div class="gamead_slider">
                 <div><a href="javascript:;"><img src="static/images/banner/gamead_1.jpg" alt=""></a></div>
-                <div><a href="javascript:;"><img src="static/images/banner/gamead_1.jpg" alt=""></a></div>
-                <div><a href="javascript:;"><img src="static/images/banner/gamead_1.jpg" alt=""></a></div>
+               <!-- <div><a href="javascript:;"><img src="static/images/banner/gamead_1.jpg" alt=""></a></div>
+                <div><a href="javascript:;"><img src="static/images/banner/gamead_1.jpg" alt=""></a></div>-->
             </div>
 
             <ul class="games">
@@ -121,10 +121,23 @@
             </ul>
         </div>
     </div>
+
+      <!-- 弹窗 -->
+      <div class="popupad" v-if="!closed" style="display: none;">
+          <div class="popupad_window">
+              <a class="popupad_close" href="javascript:;"><span class="icon_sprite icon_close2"></span></a>
+              <div class="popupad_content">
+                  <img v-lazy="adv_picurl" @click="window.open(linkUrl,'_blank')">
+              </div>
+          </div>
+      </div>
+
   </div>
+
 </template>
 
 <script>
+
 export default {
   name: 'index',
   data: function () {
@@ -132,12 +145,6 @@ export default {
       // formatTime: common.formatTime,
       hasLogin: false,
       topHeader: null,
-      // loginParam: {
-      //     username: '',
-      //     password: '', 
-      //     code:''
-      // },
-      // memberInfo: {},
       messages: [],
       LBT: {},
       // sports: [],
@@ -149,7 +156,8 @@ export default {
       adv_title:'',
       adv_picurl:'',
       linkUrl:'',
-      isLoging: false
+      isLoging: false ,
+      closed:false,
     }
   },
   created:function(){
@@ -160,63 +168,17 @@ export default {
   mounted: function () {
       this.photo_url = common.photo_url;
       this.hasLogin = common.ifLanded();
-
       this.getComputerGame();
       this.getSysMessage();
       this.useAnimation();
       this.getIndexMessage();
-      // this.computersDock = common.Cookie.get('computersDock') || 0;
-      // this.LBT = common.Cookie.get('LBT') && JSON.parse(common.Cookie.get('LBT')) || {};
-      // // this.sports = common.Cookie.get('sports') && JSON.parse(common.Cookie.get('sports')) || [];
-      // this.liveList = common.Cookie.get('liveList') && JSON.parse(common.Cookie.get('liveList')) || [];
-      // this.computers = common.Cookie.get('computers') && JSON.parse(common.Cookie.get('computers')) || [];
-      // if (this.hasLogin === true) {
-      //     this.memberInfo = common.Cookie.get('memberInfo') && JSON.parse(common.Cookie.get('memberInfo')) || {};
-      // }
-      // // this.getSportsGame();
-      // this.getLiveGame();
-      // this.getComputerGame();
-      // var _self = this;
-      // if (!this.hasLogin) {
-      //     this.getCode();
-      // } else {
-      //     var _self = this;
-      //     var already_refresh = common.Cookie.get("already_refresh");
-      //     common.pollingTheMail();
-
-      //     if(!already_refresh){
-      //         common.Cookie.set("already_refresh","1");
-      //         $(".lone").click();
-      //         $(".sone").removeClass("icon-refreshhover");
-      //         common.ajax('member/refresh', {}, function (data) {
-      //             $(".sone").addClass("icon-refreshmyword");
-      //             setTimeout(function(){
-      //                 $(".sone").removeClass("icon-refreshmyword");
-      //             },600);
-      //             _self.memberInfo = $.extend({}, data && data.result || {});
-      //             _self.memberInfo.balance = data&&data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,');
-      //             $("#mynew_balance").html(_self.memberInfo.balance);
-      //             common.Cookie.set('memberInfo', JSON.stringify(_self.memberInfo));
-      //         });
-      //     }
-      // }
-      // // 首頁彈窗
-      // if(!this.hasLogin){
-      //     var popup = sessionStorage.getItem('closePopupUnlogin');
-      //     if (!popup){
-      //         this.getPopUPInfo();
-      //     }
-      // }else{
-      //     var popup = sessionStorage.getItem('closePopupLogin');
-      //     if (!popup){
-      //         this.getPopUPInfo();
-      //     }
-      // }
-      // // 监测网页加载时间
-      // window.onload = function () {
-      //     var loadTime = window.performance.timing.domContentLoadedEventEnd-window.performance.timing.navigationStart;
-      //     console.log('Page load time is '+ loadTime);
-      // }
+     // this.getPopUPInfo() ;
+      this.closed = sessionStorage.getItem('popupadClosed');
+      $('.popupad_close').on('click',function(){
+          $('.popupad').hide();
+          this.closed = true;
+          sessionStorage.setItem('popupadClosed', this.closed);
+      })
 
   },
   methods: {
@@ -308,42 +270,35 @@ export default {
             });
         })
     },
+// 弹窗广告
     getPopUPInfo:function(){
-        var _self = this;
-        var varg = null;
-        common.ajax('cms/popup/getPopUpInfo', {}, function(data) {
-            if (data && data.apistatus == 1) {
-                $(".popupad").show();
-                _self.adv_title = data&&data.result&&data.result.title;
-                var picurl = _self.photo_url+"/pic/";
-                picurl+=data&&data.result&&data.result.titlePic+"/0";
-                _self.adv_picurl = picurl;
-                _self.linkUrl = data&&data.result&&data.result.linkUrl;
-                if(!_self.linkUrl){
-                } else {
-                    $(".popupad_body img").css("cursor","pointer");
-                }
-            }
-        },"post");
+          var _self = this;
+          var varg = null;
+          $.ajax({
+              url:'cms/popup/getPopUpInfo',
+              method:'POST',
+              success:function(data){
+                  if (data && data.apistatus == 1) {
+                      $(".popupad").show();
+                      _self.adv_title = data&&data.result&&data.result.title;
+                      var picurl = _self.photo_url+"/pic/";
+                      picurl+=data&&data.result&&data.result.titlePic+"/0";
+                      _self.adv_picurl = picurl;
+                      _self.linkUrl = data&&data.result&&data.result.linkUrl;
+                      if(!_self.linkUrl){
+                      } else {
+                          $(".popupad_body img").css("cursor","pointer");
+                      }
+                  }else{
+                      _self.closed = true;
+                  }
+              },
+              error:function(){
+                  _self.closed = true;
+              }
+          });
 
-        $('.popupad_close').on('click', function(){
-           // console.log(this.hasLogin);
-            if (!_self.hasLogin){
-                sessionStorage.setItem('closePopupUnlogin', 'popup');
-            }else{
-                sessionStorage.setItem('closePopupLogin', 'popup');
-            }
-            $(this).parents('.popupad').hide();
-        });
-        $(".popupad_body").find("img").on("click",function(){
-            var srcstr = $(this).attr("data-src");
-            if(!srcstr){
-            } else {
-                window.open(srcstr,'_blank');
-            }
-        });
-
-    },
+      },
     blurInput:function(){
         $(".authCode").css("display","inline-block");
     },

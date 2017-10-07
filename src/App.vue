@@ -57,7 +57,6 @@
     <!-- </div> -->
     <bottomFooter></bottomFooter>
     <onlineService></onlineService>
-    <popupAd></popupAd>
 
   </div>
 
@@ -70,8 +69,6 @@ import '../static/css/personal.css'
 import TopHeader from '@/components/TopHeader'
 import BottomFooter from '@/components/BottomFooter'
 import OnlineService from '@/components/OnlineService'
-import PopupAd from '@/components/PopupAd'
-
 
 export default {
   name: 'app',
@@ -79,7 +76,6 @@ export default {
     TopHeader,
     BottomFooter,
     OnlineService,
-    PopupAd
   },
   data:function() {
       return {

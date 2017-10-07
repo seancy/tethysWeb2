@@ -32,7 +32,7 @@ export default {
         this.closed = true;
         sessionStorage.setItem('popupadClosed', this.closed);
     })
-    this.getPopUPInfo();
+    //this.getPopUPInfo();
   }, 
   methods:{
     getPopUPInfo:function(){
