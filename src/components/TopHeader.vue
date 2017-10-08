@@ -83,7 +83,7 @@
               <!-- <img v-show="verImgCode!==''" v-lazy="verImgCode" @click="getCode" style="cursor: pointer;"/>
               <a class="icon-refresh" @click="getCode" style="cursor: pointer;"></a>
               <em class="line"></em> -->
-              <input placeholder="请输入验证码" type="text" v-model="loginParam.code" @keyup.enter="login()">
+              <input placeholder="验证码" type="text" v-model="loginParam.code" @keyup.enter="login()">
               <img v-show="verImgCode!==''" v-lazy="verImgCode" @click="getCode" style="cursor: pointer;">
               <a href="javascript:;" class="icon_sprite icon_refresh" @click="getCode"></a>
           </span>

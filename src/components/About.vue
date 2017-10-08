@@ -58,7 +58,8 @@
                   </ul>
                   <p class="color_red">还等什么？马上加盟吧。点击这里注册加入，开始推广，赚取佣金，简单三步开始成就梦想之旅。</p>
                 </div>
-              </div><!--end 代理加盟-->
+              </div>
+              <!--end 代理加盟-->
               <!--佣金方案-->
               <div class="psn_content" style="display:none;">
                 <div class="join_wrap">
@@ -181,11 +182,11 @@
                               <img :src="verImgCode" alt="" @click="getCode">
                               <a href="javascript:;" class="icon_sprite icon_refresh" @click="getCode"></a>
                               </span>
-                            <span class="ui_error"><span class="icon_sprite icon_ok"></span></span>
+                            <span class="ui_error"> <!--<span class="icon_sprite icon_ok"></span>--> </span>
                           </li>
                         </ul>
                         <div class="sing-up_msg_plus">
-                          <input type="checkbox" checked="checked" id="agree" name="agree">
+                          <input type="checkbox" checked="checked" id="agree" name="agree"  v-model="allowChecked" />
                           <label for="agree">我已届满合法博彩年龄，且已阅读并同意</label><a href="javascript:;" @click="changeDuty()">代理注册协议</a>
                         </div>
                       </dd>
@@ -196,18 +197,21 @@
                       <p>2. 注册成功后，请耐心等待，我们将进款审核您的资料并与您联系。审核通过后您便可以进入代理管理中心页面。</p>
                     </div>
                     <div class="form_submit">
-                      <a class="formBtn modalBtn" href="#modalSuccess" @click="JqValidate">立即注册</a>
-                      <!--注册成功讯息-->
-                      <div id="modalSuccess" style="display:none;">
-                        <div class="modalIcon"><span class="icon_sprite icon_success_big"></span></div>
-                        <h2>您的代理注册申请已成功提交!</h2>
-                        <p>请耐心等待我们的客服联系您并协助您完成代理申请，谢谢！</p>
-                      </div>
-                      <!--end 注册成功讯息-->
+                      <a class="formBtn modalBtn"  @click="JqValidate">立即注册</a>
+
                     </div>
                   </form>
+
+                  <!--注册成功讯息-->
+                  <div id="modalSuccess" style="display:none;">
+                    <div class="modalIcon"><span class="icon_sprite icon_success_big"></span></div>
+                    <h2>您的代理注册申请已成功提交!</h2>
+                    <p>请耐心等待我们的客服联系您并协助您完成代理申请，谢谢！</p>
+                  </div>
+                  <!--end 注册成功讯息-->
                 </div>
-              </div><!--end 代理注册-->
+              </div>
+              <!--end 代理注册-->
             </div>
           </div>
         </template>
@@ -282,11 +286,12 @@
 
   export default {
     name: 'about',
-    data() {
+    data:function() {
       return {
         regSuccess: false,
         verImgCode: '',
         code: common.getQueryString('id') || '',
+        allowChecked: true,
         detail: [],
         menu: [],
         duty: [],
@@ -299,7 +304,6 @@
         placeholders: common.regConfig.placeholders,
         types: common.regConfig.types,
         extInfo: common.regConfig.extInfo,
-
         commission_html: '',
         agent_html: '',
         detail_content: ''
@@ -312,7 +316,6 @@
       this.code = _self.code;
       if (this.code === 'IC05') {
         this.registerConfig = common.Cookie.get('registerConfig') && JSON.parse(common.Cookie.get('registerConfig')) || [];
-        debugger
         this.getRegisterConfig();
         this.getCode();
       }
@@ -341,10 +344,10 @@
             break;
           case 'bankSelect':
             if (val !== '') {
-              el.removeClass('backgroundErr').css("color", "black").parent('div').next().html('<span class="icon_ok"></span>').removeClass('red');
+              el.removeClass('backgroundErr').css("color", "black").parent().next().html('<span class="icon_ok"></span>').removeClass('red');
             }
             else {
-              el.addClass("backgroundErr").css("color", "#ab3314").parent('div').next().html('请选择银行').addClass("red");
+              el.addClass("backgroundErr").css("color", "#ab3314").parent().next().html('请选择银行').addClass("red");
             }
             break;
           default:
@@ -362,17 +365,18 @@
           var el = aa.target;
           var val = el && el.value || '';
           if (val == '' || val == ' ' || val.length == 0) {
-            $(el).addClass("backgroundErr").parent('div').next().html('用户名不能为空').addClass("red");
+            $(el).addClass("backgroundErr").parent().next().html('用户名不能为空').addClass("red");
             return;
           }
           if (!common.positiveEngNum(val) || val.length < 4 || val.length > 15) {
-            $(el).addClass("backgroundErr").parent('div').next().html('请输入4-15位英文或数字').addClass("red");
+            $(el).addClass("backgroundErr").parent().next().html('请输入4-15位英文或数字').addClass("red");
             return;
           }
           common.ajax('agent/username/check', {username: $(aa.target).val()}, function (data) {
             if (data && data.result) {
               if (data.apistatus === 1) {
-                $(aa.target).removeClass("backgroundErr").parent().siblings("div").html('<span class="icon_ok"></span>').removeClass("red");
+               // $(aa.target).removeClass("backgroundErr").parent().siblings().html('<span class="icon_ok"></span>').removeClass("red");
+                $(aa.target).removeClass("backgroundErr") ;
               }
             }
           }, 'post', function (data) {
@@ -492,12 +496,7 @@
 
             _self.$nextTick(function () {  // 代理注册验证
               common.checkReg();
-              /*  $('#password').on('input', function (evt) {
-                    var el = evt.target;
-                    var val = el && el.value || '';
-                    var strength = val.length <= 9 ? '低' : val.length >= 13 ? '高' : '中';
-                    $(el).parent('span').parent('div').parent('div').next('div').find("span").html('密码强度：' + strength);
-                });*/
+
             });
           });
       },
@@ -728,9 +727,7 @@
         for (let i = 0; i < len; i++) {
           _self.checkReg(warnData[i].fieldCode, false, (warnData[i].isRequired || 0))
         }
-        // if($('#bankSelect').length){
-        //     _self.checkReg('bankSelect', false, 1);
-        // }
+
         _self.checkReg('code');
         setTimeout(function () {
           let warnDataa = $('.proxy_reg_sm.red').parent();
@@ -739,38 +736,39 @@
             _self.getCode();
           }
         }, 50)
-        return $("#apply_form").validate({
-          submitHandler: function () {
+      /*  return $("#apply_form").validate({
+          submitHandler: function () {*/
             var ipts = $('#apply_form').find('input[type!="hidden"]');
             for (var i = 0; i < ipts.length; i++) {
               if ('agree' != ipts[i].name) {
                 param[ipts[i].name] = ipts[i].type === 'password' ? md5(ipts[i].value) : ipts[i].value;
               }
             }
-
-            // if($(".warn").eq(0).html()=="用户名重复"){
-            //     common.toast({content: '用户名不能重复!',time:3});
-            //     return;
-            // }
-
+          if (!_self.allowChecked) {
+              common.toast({
+                  content: '请同意开户协定并勾选!',
+                  time: 3
+              });
+              return false;
+          }
             var bankName = $("#bankSelect").find("option:selected") && $("#bankSelect").find("option:selected").text();
-            param.bank = $.trim(bankName);
-
-            var proxy_flage = $('.proxy_reg_sm  ').hasClass('red');
+            if(bankName =='请选择银行'){
+                param.bank = ''; //银行名称
+            }else{
+                param.bank = $.trim(bankName); //银行名称
+            }
+            var proxy_flage = $('.ui_error').hasClass('red');
             if (!proxy_flage) {
 
               common.ajax_async('agent/username/check', {username: $("#username").val()}, function (data) {
                 if (data && data.result) {
                   if (data.apistatus === 1) {
-                    // $(".warn").eq(0).html("");
                     common.ajax('agent/apply', param, function (data) {
                       if (data && data.apistatus == 1) {
-                        $(".success-remind").show();
                         _self.regist_success();
                         _self.$nextTick(function () {
                           _self.regSuccess = true;
-                          // console.log($(".success-remind"));
-                          $(".success-remind").show();
+                          $("#modalSuccess").show();
                           _self.regist_success();
                         });
                       } else {
@@ -790,16 +788,16 @@
               }, 'post', function (data) {
                 $('#username').focus();
                 _self.getCode();
-                // $(".warn").eq(0).html(data.errorMsg);
+
               });
 
 
             }
-          },
+       /*   },
           debug: true,
           rules: _self.rules,
           messages: common.regConfig.messages
-        });
+        });*/
       }
     }
   }

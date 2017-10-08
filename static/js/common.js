@@ -1182,7 +1182,6 @@ window.common = {
         return;
       }
       var strength = val.length <= 9 ? '低' : val.length >= 13 ? '高' : '中';
-      console.log('还贷款')
       $(el).removeClass('backgroundErr error').parent().next().html('<span class="icon_ok"></span>  密码强度：' + strength).removeClass('red');
     });
 

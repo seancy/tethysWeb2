@@ -18,7 +18,7 @@
                 <input placeholder="请输入密码" type="password" v-model="topHeader.loginParam.password" @keyup.enter="topHeader.login"/>
             </li>
             <li class="code">
-                <input placeholder="输入验证码" type="text" v-model="topHeader.loginParam.code" @keyup.enter="topHeader.login">
+                <input placeholder="验证码" type="text" v-model="topHeader.loginParam.code" @keyup.enter="topHeader.login">
                 <img v-show="topHeader.verImgCode!==''" v-lazy="topHeader.verImgCode" @click="topHeader.getCode" style="width:80px"/>
                 <a href="javascript:;" class="icon_sprite icon_refresh" @click="topHeader.getCode"></a>
             </li>
