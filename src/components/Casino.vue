@@ -20,7 +20,10 @@
           <div class="contain_width">
               <div class="search_bar">
                   <div class="search">
-                      <h2>MG电子</h2>
+
+                      <template v-for="(item,index) in topBar">
+                          <h2 v-for="subItem in item" v-if="subItem.id == id">{{subItem.name}}</h2>
+                      </template>
                       <input class="search_input" placeholder="请输入游戏名称" v-model="name" @keyup.enter="searchData(id, name, 'category', typeid); ">
                       <button @click="searchData(id, name, 'category', typeid); " style="cursor: pointer;">搜索</button>
                   </div>

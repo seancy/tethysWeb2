@@ -465,14 +465,14 @@
       // 个人信息
       getPersonalInfo: function() {
         var _self = this;
-        $('.icon_refresh_money').addClass('rotate');
+        $('.icon_refresh_money,.icon_refresh').addClass('rotate');
         setTimeout(function () {
-          $('.icon_refresh_money').removeClass('rotate');
-        }, 500);
+          $('.icon_refresh_money,.icon_refresh').removeClass('rotate');
+        }, 2000);
         common.ajax('member/refresh', {}, function(data) {
-          setTimeout(function() {
-            $(".lone").removeClass("icon-refreshmyword_info");
-          }, 600);
+//          setTimeout(function() {
+//            $(".lone").removeClass("icon-refreshmyword_info");
+//          }, 600);
           _self.memberInfo = $.extend({}, data && data.result || {});
 
           $("#saveBalance").val(_self.memberInfo.balance);

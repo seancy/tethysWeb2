@@ -85,6 +85,22 @@ a.formBtn:hover, .formBtn:hover { color: #fff; background: #fe9500; background: 
 .icon_sprite.icon_refresh { background-position: -96px 0px; }
 
 .icon_sprite.icon_refresh_money { background-position: -192px 0px; }
+.rotate{animation: myfirst 2s;}
+@keyframes myfirst {
+  form{
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);}
+  to{
+    -webkit-transform: rotate(720deg);
+    -moz-transform: rotate(720deg);
+    -ms-transform: rotate(720deg);
+    -o-transform: rotate(720deg);
+    transform: rotate(720deg);
+  }
+}
 
 .icon_sprite.icon_mail { background-position: -120px 0px; }
 

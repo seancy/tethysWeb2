@@ -329,16 +329,20 @@ export default {
             _self.verImgCode = data.result && 'data:image/png;base64,' + data.result.code || '';
         });
         _self.$nextTick(function () {
-            $('.icon-refresh')
-            .removeAttr("style");
-
-            setTimeout(function () {
-                $('.icon-refresh').css({
-                    cursor: 'pointer',
-                    transition: 'all 3s',
-                    transform: 'rotate(720deg)'
-                });
-            }, 300);
+          $('.icon_sprite.icon_refresh').addClass('rotate');
+          setTimeout(function () {
+            $('.icon_sprite.icon_refresh').removeClass('rotate');
+          }, 2000);
+//            $('.icon-refresh')
+//            .removeAttr("style");
+//
+//            setTimeout(function () {
+//                $('.icon-refresh').css({
+//                    cursor: 'pointer',
+//                    transition: 'all 3s',
+//                    transform: 'rotate(720deg)'
+//                });
+//            }, 300);
         });
     },
     judge_towhere:function(ab){
@@ -479,5 +483,5 @@ export default {
 <style>
   a{
     cursor: pointer!important;
-  }
+  };
 </style>
