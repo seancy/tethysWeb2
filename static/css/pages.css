@@ -28,7 +28,7 @@
 
 .login_box li.code img { height: 28px; -webkit-transform: -webkit-translate(-2px, -1px); -ms-transform: -ms-translate(-2px, -1px); transform: translate(-2px, -1px); vertical-align: center; }
 
-.login_box li.code .icon_refresh { margin-right: -4px; -webkit-transform: -webkit-translate(0px, -3px); -ms-transform: -ms-translate(0px, -3px); transform: translate(0px, -3px); }
+.login_box li.code .icon_refresh { margin-right: -4px;/* -webkit-transform: -webkit-translate(0px, -3px); -ms-transform: -ms-translate(0px, -3px); transform: translate(0px, -3px); */}
 
 .login_box input { background-color: #0c0919; border: 1px solid #313131; color: #c1c1c1; line-height: 28px; height: 30px; padding: 0px 5px; width: 100%; }
 
