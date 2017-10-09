@@ -290,6 +290,18 @@
         margin-top: -3px;
     }
 }
+.content-hred{
+    padding-left: 225px;
+    height: 70px;
+    margin-bottom: 65px;
+    text-align: center;
+    .h2{
+        font-size: 35px;
+    }
+    .h3{
+        font-size: 20px;
+    }
+}
 
 /* ---------------------------------------------------
 // 消息公告
@@ -405,12 +417,18 @@
             max-width: 511px;
             float: left;
             color: $bgColor;
-            input[type='text']{
+            input[type='text'], input[type='password']{
                 min-width: 250px;
             }
             label{
                 display: inline-block;
                 min-width: 170px;
+            }
+            &.formSelect_wrap{
+                width: 250px;
+                .formSelect{
+                    width: 100%;
+                }
             }
         }
         .copy{
@@ -784,12 +802,12 @@
         border-bottom: 1px solid #e2e0e0;
         margin-bottom: 20px;
     }
-    .formSelect_wrap{
-        width: 250px;
-        .formSelect{
-            width: 100%;
-        }
-    }
+    // .formSelect_wrap{
+    //     width: 250px;
+    //     .formSelect{
+    //         width: 100%;
+    //     }
+    // }
 }
 ul.join_list{
     margin: 20px 0px;
@@ -798,8 +816,13 @@ ul.join_list{
         margin-bottom: 10px;
         line-height: 1.5em;
         padding: 0px;
+        position: relative;
+        padding-left: 24px;
         &:before{
             content: '．';
+            position: absolute;
+            left: 0px;
+            top: 5px;
             font-size: $fontSize_xl;
             line-height: $fontSize;
             color: #e75b07;

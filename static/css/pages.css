@@ -26,11 +26,11 @@
 
 .login_box li.code input { width: 70px; }
 
-.login_box li.code img { height: 28px; -webkit-transform: -webkit-translate(-2px, -3px); -ms-transform: -ms-translate(-2px, -3px); transform: translate(-2px, -3px); vertical-align: center; }
+.login_box li.code img { height: 28px; -webkit-transform: -webkit-translate(-2px, -1px); -ms-transform: -ms-translate(-2px, -1px); transform: translate(-2px, -1px); vertical-align: center; }
 
 .login_box li.code .icon_refresh { margin-right: -4px; -webkit-transform: -webkit-translate(0px, -3px); -ms-transform: -ms-translate(0px, -3px); transform: translate(0px, -3px); }
 
-.login_box input { background-color: #0c0919; border: 1px solid #313131; color: #c1c1c1; line-height: 28px; height: 30px; padding: 0px 5px; width: 100%; font-size: 15px; }
+.login_box input { background-color: #0c0919; border: 1px solid #313131; color: #c1c1c1; line-height: 28px; height: 30px; padding: 0px 5px; width: 100%; }
 
 .login_box .btn { line-height: 26px; margin-right: 0px; }
 
@@ -120,9 +120,9 @@
 
 .index_casino .casino_slider .item_casino .item.item_gns { background-image: url(img/item_gns.png); }
 
-.index_casino .casino_slider .item_casino .item.item_ag { background-image: url(img/item_ag.png); }
-
 .index_casino .casino_slider .item_casino .item.item_bbin { background-image: url(img/item_bbin.png); }
+
+.index_casino .casino_slider .item_casino .item.item_ag { background-image: url(img/item_ag.png); }
 
 .index_casino .casino_slider .item_casino .item.item_pt { background-image: url(img/item_pt.png); }
 
@@ -142,8 +142,7 @@
 
 .index_games .games li { float: left; width: 23%; height: 166px; text-align: center; position: relative; background: url(img/bg_games_border.png) no-repeat 0px 0px; background-size: 100% auto; overflow: hidden; margin-bottom: 11px; margin-left: 2%; }
 
-/*.index_games .games li img { height: 140px; width: 100%; }*/
-.index_games .games li img {  width: 100%;position: relative;top: 21px; }
+.index_games .games li img { height: 98px; margin-top: 21px; width: 100%; }
 
 .index_games .games li h3 { position: absolute; bottom: 2px; left: 0px; right: 0px; text-align: center; font-size: 15px; }
 

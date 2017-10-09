@@ -123,6 +123,12 @@
 
 .msg_success .icon_sprite { width: 30px; height: 30px; margin-right: 10px; vertical-align: middle; margin-top: -3px; }
 
+.content-hred { padding-left: 225px; height: 70px; margin-bottom: 65px; text-align: center; }
+
+.content-hred .h2 { font-size: 35px; }
+
+.content-hred .h3 { font-size: 20px; }
+
 /* ---------------------------------------------------
 // 消息公告
 --------------------------------------------------- */
@@ -173,9 +179,13 @@
 
 .psn_info ul .form { max-width: 511px; float: left; color: #10061f; }
 
-.psn_info ul .form input[type='text'] { min-width: 250px; }
+.psn_info ul .form input[type='text'], .psn_info ul .form input[type='password'] { min-width: 250px; }
 
 .psn_info ul .form label { display: inline-block; min-width: 170px; }
+
+.psn_info ul .form.formSelect_wrap { width: 250px; }
+
+.psn_info ul .form.formSelect_wrap .formSelect { width: 100%; }
 
 .psn_info ul .copy { float: right; cursor: pointer; width: 200px; color: #e75b07; }
 
@@ -213,7 +223,7 @@
 --------------------------------------------------- */
 #personal-deposit .personal_title { background-image: url(img/subtitle_deposit.png); }
 
-#personal-deposit .psn_content:nth-of-type(1) .deposit_info .deposit-intro { position: absolute; bottom: -18px; left: 285px; width: 335px; border-bottom: none; }
+#personal-deposit .psn_content:nth-of-type(1) .deposit_info .text { position: absolute; bottom: 10px; left: 285px; width: 335px; border-bottom: none; }
 
 #deposit_tab li { width: 194.5px; }
 
@@ -351,15 +361,11 @@
 
 .join_wrap .bottom_line { padding-bottom: 20px; border-bottom: 1px solid #e2e0e0; margin-bottom: 20px; }
 
-.join_wrap .formSelect_wrap { width: 250px; }
-
-.join_wrap .formSelect_wrap .formSelect { width: 100%; }
-
 ul.join_list { margin: 20px 0px; }
 
-ul.join_list li { border-bottom: 0px; margin-bottom: 10px; line-height: 1.5em; padding: 0px; }
+ul.join_list li { border-bottom: 0px; margin-bottom: 10px; line-height: 1.5em; padding: 0px; position: relative; padding-left: 24px; }
 
-ul.join_list li:before { content: '．'; font-size: 18px; line-height: 14px; color: #e75b07; }
+ul.join_list li:before { content: '．'; position: absolute; left: 0px; top: 5px; font-size: 18px; line-height: 14px; color: #e75b07; }
 
 /* ---------------------------------------------------
 // 会员注册
