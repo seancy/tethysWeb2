@@ -810,6 +810,24 @@
     //         width: 100%;
     //     }
     // }
+    #modalSuccess{
+        margin: 50px 0px;
+        text-align: center;
+        .modalIcon{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        h2{
+            display: inline-block;
+            vertical-align: middle;
+            color: $colorRed;
+            font-size: $fontSize_xxl;
+            margin: 0px 10px;
+        }
+        p{
+            margin: 30px auto;
+        }
+    }
 }
 ul.join_list{
     margin: 20px 0px;
