@@ -149,7 +149,7 @@
                                        :id="conf.fieldCode" :name="conf.fieldCode"
                                        v-on:blur="verify_agentName">
                               </span>
-                              <span v-else>
+                              <span class="form" v-else>
                                 <input type="password" class="formInput"
                                        :placeholder="placeholders[conf.fieldCode]"
                                        :type="types[conf.fieldCode]"
@@ -220,7 +220,7 @@
             <div class="psn_wrap">
               <!--关於我们-->
               <div class="psn_content">
-                <div class="" v-html="detail.content">
+                <div class="join_wrap" v-html="detail.content">
                   <p>
                     THE PARISIAN（澳门威尼斯人）注册在菲律宾马尼拉，持有菲律宾政府卡格扬经济特区 First Cagayan leisure and Resort Corporation颁发的体育博彩与线上赌场执照，接受菲律宾政府和卡格扬经济特区CEZA授权和监管，我们一切博彩营业行为皆遵从菲律宾政府博彩条约。在竞争日益激烈的网络博彩市场中，我们不断地求新求变，寻找最新的创意，秉持最好的服务。向客户提供高品质的服务、先进的产品、丰富的娱乐体验，是我们新葡京娱乐场永恒的宗旨。</p>
                   <p>

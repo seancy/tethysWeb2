@@ -297,6 +297,8 @@
     text-align: center;
     .h2{
         font-size: 35px;
+        color: $colorYellow;
+        text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.8);
     }
     .h3{
         font-size: 20px;
@@ -524,13 +526,13 @@
     .personal_title{
         background-image: url(img/subtitle_deposit.png);
     }
-    .psn_content:nth-of-type(1) .deposit_info .text{
-        position: absolute;
-        bottom: 10px;
-        left: 285px;
-        width: 335px;
-        border-bottom: none;
-    }
+    // .psn_content:nth-of-type(1) .deposit_info .text{
+    //     position: absolute;
+    //     bottom: 10px;
+    //     left: 285px;
+    //     width: 335px;
+    //     border-bottom: none;
+    // }
 }
 #deposit_tab{
     li{
