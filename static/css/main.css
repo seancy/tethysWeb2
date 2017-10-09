@@ -85,22 +85,6 @@ a.formBtn:hover, .formBtn:hover { color: #fff; background: #fe9500; background: 
 .icon_sprite.icon_refresh { background-position: -96px 0px; }
 
 .icon_sprite.icon_refresh_money { background-position: -192px 0px; }
-.rotate{animation: myfirst 2s;}
-@keyframes myfirst {
-  form{
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);}
-  to{
-    -webkit-transform: rotate(720deg);
-    -moz-transform: rotate(720deg);
-    -ms-transform: rotate(720deg);
-    -o-transform: rotate(720deg);
-    transform: rotate(720deg);
-  }
-}
 
 .icon_sprite.icon_mail { background-position: -120px 0px; }
 
@@ -126,17 +110,17 @@ a.formBtn:hover, .formBtn:hover { color: #fff; background: #fe9500; background: 
 
 .icon_sprite.icon_copy { background-position: -96px -24px; }
 
-.icon_sprite.icon_about { background-position: 0px -96px; }
+.icon_sprite.icon_about, .icon_sprite.icon_policy.icon-1 { background-position: 0px -96px; }
 
-.icon_sprite.icon_policy { background-position: -24px -96px; }
+.icon_sprite.icon_policy, .icon_sprite.icon_policy.icon-2 { background-position: -24px -96px; }
 
-.icon_sprite.icon_duty { background-position: -48px -96px; }
+.icon_sprite.icon_duty, .icon_sprite.icon_policy.icon-3 { background-position: -48px -96px; }
 
-.icon_sprite.icon_disclaimer { background-position: -72px -96px; }
+.icon_sprite.icon_disclaimer, .icon_sprite.icon_policy.icon-4 { background-position: -72px -96px; }
 
-.icon_sprite.icon_join { background-position: -96px -96px; }
+.icon_sprite.icon_join, .icon_sprite.icon_policy.icon-5 { background-position: -96px -96px; }
 
-.icon_sprite.icon_contact { background-position: -120px -96px; }
+.icon_sprite.icon_contact, .icon_sprite.icon_policy.icon-6 { background-position: -120px -96px; }
 
 .icon_sprite.icon_ok { background-position: -144px -24px; }
 
@@ -649,7 +633,7 @@ a.formBtn:hover, .formBtn:hover { color: #fff; background: #fe9500; background: 
 
 .modal-dialog { position: relative; width: auto; margin: 10px; }
 
-.modal-content { position: relative; background-color: #fff; -webkit-background-clip: padding-box; background-clip: padding-box; border: 1px solid #999; border: 1px solid rgba(0, 0, 0, 0.2); border-radius: 6px; outline: 0; -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); }
+.modal-content { position: relative; -webkit-background-clip: padding-box; background-clip: padding-box; outline: 0; -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); background-color: #fcfbf8; border: 1px solid #d8a44e; }
 
 .modal-backdrop { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 1040; background-color: #000; }
 
@@ -659,7 +643,7 @@ a.formBtn:hover, .formBtn:hover { color: #fff; background: #fe9500; background: 
 
 .modal-header { padding: 15px; border-bottom: 1px solid #e5e5e5; }
 
-.modal-header .close { margin-top: -2px; }
+.modal-header .close { margin-top: -2px; top: 5px; right: 5px; position: absolute; }
 
 .modal-title { margin: 0; line-height: 1.42857143; }
 
