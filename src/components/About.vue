@@ -42,7 +42,7 @@
             <div class="psn_wrap">
               <!--代理加盟-->
               <div class="psn_content">
-                <div class="join_wrap">
+                <div class="join_wrap" v-html="agent_html" >
                   <p class="bottom_line">
                     如今，网上博彩娱乐已经成为一个极具市场发展前景的热门产业。本公司凭借多年的博彩运营经验，目前已拥有极高的行业知名度和大批忠实用户，具有绝对的品牌优势。合作方式简单，零投资零风险，坐享高额佣金回报。如果您身边有对博彩感兴趣的朋友，请您不要犹豫，赶快加入这个一本万利的行业，充分利用您身边的人脉及网络资源！我们有专业的客服团队全年无休为您提供帮助。
                   </p>
@@ -62,7 +62,7 @@
               <!--end 代理加盟-->
               <!--佣金方案-->
               <div class="psn_content" style="display:none;">
-                <div class="join_wrap">
+                <div class="join_wrap" v-html="commission_html">
                   <table class="psn_table">
                     <thead>
                     <tr>
