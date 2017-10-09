@@ -235,6 +235,9 @@ export default {
             _self.$nextTick(function () {
                 // 加载完后再调用，否则会有问题
                 // _self.indexDrog() ;
+              $("#nav_casino").addClass('hot');
+//              $("#nav_promo").addClass('hot');
+
         })
 
         });
