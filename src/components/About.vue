@@ -12,8 +12,9 @@
         </template>
         <template v-else>
           <div class="content-hred">
-            <p class="h2"><strong>AGENT </strong>TO JOIN</p>
-            <p class="h3">代理加盟</p>
+
+            <p class="h2">代理加盟</p>
+            <p class="h3"><strong>AGENT </strong>TO JOIN</p>
           </div>
         </template>
       </div>
