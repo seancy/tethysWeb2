@@ -10,7 +10,7 @@
           <div class="user_info">
             <div class="img"><img src="../../../static/images/pic_user.png"></div>
             <p class="name">{{info.username}}</p>
-            <p class="balance">{{info.balance | balanceNo}}</p>
+            <p class="balance" >{{info.balance | balanceNo}}</p>
             <p class="refresh">Your Balance<span class="icon_sprite icon_refresh_money" title="刷新" @click="getPersonalInfo"></span></p>
           </div>
           <ul class="psn_menu">

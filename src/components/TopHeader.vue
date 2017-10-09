@@ -342,9 +342,9 @@ export default {
             _self.verImgCode = data.result && 'data:image/png;base64,' + data.result.code || '';
         });
         _self.$nextTick(function () {
-          $('.icon_sprite.icon_refresh').addClass('rotate');
+          $('.icon_refresh_money,.icon_refresh').addClass('rotate');
           setTimeout(function () {
-            $('.icon_sprite.icon_refresh').removeClass('rotate');
+            $('.icon_refresh_money,.icon_refresh').removeClass('rotate');
           }, 2000);
 //            $('.icon-refresh')
 //            .removeAttr("style");

@@ -478,7 +478,7 @@
           $("#saveBalance").val(_self.memberInfo.balance);
           _self.memberInfo.balance = data && data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,');
           $("#mynew_balance").html(_self.memberInfo.balance);
-          $(".account-num").html(_self.memberInfo.balance);
+          $(".balance").html(_self.memberInfo.balance);
 
           //$('.red-dot').text('').text(data.result.message);
           common.Cookie.set('memberInfo', JSON.stringify(_self.memberInfo));

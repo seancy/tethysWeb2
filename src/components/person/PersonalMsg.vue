@@ -451,6 +451,8 @@
             $(".lone").removeClass("icon-refreshmyword_info");
           }, 600);
           _self.info.balance = data && data.result && data.result.balance || 0;
+          $("#mynew_balance").html(_self.info.balance );
+          $(".balance").html(_self.info.balance );
           common.Cookie.set('memberInfo', JSON.stringify(_self.info));
         });
       },
