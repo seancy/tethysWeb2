@@ -66,9 +66,9 @@
                   <thead>
                   <tr>
                     <th >序号</th>
-                    <th style="width: 15%;">主题</th>
+                    <th style="width: 22%;">主题</th>
                     <th >内容</th>
-                    <th style="width: 20%;">发布时间</th>
+                    <th style="width: 22%;">发布时间</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -124,9 +124,9 @@
                   <thead>
                   <tr>
                     <th class="col-sm-1">序号</th>
-                    <th class="col-sm-2">主题</th>
+                    <th style="width: 22%;">主题</th>
                     <th class="col-sm-4">内容</th>
-                    <th class="col-sm-2">发布时间</th>
+                    <th style="width: 22%;">发布时间</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -181,10 +181,10 @@
                 <table class="psn_table">
                   <thead>
                   <tr>
-                    <th class="col-sm-1">序号</th>
+                    <th class="col-sm-1"style="width: 11%;" >序号</th>
                     <!--<th class="col-sm-2">主题</th>-->
                     <th class="col-sm-4">内容</th>
-                    <th class="col-sm-2">发布时间</th>
+                    <th class="col-sm-2" style="width: 22%;">发布时间</th>
                   </tr>
                   </thead>
 
