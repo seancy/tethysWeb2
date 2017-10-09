@@ -448,6 +448,30 @@ a.formBtn:hover, .formBtn:hover { color: #fff; background: #fe9500; background: 
   50% { color: #ff0; }
   100% { color: #0168ab; } }
 
+.rotate { -webkit-animation: myfirst 2s; animation: myfirst 2s; }
+
+@-webkit-keyframes myfirst { form { -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to { -webkit-transform: rotate(720deg);
+    -moz-transform: rotate(720deg);
+    -ms-transform: rotate(720deg);
+    -o-transform: rotate(720deg);
+    transform: rotate(720deg); } }
+
+@keyframes myfirst { form { -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to { -webkit-transform: rotate(720deg);
+    -moz-transform: rotate(720deg);
+    -ms-transform: rotate(720deg);
+    -o-transform: rotate(720deg);
+    transform: rotate(720deg); } }
+
 /* ---------------------------------------------------
 // popup
 --------------------------------------------------- */
