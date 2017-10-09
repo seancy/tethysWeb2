@@ -161,7 +161,7 @@ export default {
             that.memberInfo.balance = data && data.result && data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,');
             common.Cookie.set('memberInfo', JSON.stringify(that.memberInfo));
             $("#mynew_balance").html(data && data.result && data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,'));
-            $(".account-num").html(data && data.result && data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,'));
+            $(".balance").html(data && data.result && data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,'));
             $(".wallet_balance").html(data && data.result && data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,'));
         });
         this.userId = "";
