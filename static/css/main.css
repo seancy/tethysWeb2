@@ -165,13 +165,13 @@ a.formBtn:hover, .formBtn:hover, .btn-default:hover, .btn-primary:hover { color:
 
 .topbar .topright .help { margin-right: 20px; }
 
-.topbar .topright .info { margin-right: 0px; color: #fbf2e0; }
+.topbar .topright .info { margin-right: 10px; color: #fbf2e0; }
 
 .topbar .topright .info span { padding: 0px 10px; border-right: 1px solid #443063; }
 
 .topbar .topright .info span:last-child { border-right: none; }
 
-.topbar .topright .info .link { display: inline-block; -webkit-animation-iteration-count: infinite; -webkit-animation-duration: 2s; animation-iteration-count: infinite; animation-duration: 2s; margin: 0px 3px; }
+.topbar .topright .info .link { display: inline-block; -webkit-animation-iteration-count: infinite; -webkit-animation-duration: 2s; animation-iteration-count: infinite; animation-duration: 2s; margin: 0px 10px; }
 
 .topbar .topright .info .link:hover { text-decoration: underline; }
 
@@ -195,7 +195,7 @@ a.formBtn:hover, .formBtn:hover, .btn-default:hover, .btn-primary:hover { color:
 
 .nav .logo img { width: 100%; display: block; }
 
-.nav .menu { float: right; width: calc( 100% - 300px); }
+.nav .menu { float: right; width: calc( 100% - 300px); max-width: 75%; }
 
 .nav .menu .mainmenu { text-align: right; margin: 0px 0px 0px 50px; }
 

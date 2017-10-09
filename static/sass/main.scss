@@ -320,7 +320,7 @@ a.formBtn, .formBtn, .btn-default, .btn-primary{
             margin-right: 20px;
         }
         .info{
-            margin-right: 0px;
+            margin-right: 10px;
             color: $fontColor_yellow;
             span{
                 padding: 0px 10px;
@@ -335,7 +335,7 @@ a.formBtn, .formBtn, .btn-default, .btn-primary{
                 -webkit-animation-duration: 2s;
                 animation-iteration-count: infinite;
                 animation-duration: 2s;
-                margin: 0px 3px;
+                margin: 0px 10px;
                 &:hover{
                     text-decoration: underline;
                 }
@@ -409,6 +409,7 @@ a.formBtn, .formBtn, .btn-default, .btn-primary{
     .menu{
         float:right;
         width: calc( 100% - 300px);
+        max-width: 75%;
         .mainmenu{
             text-align: right;
             margin: 0px 0px 0px 50px;
