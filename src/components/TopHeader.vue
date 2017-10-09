@@ -177,6 +177,7 @@ export default {
     }
     this.getNavData();
     this.customTemplate();
+
   },
   filters: {
       balanceNo: function(value) {
@@ -188,9 +189,11 @@ export default {
   },
   mounted: function() {
     var _self = this;
-    $("#nav_promo").addClass('hot');
+
+
     _self.$nextTick(function() {
       $("#nav_casino").addClass('hot');
+      $("#nav_promo").addClass('hot');
     })
   },
   methods: {
