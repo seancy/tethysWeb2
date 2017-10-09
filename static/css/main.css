@@ -102,9 +102,9 @@ a.formBtn:hover, .formBtn:hover, .btn-default:hover, .btn-primary:hover { color:
 
 .icon_sprite.icon_item { background-position: -216px 0px; }
 
-.icon_sprite.icon_wechat, .icon_sprite .icon_pay_1 { background-position: 0px -24px; }
+.icon_sprite.icon_wechat, .icon_sprite.icon_pay_0 { background-position: 0px -24px; }
 
-.icon_sprite.icon_zfb, .icon_sprite .icon_pay_2 { background-position: -24px -24px; }
+.icon_sprite.icon_zfb, .icon_sprite.icon_pay_1 { background-position: -24px -24px; }
 
 .icon_sprite.icon_success { background-position: -216px -24px; }
 

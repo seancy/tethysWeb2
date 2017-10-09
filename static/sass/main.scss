@@ -202,10 +202,10 @@ a.formBtn, .formBtn, .btn-default, .btn-primary{
     &.icon_item{
         background-position: -216px 0px;
     }
-    &.icon_wechat, .icon_pay_1{
+    &.icon_wechat, &.icon_pay_0{
         background-position: 0px -24px;
     }
-    &.icon_zfb, .icon_pay_2{
+    &.icon_zfb, &.icon_pay_1{
         background-position: -24px -24px;
     }
     &.icon_success{
