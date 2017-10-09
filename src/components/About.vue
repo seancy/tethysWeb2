@@ -408,8 +408,12 @@
 
       // get code
       getCode: function () {
-        var _self = this;
 
+        var _self = this;
+        $('.icon_sprite.icon_refresh').addClass('rotate');
+        setTimeout(function () {
+          $('.icon_sprite.icon_refresh').removeClass('rotate');
+        }, 2000);
         common.ajax('member/code/get', {
           width: 84,
           height: 31
