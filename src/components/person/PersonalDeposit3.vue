@@ -42,7 +42,7 @@
                           <template v-for="(bank,index) in bankList">
                           <label :for=" 'pay_' + [index]">
                             <input type="radio" name="paygroup" :value="bank.bankCode" :id="'pay_' + [index]" v-model="saveInfo.bankCode" :title="bank.bankName">
-                            <span :class="'icon_sprite icon_'+[index]"></span>{{bank.bankName}}
+                            <span :class="'icon_sprite icon_pay_'+[index]"></span>{{bank.bankName}}
                           </label>
                         </template>
                         </span>

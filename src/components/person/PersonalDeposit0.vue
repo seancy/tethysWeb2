@@ -45,7 +45,7 @@
                         <label :for=" 'pay_' + [index]">
                           <input @click="radioChoosed" type="radio" name="pay_wallet" :value="bank.bankType" :id="'pay_' + [index]"
                                  :title="bank.bankName" :account="bank.bankAccount"  :bankcode="bank.bankCode" class="radio_input">
-                          <span :class="'icon_sprite icon_'+[index]"></span>{{bank.bankName}}
+                          <span :class="'icon_sprite icon_pay_'+[index]"></span>{{bank.bankName}}
                         </label>
                       </template>
 
