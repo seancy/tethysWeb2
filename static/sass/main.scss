@@ -136,7 +136,7 @@ $formHeight : 35px;
         outline: none;
     }
 }
-a.formBtn, .formBtn{
+a.formBtn, .formBtn, .btn-default, .btn-primary{
     display: inline-block;
     height: 37px;
     position: relative;
@@ -1114,6 +1114,7 @@ a.formBtn, .formBtn{
           box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
     background-color: #fcfbf8;
     border: 1px solid #d8a44e;
+  color: $bgColor;
 }
 .modal-backdrop {
   position: fixed;
@@ -1152,12 +1153,14 @@ a.formBtn, .formBtn{
 }
 .modal-footer {
   padding: 15px;
-  text-align: right;
+  text-align: center;
   border-top: 1px solid #e5e5e5;
 }
+.modal-footer button{
+    font-size: $fontSize_m;
+}
 .modal-footer .btn + .btn {
-  margin-bottom: 0;
-  margin-left: 5px;
+  display: inline-block;
 }
 .modal-footer .btn-group .btn + .btn {
   margin-left: -1px;
