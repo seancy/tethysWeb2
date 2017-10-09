@@ -23,9 +23,9 @@
           <ul class="psn_menu" id="footer_menu">
             <template v-for="(item,key) in menu.list">
               <li v-if="item.code === code" @click="changeTab(item.code)"><a href="javascript:;" class="active"><span
-                class="icon_sprite icon_policy" :class="'icon icon-'+[key+1]"></span>{{ item.title }}</a></li>
+                class="icon_sprite icon_about" :class="'icon icon-'+[key+1]"></span>{{ item.title }}</a></li>
               <li @click="changeTab(item.code)" v-else><a href="javascript:;">
-                <span class="icon_sprite icon_policy" :class="'icon icon-'+[key+1]"></span>
+                <span class="icon_sprite icon_about" :class="'icon icon-'+[key+1]"></span>
                 {{ item.title }}</a></li>
             </template>
           </ul>

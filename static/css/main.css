@@ -110,17 +110,17 @@ a.formBtn:hover, .formBtn:hover { color: #fff; background: #fe9500; background: 
 
 .icon_sprite.icon_copy { background-position: -96px -24px; }
 
-.icon_sprite.icon_about, .icon_sprite.icon_policy.icon-1 { background-position: 0px -96px; }
+.icon_sprite.icon_about, .icon_sprite.icon_about.icon-1 { background-position: 0px -96px; }
 
-.icon_sprite.icon_policy, .icon_sprite.icon_policy.icon-2 { background-position: -24px -96px; }
+.icon_sprite.icon_policy, .icon_sprite.icon_about.icon-2 { background-position: -24px -96px; }
 
-.icon_sprite.icon_duty, .icon_sprite.icon_policy.icon-3 { background-position: -48px -96px; }
+.icon_sprite.icon_duty, .icon_sprite.icon_about.icon-3 { background-position: -48px -96px; }
 
-.icon_sprite.icon_disclaimer, .icon_sprite.icon_policy.icon-4 { background-position: -72px -96px; }
+.icon_sprite.icon_disclaimer, .icon_sprite.icon_about.icon-4 { background-position: -72px -96px; }
 
-.icon_sprite.icon_join, .icon_sprite.icon_policy.icon-5 { background-position: -96px -96px; }
+.icon_sprite.icon_join, .icon_sprite.icon_about.icon-5 { background-position: -96px -96px; }
 
-.icon_sprite.icon_contact, .icon_sprite.icon_policy.icon-6 { background-position: -120px -96px; }
+.icon_sprite.icon_contact, .icon_sprite.icon_about.icon-6 { background-position: -120px -96px; }
 
 .icon_sprite.icon_ok { background-position: -144px -24px; }
 

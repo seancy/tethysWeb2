@@ -214,22 +214,22 @@ a.formBtn, .formBtn{
     &.icon_copy{
         background-position: -96px -24px;
     }
-    &.icon_about, &.icon_policy.icon-1{
+    &.icon_about, &.icon_about.icon-1{
         background-position: 0px -96px;
     }
-    &.icon_policy, &.icon_policy.icon-2{
+    &.icon_policy, &.icon_about.icon-2{
         background-position: -24px -96px;
     }
-    &.icon_duty, &.icon_policy.icon-3{
+    &.icon_duty, &.icon_about.icon-3{
         background-position: -48px -96px;
     }
-    &.icon_disclaimer, &.icon_policy.icon-4{
+    &.icon_disclaimer, &.icon_about.icon-4{
         background-position: -72px -96px;
     }
-    &.icon_join, &.icon_policy.icon-5{
+    &.icon_join, &.icon_about.icon-5{
         background-position: -96px -96px;
     }
-    &.icon_contact, &.icon_policy.icon-6{
+    &.icon_contact, &.icon_about.icon-6{
         background-position: -120px -96px;
     }
     &.icon_ok{
