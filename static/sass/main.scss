@@ -1134,14 +1134,23 @@ a.formBtn, .formBtn, .btn-default, .btn-primary{
   opacity: .5;
 }
 .modal-header {
-  padding: 15px;
+  padding: 10px 15px;
   border-bottom: 1px solid #e5e5e5;
 }
 .modal-header .close {
   margin-top: -2px;
-  top: 5px;
-	right: 5px;
+  top: 10px;
+	right: 10px;
 	position: absolute;
+    background: url(/static/img/icon_sprite.24ae491.png) no-repeat;
+    background-size: 256px 256px;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    background-position: -168px -24px;
+    text-indent: -100px;
+    overflow: hidden;
 }
 .modal-title {
   margin: 0;
@@ -1158,6 +1167,7 @@ a.formBtn, .formBtn, .btn-default, .btn-primary{
 }
 .modal-footer button{
     font-size: $fontSize_m;
+    cursor: pointer;
 }
 .modal-footer .btn + .btn {
   display: inline-block;

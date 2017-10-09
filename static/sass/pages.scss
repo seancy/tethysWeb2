@@ -1027,6 +1027,129 @@
 .page_lotteryList{
     @extend .page_casinoList;
 }
+.pagebox .pagemenu_slider {
+        text-align: center;
+}
+.pagebox .item_pagemenu {
+    width: 192px;
+    display: inline-block;
+}
+.lotterys_list{
+    width: 1000px;
+    margin: 40px auto;
+    &:after{
+        content: '';
+        display: table;
+        clear: both;
+    }
+    .lotterys_list_content{
+        margin:0px;
+        padding: 0px;
+        li{
+            list-style: none;
+            padding:0px;
+            width: 487px;
+            height: 252px;
+            display: inline-table;
+            margin: 60px 26px 30px 0px;
+            position: relative;
+            text-align: center;
+            border: 1px solid $gdGoldFrom2;
+            float: left;
+            &:nth-child(even){
+                margin-right:0;
+            }
+            &:hover{
+                border-color: $gdGoldFrom3;
+                box-shadow: 0px 0px 30px rgba(0,0,0,0.6);
+                -webkit-transition: border-color 300ms ease-in;
+                -moz-transition: border-color 300ms ease-in;
+                -ms-transition: border-color 300ms ease-in;
+                transition: border-color 300ms ease-in;
+                // .bg{background-position-x: 0px;}
+                // .img{background-position-x: -20px;}
+            }
+            .bg {
+                width: 485px;
+                height:323px;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                background-repeat: no-repeat;
+                background-position: 0px -363px;
+                -webkit-transition: background-position 200ms ease-out;
+                -moz-transition: background-position 500ms ease-out;
+                -ms-transition: background-position 500ms ease-out;
+                transition: background-position 500ms ease-out;
+                background-size: 110%;
+            }
+            .img {
+                width: 485px;
+                height: 250px;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                background-repeat: no-repeat;
+                background-position: 0px 0px;
+                -webkit-transition: background-position 200ms ease-out;
+                -moz-transition: background-position 200ms ease-out;
+                -ms-transition: background-position 500ms ease-out;
+                transition: background-position 500ms ease-out;
+                background-size: 110%;
+            }
+            .title{
+                height: 108px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                z-index: 3;
+                width: 100%;
+                padding: 15px;
+                text-align: center;
+                background-color: rgba(0,0,0,0.8);
+            }
+            .title_img{
+                margin-top: 5px;
+                width: 150px;
+                height: 50px;
+                background-size: 100%;
+                display: inline-block;
+                float: left;
+            }
+            &.lottery_bc .title_img{ background-image: url(../../static/images/logo_bc.png);width: 208px;height: 62px;}
+            &.lottery_bb .title_img{background-image: url(../../static/images/logo_bb.png); width:126px; height: 68px;}
+            h2{
+                font-size: 18px;
+                margin-top: 23px;
+                display: inline-block;
+                margin-left: 10px;
+                color: #fff;
+                font-weight: normal;
+                vertical-align: bottom;
+                float: left;
+            }
+            .btn_enter{
+                position: absolute;
+                bottom: 13px;
+                z-index: 4;
+                left: 50%;
+            }
+            .gameopen_parent{
+                margin-left: 100px;
+                display: inline-block;
+                margin-top: 10px;
+                color: #fff;
+                line-height: 34px;
+                height: 34px;
+                padding: 0px 30px;
+                @include gdGold();
+                &:hover{
+                    @include gdOrange();
+                }
+            }
+        }
+    }
+}
 
 /* ---------------------------------------------------
 // sports
@@ -1139,15 +1262,17 @@
                 left: 50%;
             }
             .gameopen_parent{
-                margin-left: 100px; 
+                margin-left: 100px;
                 display: inline-block;
                 margin-top: 10px;
                 color: #fff;
                 line-height: 34px;
                 height: 34px;
                 padding: 0px 30px;
-                background-color: #ff6000;
-                border-radius: 17px;
+                @include gdGold();
+                &:hover{
+                    @include gdOrange();
+                }
             }
         }
     }
