@@ -42,10 +42,12 @@
                                   </div>
                                   <h3>{{sub.name}}</h3>
                               </a>
+
                           </li>
                       </ul>
+
                   </li>
-                  <li :class="{active: urlPath === 'promo'}">
+                  <li :class="{active: urlPath === 'promo'}"  id="nav_promo">
                       <a href="/promo"><h2>优惠活动</h2><small>PROMO</small></a>
                   </li>
                   <li @click="onlineServices">
@@ -138,6 +140,7 @@ export default {
     }
   },
   created:function() {
+
     var _this = this;
     // _this.urlPath = _this.$route.path.replace('/', '');
     _this.userName = common.Cookie.get('userName') || '';
@@ -182,6 +185,13 @@ export default {
       number_message: function(vaule) {
           return (vaule) ? vaule : 0;
       }
+  },
+  mounted: function() {
+    var _self = this;
+    $("#nav_promo").addClass('hot');
+    _self.$nextTick(function() {
+      $("#nav_casino").addClass('hot');
+    })
   },
   methods: {
     customTemplate: function () {
@@ -483,5 +493,7 @@ export default {
 <style>
   a{
     cursor: pointer!important;
-  };
+  }
+
+
 </style>
