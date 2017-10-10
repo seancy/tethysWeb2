@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="footer">
+        <div id="footer" v-if="!/HH/.test(pagename)">
             <div class="contain_width">
                 <div class="link_list">
                     <dl class="link_block parner">
@@ -72,11 +72,13 @@ export default {
   data:function(){
     return {
       footer:[],
+      pagename: '',
     }
   },
   created:function(){
     var _self=this;
     _self.getFooterData();
+    this.pagename = this.$route.name || '';
   },
   methods:{
     getFooterData:function(){

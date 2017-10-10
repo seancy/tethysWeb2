@@ -1,7 +1,8 @@
 <template>
     <div>
         <!--浮动广告-->
-        <div class="online-service left" v-if="!/HH/.test(pagename) && floatImage && floatImage.leftFirstUrl">
+       <!-- <div class="online-service left" v-if="!/HH/.test(pagename) && floatImage && floatImage.leftFirstUrl">-->
+        <div class="online-service left" v-if="!/HH/.test(pagename)">
             <div class="height-service">
                 <template v-for="(left,index) in leftURL">
                     <span class="online-img" v-if="left.url==''"><img v-lazy="photo_url+'/pic/'+left.img+'/0'" /> </span>
@@ -10,7 +11,8 @@
             </div>
             <div class="close" @click="closeFloat('left')"></div>
         </div>
-        <div class="online-service right" v-if="!/HH/.test(pagename) && floatImage && floatImage.rightFirstUrl">
+       <!-- <div class="online-service right" v-if="!/HH/.test(pagename) && floatImage && floatImage.rightFirstUrl">-->
+        <div class="online-service right" v-if="!/HH/.test(pagename) ">
             <div class="height-service">
                 <template v-for="(right,index) in rightURL">
                     <span class="online-img" v-if="right.url==''"> <img v-lazy="photo_url+'/pic/'+right.img+'/0'" alt=""/> </span>

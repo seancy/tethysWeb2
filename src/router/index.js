@@ -36,20 +36,15 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
+      {
+          path: '/',
+          name: 'Index',
+          component: Index
+      },
     {
       path: '/personalModifyPassword',
       name: 'PersonalModifyPassword',
       component: PersonalModifyPassword
-    },
-    {
-      path: '/',
-      name: 'Index',
-      component: Index
-    },
-    {
-      path: '/index',
-      name: 'Index',
-      component: Index
     },
     {
       path: '/about',

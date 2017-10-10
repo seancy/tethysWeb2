@@ -1,5 +1,5 @@
 <template>
-    <div id="header">
+    <div id="header" v-if="!/HH/.test(pagename)">
       <div class="topbar">
           <div class="topleft">
               <span class="icon_clock"></span>
