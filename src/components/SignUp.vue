@@ -7,12 +7,13 @@
       <!--左侧选单-->
       <div class="left_menu">
         <ul class="psn_menu" id="footer_menu">
-          <li><a href="about.html"><span class="icon_sprite icon_about"></span>关于我们</a></li>
-          <li><a href="policy.html"><span class="icon_sprite icon_policy"></span>隐私政策</a></li>
-          <li><a href="duty.html"><span class="icon_sprite icon_duty"></span>责任博彩</a></li>
-          <li><a href="disclaimer.html"><span class="icon_sprite icon_disclaimer"></span>免责声明</a></li>
-          <li><a href="join.html"><span class="icon_sprite icon_join"></span>代理加盟</a></li>
-          <li><a href="contact.html"><span class="icon_sprite icon_contact"></span>联系我们</a></li>
+          <template v-for="(item,key) in menu.list">
+            <li>
+              <a :href="'/about?id='+item.code" ><span
+                    class="icon_sprite icon_about" :class="'icon icon-'+[key+1]"></span>{{ item.title }}
+              </a>
+            </li>
+          </template>
         </ul>
       </div>
       <!--end 左侧选单-->
@@ -654,4 +655,6 @@
   }
 
 </script>
+<style scoped>
+</style>
 
