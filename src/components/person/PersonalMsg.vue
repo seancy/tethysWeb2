@@ -551,6 +551,13 @@
       }
     }
   }
+  $(function () {
+    var $mail = $('.red-dot');
+    if($mail){
+      $mail.remove();
+      common.Cookie.set('alreadRead', JSON.stringify(1));
+    }
+  })
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

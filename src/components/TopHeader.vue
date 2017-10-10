@@ -60,7 +60,7 @@
       <div class="account_bar login" v-if="hasLogin===true">
           <span class="account">
               <span>{{userName}}</span>
-              <a href="/personalMsg" class="icon_sprite icon_mail"><small class="red-dot"></small></a>
+              <a href="/personalMsg" class="icon_sprite icon_mail icon-email"><em class="red-dot"></em></a>
           </span>
           <span>¥ <span id="mynew_balance">{{memberInfo.balance | balanceNo}}</span>
               <a href="javascript:;" class="icon_sprite icon_refresh" @click="getAccountInfo()"></a>
@@ -321,7 +321,7 @@ export default {
         common.toast({title: '提示信息', content: '登录成功！', time: 2});
         $("#free_open_account").hide();
         setTimeout(function () {
-          window.location.reload();
+          location.href='/';
         }, 2000);
       }, 'post', function () {
         setTimeout(function () {
@@ -500,6 +500,18 @@ export default {
   a{
     cursor: pointer!important;
   }
-
+  .red-dot{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 0px;
+    margin-left: 12px;
+    background-color: #bb2370;
+    width: 11px;
+    height: 11px;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    border-radius: 6px;
+  }
 
 </style>
