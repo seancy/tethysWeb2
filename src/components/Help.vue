@@ -8,8 +8,8 @@
               <!--左侧选单-->
               <div class="left_menu">
                   <ul class="psn_menu" id="help_menu">
-                      <li :class="current_title === 'question'?'current':'link'">
-                          <a href="javascript:;" class="active"><span class="icon_sprite icon_help-withdrawal"></span>常见问题</a>
+                      <li>
+                          <a href="javascript:;" :class="current_title === 'question'?'active':''"><span class="icon_sprite icon_help-withdrawal"></span>常见问题</a>
                           <ul>
                               <li v-for="(list_question,index) in help_list.question">
                                   <a href="javascript:;" class="sub-link" @click="getContent('question',list_question.id)">
@@ -19,7 +19,7 @@
                           </ul>
                       </li>
                       <li>
-                          <a :class="(current_title==='deposit'?'current':'link')" href="javascript:;">
+                          <a :class="(current_title==='deposit'?'active':'')" href="javascript:;">
                               <span class="icon_sprite icon_help-deposit"></span>存款帮助</a>
                           <ul>
                               <li v-for="(list_deposit,index) in help_list.deposit">
@@ -31,7 +31,7 @@
                           </ul>
                       </li>
                       <li>
-                          <a :class="(current_title==='withdrawal'?'current':'link')"><span class="icon_sprite icon_help_duty"></span>取款帮助</a>
+                          <a :class="(current_title==='withdrawal'?'active':'')"><span class="icon_sprite icon_help_duty"></span>取款帮助</a>
                           <ul>
                               <li v-for="(list_withdrawal,index) in help_list.withdrawal">
                                   <a href="javascript:;" class="sub-link" @click="getContent('withdrawal',list_withdrawal.id)">
@@ -50,7 +50,7 @@
                       <!--常见问题-->
                       <div class="psn_content">
                           <div class="join_wrap" v-html="help_content">
-                              
+
                           </div>
                       </div><!--end 常见问题-->
                   </div>
