@@ -75,7 +75,7 @@ export default {
     data: function () {
         return {
           kind:{
-            '10002':'ag', 
+            '10002':'mg',
             '10011':'bbin',
             '10021':'ag',
             '10032':'pt',

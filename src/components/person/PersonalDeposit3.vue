@@ -38,13 +38,13 @@
                       </li>
                       <li>
                         <span class="label">支付渠道</span>
-                        <span class="form">
+                        <span class="form pay-method" >
                           <template v-for="(bank,index) in bankList">
-                          <label :for=" 'pay_' + [index]">
-                            <input type="radio" name="paygroup" :value="bank.bankCode" :id="'pay_' + [index]" v-model="saveInfo.bankCode" :title="bank.bankName">
-                            <span :class="'icon_sprite icon_pay_'+[index]"></span>{{bank.bankName}}
-                          </label>
-                        </template>
+                            <label :for=" 'pay_' + [index]">
+                              <input type="radio" name="paygroup" :value="bank.bankCode" :id="'pay_' + [index]" v-model="saveInfo.bankCode" :title="bank.bankName">
+                              <span :class="'icon_sprite icon_pay_'+[index]"></span>{{bank.bankName}}
+                            </label>
+                          </template>
                         </span>
                       </li>
                       <li>
@@ -349,6 +349,7 @@
         if (_self.userId) {
           var src = '/form?method=post&action=tethys-user/user/account/rapidSave/' + _self.userId + '/applyView&params=' + encodeURIComponent($.param(para));
           _self.hideFrame = false;
+          console.log(src)
           _self.$nextTick(function(){
               $('#iframe_pay').attr('src', src);
             }
