@@ -28,8 +28,8 @@
 
 <script>
 export default {
-  name: 'hello',
-  data () {
+  name: 'promo',
+  data :function() {
     return {
       titles:[
         { id:0, text:'所有活动' },

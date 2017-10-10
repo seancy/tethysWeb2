@@ -4,12 +4,8 @@ import Index from '@/components/Index'
 import About from '@/components/About'
 import Casino from '@/components/Casino'
 
-import Contact from '@/components/Contact'
-import Disclaimer from '@/components/Disclaimer'
-import Duty from '@/components/Duty'
 import Help from '@/components/Help'
 
-import Join from '@/components/Join'
 import Live from '@/components/Live'
 import Lottery from '@/components/Lottery'
 import PersonalBettin from '@/components/person/PersonalBettin'
@@ -28,7 +24,6 @@ import PersonalFunds from '@/components/person/PersonalFunds'
 import PersonalInfo from '@/components/person/PersonalInfo'
 
 import PersonalMsg from '@/components/person/PersonalMsg'
-import Policy from '@/components/Policy'
 import Promo from '@/components/Promo'
 import SignUp from '@/components/SignUp'
 
@@ -66,31 +61,10 @@ export default new Router({
       name: 'Casino',
       component: Casino
     },
-
-    {
-      path: '/contact',
-      name: 'Contact',
-      component: Contact
-    },
-    {
-      path: '/disclaimer',
-      name: 'Disclaimer',
-      component: Disclaimer
-    },
-    {
-      path: '/duty',
-      name: 'Duty',
-      component: Duty
-    },
     {
       path: '/help',
       name: 'Help',
       component: Help
-    },
-    {
-      path: '/join',
-      name: 'Join',
-      component: Join
     },
     {
       path: '/live',
@@ -166,11 +140,6 @@ export default new Router({
       path: '/personalMsg',
       name: 'PersonalMsg',
       component: PersonalMsg
-    },
-    {
-      path: '/policy',
-      name: 'Policy',
-      component: Policy
     },
     {
       path: '/promo',
