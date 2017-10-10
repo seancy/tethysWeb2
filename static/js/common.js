@@ -854,10 +854,10 @@ function $message_drawMoney(opt) {
 
 // module.exports
 window.common = {
-  // base_url:'http://admin.baochiapi.com',
-  // photo_url:'http://admin.baochiapi.com/photo',
-  base_url: 'http://api.blr53889.com',
-  photo_url: 'http://img.will888.cn/photo',
+  base_url:'http://admin.baochiapi.com',
+  photo_url:'http://admin.baochiapi.com/photo',
+ /* base_url: 'http://api.blr53889.com',
+  photo_url: 'http://img.will888.cn/photo',*/
   ajax: sendRequest,
   ajax_async: sendRequest_async,
   ajaxHtml: sendRequest2,

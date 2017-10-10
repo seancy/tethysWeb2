@@ -232,7 +232,8 @@
           }, function (data) {
             if (data && data.result) {
               if (data.apistatus === 1) {
-                $(aa.target).removeClass("error").parent('span').siblings("span").html('<span class="icon_ok"></span>').removeClass("red");
+               // $(aa.target).removeClass("error").parent('span').siblings("span").html('<span class="icon_ok"></span>').removeClass("red");
+                $(aa.target).removeClass("error").parent('span').siblings().removeClass("red");
               }
             }
           }, 'get', function (data) {
@@ -328,7 +329,7 @@
             val = el && el[0].value || '';
             if (val === '' || val === ' ' || val.length === 0) {
               if (isRequired === 0) {
-                $(el).removeClass('error').parent('div').next().html('').removeClass('red')
+                $(el).removeClass('error').parent().next().html('').removeClass('red')
               } else {
                 $(el).addClass("error").parent().next().html('用户名不能为空').addClass("red")
               }
@@ -340,7 +341,8 @@
               }, function (data) {
                 if (data && data.result) {
                   if (data.apistatus === 1) {
-                    $(el).removeClass("error").parent().next().html('<span class="icon_ok"></span>').removeClass('red');
+                   // $(el).removeClass("error").parent().next().html('<span class="icon_ok"></span>').removeClass('red');
+                    $(el).removeClass("error").parent().next().removeClass('red');
                   } else {
                     $(el).addClass("error").parent('span').siblings("span.ui_error").html(data.errorMsg).addClass("red");
                     _self.getCode()
