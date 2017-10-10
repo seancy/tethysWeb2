@@ -149,3 +149,8 @@ export default {
   }
 }
 </script>
+<style>
+  .ui-loading{position:absolute;left:0;top:0;z-index: 9999;}
+  .ui-loading .ui-loading-mask{ position:absolute;top:0;left:0;background-color: #000;opacity: .5;z-index: 1;border-radius: 4px;}
+  .ui-loading i{height: 25px;width:25px; display: block;background: url(../static/css/img/icon-refresh-14-loading.gif) no-repeat center center;background-size:25px 25px;position: absolute;z-index: 2}
+</style>
