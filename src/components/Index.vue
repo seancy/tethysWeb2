@@ -34,7 +34,7 @@
         <div class="contain_width">
             <div class="notice_box">
                 <span>公告：</span>
-                <ul>
+                <ul style="left: 60px;top: -10px;">
                     <li v-for="message in messages">{{message.title}}：{{message.content}}</li>
                 </ul>
             </div>
@@ -248,7 +248,7 @@ export default {
             _self.$nextTick(function () {
               if($('.notice_box li').length > 1){
                   function run() {
-                      $('.notice_box ul').animate({top:-40},500,function(){
+                      $('.notice_box ul').animate({top:-40},4000,function(){
                           $(this).css({top:0}).children('li').eq(0).remove().appendTo('.notice_box ul');
                       })
                   }
