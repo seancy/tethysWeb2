@@ -8,34 +8,37 @@
               <!--左侧选单-->
               <div class="left_menu">
                   <ul class="psn_menu" id="help_menu">
-                      <li>
-                          <a href="help.html" class="active"><span class="icon_sprite icon_help-withdrawal"></span>常见问题</a>
+                      <li :class="current_title === 'question'?'current':'link'">
+                          <a href="javascript:;" class="active"><span class="icon_sprite icon_help-withdrawal"></span>常见问题</a>
                           <ul>
-                              <li><a href="javascript:;">真实姓名</a></li>
-                              <li><a href="javascript:;">找回用户名</a></li>
-                              <li><a href="javascript:;">注册与登陆</a></li>
-                              <li><a href="javascript:;">技术相关</a></li>
-                              <li><a href="javascript:;">银行卡绑定</a></li>
-                              <li><a href="javascript:;">找回登录密码</a></li>
-                              <li><a href="javascript:;">找回支付密码</a></li>
-                              <li><a href="javascript:;">优惠活动</a></li>
+                              <li v-for="(list_question,index) in help_list.question">
+                                  <a href="javascript:;" class="sub-link" @click="getContent('question',list_question.id)">
+                                      <span>{{list_question.name}}</span>
+                                  </a>
+                              </li>
                           </ul>
                       </li>
                       <li>
-                          <a href="help.html"><span class="icon_sprite icon_help-deposit"></span>存款帮助</a>
+                          <a :class="(current_title==='deposit'?'current':'link')" href="javascript:;">
+                              <span class="icon_sprite icon_help-deposit"></span>存款帮助</a>
                           <ul>
-                              <li><a href="javascript:;">在线支付</a></li>
-                              <li><a href="javascript:;">扫码支付</a></li>
-                              <li><a href="javascript:;">银行转账</a></li>
-                              <li><a href="javascript:;">柜员机/柜台操作流程</a></li>
-                              <li><a href="javascript:;">网站转账流程</a></li>
+                              <li v-for="(list_deposit,index) in help_list.deposit">
+                                  <a href="javascript:;" class="sub-link" @click="getContent('deposit',list_deposit.id)">
+                                      <span>{{list_deposit.name}}</span>
+                                  </a>
+                              </li>
+
                           </ul>
                       </li>
                       <li>
-                          <a href="help.html"><span class="icon_sprite icon_help_duty"></span>取款帮助</a>
+                          <a :class="(current_title==='withdrawal'?'current':'link')"><span class="icon_sprite icon_help_duty"></span>取款帮助</a>
                           <ul>
-                              <li><a href="javascript:;">取款稽核</a></li>
-                              <li><a href="javascript:;">取款流程</a></li>
+                              <li v-for="(list_withdrawal,index) in help_list.withdrawal">
+                                  <a href="javascript:;" class="sub-link" @click="getContent('withdrawal',list_withdrawal.id)">
+                                      <span>{{list_withdrawal.name}}</span>
+                                  </a>
+                              </li>
+
                           </ul>
                       </li>
                   </ul>
@@ -46,15 +49,8 @@
                   <div class="psn_wrap">
                       <!--常见问题-->
                       <div class="psn_content">
-                          <div class="join_wrap">
-                              <p class="highlight">真实姓名</p>
-                              <p style="color:#00B0F0;">为什么我要设置真实姓名？</p>
-                              <p>真实姓名是证明您身份的重要凭证之一，且真实姓名将用于匹配收款银行账号，银行卡账户名与玩家真实姓名一致时才可以取款成功！为确保您账户的安全，真实姓名一旦设置不可修改！</p>
-                              <p style="color:#00B0F0;">真实姓名填错了怎么修改？</p>
-                              <p>一经填写，玩家本人无法直接修改真实姓名！如有需要，请您联系客服服协助您做数据更改。</p>
-                              <p style="color:#00B0F0;">我的真实姓名会被泄漏吗？</p>
-                              <p>我公司网站绝对安全，我们决不泄漏玩家的真实姓名及其他个人资料给任何商业机构。</p>
-                              <p>所有玩家提供的个人信息数据都被传送到安全端口(SSL 128bitencryption Standard)，并存放在公众无法进入的严密保护的环境下，同时所有数据的内部出入都受到限制及严密的监控。</p>
+                          <div class="join_wrap" v-html="help_content">
+                              
                           </div>
                       </div><!--end 常见问题-->
                   </div>
@@ -66,12 +62,61 @@
 </template>
 
 <script>
-export default {
-  name: 'help',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  export default {
+    name: 'Help',
+    data: function() {
+      return {
+        msg: 'help page',
+        help_list: [],
+        help_content: '',
+        current_title: ''
+      }
+    },
+    created: function() {
+
+    },
+    mounted: function() {
+      var _self = this;
+      _self.$nextTick(function() {
+        _self.current_title = 'question';
+        _self.getList();
+      })
+    },
+    methods: {
+      getList: function() {
+        var _self = this;
+        common.ajax('cms/client/copyright/help/list', {}, function(data) {
+          if (data && data.apistatus === 1) {
+            _self.help_list = data.result;
+            _self.getContent(_self.current_title, data.result[_self.current_title][0]['id']);
+          }
+        }, 'get', function(data) {
+          if (data && data.apistatus === 0) {
+            common.toast({
+              content: '读取目录清单发生错误，请稍候尝试',
+              time: 3
+            });
+          }
+        });
+      },
+      getContent: function(current, id) {
+        var _self = this;
+        _self.current_title = current;
+        common.ajax('cms/client/copyright/details', {
+          code: id
+        }, function(data) {
+          if (data && data.apistatus === 1) {
+            _self.help_content = '<h3>' + (!data.result.title ? '' : data.result.title) + '<a class="anchor"></a></h3>' + (!data.result.content ? '' : data.result.content);
+          }
+        }, 'get', function(data) {
+          if (data && data.apistatus === 0) {
+            common.toast({
+              content: '读取资料发生错误，请稍候尝试',
+              time: 3
+            });
+          }
+        });
+      }
     }
   }
-}
 </script>

@@ -46,7 +46,8 @@
                     <ul>
                         
                         <li v-for="(item,index) in footer ">
-                            <a :href="'/about?id='+[item.code]">{{item.title}}</a>
+                            <a  v-if="item.code != 'HELP'" :href="'/about?id='+[item.code]">{{item.title}}</a>
+                            <a  href="/help" v-else >{{item.title}}</a>
                         </li>
 
                         <!-- <li><a href="/about?id=IC01">关于我们</a></li>
