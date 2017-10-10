@@ -28,6 +28,7 @@ import Promo from '@/components/Promo'
 import SignUp from '@/components/SignUp'
 
 import Sports from '@/components/Sports'
+import Form from '@/components/Form'
 
 const PersonalModifyPassword = () => import('@/components/person/PersonalModifyPassword')
 
@@ -150,6 +151,11 @@ export default new Router({
       path: '/sports',
       name: 'Sports',
       component: Sports
+    },
+    {
+      path: '/form',
+      name: 'Form',
+      component: Form
     }
 
   ]
