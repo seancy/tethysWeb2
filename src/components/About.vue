@@ -144,14 +144,14 @@
                                <span class="label">{{conf.fieldName}}<span class="color_red"
                                                                            v-if="conf.isRequired === 1">※</span></span>
                               <span class="form" v-if="conf.fieldCode == 'username'">
-                                <input type="text" class="formInput"
+                                <input class="formInput"
                                        :placeholder="placeholders[conf.fieldCode]"
                                        :type="types[conf.fieldCode]"
                                        :id="conf.fieldCode" :name="conf.fieldCode"
                                        v-on:blur="verify_agentName">
                               </span>
                               <span class="form" v-else>
-                                <input type="password" class="formInput"
+                                <input  class="formInput"
                                        :placeholder="placeholders[conf.fieldCode]"
                                        :type="types[conf.fieldCode]"
                                        :id="conf.fieldCode"
