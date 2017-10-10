@@ -131,7 +131,9 @@
 
               <div class="pager ">
                 <a class="prev prev-page" href="javascript:;" ><span class="icon" @click="prevPage"></span></a>
-                <a href="javascript:;" v-for="index in indexs" v-bind:class="{ 'active': Page==index }" ><span @click="pageChange(index)"></span>{{index}}</a>
+                <a href="javascript:;" v-for="index in indexs" v-bind:class="{ 'active': Page==index }" >
+                  <span @click="pageChange(index)">{{index}}</span>
+                </a>
 
                 <a class="next next-page" href="javascript:;"><span class="icon" @click="nextPage"></span></a>
               </div>
