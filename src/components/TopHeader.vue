@@ -60,7 +60,7 @@
       <div class="account_bar login" v-if="hasLogin===true">
           <span class="account">
               <span>{{userName}}</span>
-              <a href="/personalMsg" class="icon_sprite icon_mail"><small>4</small></a>
+              <a href="/personalMsg" class="icon_sprite icon_mail"><small class="red-dot"></small></a>
           </span>
           <span>¥ <span id="mynew_balance">{{memberInfo.balance | balanceNo}}</span>
               <a href="javascript:;" class="icon_sprite icon_refresh" @click="getAccountInfo()"></a>
