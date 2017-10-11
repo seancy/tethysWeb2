@@ -268,6 +268,8 @@
 
 .page_liveList.temp_block > li .img { display: none; }
 
+.page_liveList.temp_block > li .btn { position: relative; margin-top: -1px; }
+
 .page_liveList.temp_block > li .btn > a { height: 35px; line-height: 35px; font-size: 15px; }
 
 .page_liveList.temp_block > li .btn > a:hover { background: #fe9500; background: -moz-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-gradient(linear, left top, left bottom, from(#fe9500), to(#a74300)); background: -o-linear-gradient(top, #fe9500 0%, #a74300 100%); background: linear-gradient(to bottom, #fe9500 0%, #a74300 100%); }
