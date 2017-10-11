@@ -154,7 +154,7 @@ export default new Router({
     },
     {
       path: '/form',
-      name: 'Form',
+      name: 'HHForm',
       component: Form
     }
 

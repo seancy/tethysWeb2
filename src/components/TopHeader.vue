@@ -145,7 +145,8 @@ export default {
     // _this.urlPath = _this.$route.path.replace('/', '');
     _this.userName = common.Cookie.get('userName') || '';
     _this.hasLogin = common.ifLanded();
-    _this.pagename = _this.$route.name || '';
+    _this.pagename = _this.$route.name || '';  // 如果是 HHForm则隐藏，支付iframe跳转
+      console.log(this.pagename)
     _this.photo_url = common.photo_url;
     // 先取cookie里的值初始化页面，防止空白
     _this.siteName = common.Cookie.get('siteName') || [];

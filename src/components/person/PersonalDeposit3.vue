@@ -63,7 +63,7 @@
             </div><!--end 在线支付-->
             <div class="psn_content" v-else>
               <iframe src="" id="iframe_pay" width="100%" height="100%" frameborder="0"
-                      scrolling="auto" style="min-height: 567px;"></iframe>
+                      scrolling="auto" style="min-height: 567px;" ></iframe>
             </div>
           </div>
         </div>
@@ -352,6 +352,7 @@
           console.log(src)
           _self.$nextTick(function(){
               $('#iframe_pay').attr('src', src);
+
             }
           );
         } else {

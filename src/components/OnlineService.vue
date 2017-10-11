@@ -39,7 +39,7 @@ export default {
   }, 
   created:function(){
     this.photo_url = common.photo_url;
-    this.pagename = this.$route.name || '';
+    this.pagename = this.$route.name || '';  // 如果是 HHForm则隐藏，支付iframe跳转
   },
   mounted:function(){
     this.getFloatImage();
