@@ -111,13 +111,13 @@
             margin: 0px 10px;
         }
     }
-    &#footer_menu a:hover .icon_sprite, &#footer_menu a.active .icon_sprite{
-        background-position-y: -120px;
-    }
+    // &#footer_menu a:hover .icon_sprite, &#footer_menu a.active .icon_sprite{
+    //     background-position-y: -120px;
+    // }
 
-    &#help_menu a:hover .icon_sprite, &#help_menu a.active .icon_sprite{
-        background-position-y: -168px;
-    }
+    // &#help_menu a:hover .icon_sprite, &#help_menu a.active .icon_sprite{
+    //     background-position-y: -168px;
+    // }
 }
 
 .psn_tab{
@@ -290,6 +290,20 @@
         margin-top: -3px;
     }
 }
+.content-hred{
+    padding-left: 225px;
+    height: 70px;
+    margin-bottom: 65px;
+    text-align: center;
+    .h2{
+        font-size: 35px;
+        color: $colorYellow;
+        text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.8);
+    }
+    .h3{
+        font-size: 20px;
+    }
+}
 
 /* ---------------------------------------------------
 // 消息公告
@@ -363,7 +377,7 @@
         margin-bottom: 5px;
         h3{
             display: inline-block;
-            width: 204px;
+            width: 196px;
             vertical-align: middle;
             font-size: $fontSize_xxl;
         }
@@ -405,12 +419,18 @@
             max-width: 511px;
             float: left;
             color: $bgColor;
-            input[type='text']{
+            input[type='text'], input[type='password']{
                 min-width: 250px;
             }
             label{
                 display: inline-block;
                 min-width: 170px;
+            }
+            &.formSelect_wrap{
+                width: 250px;
+                .formSelect{
+                    width: 100%;
+                }
             }
         }
         .copy{
@@ -506,13 +526,13 @@
     .personal_title{
         background-image: url(img/subtitle_deposit.png);
     }
-    .psn_content:nth-of-type(1) .deposit_info .text{
-        position: absolute;
-        bottom: 10px;
-        left: 285px;
-        width: 335px;
-        border-bottom: none;
-    }
+    // .psn_content:nth-of-type(1) .deposit_info .text{
+    //     position: absolute;
+    //     bottom: 10px;
+    //     left: 285px;
+    //     width: 335px;
+    //     border-bottom: none;
+    // }
 }
 #deposit_tab{
     li{
@@ -784,10 +804,28 @@
         border-bottom: 1px solid #e2e0e0;
         margin-bottom: 20px;
     }
-    .formSelect_wrap{
-        width: 250px;
-        .formSelect{
-            width: 100%;
+    // .formSelect_wrap{
+    //     width: 250px;
+    //     .formSelect{
+    //         width: 100%;
+    //     }
+    // }
+    #modalSuccess{
+        margin: 50px 0px;
+        text-align: center;
+        .modalIcon{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        h2{
+            display: inline-block;
+            vertical-align: middle;
+            color: $colorRed;
+            font-size: $fontSize_xxl;
+            margin: 0px 10px;
+        }
+        p{
+            margin: 30px auto;
         }
     }
 }
@@ -798,8 +836,13 @@ ul.join_list{
         margin-bottom: 10px;
         line-height: 1.5em;
         padding: 0px;
+        position: relative;
+        padding-left: 24px;
         &:before{
             content: '．';
+            position: absolute;
+            left: 0px;
+            top: 5px;
             font-size: $fontSize_xl;
             line-height: $fontSize;
             color: #e75b07;
@@ -846,6 +889,12 @@ ul.join_list{
 #about{
     .personal_title{
         background-image: url(img/subtitle_about.png);
+    }
+    .psn_menu > li > a:hover .icon_sprite, .psn_menu > li > a.active .icon_sprite{
+        background-position-y: -120px;
+    }
+    .psn_menu > li > a.active .icon_sprite{
+        margin-right: 14px;
     }
 }
 

@@ -1,23 +1,24 @@
 <template>
-    <div id="header">
+    <div id="header" v-if="!/HH/.test(pagename)">
       <div class="topbar">
           <div class="topleft">
               <span class="icon_clock"></span>
-              <span>07 September. 23:45 <small>美东时间</small></span>
+              <span><!-- 07 September. 23:45 -->{{times}}<small>美东时间</small></span>
           </div>
           <div class="topright">
-              <span class="tel"><span class="icon_sprite icon_tel"></span>+63 945-456-456</span>
+              <!-- <span class="tel"><span class="icon_sprite icon_tel"></span>+63 945-456-456</span>
               <a class="signup" href="sign-up.html"><span class="icon_sprite icon_account"></span>免费开户</a>
-              <a class="help" href="help.html"><span class="icon_sprite icon_info"></span>新手指南</a>
+              <a class="help" href="help.html"><span class="icon_sprite icon_info"></span>新手指南</a> 此处在后台配置 Webb提 -->
               <span class="info">
-                  <a class="link blue-green" href="javascript:;">糖果派对1-2</a>
-                  <a class="link blue" href="javascript:;">MG老虎机</a>
+                  <a class="link blue-green" v-for="template in customtemplate" :href="template.pcUrl" :class="customclass[template.id]" >{{template.title}}</a>
+
+                  <!-- <a class="link blue" href="javascript:;">MG老虎机</a>
                   <a class="link green" href="javascript:;">PT角子机</a>
                   <a class="link yellow-green" href="javascript:;">MW千炮捕鱼</a>
                   <a class="link yellow" href="javascript:;">时时彩</a>
                   <a class="link red" href="javascript:;">连环夺宝</a>
                   <span>BC彩票天天返水1.2%</span>
-                  <span>MG返水1.2%</span>
+                  <span>MG返水1.2%</span> -->
               </span>
           </div>
       </div>
@@ -31,7 +32,7 @@
                   </li>
                   <!-- class="hot" -->
                   <li v-for="nav in navBar" v-if="nav.id >= 1000" :id="'nav_' + [nav.enName.toLowerCase()]" :class="{active: urlPath === nav.enName.toLowerCase()}">
-                      <a class="link" @click="judge_towhere([nav.enName.toLowerCase()])"><h2>{{nav.name}}</h2><small>{{nav.enName}}</small></a>
+                      <a  class="link" @click="judge_towhere([nav.enName.toLowerCase()])"><h2>{{nav.name}}</h2><small>{{nav.enName}}</small></a>
                       <ul class="submenu" v-if="nav.isDrop === 1 && nav.list && nav.list.length > 0">
                           <li v-for="sub in nav.list">
                               <a @click="indexToGmae([nav.enName.toLowerCase()],sub.id)">
@@ -41,10 +42,12 @@
                                   </div>
                                   <h3>{{sub.name}}</h3>
                               </a>
+
                           </li>
                       </ul>
+
                   </li>
-                  <li :class="{active: urlPath === 'promo'}">
+                  <li :class="{active: urlPath === 'promo'}"  id="nav_promo">
                       <a href="/promo"><h2>优惠活动</h2><small>PROMO</small></a>
                   </li>
                   <li @click="onlineServices">
@@ -57,9 +60,11 @@
       <div class="account_bar login" v-if="hasLogin===true">
           <span class="account">
               <span>{{userName}}</span>
-              <a href="personal-msg.html" class="icon_sprite icon_mail"><small>4</small></a>
+              <a href="/personalMsg" class="icon_sprite icon_mail icon-email"><em class="red-dot"></em></a>
           </span>
-          <span>¥ {{memberInfo.balance | balanceNo}}<a href="javascript:;" class="icon_sprite icon_refresh" @click="getAccountInfo()"></a></span>
+          <span>¥ <span id="mynew_balance">{{memberInfo.balance | balanceNo}}</span>
+              <a href="javascript:;" class="icon_sprite icon_refresh" @click="getAccountInfo()"></a>
+          </span>
           <span><a href="/personalInfo">个人中心</a></span>
           <span><a href="javascript:;" v-on:click.prevent="deposit_judge()" click="de">存款</a></span>
           <span><a href="javascript:;" v-on:click.prevent="draw_judge()">取款</a></span>
@@ -69,26 +74,26 @@
       </div><!--end 登录后资讯（登录后显示）-->
 
       <!--登录列-->
-      <div class="account_bar" v-if="hasLogin===false">
+      <div class="account_bar" v-if="hasLogin===false && this.$route.name != 'Index'">
           <span class="account">
-              <input placeholder="请输入会员账号" type="text" v-model="loginParam.username" @keyup.enter="logIn()">
+              <input placeholder="请输入会员账号" type="text" v-model="loginParam.username" @keyup.enter="login()">
           </span>
           <span class="password">
-              <input placeholder="请输入密码" type="password" v-model="loginParam.password" @keyup.enter="logIn()">
+              <input placeholder="请输入密码" type="password" v-model="loginParam.password" @keyup.enter="login()">
           </span>
           <span class="code">
-              <input placeholder="请输入验证码" type="text" v-model="loginParam.code">
-              <img src="static/images/verification-code.jpg" alt=""><a class="icon_refresh" href="javascript:;"></a>
-              <a href="javascript:;" class="icon_sprite icon_refresh"></a>
+              <!-- <img v-show="verImgCode!==''" v-lazy="verImgCode" @click="getCode" style="cursor: pointer;"/>
+              <a class="icon-refresh" @click="getCode" style="cursor: pointer;"></a>
+              <em class="line"></em> -->
+              <input placeholder="验证码" type="text" v-model="loginParam.code" @keyup.enter="login()">
+              <img v-show="verImgCode!==''" v-lazy="verImgCode" @click="getCode" style="cursor: pointer;">
+              <a href="javascript:;" class="icon_sprite icon_refresh" @click="getCode"></a>
           </span>
           <span class="btn">
-              <a class="btn_login" href="javascript:;" @click="logIn" :class="'btn-login '+(isLoging?'link_disable':'')">会员登录</a>
-              <a class="btn_reg" href="javascript:;">注册会员</a>
+              <a class="btn_login" href="javascript:;" @click="login" :class="'btn-login '+(isLoging?'link_disable':'')">会员登录</a>
+              <a class="btn_reg" href="/signUp">注册会员</a>
           </span>
       </div><!--end 登录列-->
-
-
-
   </div>
 </template>
 
@@ -107,6 +112,7 @@ export default {
       footer: [],
       navBar: [],
       customtemplate:[],
+      customclass:{'1':'blue','2':'green','3':'yellow','4':'red','5':'blue-green','6':'blue','7':'green','8':'yellow','9':'red','10':'blue-green'} ,
       memberInfo: {},
       times: '',
       photo_url: '',
@@ -117,9 +123,9 @@ export default {
       rightLink:'',
       userId:'',
       loginParam: {
-        username: 'vct033',
-        password: '123456',
-        code: '1'
+        username: '',
+        password: '',
+        code: ''
       },
       verImgCode:'',
       isLoging: false
@@ -134,6 +140,7 @@ export default {
     }
   },
   created:function() {
+
     var _this = this;
     // _this.urlPath = _this.$route.path.replace('/', '');
     _this.userName = common.Cookie.get('userName') || '';
@@ -154,7 +161,7 @@ export default {
             that.memberInfo.balance = data && data.result && data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,');
             common.Cookie.set('memberInfo', JSON.stringify(that.memberInfo));
             $("#mynew_balance").html(data && data.result && data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,'));
-            $(".account-num").html(data && data.result && data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,'));
+            $(".balance").html(data && data.result && data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,'));
             $(".wallet_balance").html(data && data.result && data.result.balance.toString().replace(/(\d{1,2})(?=(\d{3})+\.)/g, '$1,'));
         });
         this.userId = "";
@@ -163,12 +170,14 @@ export default {
     else {
    /*     $(document).on("keydown",function(e){
             if(e.keyCode==13) {
-                that.logIn();
+                that.login();
             }
         });*/
         that.getCode();
     }
     this.getNavData();
+    this.customTemplate();
+
   },
   filters: {
       balanceNo: function(value) {
@@ -178,10 +187,36 @@ export default {
           return (vaule) ? vaule : 0;
       }
   },
+  mounted: function() {
+    var _self = this;
+
+
+    _self.$nextTick(function() {
+      $("#nav_casino").addClass('hot');
+      $("#nav_promo").addClass('hot');
+    })
+  },
   methods: {
-    isActive:function(e){
-      // debugger;
-      //return window.location.pathname.split('?')[0];
+    customTemplate: function () {
+        var _self = this;
+        common.ajax('cms/client/customtemplate/list', {}, function (data) {
+            var tem = data && data.result || {};
+
+            for(var i=0;i<tem.length;i++){ // 为了闪动效果
+                tem[i].id = (i+1) ;
+            }
+            _self.customtemplate = tem || [];
+            // 滚动
+            // _self.$nextTick(function () {
+            //     $(".sys-notice").slide({
+            //         mainCell: ".bd ul",
+            //         autoPage: true,
+            //         effect: "leftMarquee",
+            //         autoPlay: true,
+            //         vis: 1, interTime: 50
+            //     });
+            // });
+        })
     },
     getNavData: function() {
         var _self = this;
@@ -196,10 +231,13 @@ export default {
             _self.siteName = data && data.result && data.result.siteName;
             document.title = _self.siteName||'';
             _self.logoPhoto = common.photo_url + "/pic/" + _self.siteLogo + "/0"; //0原图大小 other 就是百分比（10%）
-            $(".logo").css("backgroundImage", "url(" + _self.logoPhoto + ")");
+            // $(".logo").css("backgroundImage", "url(" + _self.logoPhoto + ")");
             _self.$nextTick(function () {
                 // 加载完后再调用，否则会有问题
                 // _self.indexDrog() ;
+              $("#nav_casino").addClass('hot');
+//              $("#nav_promo").addClass('hot');
+
         })
 
         });
@@ -255,7 +293,7 @@ export default {
         };
         timeDate();
     },
-    logIn: function () {
+    login: function () {
       var _self = this
       var username = _self.loginParam.username
       var password = _self.loginParam.password
@@ -283,7 +321,7 @@ export default {
         common.toast({title: '提示信息', content: '登录成功！', time: 2});
         $("#free_open_account").hide();
         setTimeout(function () {
-          window.location.reload();
+          location.href='/';
         }, 2000);
       }, 'post', function () {
         setTimeout(function () {
@@ -307,16 +345,20 @@ export default {
             _self.verImgCode = data.result && 'data:image/png;base64,' + data.result.code || '';
         });
         _self.$nextTick(function () {
-            $('.icon-refresh')
-            .removeAttr("style");
-
-            setTimeout(function () {
-                $('.icon-refresh').css({
-                    cursor: 'pointer',
-                    transition: 'all 3s',
-                    transform: 'rotate(720deg)'
-                });
-            }, 300);
+          $('.icon_refresh_money,.icon_refresh').addClass('rotate');
+          setTimeout(function () {
+            $('.icon_refresh_money,.icon_refresh').removeClass('rotate');
+          }, 2000);
+//            $('.icon-refresh')
+//            .removeAttr("style");
+//
+//            setTimeout(function () {
+//                $('.icon-refresh').css({
+//                    cursor: 'pointer',
+//                    transition: 'all 3s',
+//                    transform: 'rotate(720deg)'
+//                });
+//            }, 300);
         });
     },
     judge_towhere:function(ab){
@@ -334,12 +376,13 @@ export default {
             //     common.toast({content: '请先登录！', time: 2});
             // }
         } else if(ab=="lottery"){
-            if(_self.hasLogin){ //已经登录
-               _self.loadGameList(1003);
-             //   location.href = "lottery";
-            } else {
-                common.toast({content: '请先登录！', time: 2});
-            }
+            location.href = "lottery";
+            // if(_self.hasLogin){ //已经登录
+            //    _self.loadGameList(1003);
+            //  //   location.href = "lottery";
+            // } else {
+            //     common.toast({content: '请先登录！', time: 2});
+            // }
         }
     },
     indexToGmae:function(ab,id){
@@ -351,13 +394,15 @@ export default {
         } else if(ab=="sports"){
             location.href = "sports";
             // location.href = "casino?id="+id;
+        }else if(ab=="lottery"){
+            location.href = "lottery";
         }
     },
     deposit_judge:function(){
       common.ajax('tethys-user/user/menu/level/auth', {}, function(data) {
           if (data && data.apistatus == 1) {
               if (data && data.result == 0) { // 1锁定 0 非锁定
-                  location.href = "deposit";
+                  location.href = "personalDeposit";
               } else {
                   common.toast({
                       content: '当前无法操作，请联系客服',
@@ -382,7 +427,7 @@ export default {
       common.ajax('tethys-user/user/menu/level/auth', {}, function(data) {
           if (data && data.apistatus == 1) {
               if (data && data.result == 0) { // 1锁定 0 非锁定
-                  location.href = "callin";
+                  location.href = "personalCallin";
               } else {
                   common.toast({
                       content: '当前无法操作，请联系客服',
@@ -408,6 +453,10 @@ export default {
         $(".lone").click();
         $(".sone").removeClass("icon-refreshhover");
         $(".sone").addClass("icon-refreshmyword");
+        $('.icon_sprite.icon_refresh').addClass('rotate');
+      setTimeout(function () {
+        $('.icon_sprite.icon_refresh').removeClass('rotate');
+      }, 500);
         common.ajax('member/refresh', {}, function(data) {
             setTimeout(function() {
                 $(".sone").removeClass("icon-refreshmyword");
@@ -447,3 +496,22 @@ export default {
   
 }
 </script>
+<style>
+  a{
+    cursor: pointer!important;
+  }
+  .red-dot{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 0px;
+    margin-left: 12px;
+    background-color: #bb2370;
+    width: 11px;
+    height: 11px;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: center;
+    border-radius: 6px;
+  }
+
+</style>

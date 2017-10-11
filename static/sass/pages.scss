@@ -8,7 +8,8 @@
 }
 .mainad{
     // position: relative;
-    background-color: #110e1b;
+    // background-color: #110e1b;
+    background-color: #000;
     .ad_slider{
         width: 1280px;
         height: 410px;
@@ -74,18 +75,18 @@
             }
             img{
                 height: 28px;
-                -webkit-transform: -webkit-translate(-2px, -3px);
-                -ms-transform: -ms-translate(-2px, -3px);
-                transform: translate(-2px, -3px);
+                -webkit-transform: -webkit-translate(-2px, -1px);
+                -ms-transform: -ms-translate(-2px, -1px);
+                transform: translate(-2px, -1px);
                 // margin-top: -3px;
                 // margin-left: -2px;
                 vertical-align: center;
             }
             .icon_refresh{
                 margin-right: -4px;
-                -webkit-transform: -webkit-translate(0px, -3px);
-                -ms-transform: -ms-translate(0px, -3px);
-                transform: translate(0px, -3px);
+                // -webkit-transform: -webkit-translate(0px, -3px);
+                // -ms-transform: -ms-translate(0px, -3px);
+                // transform: translate(0px, -3px);
             }
         }
     }
@@ -97,7 +98,7 @@
         height:30px;
         padding: 0px 5px;
         width: 100%;
-        font-size: $fontSize_m;
+        // font-size: $fontSize_m;
     }
     .btn{
         line-height: 26px;
@@ -271,7 +272,7 @@
     }
 }
 .index_casino{
-    background: url(img/bg_casino.jpg) no-repeat center center #262031;
+    background: url(img/bg_casino.jpg) no-repeat center center #2a2038;
     background-size: auto 100%;
     // @media only screen and (max-width:1180px){
     //     background-size: auto 100%;
@@ -317,6 +318,9 @@
                 &.item_gpi{ background-image: url(img/item_gpi.png) };
                 &.item_mw{ background-image: url(img/item_mw.png) };
                 &.item_gns{ background-image: url(img/item_gns.png) };
+                &.item_bbin{ background-image: url(img/item_bbin.png) };
+                &.item_ag{ background-image: url(img/item_ag.png) };
+                &.item_pt{ background-image: url(img/item_pt.png) };
             }
             &:hover{
                 color: #fff;
@@ -374,7 +378,9 @@
             //     margin-left: 9.7px;
             // }
             img{
-                height: 140px;
+                // height: 140px;
+                height: 98px;
+                margin-top: 21px;
                 width: 100%;
                 // @media only screen and (max-width:1279px){
                 //     height: 129px;
@@ -1022,6 +1028,129 @@
 .page_lotteryList{
     @extend .page_casinoList;
 }
+.pagebox .pagemenu_slider {
+        text-align: center;
+}
+.pagebox .item_pagemenu {
+    width: 192px;
+    display: inline-block;
+}
+.lotterys_list{
+    width: 1000px;
+    margin: 40px auto;
+    &:after{
+        content: '';
+        display: table;
+        clear: both;
+    }
+    .lotterys_list_content{
+        margin:0px;
+        padding: 0px;
+        li{
+            list-style: none;
+            padding:0px;
+            width: 487px;
+            height: 252px;
+            display: inline-table;
+            margin: 60px 26px 30px 0px;
+            position: relative;
+            text-align: center;
+            border: 1px solid $gdGoldFrom2;
+            float: left;
+            &:nth-child(even){
+                margin-right:0;
+            }
+            &:hover{
+                border-color: $gdGoldFrom3;
+                box-shadow: 0px 0px 30px rgba(0,0,0,0.6);
+                -webkit-transition: border-color 300ms ease-in;
+                -moz-transition: border-color 300ms ease-in;
+                -ms-transition: border-color 300ms ease-in;
+                transition: border-color 300ms ease-in;
+                // .bg{background-position-x: 0px;}
+                // .img{background-position-x: -20px;}
+            }
+            .bg {
+                width: 485px;
+                height:323px;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                background-repeat: no-repeat;
+                background-position: 0px -363px;
+                -webkit-transition: background-position 200ms ease-out;
+                -moz-transition: background-position 500ms ease-out;
+                -ms-transition: background-position 500ms ease-out;
+                transition: background-position 500ms ease-out;
+                background-size: 110%;
+            }
+            .img {
+                width: 485px;
+                height: 250px;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                background-repeat: no-repeat;
+                background-position: 0px 0px;
+                -webkit-transition: background-position 200ms ease-out;
+                -moz-transition: background-position 200ms ease-out;
+                -ms-transition: background-position 500ms ease-out;
+                transition: background-position 500ms ease-out;
+                background-size: 110%;
+            }
+            .title{
+                height: 108px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                z-index: 3;
+                width: 100%;
+                padding: 15px;
+                text-align: center;
+                background-color: rgba(0,0,0,0.8);
+            }
+            .title_img{
+                margin-top: 5px;
+                width: 150px;
+                height: 50px;
+                background-size: 100%;
+                display: inline-block;
+                float: left;
+            }
+            &.lottery_bc .title_img{ background-image: url(../../static/images/logo_bc.png);width: 208px;height: 62px;}
+            &.lottery_bb .title_img{background-image: url(../../static/images/logo_bb.png); width:126px; height: 68px;}
+            h2{
+                font-size: 18px;
+                margin-top: 23px;
+                display: inline-block;
+                margin-left: 10px;
+                color: #fff;
+                font-weight: normal;
+                vertical-align: bottom;
+                float: left;
+            }
+            .btn_enter{
+                position: absolute;
+                bottom: 13px;
+                z-index: 4;
+                left: 50%;
+            }
+            .gameopen_parent{
+                margin-left: 100px;
+                display: inline-block;
+                margin-top: 10px;
+                color: #fff;
+                line-height: 34px;
+                height: 34px;
+                padding: 0px 30px;
+                @include gdGold();
+                &:hover{
+                    @include gdOrange();
+                }
+            }
+        }
+    }
+}
 
 /* ---------------------------------------------------
 // sports
@@ -1035,6 +1164,129 @@
         background-image: url(img/page_menu_sports.png);
     }
 }
+.sports_list{
+    width: 1000px;
+    margin: 40px auto;
+    &:after{
+        content: '';
+        display: table;
+        clear: both;
+    }
+    .sports_list_content{
+        margin:0px;
+        padding: 0px;
+        li{
+            list-style: none;
+            padding:0px;
+            width: 487px;
+            height: 252px;
+            display: inline-table;
+            margin: 60px 26px 30px 0px;
+            position: relative;
+            text-align: center;
+            border: 1px solid $gdGoldFrom2;
+            float: left;
+            &:nth-child(even){
+                margin-right:0;
+            }
+            &:hover{
+                border-color: $gdGoldFrom3;
+                box-shadow: 0px 0px 30px rgba(0,0,0,0.6);
+                -webkit-transition: border-color 300ms ease-in;
+                -moz-transition: border-color 300ms ease-in;
+                -ms-transition: border-color 300ms ease-in;
+                transition: border-color 300ms ease-in;
+                .bg{background-position-x: 0px;}
+                .img{background-position-x: 0px;}
+            }
+            .bg{
+                width: 485px;
+                height: 283px;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                background-repeat: no-repeat;
+                background-position: left 0px bottom 0px;
+                -webkit-transition: background-position 200ms ease-out;
+                -moz-transition: background-position 500ms ease-out;
+                -ms-transition: background-position 500ms ease-out;
+                transition: background-position 500ms ease-out;
+            }
+            .img {
+                width: 485px;
+                height: 250px;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                background-repeat: no-repeat;
+                background-position: left 40px top -120px;
+                -webkit-transition: background-position 200ms ease-out;
+                -moz-transition: background-position 200ms ease-out;
+                -ms-transition: background-position 500ms ease-out;
+                transition: background-position 500ms ease-out;
+            }
+            .title{
+                height: 108px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                z-index: 3;
+                width: 100%;
+                padding: 15px;
+                text-align: center;
+                background-color: rgba(0,0,0,0.8);
+            }
+            .title_img{
+                margin-top: 5px;
+                width: 150px;
+                height: 50px;
+                background-size: 100%;
+                display: inline-block;
+                float: left;
+            }
+            &.sport_ug .title_img{background-image: url(../../static/css/img/logo_ug.png); width: 208px; height: 76px;}
+            &.sport_bb .title_img{background-image: url(../../static/css/img/logo_bb.png); width:126px; height: 68px;}
+            h2{
+                font-size: 18px;
+                margin-top: 23px;
+                display: inline-block;
+                margin-left: 10px;
+                color: #fff;
+                font-weight: normal;
+                vertical-align: bottom;
+                float: left;
+            }
+            .btn_enter{
+                position: absolute;
+                bottom: 13px;
+                z-index: 4;
+                left: 50%;
+            }
+            .gameopen_parent{
+                margin-left: 100px;
+                display: inline-block;
+                margin-top: 10px;
+                color: #fff;
+                line-height: 34px;
+                height: 34px;
+                padding: 0px 30px;
+                @include gdGold();
+                &:hover{
+                    @include gdOrange();
+                }
+            }
+        }
+    }
+}
+// .pagebox .pagemenu_slider {
+
+// text-align: center;
+// }
+// .pagebox .item_pagemenu {
+
+// width: 192px;
+// display: inline-block;
+// }
 
 /* ---------------------------------------------------
 // promo

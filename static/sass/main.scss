@@ -3,7 +3,7 @@
 html, body{
     margin: 0px;
     padding: 0px;
-    font-family: 'Microsoft YaHei',Helvetica,Arial,sans-serif;
+    font-family: 'Microsoft YaHei','微軟正黑體',Helvetica,Arial,sans-serif;
     background-color: $bgColor;
     color: $fontColor;
     font-size: $fontSize;
@@ -47,6 +47,7 @@ p{
 input{
     border: none;
     outline: none;
+    font-family: 'Microsoft YaHei','微軟正黑體',Helvetica,Arial,sans-serif;
 }
 
 /* common */
@@ -135,7 +136,7 @@ $formHeight : 35px;
         outline: none;
     }
 }
-a.formBtn, .formBtn{
+a.formBtn, .formBtn, .btn-default, .btn-primary{
     display: inline-block;
     height: 37px;
     position: relative;
@@ -201,10 +202,10 @@ a.formBtn, .formBtn{
     &.icon_item{
         background-position: -216px 0px;
     }
-    &.icon_wechat{
+    &.icon_wechat, &.icon_pay_0{
         background-position: 0px -24px;
     }
-    &.icon_zfb{
+    &.icon_zfb, &.icon_pay_1{
         background-position: -24px -24px;
     }
     &.icon_success{
@@ -213,22 +214,22 @@ a.formBtn, .formBtn{
     &.icon_copy{
         background-position: -96px -24px;
     }
-    &.icon_about{
+    &.icon_about, &.icon_about.icon-1{
         background-position: 0px -96px;
     }
-    &.icon_policy{
+    &.icon_policy, &.icon_about.icon-2{
         background-position: -24px -96px;
     }
-    &.icon_duty{
+    &.icon_duty, &.icon_about.icon-3{
         background-position: -48px -96px;
     }
-    &.icon_disclaimer{
+    &.icon_disclaimer, &.icon_about.icon-4{
         background-position: -72px -96px;
     }
-    &.icon_join{
+    &.icon_join, &.icon_about.icon-5{
         background-position: -96px -96px;
     }
-    &.icon_contact{
+    &.icon_contact, &.icon_about.icon-6{
         background-position: -120px -96px;
     }
     &.icon_ok{
@@ -319,7 +320,7 @@ a.formBtn, .formBtn{
             margin-right: 20px;
         }
         .info{
-            margin-right: 0px;
+            margin-right: 10px;
             color: $fontColor_yellow;
             span{
                 padding: 0px 10px;
@@ -334,7 +335,7 @@ a.formBtn, .formBtn{
                 -webkit-animation-duration: 2s;
                 animation-iteration-count: infinite;
                 animation-duration: 2s;
-                margin: 0px 3px;
+                margin: 0px 10px;
                 &:hover{
                     text-decoration: underline;
                 }
@@ -408,6 +409,7 @@ a.formBtn, .formBtn{
     .menu{
         float:right;
         width: calc( 100% - 300px);
+        max-width: 75%;
         .mainmenu{
             text-align: right;
             margin: 0px 0px 0px 50px;
@@ -868,6 +870,22 @@ a.formBtn, .formBtn{
     50%  {color: #ff0;}
     100% {color: #0168ab;}
 }
+.rotate{animation: myfirst 2s;}
+@keyframes myfirst {
+  form{
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);}
+  to{
+    -webkit-transform: rotate(720deg);
+    -moz-transform: rotate(720deg);
+    -ms-transform: rotate(720deg);
+    -o-transform: rotate(720deg);
+    transform: rotate(720deg);
+  }
+}
 
 /* ---------------------------------------------------
 // popup
@@ -1046,4 +1064,143 @@ a.formBtn, .formBtn{
             }
         }
     }
+}
+
+/* bootstrap modal */
+.modal-open {
+  overflow: hidden;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+.modal.fade .modal-dialog {
+  -webkit-transition: -webkit-transform .3s ease-out;
+       -o-transition:      -o-transform .3s ease-out;
+          transition:         transform .3s ease-out;
+  -webkit-transform: translate(0, -25%);
+      -ms-transform: translate(0, -25%);
+       -o-transform: translate(0, -25%);
+          transform: translate(0, -25%);
+}
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+       -o-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+.modal-content {
+  position: relative;
+  -webkit-background-clip: padding-box;
+          background-clip: padding-box;
+  outline: 0;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    background-color: #fcfbf8;
+    border: 1px solid #d8a44e;
+  color: $bgColor;
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000;
+}
+.modal-backdrop.fade {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+.modal-backdrop.in {
+  filter: alpha(opacity=50);
+  opacity: .5;
+}
+.modal-header {
+  padding: 10px 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.modal-header .close {
+  margin-top: -2px;
+  top: 10px;
+	right: 10px;
+	position: absolute;
+    background: url(/static/img/icon_sprite.24ae491.png) no-repeat;
+    background-size: 256px 256px;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    background-position: -168px -24px;
+    text-indent: -100px;
+    overflow: hidden;
+}
+.modal-title {
+  margin: 0;
+  line-height: 1.42857143;
+}
+.modal-body {
+  position: relative;
+  padding: 15px;
+}
+.modal-footer {
+  padding: 15px;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+}
+.modal-footer button{
+    font-size: $fontSize_m;
+    cursor: pointer;
+}
+.modal-footer .btn + .btn {
+  display: inline-block;
+}
+.modal-footer .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+.modal-footer .btn-block + .btn-block {
+  margin-left: 0;
+}
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 600px;
+    margin: 30px auto;
+  }
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+  }
+  .modal-sm {
+    width: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .modal-lg {
+    width: 900px;
+  }
 }

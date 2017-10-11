@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="footer">
+        <div id="footer" v-if="!/HH/.test(pagename)">
             <div class="contain_width">
                 <div class="link_list">
                     <dl class="link_block parner">
@@ -44,13 +44,20 @@
                 </div>
                 <div class="footer_menu">
                     <ul>
-                        <li><a href="about.html">关于我们</a></li>
+                        
+                        <li v-for="(item,index) in footer ">
+                            <a  v-if="item.code != 'HELP'" :href="'/about?id='+[item.code]">{{item.title}}</a>
+                            <a  href="/help" v-else >{{item.title}}</a>
+                        </li>
+
+                        <!-- <li><a href="/about?id=IC01">关于我们</a></li>
                         <li><a href="policy.html">隐私政策</a></li>
                         <li><a href="duty.html">责任博彩</a></li>
                         <li><a href="disclaimer.html">免责声明</a></li>
                         <li><a href="join.html">代理加盟</a></li>
                         <li><a href="contact.html">联系我们</a></li>
-                        <li><a href="help.html">帮助中心</a></li>
+                        <li><a href="help.html">帮助中心</a></li> -->
+
                     </ul>
                 </div>
             </div>
@@ -62,9 +69,24 @@
 <script>
 export default {
   name: 'bottomFooter',
-  data () {
+  data:function(){
     return {
-      msg: 'Welcome to Your Vue.js App'
+      footer:[],
+      pagename: '',
+    }
+  },
+  created:function(){
+    var _self=this;
+    _self.getFooterData();
+    this.pagename = this.$route.name || '';
+  },
+  methods:{
+    getFooterData:function(){
+      var _self = this;
+      common.ajax('cms/client/copyright/bottom', {}, function(data) {
+        _self.footer = data && data.result || [];
+        common.Cookie.set('footer', JSON.stringify(_self.footer));
+      });
     }
   }
 }

@@ -18,7 +18,9 @@
           <div class="contain_width">
             <template v-for="(item,index) in lives" >
             <!--mg视讯-->
-            <ul class="page_liveList" id="live_mg" v-bind:class="{'active' : index===0}">
+            <!-- $('#live_bb, #live_sb, #live_gd').addClass('temp_block'); -->
+            <!-- v-bind:class="{'active' : index===0, 'temp_block':id === 10011 || id === 10082|| id === 10092}" -->
+            <ul class="page_liveList" :id="'live_' + kind[id]" v-bind:class="{'active' : index===0, 'temp_block':id === 10011 || id === 10082|| id === 10092}">
               <li v-for="(game,key) in item" >
                   <div class="bg" :style="{backgroundImage: 'url('+[photo_url +'/pic/'+[game.img]+'/0']+')'}"></div>
                   <div class="img" :style="{backgroundImage: 'url('+[photo_url +'/pic/'+[game.img]+'/0']+')'}"></div>
@@ -27,10 +29,10 @@
                       <span>{{game.name}}</span>
                   </div>
                   <div class="btn">
-                      <a href="javascript:;" @click="enterGame(game.id)" v-if="game.id">进入游戏</a>
+                      <a href="javascript:;" @click="$parent.enterGame(game.id)" v-if="game.id">进入游戏</a>
                       <a href="javascript:;" v-else>进入游戏</a>
                       <div class="btn_list" v-if="game.list">
-                          <a href="javascript:;" v-for="gamedetail in game.list" @click="enterGame(gamedetail.id)">{{gamedetail.name}}</a>
+                          <a href="javascript:;" v-for="gamedetail in game.list" @click="$parent.enterGame(gamedetail.id)">{{gamedetail.name}}</a>
                           
                       </div>
                   </div>
@@ -39,10 +41,9 @@
             </template>
             
             <!--bb视讯 （版型不同）-->
-            <ul class="page_liveList" id="live_bb" style="display:none;">
+            <!-- <ul class="page_liveList" id="live_bb" style="display:none;">
               <li>
                   <div class="bg" style="background-image: url(../static/images/live/bb/Game_3008_80.jpg)"></div>
-                  <!--<div class="img" style=""></div>-->
                   <div class="brand">
                       <span class="logo" style="background-image: url(../static/images/brand/bbin.png)"></span>
                       <span>骰宝</span>
@@ -56,7 +57,7 @@
                       </div>
                   </div>
               </li>
-            </ul><!--end bb视讯-->
+            </ul> --><!--end bb视讯-->
             
           </div>
         </div>
@@ -65,12 +66,16 @@
 
 <script>
 var md5 = require('md5');
+const queryString = require('query-string');
+
+
+
 export default {
     name: 'Live',
     data: function () {
         return {
           kind:{
-            '10002':'ag', 
+            '10002':'mg',
             '10011':'bbin',
             '10021':'ag',
             '10032':'pt',
@@ -101,7 +106,8 @@ export default {
         }
     },
     created: function () {
-        this.catId = common.getQueryString('id') || '';
+        var idStr = queryString.parse(location.search).id;
+        this.catId = idStr ? parseInt(idStr) : '';
         this.hasLogin = common.ifLanded();
         this.photo_url = common.photo_url;
         this.getGameAll('system', this.catId);
@@ -291,43 +297,43 @@ export default {
             _self.id = categoryId;
             this.getGameAll(_self.table, _self.id);
         },
-        enterGame: function (id) {
-            var _self = this;
-            if (_self.hasLogin === false) {
-                _self.$nextTick(function () {
-                    common.$message({
-                        title: '登陆提示',
-                        content: '请先登录！！',
-                        hc: true,
-                        okcb: function () {
-                            _self.$router.push({path: '/'});
-                        }
-                    });
-                });
-                return;
-            }
-            var win = common.openGame();
-            if(openGameSize<2){
-                win.document.write(loadStr) ;
-            }
-            var loop = setInterval(function() {
-                if(win .closed) {
-                    openGameSize = 0 ;
-                    clearInterval(loop);
-                }
-            }, 500);
-            common.ajax('config/kd/game/start',{id: id}, function (data) {
-                if(data.apistatus =='0'){
-                    win.close();
-                    common.toast({content: "网络较差，请稍后重试！"});
-                }else {
-                    if (data && data.result && data.result.content) {
-                        var url = data.result.content;
-                        win = common.openGame(url);
-                    }
-                }
-            }, 'post');
-        }
+        // enterGame: function (id) {
+        //     var _self = this;
+        //     if (_self.hasLogin === false) {
+        //         _self.$nextTick(function () {
+        //             common.$message({
+        //                 title: '登陆提示',
+        //                 content: '请先登录！！',
+        //                 hc: true,
+        //                 okcb: function () {
+        //                     _self.$router.push({path: '/'});
+        //                 }
+        //             });
+        //         });
+        //         return;
+        //     }
+        //     var win = common.openGame();
+        //     if(openGameSize<2){
+        //         win.document.write(loadStr) ;
+        //     }
+        //     var loop = setInterval(function() {
+        //         if(win .closed) {
+        //             openGameSize = 0 ;
+        //             clearInterval(loop);
+        //         }
+        //     }, 500);
+        //     common.ajax('config/kd/game/start',{id: id}, function (data) {
+        //         if(data.apistatus =='0'){
+        //             win.close();
+        //             common.toast({content: "网络较差，请稍后重试！"});
+        //         }else {
+        //             if (data && data.result && data.result.content) {
+        //                 var url = data.result.content;
+        //                 win = common.openGame(url);
+        //             }
+        //         }
+        //     }, 'post');
+        // }
     }
 }
 </script>

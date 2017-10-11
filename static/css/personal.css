@@ -47,10 +47,6 @@
 
 .psn_menu > li .icon_sprite { margin: 0px 10px; }
 
-.psn_menu#footer_menu a:hover .icon_sprite, .psn_menu#footer_menu a.active .icon_sprite { background-position-y: -120px; }
-
-.psn_menu#help_menu a:hover .icon_sprite, .psn_menu#help_menu a.active .icon_sprite { background-position-y: -168px; }
-
 .psn_tab li { cursor: pointer; float: left; text-align: center; position: relative; z-index: 1; color: #c1c1c1; border: 1px solid #d2d2d2; border-top: 5px solid #b4ab9b; margin-right: -1px; padding: 7px 10px; font-size: 15px; }
 
 .psn_tab li .icon_tab { display: inline-block; vertical-align: middle; width: 40px; height: 40px; background: url(img/icon_tab.png) no-repeat; background-size: 400px 400px; margin-right: 5px; -webkit-transform: translateY(-3px); -ms-transform: translateY(-3px); transform: translateY(-3px); }
@@ -123,6 +119,12 @@
 
 .msg_success .icon_sprite { width: 30px; height: 30px; margin-right: 10px; vertical-align: middle; margin-top: -3px; }
 
+.content-hred { padding-left: 225px; height: 70px; margin-bottom: 65px; text-align: center; }
+
+.content-hred .h2 { font-size: 35px; color: #d8a44e; text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.8); }
+
+.content-hred .h3 { font-size: 20px; }
+
 /* ---------------------------------------------------
 // 消息公告
 --------------------------------------------------- */
@@ -157,7 +159,7 @@
 
 .psn_info dt { font-size: 20px; color: #e75b07; margin-bottom: 5px; }
 
-.psn_info dt h3 { display: inline-block; width: 204px; vertical-align: middle; font-size: 20px; }
+.psn_info dt h3 { display: inline-block; width: 196px; vertical-align: middle; font-size: 20px; }
 
 .psn_info dt a { display: inline-block; vertical-align: middle; margin-top: -4px; }
 
@@ -173,9 +175,13 @@
 
 .psn_info ul .form { max-width: 511px; float: left; color: #10061f; }
 
-.psn_info ul .form input[type='text'] { min-width: 250px; }
+.psn_info ul .form input[type='text'], .psn_info ul .form input[type='password'] { min-width: 250px; }
 
 .psn_info ul .form label { display: inline-block; min-width: 170px; }
+
+.psn_info ul .form.formSelect_wrap { width: 250px; }
+
+.psn_info ul .form.formSelect_wrap .formSelect { width: 100%; }
 
 .psn_info ul .copy { float: right; cursor: pointer; width: 200px; color: #e75b07; }
 
@@ -212,8 +218,6 @@
 // 存款
 --------------------------------------------------- */
 #personal-deposit .personal_title { background-image: url(img/subtitle_deposit.png); }
-
-#personal-deposit .psn_content:nth-of-type(1) .deposit_info .text { position: absolute; bottom: 10px; left: 285px; width: 335px; border-bottom: none; }
 
 #deposit_tab li { width: 194.5px; }
 
@@ -351,15 +355,19 @@
 
 .join_wrap .bottom_line { padding-bottom: 20px; border-bottom: 1px solid #e2e0e0; margin-bottom: 20px; }
 
-.join_wrap .formSelect_wrap { width: 250px; }
+.join_wrap #modalSuccess { margin: 50px 0px; text-align: center; }
 
-.join_wrap .formSelect_wrap .formSelect { width: 100%; }
+.join_wrap #modalSuccess .modalIcon { display: inline-block; vertical-align: middle; }
+
+.join_wrap #modalSuccess h2 { display: inline-block; vertical-align: middle; color: #fb0202; font-size: 20px; margin: 0px 10px; }
+
+.join_wrap #modalSuccess p { margin: 30px auto; }
 
 ul.join_list { margin: 20px 0px; }
 
-ul.join_list li { border-bottom: 0px; margin-bottom: 10px; line-height: 1.5em; padding: 0px; }
+ul.join_list li { border-bottom: 0px; margin-bottom: 10px; line-height: 1.5em; padding: 0px; position: relative; padding-left: 24px; }
 
-ul.join_list li:before { content: '．'; font-size: 18px; line-height: 14px; color: #e75b07; }
+ul.join_list li:before { content: '．'; position: absolute; left: 0px; top: 5px; font-size: 18px; line-height: 14px; color: #e75b07; }
 
 /* ---------------------------------------------------
 // 会员注册
@@ -380,6 +388,10 @@ ul.join_list li:before { content: '．'; font-size: 18px; line-height: 14px; col
 // 关於我们
 --------------------------------------------------- */
 #about .personal_title { background-image: url(img/subtitle_about.png); }
+
+#about .psn_menu > li > a:hover .icon_sprite, #about .psn_menu > li > a.active .icon_sprite { background-position-y: -120px; }
+
+#about .psn_menu > li > a.active .icon_sprite { margin-right: 14px; }
 
 /* ---------------------------------------------------
 // 隐私政策
