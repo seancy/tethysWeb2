@@ -473,10 +473,10 @@ export default {
           _self.changeBankCard =false;
 //          common.toast({
 //            content: '<div class="icon_warning"></div>\n' +
-//            '            <p class="warning_text">当前没有绑定取款银行卡，无法完成取款，<br />请绑定银行卡继续操作！</p>！'
+//            '            <p class="warning_text">当前没有绑定取款银行卡，无法完成取款，<br />请绑定银行卡继续操作！</p>'
 //          });
           var source = '<div class="icon_warning"></div>\n' +
-            '            <p class="warning_text">当前没有绑定取款银行卡，无法完成取款，<br />请绑定银行卡继续操作！</p>！'
+            '            <p class="warning_text">当前没有绑定取款银行卡，无法完成取款，<br />请绑定银行卡继续操作！</p>'
 
          showModal(source);
         } else {
