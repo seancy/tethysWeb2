@@ -1209,7 +1209,7 @@
             list-style: none;
             padding:0px;
             width: 487px;
-            height: 252px;
+            height: 249px;
             display: inline-table;
             margin: 60px 26px 30px 0px;
             position: relative;
@@ -1227,16 +1227,16 @@
                 -ms-transition: border-color 300ms ease-in;
                 transition: border-color 300ms ease-in;
                 .bg{background-position-x: 0px;}
-                .img{background-position-x: 0px;}
+                .img{background-position-x: -20px;}
             }
             .bg{
                 width: 485px;
-                height: 283px;
+                height: 292px;
                 position: absolute;
                 bottom: 0px;
                 left: 0px;
                 background-repeat: no-repeat;
-                background-position: left 0px bottom 0px;
+                background-position: left -30px bottom 0px;
                 -webkit-transition: background-position 200ms ease-out;
                 -moz-transition: background-position 500ms ease-out;
                 -ms-transition: background-position 500ms ease-out;
@@ -1244,12 +1244,12 @@
             }
             .img {
                 width: 485px;
-                height: 250px;
+                height: 292px;
                 position: absolute;
                 bottom: 0px;
                 left: 0px;
                 background-repeat: no-repeat;
-                background-position: left 40px top 0px;
+                background-position: left 0px top 0px;
                 -webkit-transition: background-position 200ms ease-out;
                 -moz-transition: background-position 200ms ease-out;
                 -ms-transition: background-position 500ms ease-out;

@@ -351,11 +351,29 @@
 
 #join_tab li:hover .icon_tab, #join_tab li.active .icon_tab { background-position-y: -360px; }
 
-#join .psn_table { margin-top: 0px; }
+.table-ui { margin-top: 0px; border-collapse: collapse; width: 100%; }
 
-#join .psn_table th, #join .psn_table td { text-align: center; border: 1px solid #e1ddd1; }
+.table-ui th, .table-ui td { padding: 8px; word-break: break-all; text-align: center; border: 1px solid #e1ddd1; }
 
-#join .psn_table thead tr { border-bottom: none; }
+.table-ui th:first-child, .table-ui td:first-child { text-align: center; }
+
+.table-ui th.td_center, .table-ui td.td_center { text-align: center; }
+
+.table-ui th { background-color: #f1e8c6; color: #6a644c; font-weight: normal; white-space: nowrap; }
+
+.table-ui td { font-size: 13px; }
+
+.table-ui tbody tr { background-color: #f1efe8; border-top: 1px solid #e1ddd1; border-bottom: none; }
+
+.table-ui tbody tr:first-child { border-top: none; }
+
+.table-ui tbody tr:nth-child(odd) { background-color: #fff; }
+
+.table-ui tfoot tr { border-top: 1px solid #e1ddd1; }
+
+.table-ui tfoot td { background-color: #f1e8c6; }
+
+.table-ui tfoot td .td_count { margin: 0px 20px; }
 
 .join_wrap { margin: 10px 30px; }
 

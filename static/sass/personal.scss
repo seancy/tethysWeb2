@@ -786,15 +786,53 @@
         }
     }
 }
-#join .psn_table{
+.table-ui{
     margin-top: 0px;
+    border-collapse: collapse;
+    width: 100%;
     th,td{
+        padding: 8px;
+        word-break: break-all;
         text-align: center;
         border: 1px solid #e1ddd1;
+        &:first-child{
+            text-align: center;
+        }
+        &.td_center{
+            text-align: center;
+        }
     }
-    thead{
+    th{
+        background-color: #f1e8c6;
+        color: #6a644c;
+        font-weight: normal;
+        white-space: nowrap;
+    }
+    td{
+        font-size: $fontSize_s;
+    }
+    tbody{
         tr{
+            background-color: #f1efe8;
+            border-top: 1px solid #e1ddd1;
             border-bottom: none;
+            &:first-child{
+                border-top: none;
+            }
+            &:nth-child(odd){
+                background-color: #fff;
+            }
+        }
+    }
+    tfoot{
+        tr{
+            border-top: 1px solid #e1ddd1;
+        }
+        td{
+            background-color: #f1e8c6;
+            .td_count{
+                margin: 0px 20px;
+            }
         }
     }
 }
