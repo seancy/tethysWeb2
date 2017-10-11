@@ -65,6 +65,10 @@
 
 .psn_tab li:hover, .psn_tab li.active { z-index: 2; color: #d8a44e; border-color: #d8a44e; background: white; /* Old browsers */ background: -moz-linear-gradient(top, white 40%, #e4d4b3 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(top, white 40%, #e4d4b3 100%); /* Chrome10-25,Safari5.1-6 */ background: -webkit-gradient(linear, left top, left bottom, color-stop(40%, white), to(#e4d4b3)); background: -o-linear-gradient(top, white 40%, #e4d4b3 100%); background: linear-gradient(to bottom, white 40%, #e4d4b3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
 
+.psn_tab li:hover a, .psn_tab li.active a { color: #d8a44e; }
+
+.psn_tab li a { color: #838080; }
+
 .psn_tab:after { content: ''; clear: both; display: table; }
 
 .psn_content { padding: 20px 15px; }
@@ -83,13 +87,17 @@
 
 .psn_form > span { margin-right: 5px; }
 
-.psn_form.game_filter > span { display: inline-block; width: 80px; height: 25px; line-height: 25px; text-align: center; border: 1px solid #d2d2d2; margin: 4px 1.8px 4px 0px; color: #c5c5c4; cursor: pointer; }
+.psn_form.game_filter:after { content: ''; display: table; clear: both; }
+
+.psn_form.game_filter > span { float: left; width: 80px; height: 25px; line-height: 25px; text-align: center; border: 1px solid #d2d2d2; margin: 4px 5.7px 4px 0px; color: #838080; cursor: pointer; }
 
 .psn_form.game_filter > span.active { border-color: #d8a44e; color: #d8a44e; background: white; /* Old browsers */ background: -moz-linear-gradient(top, white 40%, #e4d4b3 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(top, white 40%, #e4d4b3 100%); /* Chrome10-25,Safari5.1-6 */ background: -webkit-gradient(linear, left top, left bottom, color-stop(40%, white), to(#e4d4b3)); background: -o-linear-gradient(top, white 40%, #e4d4b3 100%); background: linear-gradient(to bottom, white 40%, #e4d4b3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
 
 .psn_form.game_filter > span:nth-child(8n) { margin-right: 0px; }
 
-.psn_form.game_filter .more { white-space: nowrap; color: #888; }
+.psn_form.game_filter .more { white-space: nowrap; }
+
+.psn_form.game_filter .more a { color: #888; }
 
 .psn_filter_btn { text-align: right; margin-top: 10px; margin-bottom: 20px; }
 

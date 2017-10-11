@@ -257,7 +257,7 @@ export default {
                         // console.log(catId)
 
                         _self.$nextTick(function () {
-                            const $tagList = $('.pagemenu_slider'), size = 5;
+                            const $tagList = $('.pagemenu_slider'), size = 7;
                             $tagList.show().slick({ // 标题图片
                                 arrows: true, 
                                 infinite: false,

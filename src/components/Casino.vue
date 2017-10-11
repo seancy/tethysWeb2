@@ -269,7 +269,7 @@ export default {
 
                     _self.$nextTick(function () {
                         var $tagList = $('.tag-list');
-                        const size = 5;
+                        const size = 7;
                         $tagList.show() ; // 为了防止刚进来错位问题
                         // debugger;
                         $tagList.slick({ // 标题图片
