@@ -62,13 +62,13 @@
 
 .notice { height: 40px; margin-top: -40px; position: relative; z-index: 10; background-color: rgba(0, 0, 0, 0.7); }
 
-.notice .notice_box { margin: 0px auto; height: 40px; overflow: hidden; }
+.notice .notice_box { margin: 0px auto; width: 940px; height: 40px; overflow: hidden; position: relative; }
 
 .notice .notice_box span { color: #ba803e; line-height: 40px; }
 
-.notice .notice_box ul { position: relative; vertical-align: top; display: inline-block; color: #fbf2e0; }
+.notice .notice_box ul { position: absolute; top: 0px; vertical-align: top; display: inline-block; color: #fbf2e0; }
 
-.notice .notice_box ul li { line-height: 40px; }
+.notice .notice_box ul li { line-height: 40px; white-space: nowrap; overflow: hidden; -o-text-overflow: ellipsis; text-overflow: ellipsis; }
 
 .index_block { padding: 25px 0px; }
 

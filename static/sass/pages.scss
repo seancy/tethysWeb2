@@ -193,20 +193,26 @@
     .notice_box{
         // width: 1280px;
         margin:0px auto;
+        width: 940px;
         // padding: 0px 30px;
         height: 40px;
         overflow: hidden;
+        position: relative;
         span{
             color: $colorGold2;
             line-height: 40px;
         }
         ul{
-            position: relative;
+            position: absolute;
+            top: 0px;
             vertical-align: top;
             display: inline-block;
             color: $fontColor_yellow;
             li{
                 line-height: 40px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
     }

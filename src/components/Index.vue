@@ -248,12 +248,12 @@ export default {
             _self.$nextTick(function () {
               if($('.notice_box li').length > 1){
                   function run() {
-                      $('.notice_box ul').animate({top:-40},4000,function(){
+                      $('.notice_box ul').animate({top:-40},400,function(){
                           $(this).css({top:0}).children('li').eq(0).remove().appendTo('.notice_box ul');
                       })
                   }
 
-                  var TT = setInterval(run,3000)
+                  var TT = setInterval(run,5000)
 
                   $(".notice_box").on('mouseenter',function(e){
                       clearInterval(TT);
@@ -262,7 +262,7 @@ export default {
                       var position = Math.round($(this).scrollTop() / 40);
                       $(this).scrollTop(0).addClass('hidden');
                       $('.notice_box ul').children('li').slice( 0, position ).appendTo('.notice_box ul');
-                      TT = setInterval(run,3000);
+                      TT = setInterval(run,5000);
                   })
 
                   $('.notice_box').scrollTop(0).addClass('hidden');
