@@ -47,6 +47,10 @@
 
 .psn_menu > li .icon_sprite { margin: 0px 10px; }
 
+.psn_menu#footer_menu a:hover .icon_sprite, .psn_menu#footer_menu a.active .icon_sprite { background-position-y: -120px; }
+
+.psn_menu#help_menu a:hover .icon_sprite, .psn_menu#help_menu a.active .icon_sprite { background-position-y: -168px; }
+
 .psn_tab li { cursor: pointer; float: left; text-align: center; position: relative; z-index: 1; color: #c1c1c1; border: 1px solid #d2d2d2; border-top: 5px solid #b4ab9b; margin-right: -1px; padding: 7px 10px; font-size: 15px; }
 
 .psn_tab li .icon_tab { display: inline-block; vertical-align: middle; width: 40px; height: 40px; background: url(img/icon_tab.png) no-repeat; background-size: 400px 400px; margin-right: 5px; -webkit-transform: translateY(-3px); -ms-transform: translateY(-3px); transform: translateY(-3px); }
