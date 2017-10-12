@@ -80,7 +80,7 @@
                       <span class="form info" v-show="!editPersonFlag">{{member.weixin}}</span>
                       <span class="form edit" v-show="editPersonFlag">
                         <input type="text" class="formInput" v-model="tempMember.weixin" @keypress.enter="sendInfo('personInfo')" />
-                        <a v-show="tempMember.weixinVali">格式错误</a>
+                        <a class="ui_error" v-show="tempMember.weixinVali">格式错误</a>
                       </span>
                     </li>
                     <li>
@@ -88,7 +88,7 @@
                       <span class="form info" v-show="!editPersonFlag">{{member.qq}}</span>
                       <span class="form edit" v-show="editPersonFlag">
                         <input type="text" class="formInput" v-model="tempMember.qq" @keypress.enter="sendInfo('personInfo')">
-                        <a v-show="tempMember.qqVali">格式错误</a>
+                        <a class="ui_error" v-show="tempMember.qqVali">格式错误</a>
                       </span>
                     </li>
                     <li>
@@ -96,7 +96,7 @@
                       <span class="form info" v-show="!editPersonFlag">{{member.email}}</span>
                       <span class="form edit" v-show="editPersonFlag">
                         <input type="text" class="formInput" v-model="tempMember.email" @keyPress.enter="sendInfo('personInfo')">
-                        <a v-show="tempMember.emailVali">格式错误</a>
+                        <a class="ui_error" v-show="tempMember.emailVali">格式错误</a>
                       </span>
                     </li>
                   </ul>
