@@ -246,7 +246,7 @@ export default {
             _self.messages = ms || [];
             // 滚动
             _self.$nextTick(function () {
-              if($('.notice_box li').length > 1){
+              if($('.notice_box li').length > 0){
                   function run() {
                       $('.notice_box ul').animate({top:-40},400,function(){
                           $(this).css({top:0}).children('li').eq(0).remove().appendTo('.notice_box ul');
