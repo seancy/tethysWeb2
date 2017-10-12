@@ -23,7 +23,7 @@
           </div>
       </div>
       <div class="nav">
-          <div class="logo"><h1><img src="static/images/logo.png" alt="金沙赌场"></h1></div>
+          <div class="logo"><h1><img v-lazy="logoPhoto" alt="金沙赌场"></h1></div>
           <div class="menu">
               <ul class="mainmenu">
                 <!-- setActive  class="active" -->
@@ -128,10 +128,9 @@ export default {
         code: ''
       },
       verImgCode:'',
-      isLoging: false
+      isLoging: false,
+      logoPhoto :'',
 
-      // moduleName:''
-      // msg: 'Welcome to Your Vue.js App'
     }
   },
   computed:{
@@ -207,16 +206,7 @@ export default {
                 tem[i].id = (i+1) ;
             }
             _self.customtemplate = tem || [];
-            // 滚动
-            // _self.$nextTick(function () {
-            //     $(".sys-notice").slide({
-            //         mainCell: ".bd ul",
-            //         autoPage: true,
-            //         effect: "leftMarquee",
-            //         autoPlay: true,
-            //         vis: 1, interTime: 50
-            //     });
-            // });
+
         })
     },
     getNavData: function() {
@@ -232,12 +222,11 @@ export default {
             _self.siteName = data && data.result && data.result.siteName;
             document.title = _self.siteName||'';
             _self.logoPhoto = common.photo_url + "/pic/" + _self.siteLogo + "/0"; //0原图大小 other 就是百分比（10%）
-            // $(".logo").css("backgroundImage", "url(" + _self.logoPhoto + ")");
+
             _self.$nextTick(function () {
                 // 加载完后再调用，否则会有问题
                 // _self.indexDrog() ;
               $("#nav_casino").addClass('hot');
-//              $("#nav_promo").addClass('hot');
 
         })
 
