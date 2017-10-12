@@ -349,7 +349,7 @@
         if (_self.userId) {
           var src = '/form?method=post&action=tethys-user/user/account/rapidSave/' + _self.userId + '/applyView&params=' + encodeURIComponent($.param(para));
           _self.hideFrame = false;
-          console.log(src)
+
           _self.$nextTick(function(){
               $('#iframe_pay').attr('src', src);
 
@@ -365,5 +365,5 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  html, body{ background-color:#fff }
+
 </style>
