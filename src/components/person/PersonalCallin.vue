@@ -759,10 +759,10 @@ export default {
         drawCount: _self.drawInfo.drawCount * 100,
         tradePass: md5(_self.drawInfo.tradePass),
         balance: balance,
-        taxCount: _self.preDrawInfo.needPayAmount,
-        realWithDrawAmount: _self.preDrawInfo.realWithDrawAmount,
-        needBettAmount: _self.preDrawInfo.needBettAmount,
-        realBettAmount: _self.preDrawInfo.realBettAmount,
+        taxCount: _self.preDrawInfo.needPayAmount*100,
+        realWithDrawAmount: _self.preDrawInfo.realWithDrawAmount*100,
+        needBettAmount: _self.preDrawInfo.needBettAmount*100,
+        realBettAmount: _self.preDrawInfo.realBettAmount*100,
         orderId: _self.preDrawInfo.orderId
       }, function(data) {
         if (data.apistatus == 1) {

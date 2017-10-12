@@ -66,7 +66,7 @@
                         <p v-html="weixin_content"></p>
                         <div class="tip">支付完成，点击下一步<br />填写转账信息</div>
                       </div>
-                      <div class="info zfb"  v-if="(taobau_content==''?false:true)">
+                      <div class="info zfb" style="display: none">
                         <div class="pic"><img src="../../../static/images/zfb.png"></div>
                         <span v-html="taobau_content"></span>
                         <div class="tip">支付完成，点击下一步<br />填写转账信息</div>
@@ -222,10 +222,7 @@
 
 
 <script>
-  $(function(){
-    $(".step1").show();
-    $(".step2,.step3").hide();
-  })
+
   export default {
     name: 'PersonalDeposit',
     data: function() {
@@ -282,14 +279,11 @@
     },
     created: function() {
       var _self = this;
-      this.photo_url = common.photo_url;
+      _self.photo_url = common.photo_url;
       if (common.ifLanded()) {
         _self.info = common.Cookie.get('memberInfo') && JSON.parse(common.Cookie.get('memberInfo')) || {};
         _self.info.username = common.Cookie.get('userName') || '';
-        //_self.getPersonalInfo();
         _self.getBankList();
-        // _self.getAllBankList();
-        // _self.getOwnerBank();
       } else {
         _self.$nextTick(function() {
           setTimeout(function() {
@@ -306,28 +300,43 @@
           }, 500);
         });
       }
-      common.ajax('cms/client/copyright/details', {
-        code: "OC07"
-      }, function(data) {
-        if (data && data.apistatus == 1) {
-          _self.weixin_content = data.result.content || '';
-        }
-      });
-      common.ajax('cms/client/copyright/details', {
-        code: "OC08"
-      }, function(data) {
-        if (data && data.apistatus == 1) {
-          _self.taobau_content = data.result.content || '';
-        }
-      });
-      this.getmoney_range();
+
+        _self.getmoney_range();
+        _self.getWechat();
+        _self.getZhiBao();
     },
+      mounted: function () {
+          $(".step1").show();
+          $(".step2,.step3").hide();
+      },
     filters: {
       balanceNo: function(value) {
         return common.FormatNumber.get(value);
       }
     },
     methods: {
+        // 获取微信支付说明
+        getWechat:function () {
+            var _self = this ;
+            common.ajax('cms/client/copyright/details', {
+                code: "OC07"
+            }, function(data) {
+                if (data && data.apistatus == 1) {
+                    _self.weixin_content = data.result.content || '';
+                }
+            });
+        },
+        // 获取支付宝支付说明
+        getZhiBao:function () {
+            var _self = this ;
+            common.ajax('cms/client/copyright/details', {
+                code: "OC08"
+            }, function(data) {
+                if (data && data.apistatus == 1) {
+                    _self.taobau_content = data.result.content || '';
+                }
+            });
+        },
       preCheck: function(type) {
         var _self = this;
         switch (type) {
@@ -391,8 +400,6 @@
           $("[data-img='qrcode_1'], .checkAccount_1,.info.zfb,.accountName_1").hide();
           $("[data-img='qrcode_0'],.checkAccount_0,.info.weixin,.accountName_0").show();
 
-
-
         } else if (aa.target.id == "pay_1") {
           $("[data-img='qrcode_1'], .checkAccount_1,.info.zfb,.accountName_1").show();
           $("[data-img='qrcode_0'],.checkAccount_0,.info.weixin,.accountName_0").hide();
@@ -402,11 +409,9 @@
       getBankList: function() {
         var _self = this;
         common.ajax('tethys-user/user/account/walletSave/bankList', {}, function(data) {
-          console.log(data);
+
           var bank_result = data && data.result && data.result.list || [];
           var bankListResult = bank_result || [];
-//          bankListResult[0].bankURL = "static/images/wx_logo.jpg";
-//          bankListResult[1].bankURL = "static/images/zfb_logo.jpg";
           _self.bankList = bankListResult;
           // console.log(_self.bankList);
           setTimeout(function() {
@@ -424,7 +429,7 @@
                   // $('#deposit0_paymethod').find('input[type="radio"]')[0]&&$('#deposit0_paymethod').find('input[type="radio"]')[0].click();
               },300);
           });*/
-          console.log(_self.bankList);
+
         }, 'post');
       },
       getmoney_range: function() {

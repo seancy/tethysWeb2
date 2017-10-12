@@ -1,5 +1,5 @@
 @charset "UTF-8";
-html, body { margin: 0px; padding: 0px; font-family: 'Microsoft YaHei','微軟正黑體',Helvetica,Arial,sans-serif; background-color: #10061f; color: #e2e2e2; font-size: 14px; }
+html, body { margin: 0px; padding: 0px; font-family: 'Microsoft YaHei','微軟正黑體',Helvetica,Arial,sans-serif; /*background-color: #10061f;*/ color: #e2e2e2; font-size: 14px; }
 
 * { -webkit-box-sizing: border-box; box-sizing: border-box; }
 
@@ -284,7 +284,7 @@ a.formBtn:hover, .formBtn:hover, .btn-default:hover, .btn-primary:hover { color:
 /* ---------------------------------------------------
 // main
 --------------------------------------------------- */
-#main { padding-top: 111px; }
+#main { padding-top: 111px;background:#10061f; }
 
 /* ---------------------------------------------------
 // footer
