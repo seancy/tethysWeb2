@@ -34,7 +34,7 @@
         <div class="contain_width">
             <div class="notice_box">
                 <span>公告：</span>
-                <ul style="left: 60px;top: -10px;">
+                <ul>
                     <li v-for="message in messages">{{message.title}}：{{message.content}}</li>
                 </ul>
             </div>
