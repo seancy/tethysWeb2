@@ -109,7 +109,7 @@ export default {
   },
   methods:{
     // 进入游戏
-    enterGame: function (id) {
+    enterGame: function (id,plat) {
         var _self = this;
         if (_self.hasLogin === false) {
             _self.$nextTick(function () {
@@ -134,7 +134,8 @@ export default {
                 clearInterval(loop);
             }
         }, 500);
-        common.ajax('config/kd/game/start',{id: id}, function (data) {
+        var platform = $('.changes_tap').find('.active').data('platform') ;
+        common.ajax('config/kd/game/start',{id: id ,platformId:platform || plat }, function (data) {
             if(data.apistatus =='0'){
                 win.close();
                 common.toast({content: "网络较差，请稍后重试！"});

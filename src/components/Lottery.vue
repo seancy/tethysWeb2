@@ -31,7 +31,7 @@
                               <div class="img"  :style="{backgroundImage: 'url('+[photo_url +'/pic/'+[list.img]+'/0']+')'}"></div>
                               <div class="title">
                                   <div class="title_img"></div>
-                                  <div class="btn_enter"> <a class="gameopen_parent" href="javascript:;" @click="enterGame(list.id)">进入游戏</a> </div>
+                                  <div class="btn_enter"> <a class="gameopen_parent" href="javascript:;" @click="$parent.enterGame(list.id,platform)">进入游戏</a> </div>
                               </div>
                           </div>
                       </li>
@@ -64,7 +64,8 @@ export default {
       hasLogin: false,
       games: [],
      // game_name:{"862":"BB彩票"} ,
-      game_sub_image:{"":"lottery_bb","":"lottery_bc"}
+      game_sub_image:{"":"lottery_bb","":"lottery_bc"},
+      platform:'' ,
     }
   }, 
   created:function(){
@@ -78,7 +79,7 @@ export default {
   methods:{
     loadLottery:function(id){
         var _self = this;
-        common.ajax('config/kd/game/special/load', {
+        common.ajax('config/kd/game/load', {
             id: id
         }, function (data) {
             if(data.apistatus =='0'){
@@ -86,40 +87,13 @@ export default {
             }else {
                 if (data && data.result) {
                   _self.games = data.result.game.list ;
-
+                  _self.platform =  data.result.apiList[0].platformId ;
                 }
             }
         });
     },
-    // 进入游戏
-    enterGame: function (id) {
-        var _self = this;
-        if (_self.hasLogin === false) {
-            common.toast({content: "请先登录！！"});
-            return;
-        }
-        var win = common.openGame();
-        if(openGameSize<2){
-            win.document.write(loadStr) ;
-        }
-        var loop = setInterval(function() {
-            if(win .closed) {
-                openGameSize = 0 ;
-                clearInterval(loop);
-            }
-        }, 500);
-        common.ajax('config/kd/game/start',{id: id}, function (data) {
-            if(data.apistatus =='0'){
-                win.close();
-                common.toast({content: "网络较差，请稍后重试！"});
-            } else {
-                if (data && data.result) {
-                    var url = data.result.content;
-                    win = common.openGame(url);
-                }
-            }
-        }, 'post');
-    }
+
+
   }
 }
 </script>
