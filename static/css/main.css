@@ -1,5 +1,5 @@
 @charset "UTF-8";
-html, body { margin: 0px; padding: 0px; font-family: 'Microsoft YaHei','微軟正黑體',Helvetica,Arial,sans-serif; background-color: #10061f; color: #e2e2e2; font-size: 14px; }
+html, body { margin: 0px; padding: 0px; font-family: 'Microsoft YaHei','微軟正黑體',Helvetica,Arial,sans-serif; color: #e2e2e2; font-size: 14px; }
 
 * { -webkit-box-sizing: border-box; box-sizing: border-box; }
 
@@ -217,13 +217,15 @@ a.formBtn:hover, .formBtn:hover, .btn-default:hover, .btn-primary:hover { color:
 
 .nav .menu .mainmenu > li:hover > a small, .nav .menu .mainmenu > li.active > a small { color: #432e18; }
 
+.nav .menu .mainmenu > li:hover > a h2, .nav .menu .mainmenu > li:hover > a small, .nav .menu .mainmenu > li.active > a h2, .nav .menu .mainmenu > li.active > a small { -webkit-animation: none; animation: none; }
+
 .nav .menu .mainmenu > li:hover > a h2:after, .nav .menu .mainmenu > li.active > a h2:after { content: ''; position: absolute; top: 3px; left: 3px; right: 3px; bottom: 3px; border: 1px solid rgba(45, 20, 5, 0.3); }
 
 .nav .menu .mainmenu > li:hover .submenu { height: 100px; -webkit-transition: height 200ms ease-in; -ms-transition: height 200ms ease-in; -o-transition: height 200ms ease-in; transition: height 200ms ease-in; }
 
 .nav .menu .mainmenu > li.hot { background-color: rgba(112, 67, 19, 0.13); }
 
-.nav .menu .mainmenu > li.hot h2, .nav .menu .mainmenu > li.hot small { color: #e75b07; }
+.nav .menu .mainmenu > li.hot h2, .nav .menu .mainmenu > li.hot small { color: #e75b07; -webkit-animation: menuHot 1000ms infinite; animation: menuHot 1000ms infinite; }
 
 .nav .menu .mainmenu > li.hot > a:after { content: ''; display: block; position: absolute; top: -4px; right: -4px; z-index: 1; width: 58px; height: 53px; background: url(img/menu_hot.png) no-repeat; background-size: 58px 53px; }
 
@@ -284,7 +286,7 @@ a.formBtn:hover, .formBtn:hover, .btn-default:hover, .btn-primary:hover { color:
 /* ---------------------------------------------------
 // main
 --------------------------------------------------- */
-#main { padding-top: 111px; }
+#main { padding-top: 111px; background-color: #10061f; }
 
 /* ---------------------------------------------------
 // footer
@@ -447,6 +449,22 @@ a.formBtn:hover, .formBtn:hover, .btn-default:hover, .btn-primary:hover { color:
 @keyframes link-blue { 0% { color: #0168ab; }
   50% { color: #ff0; }
   100% { color: #0168ab; } }
+
+@-webkit-keyframes menuHot { 0% { color: #e75b07; }
+  50% { color: #fd950a; }
+  100% { color: #e75b07; } }
+
+@keyframes menuHot { 0% { color: #e75b07; }
+  50% { color: #fd950a; }
+  100% { color: #e75b07; } }
+
+@-webkit-keyframes menuHotHover { 0% { color: #fff; }
+  50% { color: #e4ad6c; }
+  100% { color: #fff; } }
+
+@keyframes menuHotHover { 0% { color: #fff; }
+  50% { color: #e4ad6c; }
+  100% { color: #fff; } }
 
 .rotate { -webkit-animation: myfirst 2s; animation: myfirst 2s; }
 
@@ -643,7 +661,7 @@ a.formBtn:hover, .formBtn:hover, .btn-default:hover, .btn-primary:hover { color:
 
 .modal-header { padding: 10px 15px; border-bottom: 1px solid #e5e5e5; }
 
-.modal-header .close { margin-top: -2px; top: 10px; right: 10px; position: absolute; background: url(/static/img/icon_sprite.24ae491.png) no-repeat; background-size: 256px 256px; display: inline-block; width: 24px; height: 24px; vertical-align: middle; background-position: -168px -24px; text-indent: -100px; overflow: hidden; }
+.modal-header .close { margin-top: -2px; top: 10px; right: 10px; position: absolute; background: url(img/icon_sprite.png) no-repeat; background-size: 256px 256px; display: inline-block; width: 24px; height: 24px; vertical-align: middle; background-position: -168px -24px; text-indent: -100px; overflow: hidden; }
 
 .modal-title { margin: 0; line-height: 1.42857143; }
 
@@ -666,5 +684,12 @@ a.formBtn:hover, .formBtn:hover, .btn-default:hover, .btn-primary:hover { color:
   .modal-sm { width: 300px; } }
 
 @media (min-width: 992px) { .modal-lg { width: 900px; } }
+
+/* loading */
+.ui-loading { position: absolute; left: 0; top: 0; z-index: 9999; }
+
+.ui-loading .ui-loading-mask { position: absolute; top: 0; left: 0; background-color: #000; opacity: .5; z-index: 1; border-radius: 4px; }
+
+.ui-loading i { height: 25px; width: 25px; display: block; background: url(img/icon-refresh-14-loading.gif) no-repeat center center; background-size: 25px 25px; position: absolute; z-index: 2; }
 
 /*# sourceMappingURL=main.css.map */

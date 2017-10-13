@@ -34,7 +34,7 @@
         <div class="contain_width">
             <div class="notice_box">
                 <span>公告：</span>
-                <ul style="left: 60px;top: -10px;">
+                <ul>
                     <li v-for="message in messages">{{message.title}}：{{message.content}}</li>
                 </ul>
             </div>
@@ -246,14 +246,14 @@ export default {
             _self.messages = ms || [];
             // 滚动
             _self.$nextTick(function () {
-              if($('.notice_box li').length > 1){
+              if($('.notice_box li').length > 0){
                   function run() {
-                      $('.notice_box ul').animate({top:-40},4000,function(){
+                      $('.notice_box ul').animate({top:-40},400,function(){
                           $(this).css({top:0}).children('li').eq(0).remove().appendTo('.notice_box ul');
                       })
                   }
 
-                  var TT = setInterval(run,3000)
+                  var TT = setInterval(run,5000)
 
                   $(".notice_box").on('mouseenter',function(e){
                       clearInterval(TT);
@@ -262,7 +262,7 @@ export default {
                       var position = Math.round($(this).scrollTop() / 40);
                       $(this).scrollTop(0).addClass('hidden');
                       $('.notice_box ul').children('li').slice( 0, position ).appendTo('.notice_box ul');
-                      TT = setInterval(run,3000);
+                      TT = setInterval(run,5000);
                   })
 
                   $('.notice_box').scrollTop(0).addClass('hidden');

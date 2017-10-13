@@ -100,7 +100,10 @@
                         </li>
                         <li>
                           <span class="label">存款人姓名</span>
-                          <span class="form"><input  v-model="saveObj.userName" type="text" class="formInput" placeholder=""  @blur="getUserName" @input.lazy="getUserName" /></span>
+                          <span class="form">
+                            <input  v-model="saveObj.userName" type="text" class="formInput" placeholder=""  @blur="getUserName" @input.lazy="getUserName" />
+                          </span>
+                          <span class="ui_error">{{inputInfo.usernameerror}}</span>
                         </li>
                         <li>
                           <span class="label">存款方式</span>

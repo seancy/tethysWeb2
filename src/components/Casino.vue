@@ -6,14 +6,15 @@
               <!--品牌选单-->
               <div class="pagemenu_slider tag-list" style="display: none">
                 <template v-for="(item,index) in topBar" v-bind:class="{'active': index === 0}" >
-                  <div class="item_pagemenu" v-for="subItem in item">
-                      <a href="javascript:;" data-list="casino_mg" v-bind:class="{'active': subItem.id == id}" @click="gameList(subItem.id,'-1')">
+                  <div class="item_pagemenu changes_tap" v-for="subItem in item">
+                      <a href="javascript:;" data-list="casino_mg" :data-platform="subItem.platformId" :class="{'active': subItem.id == id}" @click="gameList(subItem.id,'-1')">
                           <div class="img"><span :style="{backgroundImage: 'url('+[photo_url+'/pic/'+subItem.img+'/0']+')'}"></span></div>
                           <h3>{{subItem.name}}</h3>
                       </a>
                   </div>
                 </template>
-              </div><!--end 品牌选单-->
+              </div>
+              <!--end 品牌选单-->
           </div>
 
           <!--电子游艺搜索bar-->
@@ -269,7 +270,7 @@ export default {
 
                     _self.$nextTick(function () {
                         var $tagList = $('.tag-list');
-                        const size = 5;
+                        const size = 7;
                         $tagList.show() ; // 为了防止刚进来错位问题
                         // debugger;
                         $tagList.slick({ // 标题图片

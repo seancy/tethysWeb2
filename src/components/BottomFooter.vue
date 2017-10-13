@@ -61,8 +61,9 @@
                     </ul>
                 </div>
             </div>
+            <div class="copyright">Cparisian Casino © 版权所有 2011-2017属于Las Vegas Sands拉斯维加斯金沙集团(中国)有限公司注册运营</div>
         </div>
-        <div class="copyright">Cparisian Casino © 版权所有 2011-2017属于Las Vegas Sands拉斯维加斯金沙集团(中国)有限公司注册运营</div>
+
     </div>
 </template>
 
@@ -78,7 +79,7 @@ export default {
   created:function(){
     var _self=this;
     _self.getFooterData();
-    this.pagename = this.$route.name || '';
+    this.pagename = this.$route.name || '';   // 如果是 HHForm则隐藏，支付iframe跳转
   },
   methods:{
     getFooterData:function(){

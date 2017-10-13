@@ -4,7 +4,6 @@ html, body{
     margin: 0px;
     padding: 0px;
     font-family: 'Microsoft YaHei','微軟正黑體',Helvetica,Arial,sans-serif;
-    background-color: $bgColor;
     color: $fontColor;
     font-size: $fontSize;
 }
@@ -456,6 +455,9 @@ a.formBtn, .formBtn, .btn-default, .btn-primary{
                         small{
                             color: #432e18;
                         }
+                        h2, small{
+                            animation: none;
+                        }
                         h2:after{
                             content: '';
                             position: absolute;
@@ -482,6 +484,7 @@ a.formBtn, .formBtn, .btn-default, .btn-primary{
                     background-color: rgba( #704313, 0.13);
                     h2,small{
                         color: $colorOrange;
+                        animation: menuHot 1000ms infinite;
                     }
                     > a:after{
                         content: '';
@@ -663,6 +666,7 @@ a.formBtn, .formBtn, .btn-default, .btn-primary{
 --------------------------------------------------- */
 #main{
     padding-top: 111px;
+    background-color: $bgColor;
 }
 
 /* ---------------------------------------------------
@@ -869,6 +873,16 @@ a.formBtn, .formBtn, .btn-default, .btn-primary{
     0%  {color: #0168ab;}
     50%  {color: #ff0;}
     100% {color: #0168ab;}
+}
+@keyframes menuHot {
+    0%  {color: #e75b07;}
+    50%  {color: #fd950a;}
+    100% {color: #e75b07;}
+}
+@keyframes menuHotHover {
+    0%  {color: #fff;}
+    50%  {color: #e4ad6c;}
+    100% {color: #fff;}
 }
 .rotate{animation: myfirst 2s;}
 @keyframes myfirst {
@@ -1143,7 +1157,7 @@ a.formBtn, .formBtn, .btn-default, .btn-primary{
   top: 10px;
 	right: 10px;
 	position: absolute;
-    background: url(/static/img/icon_sprite.24ae491.png) no-repeat;
+    background: url(img/icon_sprite.png) no-repeat;
     background-size: 256px 256px;
     display: inline-block;
     width: 24px;
@@ -1204,3 +1218,8 @@ a.formBtn, .formBtn, .btn-default, .btn-primary{
     width: 900px;
   }
 }
+
+/* loading */
+.ui-loading{position:absolute;left:0;top:0;z-index: 9999;}
+.ui-loading .ui-loading-mask{ position:absolute;top:0;left:0;background-color: #000;opacity: .5;z-index: 1;border-radius: 4px;}
+.ui-loading i{height: 25px;width:25px; display: block;background: url(img/icon-refresh-14-loading.gif) no-repeat center center;background-size:25px 25px;position: absolute;z-index: 2}

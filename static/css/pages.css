@@ -62,13 +62,13 @@
 
 .notice { height: 40px; margin-top: -40px; position: relative; z-index: 10; background-color: rgba(0, 0, 0, 0.7); }
 
-.notice .notice_box { margin: 0px auto; height: 40px; overflow: hidden; }
+.notice .notice_box { margin: 0px auto; width: 940px; height: 40px; overflow: hidden; position: relative; }
 
 .notice .notice_box span { color: #ba803e; line-height: 40px; }
 
-.notice .notice_box ul { position: relative; vertical-align: top; display: inline-block; color: #fbf2e0; }
+.notice .notice_box ul { position: absolute; top: 0px; vertical-align: top; display: inline-block; color: #fbf2e0; }
 
-.notice .notice_box ul li { line-height: 40px; }
+.notice .notice_box ul li { line-height: 40px; white-space: nowrap; overflow: hidden; -o-text-overflow: ellipsis; text-overflow: ellipsis; }
 
 .index_block { padding: 25px 0px; }
 
@@ -161,19 +161,19 @@
 
 .pagebox .page_title img { width: 330px; height: 70px; margin: 0px auto; }
 
-.pagebox .pagemenu_slider { padding: 30px 0; margin: 0px auto; max-width: 960px; }
+.pagebox .pagemenu_slider { padding: 20px 0; margin: 0px auto; max-width: 960px; }
 
 .pagebox .item_pagemenu { text-align: center; }
 
 .pagebox .item_pagemenu a { display: block; }
 
-.pagebox .item_pagemenu a .img { position: relative; margin: 0px auto; width: 126px; height: 126px; }
+.pagebox .item_pagemenu a .img { position: relative; margin: 0px auto; width: 84px; height: 84px; }
 
-.pagebox .item_pagemenu a .img:before { content: ''; width: 126px; height: 126px; position: absolute; top: 0px; left: 0px; background: url(img/pagemenu_border.png) no-repeat center top; background-size: 126px auto; }
+.pagebox .item_pagemenu a .img:before { content: ''; width: 84px; height: 84px; position: absolute; top: 0px; left: 0px; background: url(img/pagemenu_border.png) no-repeat center top; background-size: 84px auto; }
 
-.pagebox .item_pagemenu a .img:after { content: ''; width: 126px; height: 126px; position: absolute; top: 0px; left: 0px; background: url(img/page_menu_live.png) no-repeat center top; background-size: auto 126px; }
+.pagebox .item_pagemenu a .img:after { content: ''; width: 84px; height: 84px; position: absolute; top: 0px; left: 0px; background: url(img/page_menu_live.png) no-repeat center top; background-size: auto 84px; }
 
-.pagebox .item_pagemenu a .img span { display: block; width: 72px; height: 72px; position: absolute; top: 27px; left: 27px; z-index: 3; background-size: 72px auto; }
+.pagebox .item_pagemenu a .img span { display: block; width: 48px; height: 48px; position: absolute; top: 18px; left: 18px; z-index: 3; background-size: 48px auto; }
 
 .pagebox .item_pagemenu a h3 { color: #717479; margin-top: 10px; font-size: 15px; }
 
@@ -189,13 +189,13 @@
 
 .pagebox .item_pagemenu:nth-of-type(5n+1) .img:after { background-position-x: 0px; }
 
-.pagebox .item_pagemenu:nth-of-type(5n+2) .img:after { background-position-x: -126px; }
+.pagebox .item_pagemenu:nth-of-type(5n+2) .img:after { background-position-x: -84px; }
 
-.pagebox .item_pagemenu:nth-of-type(5n+3) .img:after { background-position-x: -252px; }
+.pagebox .item_pagemenu:nth-of-type(5n+3) .img:after { background-position-x: -168px; }
 
-.pagebox .item_pagemenu:nth-of-type(5n+4) .img:after { background-position-x: -378px; }
+.pagebox .item_pagemenu:nth-of-type(5n+4) .img:after { background-position-x: -252px; }
 
-.pagebox .item_pagemenu:nth-of-type(5n+5) .img:after { background-position-x: -504px; }
+.pagebox .item_pagemenu:nth-of-type(5n+5) .img:after { background-position-x: -336px; }
 
 /* ---------------------------------------------------
 // live
@@ -268,6 +268,8 @@
 
 .page_liveList.temp_block > li .img { display: none; }
 
+.page_liveList.temp_block > li .btn { position: relative; margin-top: -1px; }
+
 .page_liveList.temp_block > li .btn > a { height: 35px; line-height: 35px; font-size: 15px; }
 
 .page_liveList.temp_block > li .btn > a:hover { background: #fe9500; background: -moz-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-gradient(linear, left top, left bottom, from(#fe9500), to(#a74300)); background: -o-linear-gradient(top, #fe9500 0%, #a74300 100%); background: linear-gradient(to bottom, #fe9500 0%, #a74300 100%); }
@@ -295,7 +297,7 @@
 
 #casino .item_pagemenu a .img:after { background-image: url(img/page_menu_casino.png); }
 
-.search_bar { background-color: #1b1b1b; padding: 10px 20px; }
+.search_bar { background-color: #1b1b1b; padding: 5px 20px; }
 
 .search_bar .search { float: left; color: #c1c1c1; }
 
@@ -303,7 +305,7 @@
 
 .search_bar .search input.search_input { line-height: 30px; height: 30px; background-color: #3a3939; vertical-align: middle; width: 180px; font-size: 15px; padding: 0px 10px; margin-left: 30px; }
 
-.search_bar .search button { color: #fff; vertical-align: middle; line-height: 24px; height: 30px; font-size: 18px; margin-left: 3px; background: #928872; background: -moz-linear-gradient(top, #928872 0%, #474340 100%); background: -webkit-linear-gradient(top, #928872 0%, #474340 100%); background: -webkit-gradient(linear, left top, left bottom, from(#928872), to(#474340)); background: -o-linear-gradient(top, #928872 0%, #474340 100%); background: linear-gradient(to bottom, #928872 0%, #474340 100%); }
+.search_bar .search button { color: #fff; padding-left: 15px; padding-right: 15px; vertical-align: middle; line-height: 24px; height: 30px; font-size: 14px; margin-left: 3px; background: #928872; background: -moz-linear-gradient(top, #928872 0%, #474340 100%); background: -webkit-linear-gradient(top, #928872 0%, #474340 100%); background: -webkit-gradient(linear, left top, left bottom, from(#928872), to(#474340)); background: -o-linear-gradient(top, #928872 0%, #474340 100%); background: linear-gradient(to bottom, #928872 0%, #474340 100%); }
 
 .search_bar .list_mode { float: right; height: 30px; }
 
@@ -329,7 +331,7 @@
 
 .page_casinoList li:nth-child(4n), .page_lotteryList li:nth-child(4n) { margin-right: 0px; }
 
-.page_casinoList li img, .page_lotteryList li img { width: 100%; border: 1px solid #928872; }
+.page_casinoList li img, .page_lotteryList li img { width: 240px; height: 146px; border: 1px solid #928872; }
 
 .page_casinoList li h3, .page_lotteryList li h3 { text-align: center; position: relative; z-index: 2; line-height: 30px; white-space: nowrap; overflow: hidden; -o-text-overflow: ellipsis; text-overflow: ellipsis; background: #928872; background: -moz-linear-gradient(top, #928872 0%, #474340 100%); background: -webkit-linear-gradient(top, #928872 0%, #474340 100%); background: -webkit-gradient(linear, left top, left bottom, from(#928872), to(#474340)); background: -o-linear-gradient(top, #928872 0%, #474340 100%); background: linear-gradient(to bottom, #928872 0%, #474340 100%); }
 
@@ -415,7 +417,7 @@
 
 .sports_list .sports_list_content { margin: 0px; padding: 0px; }
 
-.sports_list .sports_list_content li { list-style: none; padding: 0px; width: 487px; height: 252px; display: inline-table; margin: 60px 26px 30px 0px; position: relative; text-align: center; border: 1px solid #928872; float: left; }
+.sports_list .sports_list_content li { list-style: none; padding: 0px; width: 487px; height: 249px; display: inline-table; margin: 60px 26px 30px 0px; position: relative; text-align: center; border: 1px solid #928872; float: left; }
 
 .sports_list .sports_list_content li:nth-child(even) { margin-right: 0; }
 
@@ -423,13 +425,13 @@
 
 .sports_list .sports_list_content li:hover .bg { background-position-x: 0px; }
 
-.sports_list .sports_list_content li:hover .img { background-position-x: 0px; }
+.sports_list .sports_list_content li:hover .img { background-position-x: -20px; }
 
-.sports_list .sports_list_content li .bg { width: 485px; height: 283px; position: absolute; bottom: 0px; left: 0px; background-repeat: no-repeat; background-position: left 0px bottom 0px; -webkit-transition: background-position 200ms ease-out; -moz-transition: background-position 500ms ease-out; -ms-transition: background-position 500ms ease-out; -webkit-transition: background-position 500ms ease-out; -o-transition: background-position 500ms ease-out; transition: background-position 500ms ease-out; }
+.sports_list .sports_list_content li .bg { width: 485px; height: 292px; position: absolute; bottom: 0px; left: 0px; background-repeat: no-repeat; background-position: left -30px bottom 0px; -webkit-transition: background-position 200ms ease-out; -moz-transition: background-position 500ms ease-out; -ms-transition: background-position 500ms ease-out; -webkit-transition: background-position 500ms ease-out; -o-transition: background-position 500ms ease-out; transition: background-position 500ms ease-out; }
 
-.sports_list .sports_list_content li .img { width: 485px; height: 250px; position: absolute; bottom: 0px; left: 0px; background-repeat: no-repeat; background-position: left 40px top -120px; -webkit-transition: background-position 200ms ease-out; -moz-transition: background-position 200ms ease-out; -ms-transition: background-position 500ms ease-out; -webkit-transition: background-position 500ms ease-out; -o-transition: background-position 500ms ease-out; transition: background-position 500ms ease-out; }
+.sports_list .sports_list_content li .img { width: 485px; height: 292px; position: absolute; bottom: 0px; left: 0px; background-repeat: no-repeat; background-position: left 0px top 0px; -webkit-transition: background-position 200ms ease-out; -moz-transition: background-position 200ms ease-out; -ms-transition: background-position 500ms ease-out; -webkit-transition: background-position 500ms ease-out; -o-transition: background-position 500ms ease-out; transition: background-position 500ms ease-out; }
 
-.sports_list .sports_list_content li .title { height: 108px; position: absolute; bottom: 0; left: 0; z-index: 3; width: 100%; padding: 15px; text-align: center; background-color: rgba(0, 0, 0, 0.8); }
+.sports_list .sports_list_content li .title { height: 98px; position: absolute; bottom: 0; left: 0; z-index: 3; width: 100%; padding: 10px 15px; text-align: center; background-color: rgba(0, 0, 0, 0.8); }
 
 .sports_list .sports_list_content li .title_img { margin-top: 5px; width: 150px; height: 50px; background-size: 100%; display: inline-block; float: left; }
 

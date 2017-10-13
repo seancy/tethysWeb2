@@ -30,7 +30,7 @@
                 <div class="title">
                   <div class="title_img"></div>
                   <div class="btn_enter">
-                    <a class="gameopen_parent" href="javascript:;" @click="enterGame(item.id)">进入游戏</a>
+                    <a class="gameopen_parent" href="javascript:;" @click="$parent.enterGame(item.id,platform)">进入游戏</a>
                   </div>
                 </div>
               </div>
@@ -66,6 +66,7 @@ export default {
             gameLists:[],
             game_sub_image:{"824":"sport_bb","1257":"sport_ug"},
             game_name:{"824":"BB体育","1257":"UG体育"} ,
+            platform:'' ,
         }
     },
     created: function() {
@@ -80,7 +81,7 @@ export default {
         loadSports: function(id) {
             var _self = this;
             // common.ajax('config/kd/game/iframe/load', {
-            common.ajax('config/kd/game/special/load', {
+            common.ajax('config/kd/game/load', {
                 id: id
             }, function(data) {
                 if (data.apistatus == '0') {
@@ -91,48 +92,13 @@ export default {
                     if (data && data.result && data.result.game && data.result.game.list) {
                         _self.computers = data.result.game.list;
                         _self.gameLists = data.result.apiList;
+                        _self.platform = data.result.apiList[0].platformId ;
+
                     }
                 }
             });
         },
-        // 进入游戏
-        enterGame: function (id) {
-            var _self = this;
-            if (_self.hasLogin === false) {
-                _self.$nextTick(function () {
-                    common.$message({
-                        title: '登陆提示',
-                        content: '请先登录！！',
-                        hc: true,
-                        okcb: function () {
-                            _self.$router.push({path: '/'});
-                        }
-                    });
-                });
-                return;
-            }
-            var win = common.openGame();
-            if(openGameSize<2){
-                win.document.write(loadStr) ;
-            }
-            var loop = setInterval(function() {
-                if(win .closed) {
-                    openGameSize = 0 ;
-                    clearInterval(loop);
-                }
-            }, 500);
-            common.ajax('config/kd/game/start',{id: id}, function (data) {
-                if(data.apistatus =='0'){
-                    win.close();
-                    common.toast({content: "网络较差，请稍后重试！"});
-                } else {
-                    if (data && data.result) {
-                        var url = data.result.content;
-                        win = common.openGame(url);
-                    }
-                }
-            }, 'post');
-        },
+
 
     }
 }

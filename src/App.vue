@@ -109,7 +109,7 @@ export default {
   },
   methods:{
     // 进入游戏
-    enterGame: function (id) {
+    enterGame: function (id,plat) {
         var _self = this;
         if (_self.hasLogin === false) {
             _self.$nextTick(function () {
@@ -134,7 +134,8 @@ export default {
                 clearInterval(loop);
             }
         }, 500);
-        common.ajax('config/kd/game/start',{id: id}, function (data) {
+        var platform = $('.changes_tap').find('.active').data('platform') ;
+        common.ajax('config/kd/game/start',{id: id ,platformId:platform || plat }, function (data) {
             if(data.apistatus =='0'){
                 win.close();
                 common.toast({content: "网络较差，请稍后重试！"});
@@ -150,7 +151,5 @@ export default {
 }
 </script>
 <style>
-  .ui-loading{position:absolute;left:0;top:0;z-index: 9999;}
-  .ui-loading .ui-loading-mask{ position:absolute;top:0;left:0;background-color: #000;opacity: .5;z-index: 1;border-radius: 4px;}
-  .ui-loading i{height: 25px;width:25px; display: block;background: url(../static/css/img/icon-refresh-14-loading.gif) no-repeat center center;background-size:25px 25px;position: absolute;z-index: 2}
+  
 </style>

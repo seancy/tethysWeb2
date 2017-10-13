@@ -108,7 +108,7 @@
                      </li>
                      <li>
                        <span class="label">取款金额</span>
-                       <span class="form"><input type="text" class="formInput" placeholder="¥ 1-9999999999" v-model="drawInfo.drawCount" disabled="disabled" id="callin_moneyRange" @blur="getWithdrawalAmount" @input.lazy="preCheck('drawCount')" ></span>
+                       <span class="form"><input type="text" id="callin_moneyRange" class="formInput" :placeholder="placeholder" v-model="drawInfo.drawCount"  @blur="getWithdrawalAmount" @input.lazy="preCheck('drawCount')" ></span>
                        <span class="error color_red">{{errorMsg.drawCount_error}}</span>
                      </li>
                      <li>
@@ -270,12 +270,12 @@ export default {
         needPayAmount: 0
       },
       photo_url: '',
-      callin_moneyRange: '',
       maxMoney: '',
       minMoney: '',
       memberInfo: {},
       getMoneyDet:'',
-      changeBankCard:''
+      changeBankCard:'',
+      placeholder:'',
     }
   },
   filters: {
@@ -385,10 +385,11 @@ export default {
     getmoney_range: function() {
       var _self = this;
       common.ajax('tethys-user/user/account/dwdsInfo', {}, function(data) {
-        $("#callin_moneyRange").removeAttr("disabled");
         _self.maxMoney = data.result.withdrawMaxAmount;
         _self.minMoney = data.result.withdrawMinAmount;
-        $('#callin_moneyRange').prop("placeholder", "范围  " + data.result.withdrawMinAmount + "~" + data.result.withdrawMaxAmount);
+          // $("#callin_moneyRange").removeAttr("disabled");
+       // $('#callin_moneyRange').prop("placeholder", "范围  " + data.result.withdrawMinAmount + "~" + data.result.withdrawMaxAmount);
+       _self.placeholder= "范围  " + data.result.withdrawMinAmount + "~" + data.result.withdrawMaxAmount ;
       }, 'get', function(data) {
         if (data.apistatus == '0' && data.errorCode == '1000020') {
           common.toast({
@@ -473,10 +474,10 @@ export default {
           _self.changeBankCard =false;
 //          common.toast({
 //            content: '<div class="icon_warning"></div>\n' +
-//            '            <p class="warning_text">当前没有绑定取款银行卡，无法完成取款，<br />请绑定银行卡继续操作！</p>！'
+//            '            <p class="warning_text">当前没有绑定取款银行卡，无法完成取款，<br />请绑定银行卡继续操作！</p>'
 //          });
           var source = '<div class="icon_warning"></div>\n' +
-            '            <p class="warning_text">当前没有绑定取款银行卡，无法完成取款，<br />请绑定银行卡继续操作！</p>！'
+            '            <p class="warning_text">当前没有绑定取款银行卡，无法完成取款，<br />请绑定银行卡继续操作！</p>'
 
          showModal(source);
         } else {
@@ -759,10 +760,10 @@ export default {
         drawCount: _self.drawInfo.drawCount * 100,
         tradePass: md5(_self.drawInfo.tradePass),
         balance: balance,
-        taxCount: _self.preDrawInfo.needPayAmount,
-        realWithDrawAmount: _self.preDrawInfo.realWithDrawAmount,
-        needBettAmount: _self.preDrawInfo.needBettAmount,
-        realBettAmount: _self.preDrawInfo.realBettAmount,
+        taxCount: _self.preDrawInfo.needPayAmount*100,
+        realWithDrawAmount: _self.preDrawInfo.realWithDrawAmount*100,
+        needBettAmount: _self.preDrawInfo.needBettAmount*100,
+        realBettAmount: _self.preDrawInfo.realBettAmount*100,
         orderId: _self.preDrawInfo.orderId
       }, function(data) {
         if (data.apistatus == 1) {

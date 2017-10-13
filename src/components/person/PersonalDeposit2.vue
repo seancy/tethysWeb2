@@ -41,7 +41,7 @@
                         <span class="form">
                           <input type="text" class="formInput" v-model="saveInfo.saveCount" id="deposit2_value" disabled="disabled" @blur="getOfferAmount" @input="getOfferAmount" />
                         </span>
-                        <span class="ui_error">请输入正确金额！</span>
+                        <!--<span class="ui_error">请输入正确金额！</span>-->
                       </li>
                     </ul>
                     <!--<div class="deposit_msg_plus">当前享受优惠：10.00</div>-->

@@ -39,7 +39,7 @@ export default {
   }, 
   created:function(){
     this.photo_url = common.photo_url;
-    this.pagename = this.$route.name || '';
+    this.pagename = this.$route.name || '';  // 如果是 HHForm则隐藏，支付iframe跳转
   },
   mounted:function(){
     this.getFloatImage();
@@ -60,7 +60,7 @@ export default {
             var result = data && data.result && data.result.ad && data.result.ad.FDT || {} ;
             _self.floatImage = result;
             if(result.leftFirstUrl){
-                // $('.online-service_left').show() ;
+                $('.online-service.left').show() ;
                 var leftimg_1 = result.leftFirstUrl ;
                 var lefturl_1 =result.leftFirstLink  ;
                 var leftimg_2 = result.leftSecUrl ;
@@ -88,7 +88,7 @@ export default {
 
             }
           if(result.rightFirstUrl){
-              // $('.online-service').show() ;
+              $('.online-service.right').show() ;
               var rightimg_1 = result.rightFirstUrl ;
               var righturl_1 =result.rightFirstLink  ;
               var rightimg_2 = result.rightSecUrl ;
@@ -123,4 +123,5 @@ export default {
 </script>
 <style scoped>
     .height-service{  max-height: 370px; overflow-y: hidden;}
+    .online-service{ display: none;}
 </style>

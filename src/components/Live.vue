@@ -6,8 +6,8 @@
               <!--品牌选单-->
               <div class="pagemenu_slider" style="display: none;">
                   <template  v-for="(bar,index) in topBar" v-bind:class="{'active': index === 0}" >
-                      <div class="item_pagemenu" v-for="item in bar" :value="item.id">
-                          <a href="javascript:;" data-list="live_mg" v-bind:class="{'active' : item.id == id }" :value="item.id" @click="getGameAll('system',item.id)">
+                      <div class="item_pagemenu changes_tap" v-for="item in bar" :value="item.id">
+                          <a href="javascript:;" data-list="live_mg" v-bind:class="{'active' : item.id == id }"  :data-platform="item.platformId" :value="item.id" @click="getGameAll('system',item.id)">
                               <div class="img"><span :style="{backgroundImage: 'url('+[photo_url+'/pic/'+item.img+'/0']+')'}" :alt="item.id"></span></div>
                               <h3>{{item.name}}</h3>
                           </a>
@@ -257,7 +257,7 @@ export default {
                         // console.log(catId)
 
                         _self.$nextTick(function () {
-                            const $tagList = $('.pagemenu_slider'), size = 5;
+                            const $tagList = $('.pagemenu_slider'), size = 7;
                             $tagList.show().slick({ // 标题图片
                                 arrows: true, 
                                 infinite: false,
@@ -297,43 +297,7 @@ export default {
             _self.id = categoryId;
             this.getGameAll(_self.table, _self.id);
         },
-        // enterGame: function (id) {
-        //     var _self = this;
-        //     if (_self.hasLogin === false) {
-        //         _self.$nextTick(function () {
-        //             common.$message({
-        //                 title: '登陆提示',
-        //                 content: '请先登录！！',
-        //                 hc: true,
-        //                 okcb: function () {
-        //                     _self.$router.push({path: '/'});
-        //                 }
-        //             });
-        //         });
-        //         return;
-        //     }
-        //     var win = common.openGame();
-        //     if(openGameSize<2){
-        //         win.document.write(loadStr) ;
-        //     }
-        //     var loop = setInterval(function() {
-        //         if(win .closed) {
-        //             openGameSize = 0 ;
-        //             clearInterval(loop);
-        //         }
-        //     }, 500);
-        //     common.ajax('config/kd/game/start',{id: id}, function (data) {
-        //         if(data.apistatus =='0'){
-        //             win.close();
-        //             common.toast({content: "网络较差，请稍后重试！"});
-        //         }else {
-        //             if (data && data.result && data.result.content) {
-        //                 var url = data.result.content;
-        //                 win = common.openGame(url);
-        //             }
-        //         }
-        //     }, 'post');
-        // }
+
     }
 }
 </script>

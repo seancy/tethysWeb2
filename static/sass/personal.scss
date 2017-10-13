@@ -111,13 +111,13 @@
             margin: 0px 10px;
         }
     }
-    // &#footer_menu a:hover .icon_sprite, &#footer_menu a.active .icon_sprite{
-    //     background-position-y: -120px;
-    // }
+    &#footer_menu a:hover .icon_sprite, &#footer_menu a.active .icon_sprite{
+        background-position-y: -120px;
+    }
 
-    // &#help_menu a:hover .icon_sprite, &#help_menu a.active .icon_sprite{
-    //     background-position-y: -168px;
-    // }
+    &#help_menu a:hover .icon_sprite, &#help_menu a.active .icon_sprite{
+        background-position-y: -168px;
+    }
 }
 
 .psn_tab{
@@ -152,6 +152,12 @@
             color: $colorYellow;
             border-color: $colorYellow;
             @include gdActive();
+            a{
+                color: $colorYellow;
+            }
+        }
+        a{
+            color: #9f9f9f;
         }
     }
     &:after{
@@ -196,15 +202,22 @@
         margin-right: 5px;
     }
     &.game_filter{
+        &:after{
+            content: '';
+            display: table;
+            clear: both;
+        }
         > span{
-            display: inline-block;
+            // display: inline-block;
+            float: left;
             width: 80px;
             height: 25px;
             line-height: 25px;
             text-align: center;
             border: 1px solid $lineGray;
-            margin: 4px 1.8px 4px 0px;
-            color: #c5c5c4;
+            margin: 4px 5.7px 4px 0px;
+            // color: #c5c5c5;
+            color: #9f9f9f;
             cursor: pointer;
             &.active{
                 border-color: $colorYellow;
@@ -217,7 +230,11 @@
         }
         .more{
             white-space: nowrap;
-            color: #888;
+            a{
+                color: #888;
+                display: inline-block;
+                vertical-align: middle;
+            }
         }
     }
 }
@@ -377,7 +394,7 @@
         margin-bottom: 5px;
         h3{
             display: inline-block;
-            width: 196px;
+            width: 198px;
             vertical-align: middle;
             font-size: $fontSize_xxl;
         }
@@ -441,7 +458,7 @@
         }
         .edit{
             float: left;
-            margin-left: 10px;
+            // margin-left: 10px;
             color: $colorOrange;
             font-size: $fontSize_m;
         }
@@ -728,7 +745,7 @@
         img{
             width: 16px;
             vertical-align: middle;
-            margin: 0px 3px;
+            margin: -2px 3px 0px;
         }
     }
 }
@@ -769,15 +786,53 @@
         }
     }
 }
-#join .psn_table{
+.table-ui{
     margin-top: 0px;
+    border-collapse: collapse;
+    width: 100%;
     th,td{
+        padding: 8px;
+        word-break: break-all;
         text-align: center;
         border: 1px solid #e1ddd1;
+        &:first-child{
+            text-align: center;
+        }
+        &.td_center{
+            text-align: center;
+        }
     }
-    thead{
+    th{
+        background-color: #f1e8c6;
+        color: #6a644c;
+        font-weight: normal;
+        white-space: nowrap;
+    }
+    td{
+        font-size: $fontSize_s;
+    }
+    tbody{
         tr{
+            background-color: #f1efe8;
+            border-top: 1px solid #e1ddd1;
             border-bottom: none;
+            &:first-child{
+                border-top: none;
+            }
+            &:nth-child(odd){
+                background-color: #fff;
+            }
+        }
+    }
+    tfoot{
+        tr{
+            border-top: 1px solid #e1ddd1;
+        }
+        td{
+            background-color: #f1e8c6;
+            .td_count{
+                margin: 0px 20px;
+            }
         }
     }
 }

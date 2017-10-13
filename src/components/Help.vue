@@ -106,7 +106,8 @@
           code: id
         }, function(data) {
           if (data && data.apistatus === 1) {
-            _self.help_content = '<h3>' + (!data.result.title ? '' : data.result.title) + '<a class="anchor"></a></h3>' + (!data.result.content ? '' : data.result.content);
+          //  _self.help_content = '<h3>' + (!data.result.title ? '' : data.result.title) + '<a class="anchor"></a></h3>' + (!data.result.content ? '' : data.result.content);
+            _self.help_content = data.result.content ;
           }
         }, 'get', function(data) {
           if (data && data.apistatus === 0) {
