@@ -1,5 +1,7 @@
 <template>
-  <div class="personal_box" id="sing-up">
+  <div id="main">
+
+    <div class="personal_box" id="sing-up">
     <div class="contain_width">
       <h2 class="personal_title"></h2>
     </div>
@@ -114,6 +116,7 @@
       </div>
       <!--end 右侧内容-->
     </div>
+  </div>
   </div>
 </template>
 
