@@ -35,7 +35,7 @@
                       <a  class="link" @click="judge_towhere([nav.enName.toLowerCase()])"><h2>{{nav.name}}</h2><small>{{nav.enName}}</small></a>
                       <ul class="submenu" v-if="nav.isDrop === 1 && nav.list && nav.list.length > 0">
                           <li v-for="sub in nav.list">
-                              <a @click="indexToGmae([nav.enName.toLowerCase()],sub.id)">
+                              <a @click="indexToGmae([nav.enName.toLowerCase()],sub.id,sub.platformId)">
                                   <div class="img">
                                       <span :style="{backgroundImage: 'url('+[photo_url+'/pic/'+sub.img+'/0']+')'}"></span>
                                       <span :style="{backgroundImage: 'url('+[photo_url+'/pic/'+sub.img+'/0']+')'}"></span>
@@ -375,12 +375,12 @@ export default {
             // }
         }
     },
-    indexToGmae:function(ab,id){
+    indexToGmae:function(ab,id,platform){
         var _self = this;
         if(ab=="live"){
             location.href = "live?id="+id;
         } else if(ab=="casino"){
-            location.href = "casino?id="+id;
+            location.href = "casino?id="+id+"&platform="+platform;
         } else if(ab=="sports"){
             location.href = "sports";
             // location.href = "casino?id="+id;
