@@ -171,7 +171,7 @@
 
 .psn_info dt { font-size: 20px; color: #e75b07; margin-bottom: 5px; }
 
-.psn_info dt h3 { display: inline-block; width: 198px; vertical-align: middle; font-size: 20px; }
+.psn_info dt h3 { display: inline-block; width: 198px; vertical-align: middle; font-size: 20px; white-space: nowrap; }
 
 .psn_info dt a { display: inline-block; vertical-align: middle; margin-top: -4px; }
 
