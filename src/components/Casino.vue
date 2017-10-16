@@ -7,7 +7,7 @@
               <div class="pagemenu_slider tag-list" style="display: none">
                 <template v-for="(item,index) in topBar" v-bind:class="{'active': index === 0}" >
                   <div class="item_pagemenu changes_tap" v-for="subItem in item">
-                      <a href="javascript:;" data-list="casino_mg" :data-platform="subItem.platformId" :class="{'active': subItem.id == id}" @click="gameList(subItem.id,'-1')">
+                      <a href="javascript:;" data-list="casino_mg" :data-platform="subItem.platformId" :class="{'active': subItem.id == id}" @click="gameList(subItem.id,'-1',subItem.platformId)">
                           <div class="img"><span :style="{backgroundImage: 'url('+[photo_url+'/pic/'+subItem.img+'/0']+')'}"></span></div>
                           <h3>{{subItem.name}}</h3>
                       </a>
@@ -84,6 +84,7 @@ export default {
                 code:''
             },
             id: common.getQueryString('id') || '',
+            platform: common.getQueryString('platform') || '',
             name: '',
             Total: 0,
             Page: 1,
@@ -130,10 +131,10 @@ export default {
         this.hasLogin = common.ifLanded();
         this.getGameAll('system', this.id,'-1');
         this.photo_url = common.photo_url;
-        if(this.id){
-            _self.getGameType(this.id) ;
+        if(this.platform){
+            _self.getGameType(this.platform) ;
         }else{
-            _self.getGameType('10001') ;
+            _self.getGameType('100') ; // 默认mg 电子
         }
         if (this.hasLogin === true) {
             this.memberInfo = common.Cookie.get('memberInfo') && JSON.parse(common.Cookie.get('memberInfo')) || {};
@@ -155,7 +156,7 @@ export default {
         // 获取游戏分类
         getGameType : function (gameId) {
             var _self = this;
-            common.ajax('game/manage/tags/list', {providerId: gameId}, function (data) {
+            common.ajax('game/manage/tags/list', { platformId: gameId}, function (data) {
                 var result = data && data.result || {};
                 _self.gamestype = result && result.list || {};
                 _self.$nextTick(function () {
@@ -205,7 +206,7 @@ export default {
             _self.getGameAll(currTab, id,typeid)
         },
         // 获取分类下的游戏
-        gameList: function (id,typeid) {
+        gameList: function (id,typeid,platform) {
             var _self = this;
             if (id === _self.id) {
                 // 点击当前分类不清求接口
@@ -213,10 +214,11 @@ export default {
             }
             _self.name = '';
             _self.id = id;
+            _self.platform = platform;
             _self.topBar = _self.topBar;
             _self.Page = 1;
             _self.getGameAll('category', id,typeid);
-            _self.getGameType(id) ;
+            _self.getGameType(platform) ;
         },
         // 调用接口
         getGameAll: function (currTab, catId,typeid) {
