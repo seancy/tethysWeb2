@@ -401,7 +401,11 @@
               ccb: function () {
                 $("#agree").prop("checked", false);
               },
-              style: {'max-width': '600px'}
+              style: {
+                'max-width': '600px',
+                'overflow-y': 'auto',
+                'height': '600px'
+              }
             });
           }
         });
