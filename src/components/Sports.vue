@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <div class="pagebox" id="lottery">
+    <div class="pagebox" id="sports">
       <div class="contain_width">
         <h2 class="page_title"></h2>
         <!--品牌选单 先不用-->
