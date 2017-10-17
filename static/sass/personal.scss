@@ -314,7 +314,7 @@
     text-align: center;
     .h2{
         //font-size: 35px;
-        color: $colorYellow;
+        //color: $colorYellow;
         text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.8);
         font-size: 20px;
         position: relative;
@@ -324,6 +324,12 @@
         //font-size: 20px;
         font-size: 35px;
         margin-top: -45px;
+        color: $colorYellow;
+        font-weight: 700;
+        background: -webkit-linear-gradient(#f7e9a8, #9f6626);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
     }
 }
 
