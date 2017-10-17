@@ -257,7 +257,7 @@
                 $('.last_login').text(common.changeTime(data.result.lastLoginTime)) ;
               })
             }
-            common.Cookie.set('usreName',_self.member.username);
+            common.Cookie.set('userName',_self.member.username);
         },'get',function(data){
             if(data.apistatus == 0 && data.errorCode == '1000020'){
               setTimeout('common.logOut()',1000);
