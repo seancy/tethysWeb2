@@ -127,7 +127,7 @@
           <div class="popupad_window">
               <a class="popupad_close" href="javascript:;"><span class="icon_sprite icon_close2"></span></a>
               <div class="popupad_content">
-                  <img v-lazy="adv_picurl" @click="window.open(linkUrl,'_blank')">
+                  <img v-lazy="adv_picurl">
               </div>
           </div>
       </div>
@@ -172,7 +172,7 @@ export default {
       this.getSysMessage();
       this.useAnimation();
       this.getIndexMessage();
-     // this.getPopUPInfo() ;
+      this.getPopUPInfo() ;
       this.closed = sessionStorage.getItem('popupadClosed');
       $('.popupad_close').on('click',function(){
           $('.popupad').hide();
@@ -271,31 +271,35 @@ export default {
         })
     },
 // 弹窗广告
-    getPopUPInfo:function(){
+
+     // 弹窗广告
+      getPopUPInfo:function(){
           var _self = this;
           var varg = null;
-          $.ajax({
-              url:'cms/popup/getPopUpInfo',
-              method:'POST',
-              success:function(data){
-                  if (data && data.apistatus == 1) {
-                      $(".popupad").show();
-                      _self.adv_title = data&&data.result&&data.result.title;
-                      var picurl = _self.photo_url+"/pic/";
-                      picurl+=data&&data.result&&data.result.titlePic+"/0";
-                      _self.adv_picurl = picurl;
-                      _self.linkUrl = data&&data.result&&data.result.linkUrl;
-                      if(!_self.linkUrl){
-                      } else {
-                          $(".popupad_body img").css("cursor","pointer");
-                      }
-                  }else{
-                      _self.closed = true;
+          var url ='';
+          var popid = getParam(popid) ;
+          if(popid && popid !==undefined){  // 预览接口
+              url = 'cms/popup/details?id='+popid ;
+          }else{
+              url = 'cms/popup/getPopUpInfo' ;
+          }
+          common.ajax(url , {}, function(data) {
+              if (data && data.apistatus == 1) {
+                  $(".popupad").show();
+                  _self.adv_title = data&&data.result&&data.result.title;
+                  var picurl = _self.photo_url+"/pic/";
+                  picurl+=data&&data.result&&data.result.titlePic+"/0";
+                  _self.adv_picurl = picurl;
+                  _self.linkUrl = data&&data.result&&data.result.linkUrl;
+                  if(!_self.linkUrl){
+                  } else {
+                      $(".popupad_body img").css("cursor","pointer");
                   }
-              },
-              error:function(){
+              }else{
                   _self.closed = true;
               }
+          },"get",function () {
+              _self.closed = true;
           });
 
       },
