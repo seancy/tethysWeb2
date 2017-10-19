@@ -491,17 +491,17 @@ export default {
     cursor: pointer!important;
   }
   .red-dot{
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 0px;
-    margin-left: 12px;
-    background-color: #bb2370;
-    width: 11px;
-    height: 11px;
-    font-size: 12px;
-    line-height: 12px;
-    text-align: center;
-    border-radius: 6px;
+      display: inline-block;
+      vertical-align: top;
+      margin-top: 5px;
+      margin-right: 2px;
+      background-color: #bb2370;
+      width: 6px;
+      height: 6px;
+      font-size: 12px;
+      line-height: 12px;
+      text-align: center;
+      border-radius: 6px;
   }
 
 </style>
