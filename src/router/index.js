@@ -30,7 +30,7 @@ import SignUp from '@/components/SignUp'
 import Sports from '@/components/Sports'
 import Form from '@/components/Form'
 
-const PersonalModifyPassword = () => import('@/components/person/PersonalModifyPassword')
+import PersonalModifyPassword from '@/components/person/PersonalModifyPassword'
 
 Vue.use(Router)
 
