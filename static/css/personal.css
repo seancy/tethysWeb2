@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.personal_box { background-image: url(img/bg_personal.jpg); background-size: auto 200px; background-repeat: no-repeat; padding-top: 65px; }
+.personal_box { background-image: url(img/bg_personal.jpg); background-size: auto 200px; background-repeat: no-repeat; background-position: center top; padding-top: 65px; }
 
 .personal_box .personal_title { height: 70px; background-size: 500px 70px; background-position: center center; background-repeat: no-repeat; margin: 0px auto 65px 20%; }
 
@@ -463,3 +463,5 @@ ul.join_list li:before { content: '．'; position: absolute; left: 0px; top: 5px
 .psn_menu > li > ul::before { content: ''; display: block; position: absolute; top: 20px; left: -8px; margin-top: -4px; width: 0; height: 0; border-style: solid; border-width: 5px 8px 5px 0; border-color: transparent #e75b07 transparent transparent; }
 
 .psn_menu > li:hover > ul { display: block; }
+
+/*# sourceMappingURL=personal.css.map */
