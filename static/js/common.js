@@ -34,7 +34,7 @@ function sendRequest(url, params, cb, type, errcb, ajaxerr_cb) {
           if ('msg/count'.indexOf(url) > -1) {
             return;
           }
-          if (res.errorCode === 2030012) {
+          if (res.errorCode === 2030012 || res.errorCode === 2030031) {
             cb(res);
             //common.toast({content:"网络较差，请稍后重试"});
           } else {
