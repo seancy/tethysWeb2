@@ -138,7 +138,11 @@ export default {
         common.ajax('config/kd/game/start',{id: id ,platformId:platform || plat }, function (data) {
             if(data.apistatus =='0'){
                 win.close();
-                common.toast({content: "网络较差，请稍后重试！"});
+                if (data.errorCode == '2030031') {
+                    common.toast({content: data.errorMsg});
+                }else{
+                    common.toast({content: "网络较差，请稍后重试！"});
+                }
             }else {
                 if (data && data.result && data.result.content) {
                     var url = data.result.content;
