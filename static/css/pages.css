@@ -62,11 +62,11 @@
 
 .notice { height: 40px; margin-top: -40px; position: relative; z-index: 10; background-color: rgba(0, 0, 0, 0.7); }
 
-.notice .notice_box { margin: 0px auto; width: 940px; height: 40px; overflow: hidden; position: relative; }
+.notice .notice_box { margin: 0px auto; height: 40px; overflow: hidden; position: relative; }
 
 .notice .notice_box span { color: #ba803e; line-height: 40px; }
 
-.notice .notice_box ul { position: absolute; top: 0px; vertical-align: top; display: inline-block; color: #fbf2e0; }
+.notice .notice_box ul { position: absolute; top: 0px; left: 50px; right: 0px; vertical-align: top; display: inline-block; color: #fbf2e0; }
 
 .notice .notice_box ul li { line-height: 40px; white-space: nowrap; overflow: hidden; -o-text-overflow: ellipsis; text-overflow: ellipsis; }
 
@@ -214,7 +214,7 @@
 
 .page_liveList > li .img { position: absolute; top: 1px; left: 1px; width: calc(100% - 2px); height: 405px; margin-top: -35px; z-index: 8; background-position: -20px 0px; background-repeat: no-repeat; -webkit-transition: background-position 150ms ease-in; -ms-transition: background-position 150ms ease-in; -o-transition: background-position 150ms ease-in; transition: background-position 150ms ease-in; }
 
-.page_liveList > li .brand { position: absolute; width: 100%; text-align: left; left: 15px; bottom: 45px; z-index: 9; }
+.page_liveList > li .brand { position: absolute; text-align: left; left: 2px; right: 2px; bottom: 35px; z-index: 9; padding: 0px 0px 15px 15px; background: -moz-linear-gradient(top, transparent 0%, black 100%); /* FF3.6-15 */ background: -webkit-linear-gradient(top, transparent 0%, black 100%); /* Chrome10-25,Safari5.1-6 */ background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(black)); background: -o-linear-gradient(top, transparent 0%, black 100%); background: linear-gradient(to bottom, transparent 0%, black 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
 
 .page_liveList > li .brand .logo { display: block; background-repeat: no-repeat; background-size: 50px 100px; height: 50px; }
 
@@ -592,3 +592,5 @@
 #main .slick-arrow.slick-disabled { opacity: 0.2; cursor: default; }
 
 #main .slick-arrow.slick-disabled:hover { background-position-y: -40px; }
+
+/*# sourceMappingURL=pages.css.map */
