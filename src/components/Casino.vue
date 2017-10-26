@@ -139,7 +139,7 @@ export default {
         if (this.hasLogin === true) {
             this.memberInfo = common.Cookie.get('memberInfo') && JSON.parse(common.Cookie.get('memberInfo')) || {};
         } else {
-            this.getCode();
+
         }
     },
     mounted:function(){
@@ -178,26 +178,7 @@ export default {
             $src.siblings().removeClass('active');
             $src.addClass('active')
         },
-        getCode: function () {
-            var _self = this;
-            common.ajax('member/code/get', {
-                width: 112,
-                height: 37
-            }, function (data) {
-                common.Cookie.set('clientId', data.result && data.result.clientId || '');
-                _self.verImgCode = data.result && 'data:image/png;base64,' + data.result.code || '';
-            });
-            _self.$nextTick(function () {
-                $('.icon-refresh').removeAttr("style");
-                setTimeout(function () {
-                    $('.icon-refresh').css({
-                        cursor: 'pointer',
-                        transition: 'all 3s',
-                        transform: 'rotate(720deg)'
-                    });
-                }, 300);
-            });
-        },
+
         searchData: function (id, name, currTab,typeid) {
             var _self = this;
             _self.name = name;

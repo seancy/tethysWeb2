@@ -115,7 +115,7 @@ export default {
         if (this.hasLogin === true) {
             this.memberInfo = common.Cookie.get('memberInfo') && JSON.parse(common.Cookie.get('memberInfo')) || {};
         } else {
-            this.getCode();
+
         }
     },
     methods: {
@@ -176,28 +176,7 @@ export default {
             var _self = $(this) ;
             _self.find('.select_server').show();
         },
-        getCode: function () {
-            var _self = this;
-            common.ajax('member/code/get', {
-                width: 112,
-                height: 37
-            }, function (data) {
-                common.Cookie.set('clientId', data.result && data.result.clientId || '');
-                _self.verImgCode = data.result && 'data:image/png;base64,' + data.result.code || '';
-            });
-            _self.$nextTick(function () {
-                $('.icon-refresh')
-                .removeAttr("style");
 
-                setTimeout(function () {
-                    $('.icon-refresh').css({
-                        cursor: 'pointer',
-                        transition: 'all 3s',
-                        transform: 'rotate(720deg)'
-                    });
-                }, 300);
-            });
-        },
         getGameAll: function (currTab, catId) {
             var _self = this;
             var interfaces = {
