@@ -259,6 +259,69 @@
             </div>
         </div><!--end 公告-->
 
+        <div class="index_block index_pool">
+            <div class="contain_width">
+                <div class="pool_title">今日充值</div>
+                <div class="pool_deposit">
+                    <p class="pool_subtitle">
+                        <span>会员帐号</span>
+                        <span>充值金额</span>
+                    </p>
+                    <div class="pool_slider">
+                        <ul>
+                            <li>
+                                <span>sdh***1</span>
+                                <span><strong class="color_yellow">20304</strong> 元</span>
+                            </li>
+                            <li>
+                                <span>sdh***1</span>
+                                <span><strong class="color_yellow">20305</strong> 元</span>
+                            </li>
+                            <li>
+                                <span>sdh***1</span>
+                                <span><strong class="color_yellow">20306</strong> 元</span>
+                            </li>
+                            <li>
+                                <span>sdh***1</span>
+                                <span><strong class="color_yellow">20307</strong> 元</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pool_msg">
+                    <p class="pool_subtitle">中奖信息</p>
+                    <div class="pool_slider">
+                        <ul>
+                            <li>玩家 sdh***1 在 <span class="color_white">银行抢匪2</span> 获得<span class="color_yellow">20304</span> 元</li>
+                            <li>玩家 sdh***1 在 <span class="color_white">银行抢匪2</span> 获得<span class="color_yellow">20305</span> 元</li>
+                            <li>玩家 sdh***1 在 <span class="color_white">银行抢匪2</span> 获得<span class="color_yellow">20306</span> 元</li>
+                            <li>玩家 sdh***1 在 <span class="color_white">银行抢匪2</span> 获得<span class="color_yellow">20307</span> 元</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pool_money">
+                    <p class="pool_subtitle">电游超高奖池 , 大奖一触即发</p>
+                    <p class="poolCount" id="poolCount">32,346,930,540.00</p>
+                    <div class="coin_con">
+                        <i class="c3 a1"></i>
+                        <i class="c1 a2"></i>
+                        <i class="c2 a3"></i>
+                        <i class="c3 a4"></i>
+                        <i class="c4 a5"></i>
+                        <i class="c6 a6"></i>
+                        <i class="c4 a7"></i>
+                        <i class="c3 a8 "></i>
+                        <i class="c1 a9"></i>
+                        <i class="c2 a10"></i>
+                        <i class="c5 a11"></i>
+                        <i class="c4 a12"></i>
+                        <i class="c6 a13"></i>
+                        <i class="c5 a14"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="index_block index_product">
             <div class="contain_width">
                 <div class="product_list">
@@ -464,6 +527,7 @@
 
     <script type="text/javascript" src="../static/vendor/jquery.min.js"></script>
     <script type="text/javascript" src="../static/vendor/slick/slick.min.js"></script>
+    <script type="text/javascript" src="../static/vendor/countUp.js"></script>
     <script type="text/javascript" src="../static/js/ui.js"></script>
 
     <script type="text/javascript">
@@ -492,6 +556,56 @@
                 $('.notice_box').scrollTop(0).addClass('hidden');
             }
 
+        })
+
+        // 奖池轮播
+        $(function(){
+
+            $('.pool_slider').each(function(){
+                var $this = $(this),
+                    $thisUl = $this.children('ul');
+                    $thisLi = $thisUl.children('li');
+
+                if($thisLi.length > 3){
+                    function run() {
+                        $thisUl.animate({top:-28},1200,'linear',function(){
+                            $thisUl.css({top:0}).children('li').eq(0).appendTo($thisUl);
+                        })
+                    }
+
+                    var TT = setInterval(run,1200)
+
+                    $this.on('mouseenter',function(e){
+                        clearInterval(TT);
+                        $this.removeClass('hidden');
+                    }).on('mouseleave',function(e){
+                        var position = Math.round($this.scrollTop() / 28);
+                        $this.scrollTop(0).addClass('hidden');
+                        $this.children('li').slice( 0, position ).appendTo($thisUl);
+                        TT = setInterval(run,1200);
+                    })
+
+                    $this.scrollTop(0).addClass('hidden');
+                }
+            });
+            
+
+        })
+
+        // 奖池数字变动，外掛：../static/vendor/countUp.js
+        $(function(){
+            var options = {
+                  useEasing: true,
+                  useGrouping: true,
+                  separator: ',',
+                  decimal: '.',
+            };
+            var poolCount = new CountUp('poolCount', 32346930540, 32356930540, 2, 864000, options); //起始数, 结束数, 小数点位数, 所需秒数
+            if (!poolCount.error) {
+                poolCount.start();
+            } else {
+                console.error(poolCount.error);
+            }
         })
 
         // 滚动动画

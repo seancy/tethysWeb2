@@ -30,9 +30,13 @@ input { border: none; outline: none; font-family: 'Microsoft YaHei','微軟正�
 
 .color_orange { color: #e75b07; }
 
+.color_yellow { color: #fd950a; }
+
 .color_green { color: #27860d; }
 
 .color_blue { color: #0166fd; }
+
+.color_white { color: #fff; }
 
 .btn_gdOrange { display: inline-block; padding: 0px 15px; line-height: 25px; color: #efefef; background: #fe9500; background: -moz-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-linear-gradient(top, #fe9500 0%, #a74300 100%); background: -webkit-gradient(linear, left top, left bottom, from(#fe9500), to(#a74300)); background: -o-linear-gradient(top, #fe9500 0%, #a74300 100%); background: linear-gradient(to bottom, #fe9500 0%, #a74300 100%); }
 
@@ -52,6 +56,8 @@ input { border: none; outline: none; font-family: 'Microsoft YaHei','微軟正�
 .formInput[readonly] { background-color: #f0f0ef; }
 
 .formInput::-webkit-input-placeholder { color: #c9c7c7; }
+
+.formInput::-moz-placeholder { color: #c9c7c7; }
 
 .formInput:-ms-input-placeholder { color: #c9c7c7; }
 
@@ -689,3 +695,5 @@ a.formBtn:hover, .formBtn:hover, .btn-default:hover, .btn-primary:hover { color:
 .ui-loading .ui-loading-mask { position: absolute; top: 0; left: 0; background-color: #000; opacity: .5; z-index: 1; border-radius: 4px; }
 
 .ui-loading i { height: 25px; width: 25px; display: block; background: url(img/icon-refresh-14-loading.gif) no-repeat center center; background-size: 25px 25px; position: absolute; z-index: 2; }
+
+/*# sourceMappingURL=main.css.map */

@@ -152,6 +152,83 @@
 
 .index_games .games li:hover a { top: 0px; -webkit-transition: top 300ms ease-in; -ms-transition: top 300ms ease-in; -o-transition: top 300ms ease-in; transition: top 300ms ease-in; }
 
+/* 奖池 */
+.index_pool { background-color: #1f182a; color: #c1c1c1; }
+
+.index_pool .pool_title { float: left; color: #fcc43e; font-size: 18px; background-color: #10061f; width: 30px; text-align: center; border-radius: 15px; line-height: 1em; padding: 18px 0px; position: relative; }
+
+.index_pool .pool_title:after { content: ''; width: 0px; height: 0px; position: absolute; top: 50%; right: -10px; margin-top: -9px; border-style: solid; border-width: 9px 0 9px 10px; border-color: transparent transparent transparent #10061f; }
+
+.index_pool .pool_subtitle { color: #fcc43e; padding: 5px 0px; margin-top: -5px; }
+
+.index_pool .pool_deposit { float: left; margin-left: 20px; width: 240px; }
+
+.index_pool .pool_deposit span { display: block; float: left; white-space: nowrap; -o-text-overflow: ellipsis; text-overflow: ellipsis; overflow: hidden; }
+
+.index_pool .pool_deposit span:first-child { width: 110px; }
+
+.index_pool .pool_deposit span:last-child { width: 110px; }
+
+.index_pool .pool_deposit p:after, .index_pool .pool_deposit li:after { content: ''; display: table; clear: both; }
+
+.index_pool .pool_msg { float: left; width: 375px; }
+
+.index_pool .pool_money { position: relative; float: right; margin-top: -10px; margin-bottom: -20px; background: url(img/bg_pool_bar.png) no-repeat; background-size: 100%; width: 325px; height: 123px; }
+
+.index_pool .pool_money .pool_subtitle { font-size: 18px; position: absolute; right: 40px; top: 10px; }
+
+.index_pool .pool_money .poolCount { position: absolute; top: 57px; left: 28px; font-size: 28px; color: #992816; font-weight: bold; }
+
+.index_pool .pool_slider { overflow: hidden; position: relative; height: 84px; width: 100%; }
+
+.index_pool .pool_slider ul { width: 100%; position: absolute; }
+
+.index_pool .pool_slider ul li { white-space: nowrap; -o-text-overflow: ellipsis; text-overflow: ellipsis; overflow: hidden; line-height: 27px; height: 27px; }
+
+.index_pool .coin_con { width: 260px; height: 57px; position: absolute; left: 20px; top: 87px; }
+
+.index_pool .coin_con i { display: block; position: absolute; }
+
+.index_pool .coin_con .c1 { width: 26px; height: 20px; background: url(img/icon/coin1.png) no-repeat center center; background-size: 20px 16px; }
+
+.index_pool .coin_con .c2 { width: 30px; height: 23px; background: url(img/icon/coin2.png) no-repeat center center; background-size: 24px 18px; }
+
+.index_pool .coin_con .c3 { width: 28px; height: 26px; background: url(img/icon/coin3.png) no-repeat center center; background-size: 22px 14px; }
+
+.index_pool .coin_con .c4 { width: 24px; height: 22px; background: url(img/icon/coin4.png) no-repeat center center; background-size: 19px 11px; }
+
+.index_pool .coin_con .c5 { width: 22px; height: 27px; background: url(img/icon/coin5.png) no-repeat center center; background-size: 18px 22px; }
+
+.index_pool .coin_con .c6 { width: 30px; height: 19px; background: url(img/icon/coin6.png) no-repeat center center; background-size: 24px 15px; }
+
+.index_pool .coin_con .a1 { left: 44px; top: 15px; -webkit-animation: a1 2s infinite normal ease-out; animation: a1 1s infinite normal ease-out; animation-delay: .5s; -webkit-animation-delay: .5s; }
+
+.index_pool .coin_con .a2 { left: 93px; top: 0; -webkit-animation: a1 2s infinite normal ease-out; animation: a1 .8s infinite normal ease-out; animation-delay: .23s; -webkit-animation-delay: .23s; }
+
+.index_pool .coin_con .a3 { left: 141px; top: 1px; -webkit-animation: a1 2s infinite normal ease-out; animation: a1 .8s infinite normal ease-out; animation-delay: 1.0s; -webkit-animation-delay: 1.0s; }
+
+.index_pool .coin_con .a4 { left: 211px; top: 4px; -webkit-animation: a1 2s infinite normal ease-out; animation: a1 .8s infinite normal ease-out; animation-delay: .6s; -webkit-animation-delay: .6s; }
+
+.index_pool .coin_con .a5 { left: 10px; top: 11px; -webkit-animation: a1 2s infinite normal ease-out; animation: a1 .8s infinite normal ease-out; animation-delay: 1.0s; -webkit-animation-delay: 1.0s; }
+
+.index_pool .coin_con .a6 { left: 113px; top: 29px; -webkit-animation: a2 2s infinite normal ease-out; animation: a2 .8s infinite normal ease-out; animation-delay: 1.8s; -webkit-animation-delay: 1.8s; }
+
+.index_pool .coin_con .a7 { left: 163px; top: 29px; -webkit-animation: a1 2s infinite normal ease-out; animation: a1 .8s infinite normal ease-out; animation-delay: .8s; -webkit-animation-delay: .8s; }
+
+.index_pool .coin_con .a8 { left: 44px; top: 15px; -webkit-animation: a2 2s infinite normal ease-out; animation: a2 .8s infinite normal ease-out; animation-delay: .1s; -webkit-animation-delay: .1s; }
+
+.index_pool .coin_con .a9 { left: 93px; top: 0; -webkit-animation: a2 2s infinite normal ease-out; animation: a2 .8s infinite normal ease-out; animation-delay: .23s; -webkit-animation-delay: .23s; }
+
+.index_pool .coin_con .a10 { left: 141px; top: 1px; -webkit-animation: a2 2s infinite normal ease-out; animation: a2 .8s infinite normal ease-out; animation-delay: 1.3s; -webkit-animation-delay: 1.3s; }
+
+.index_pool .coin_con .a11 { left: 211px; top: 4px; -webkit-animation: a2 2s infinite normal ease-out; animation: a2 .8s infinite normal ease-out; animation-delay: .2s; -webkit-animation-delay: .2s; }
+
+.index_pool .coin_con .a12 { left: 10px; top: 11px; -webkit-animation: a2 2s infinite normal ease-out; animation: a2 .8s infinite normal ease-out; animation-delay: 1.1s; -webkit-animation-delay: 1.1s; }
+
+.index_pool .coin_con .a13 { left: 113px; top: 29px; -webkit-animation: a2 2s infinite normal ease-out; animation: a2 .8s infinite normal ease-out; animation-delay: .7s; -webkit-animation-delay: .7s; }
+
+.index_pool .coin_con .a14 { left: 163px; top: 29px; -webkit-animation: a2 2s infinite normal ease-out; animation: a2 .8s infinite normal ease-out; animation-delay: .9s; -webkit-animation-delay: .9s; }
+
 /* ---------------------------------------------------
 // pages
 --------------------------------------------------- */
@@ -493,6 +570,42 @@
 
 @keyframes menuRotate { from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
   to { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+
+@-webkit-keyframes a1 { 0% { top: 10px;
+    left: 160px; }
+  15% { top: 0; }
+  90% { top: 40px;
+    opacity: 1;
+    left: 0; }
+  100% { top: 40px;
+    opacity: 0; } }
+
+@keyframes a1 { 0% { top: 10px;
+    left: 160px; }
+  15% { top: 0; }
+  90% { top: 40px;
+    opacity: 1; }
+  100% { top: 48px;
+    opacity: 0; } }
+
+@-webkit-keyframes a2 { 0% { top: 10px;
+    left: 120px; }
+  15% { top: -10px; }
+  90% { top: 40px;
+    opacity: 1;
+    left: 0; }
+  100% { top: 40px;
+    opacity: 0; } }
+
+@keyframes a2 { 0% { top: 10px;
+    left: 120px; }
+  15% { top: -10px; }
+  90% { top: 40px;
+    opacity: 1;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); }
+  100% { top: 40px;
+    opacity: 0; } }
 
 /* ---------------------------------------------------
 // plugins
