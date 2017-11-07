@@ -270,20 +270,44 @@
                     <div class="pool_slider">
                         <ul>
                             <li>
-                                <span>sdh***1</span>
-                                <span><strong class="color_yellow">20304</strong> 元</span>
+                                <span>pa***u1</span>
+                                <span><strong class="color_yellow">2000</strong> 元</span>
                             </li>
                             <li>
-                                <span>sdh***1</span>
-                                <span><strong class="color_yellow">20305</strong> 元</span>
+                                <span>un***64</span>
+                                <span><strong class="color_yellow">1000</strong> 元</span>
                             </li>
                             <li>
-                                <span>sdh***1</span>
-                                <span><strong class="color_yellow">20306</strong> 元</span>
+                                <span>a3***04</span>
+                                <span><strong class="color_yellow">1000</strong> 元</span>
                             </li>
                             <li>
-                                <span>sdh***1</span>
-                                <span><strong class="color_yellow">20307</strong> 元</span>
+                                <span>fw***56</span>
+                                <span><strong class="color_yellow">5000</strong> 元</span>
+                            </li>
+                            <li>
+                                <span>ld***26</span>
+                                <span><strong class="color_yellow">5000</strong> 元</span>
+                            </li>
+                            <li>
+                                <span>s7***35</span>
+                                <span><strong class="color_yellow">10000</strong> 元</span>
+                            </li>
+                            <li>
+                                <span>ya***32</span>
+                                <span><strong class="color_yellow">5000</strong> 元</span>
+                            </li>
+                            <li>
+                                <span>we***18</span>
+                                <span><strong class="color_yellow">20000</strong> 元</span>
+                            </li>
+                            <li>
+                                <span>qw***99</span>
+                                <span><strong class="color_yellow">500</strong> 元</span>
+                            </li>
+                            <li>
+                                <span>ty***22</span>
+                                <span><strong class="color_yellow">3000</strong> 元</span>
                             </li>
                         </ul>
                     </div>
@@ -292,10 +316,16 @@
                     <p class="pool_subtitle">中奖信息</p>
                     <div class="pool_slider">
                         <ul>
-                            <li>玩家 sdh***1 在 <span class="color_white">银行抢匪2</span> 获得<span class="color_yellow">20304</span> 元</li>
-                            <li>玩家 sdh***1 在 <span class="color_white">银行抢匪2</span> 获得<span class="color_yellow">20305</span> 元</li>
-                            <li>玩家 sdh***1 在 <span class="color_white">银行抢匪2</span> 获得<span class="color_yellow">20306</span> 元</li>
-                            <li>玩家 sdh***1 在 <span class="color_white">银行抢匪2</span> 获得<span class="color_yellow">20307</span> 元</li>
+                            <li>玩家 zh***ng 在 <span class="color_white">再劫银行</span> 获得<span class="color_yellow">1082</span>元</li>
+                            <li>玩家 wu***66 在 <span class="color_white">冰球突破</span> 获得<span class="color_yellow">5250</span>元</li>
+                            <li>玩家 li***29 在 <span class="color_white">舞龙</span> 获得<span class="color_yellow">898</span>元</li>
+                            <li>玩家 ya***ng 在 <span class="color_white">海豚礁堡</span> 获得<span class="color_yellow">4985</span>元</li>
+                            <li>玩家 a3***04 在 <span class="color_white">上海百乐门</span> 获得<span class="color_yellow">952</span>元</li>
+                            <li>玩家 op***69 在 <span class="color_white">冰球突破</span> 获得<span class="color_yellow">5995</span>元</li>
+                            <li>玩家 wp***16 在 <span class="color_white">黄金公主</span> 获得<span class="color_yellow">760</span>元</li>
+                            <li>玩家 wi***23 在 <span class="color_white">水果拉霸</span> 获得<span class="color_yellow">780</span>元</li>
+                            <li>玩家 zl***55 在 <span class="color_white">糖果派對</span> 获得<span class="color_yellow">748.5</span>元</li>
+                            <li>玩家 pa***u1 在 <span class="color_white">冰球突破</span> 获得<span class="color_yellow">5064</span>元</li>
                         </ul>
                     </div>
                 </div>
@@ -543,17 +573,11 @@
 
                 var TT = setInterval(run,3000)
 
-                $(".notice_box").on('mouseenter',function(e){
+                $this.on('mouseenter', function (e) {
                     clearInterval(TT);
-                    $(this).removeClass('hidden');
-                }).on('mouseleave',function(e){
-                    var position = Math.round($(this).scrollTop() / 40);
-                    $(this).scrollTop(0).addClass('hidden');
-                    $('.notice_box ul').children('li').slice( 0, position ).appendTo('.notice_box ul');
-                    TT = setInterval(run,3000);
+                }).on('mouseleave', function (e) {
+                    TT = setInterval(run, 1200);
                 })
-
-                $('.notice_box').scrollTop(0).addClass('hidden');
             }
 
         })
