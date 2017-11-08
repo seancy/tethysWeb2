@@ -271,43 +271,43 @@
                         <ul>
                             <li>
                                 <span>pa***u1</span>
-                                <span><strong class="color_yellow">2000</strong> 元</span>
+                                <span><strong class="color_yellow">2000.00</strong> 元</span>
                             </li>
                             <li>
                                 <span>un***64</span>
-                                <span><strong class="color_yellow">1000</strong> 元</span>
+                                <span><strong class="color_yellow">1000.00</strong> 元</span>
                             </li>
                             <li>
                                 <span>a3***04</span>
-                                <span><strong class="color_yellow">1000</strong> 元</span>
+                                <span><strong class="color_yellow">1000.00</strong> 元</span>
                             </li>
                             <li>
                                 <span>fw***56</span>
-                                <span><strong class="color_yellow">5000</strong> 元</span>
+                                <span><strong class="color_yellow">5000.00</strong> 元</span>
                             </li>
                             <li>
                                 <span>ld***26</span>
-                                <span><strong class="color_yellow">5000</strong> 元</span>
+                                <span><strong class="color_yellow">5000.00</strong> 元</span>
                             </li>
                             <li>
                                 <span>s7***35</span>
-                                <span><strong class="color_yellow">10000</strong> 元</span>
+                                <span><strong class="color_yellow">10000.00</strong> 元</span>
                             </li>
                             <li>
                                 <span>ya***32</span>
-                                <span><strong class="color_yellow">5000</strong> 元</span>
+                                <span><strong class="color_yellow">5000.00</strong> 元</span>
                             </li>
                             <li>
                                 <span>we***18</span>
-                                <span><strong class="color_yellow">20000</strong> 元</span>
+                                <span><strong class="color_yellow">20000.00</strong> 元</span>
                             </li>
                             <li>
                                 <span>qw***99</span>
-                                <span><strong class="color_yellow">500</strong> 元</span>
+                                <span><strong class="color_yellow">500.00</strong> 元</span>
                             </li>
                             <li>
                                 <span>ty***22</span>
-                                <span><strong class="color_yellow">3000</strong> 元</span>
+                                <span><strong class="color_yellow">3000.00</strong> 元</span>
                             </li>
                         </ul>
                     </div>
@@ -316,16 +316,16 @@
                     <p class="pool_subtitle">中奖信息</p>
                     <div class="pool_slider">
                         <ul>
-                            <li>玩家 zh***ng 在 <span class="color_white">再劫银行</span> 获得<span class="color_yellow">1082</span>元</li>
-                            <li>玩家 wu***66 在 <span class="color_white">冰球突破</span> 获得<span class="color_yellow">5250</span>元</li>
-                            <li>玩家 li***29 在 <span class="color_white">舞龙</span> 获得<span class="color_yellow">898</span>元</li>
-                            <li>玩家 ya***ng 在 <span class="color_white">海豚礁堡</span> 获得<span class="color_yellow">4985</span>元</li>
-                            <li>玩家 a3***04 在 <span class="color_white">上海百乐门</span> 获得<span class="color_yellow">952</span>元</li>
-                            <li>玩家 op***69 在 <span class="color_white">冰球突破</span> 获得<span class="color_yellow">5995</span>元</li>
-                            <li>玩家 wp***16 在 <span class="color_white">黄金公主</span> 获得<span class="color_yellow">760</span>元</li>
-                            <li>玩家 wi***23 在 <span class="color_white">水果拉霸</span> 获得<span class="color_yellow">780</span>元</li>
-                            <li>玩家 zl***55 在 <span class="color_white">糖果派對</span> 获得<span class="color_yellow">748.5</span>元</li>
-                            <li>玩家 pa***u1 在 <span class="color_white">冰球突破</span> 获得<span class="color_yellow">5064</span>元</li>
+                            <li>玩家 zh***ng 在 <span class="color_white">再劫银行</span> 获得<span class="color_yellow">1082.00</span>元</li>
+                            <li>玩家 wu***66 在 <span class="color_white">冰球突破</span> 获得<span class="color_yellow">5250.00</span>元</li>
+                            <li>玩家 li***29 在 <span class="color_white">舞龙</span> 获得<span class="color_yellow">898.00</span>元</li>
+                            <li>玩家 ya***ng 在 <span class="color_white">海豚礁堡</span> 获得<span class="color_yellow">4985.00</span>元</li>
+                            <li>玩家 a3***04 在 <span class="color_white">上海百乐门</span> 获得<span class="color_yellow">952.00</span>元</li>
+                            <li>玩家 op***69 在 <span class="color_white">冰球突破</span> 获得<span class="color_yellow">5995.00</span>元</li>
+                            <li>玩家 wp***16 在 <span class="color_white">黄金公主</span> 获得<span class="color_yellow">760.00</span>元</li>
+                            <li>玩家 wi***23 在 <span class="color_white">水果拉霸</span> 获得<span class="color_yellow">780.00</span>元</li>
+                            <li>玩家 zl***55 在 <span class="color_white">糖果派對</span> 获得<span class="color_yellow">748.50</span>元</li>
+                            <li>玩家 pa***u1 在 <span class="color_white">冰球突破</span> 获得<span class="color_yellow">5064.00</span>元</li>
                         </ul>
                     </div>
                 </div>
@@ -617,20 +617,30 @@
         })
 
         // 奖池数字变动，外掛：../static/vendor/countUp.js
-        $(function(){
+        $(function () {
             var options = {
-                  useEasing: true,
-                  useGrouping: true,
-                  separator: ',',
-                  decimal: '.',
+                useEasing: true,
+                useGrouping: true,
+                separator: ',',
+                decimal: '.',
             };
-            var poolCount = new CountUp('poolCount', 32346930540, 32356930540, 2, 864000, options); //起始数, 结束数, 小数点位数, 所需秒数
-            if (!poolCount.error) {
-                poolCount.start();
-            } else {
-                console.error(poolCount.error);
+            var startCount = 32346930540;
+
+            updatePool();
+            setInterval( updatePool, 7000 );
+
+            function updatePool(){
+                var endCount = startCount + 1207;
+                var poolCount = new CountUp('poolCount', startCount, endCount, 2, 3, options); //起始数, 结束数, 小数点位数, 所需秒数
+                startCount = endCount;
+                if (!poolCount.error) {
+                    poolCount.start();
+                } else {
+                    console.error(poolCount.error);
+                }
             }
         })
+
 
         // 滚动动画
         $(function(){
